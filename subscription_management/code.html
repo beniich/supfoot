@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subscription Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2d00d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221f10", // Charcoal/Dark Brownish Black
+                        "surface-dark": "#2d2a1e", // Slightly lighter for cards
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for cleaner mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white antialiased overflow-hidden">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden bg-background-light dark:bg-background-dark transition-colors duration-200">
+<!-- Top App Bar -->
+<div class="flex items-center px-4 py-4 justify-between bg-transparent z-10">
+<button class="text-white flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">My Subscription</h2>
+</div>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto no-scrollbar pb-32">
+<!-- Hero Card: Current Plan -->
+<div class="px-4 pt-2 pb-6">
+<div class="relative overflow-hidden rounded-[2rem] bg-surface-dark shadow-lg border border-white/5">
+<!-- Decorative subtle gradient background -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-50"></div>
+<div class="relative p-6 flex flex-col items-center text-center space-y-4">
+<div class="size-16 rounded-full bg-gradient-to-b from-primary/20 to-primary/5 flex items-center justify-center border border-primary/30 shadow-[0_0_15px_rgba(242,208,13,0.2)]">
+<span class="material-symbols-outlined text-4xl text-primary drop-shadow-sm">emoji_events</span>
+</div>
+<div class="space-y-1">
+<p class="text-primary/80 text-xs font-semibold tracking-wider uppercase">Current Plan</p>
+<h1 class="text-3xl font-bold text-white tracking-tight">VIP Membership</h1>
+</div>
+<div class="w-full h-px bg-white/10 my-2"></div>
+<div class="flex flex-col gap-1">
+<p class="text-gray-300 text-base font-medium">Billed monthly • $19.99/mo</p>
+<div class="flex items-center justify-center gap-2 mt-1">
+<span class="material-symbols-outlined text-sm text-green-400">autorenew</span>
+<p class="text-gray-400 text-sm">Renews on Nov 24, 2023</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Upgrade CTA -->
+<!-- Only shown if user can upgrade, placement here for high visibility -->
+<div class="px-4 pb-8">
+<button class="group relative w-full overflow-hidden rounded-full bg-primary p-4 text-background-dark shadow-[0_4px_14px_0_rgba(242,208,13,0.39)] transition-all hover:shadow-[0_6px_20px_rgba(242,208,13,0.23)] hover:-translate-y-0.5 active:translate-y-0">
+<div class="absolute inset-0 bg-white/20 opacity-0 transition-opacity group-hover:opacity-100"></div>
+<span class="relative flex items-center justify-center gap-2 font-bold text-lg">
+                        Upgrade to Pro Annual
+                        <span class="rounded-full bg-black/10 px-2 py-0.5 text-xs font-extrabold uppercase tracking-wide text-black/70">Save 20%</span>
+</span>
+</button>
+</div>
+<!-- Plan Overview Header -->
+<div class="px-6 pb-2">
+<h3 class="text-white text-xl font-bold leading-tight">Plan Overview</h3>
+<p class="text-gray-400 text-sm mt-1">Your active benefits</p>
+</div>
+<!-- Benefits List -->
+<div class="px-4 pb-8">
+<div class="flex flex-col gap-3 rounded-[1.5rem] bg-surface-dark p-5 border border-white/5">
+<!-- Item 1 -->
+<div class="flex items-start gap-4">
+<div class="mt-0.5 flex items-center justify-center rounded-full bg-primary/10 p-1">
+<span class="material-symbols-outlined text-lg text-primary font-bold">check</span>
+</div>
+<div>
+<p class="text-white font-medium">Ad-free experience</p>
+<p class="text-gray-500 text-sm leading-snug">Enjoy matches without interruptions.</p>
+</div>
+</div>
+<!-- Separator -->
+<div class="h-px w-full bg-white/5"></div>
+<!-- Item 2 -->
+<div class="flex items-start gap-4">
+<div class="mt-0.5 flex items-center justify-center rounded-full bg-primary/10 p-1">
+<span class="material-symbols-outlined text-lg text-primary font-bold">check</span>
+</div>
+<div>
+<p class="text-white font-medium">4K Match Replays</p>
+<p class="text-gray-500 text-sm leading-snug">Crystal clear resolution for every game.</p>
+</div>
+</div>
+<!-- Separator -->
+<div class="h-px w-full bg-white/5"></div>
+<!-- Item 3 -->
+<div class="flex items-start gap-4">
+<div class="mt-0.5 flex items-center justify-center rounded-full bg-primary/10 p-1">
+<span class="material-symbols-outlined text-lg text-primary font-bold">check</span>
+</div>
+<div>
+<p class="text-white font-medium">Scout Analysis Reports</p>
+<p class="text-gray-500 text-sm leading-snug">Deep dive stats and player tracking.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Payment Method Section -->
+<div class="px-6 pb-2 pt-2">
+<h3 class="text-white text-xl font-bold leading-tight">Payment Method</h3>
+</div>
+<div class="px-4 pb-4">
+<div class="flex items-center justify-between rounded-[1.5rem] bg-surface-dark p-4 border border-white/5">
+<div class="flex items-center gap-4">
+<div class="flex h-10 w-14 shrink-0 items-center justify-center rounded-lg bg-white p-1">
+<!-- Simple CSS representation of a card logo placeholder or generic icon -->
+<span class="material-symbols-outlined text-gray-800 text-2xl">credit_card</span>
+</div>
+<div class="flex flex-col">
+<p class="text-white font-bold text-sm">Visa ending in 4242</p>
+<p class="text-gray-500 text-xs">Expires 12/25</p>
+</div>
+</div>
+<button class="text-primary text-sm font-bold hover:text-primary/80 px-2 py-1">
+                        Update
+                    </button>
+</div>
+</div>
+<!-- Billing History Link -->
+<div class="px-4 pb-8">
+<button class="flex w-full items-center justify-between rounded-[1.5rem] bg-transparent px-4 py-3 hover:bg-white/5 transition-colors group">
+<span class="text-gray-400 font-medium group-hover:text-white transition-colors">Billing History</span>
+<span class="material-symbols-outlined text-gray-500 group-hover:text-white">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<div class="absolute bottom-0 left-0 w-full bg-[#181711]/90 backdrop-blur-md border-t border-white/5 pt-2 pb-6 px-6">
+<div class="flex items-center justify-between">
+<button class="flex flex-col items-center gap-1 text-gray-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">sports_soccer</span>
+<span class="text-[10px] font-medium">Matches</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-2xl filled" style="font-variation-settings: 'FILL' 1;">card_membership</span>
+<span class="text-[10px] font-medium">Plan</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

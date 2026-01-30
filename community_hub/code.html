@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Community Hub - FootballHub+</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2cc0d",
+                        "background-light": "#f8f8f5", // Not used heavily in this specific design due to forced dark mode context
+                        "background-dark": "#181711", // Deep charcoal
+                        "surface-dark": "#221f10", // Slightly lighter for cards
+                        "surface-highlight": "#2a2718", // Even lighter for borders/hovers
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.375rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for horizontal scroll areas */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white overflow-x-hidden antialiased">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto shadow-2xl overflow-hidden pb-20">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 flex items-center bg-background-dark/95 backdrop-blur-md px-4 py-3 justify-between border-b border-white/5">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-dark border border-white/10">
+<span class="material-symbols-outlined text-white text-xl">menu</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center">Community Hub</h2>
+<div class="flex w-10 items-center justify-end">
+<button class="flex items-center justify-center rounded-full w-10 h-10 bg-surface-dark border border-white/10 text-primary">
+<span class="material-symbols-outlined text-xl">search</span>
+</button>
+</div>
+</header>
+<!-- Trending Forums Section -->
+<section class="mt-6">
+<div class="flex items-center justify-between px-5 mb-3">
+<h3 class="text-white text-lg font-bold leading-tight">Trending Forums</h3>
+<span class="text-xs font-medium text-primary cursor-pointer">View All</span>
+</div>
+<div class="flex w-full overflow-x-auto hide-scrollbar px-5 py-2 gap-4">
+<!-- Card 1 -->
+<div class="relative shrink-0 w-36 h-48 rounded-xl overflow-hidden group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Exciting football stadium crowd cheering" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbtvAuH_8DiZ6pnL20TnDtVeTuE7GDsNNHUH6OKALx56hefav5-e72-fOAUPKxgZrFZMwY8fTJTn2JAMcWJabrwx-JZg9Ilcc9Sf_wdIzei8HUyom6p3N628062AaDyvcNawfyhLolLFLee7hCq5F0NyAnf7teMjMmzBx8J2ViMcFsBKjksM1t3hIQkKUwYZZyMZ4taIz6l8UfyvnxFiHKafVFxOKuzRnJ5tedYZXt19pbK9oKs9gvHYmQyvK2E_Fq11e0TQumq78");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3">
+<span class="inline-block px-2 py-0.5 mb-2 text-[10px] font-bold bg-primary text-black rounded uppercase tracking-wider">Hot</span>
+<p class="text-white text-sm font-bold leading-tight">Botola Pro Race</p>
+<p class="text-gray-300 text-[10px] mt-1 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> 2.4k online
+                        </p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="relative shrink-0 w-36 h-48 rounded-xl overflow-hidden group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Football jersey and national flag details" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBO4B9gQxTmviWPx37aaW5YIKYxD1_Y_vBNo8ptsAmNkpJU-IH0XuBxu5OUZEm1JXG-iohp6n3jskrBatqtDWGIc5KTtb9EdTduO0AbJEeTH_2Qy-YyZWTIqNSO040cn0lgtMEHysAe8-9r1-dm3uFYhfe_4SSCEqHGv3aTd-qB8bGZTMfJG4QSEsxL_abiJrRvBfurzY4TtupP0yHuPznyujw7sSJoAVCA5hHYncDfGQVcECEEsT6u0_Cy8ddANi7QYBZpvcP34Lc");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3">
+<p class="text-white text-sm font-bold leading-tight">WC Qualifiers</p>
+<p class="text-gray-300 text-[10px] mt-1 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> 5k online
+                        </p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="relative shrink-0 w-36 h-48 rounded-xl overflow-hidden group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Football strategy board and analytics" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBciPRYQmiYlxtvfyqPKUVqbHlTlyYrthb33giN2cANVg-r1yek3Zt9SOZwqXCXQz0mJYwaT73Lob75N3E3YzsY3YIUFHuO5JATGoImpJTrQZHPPElzQYWi6310dEuasg3syKVoD_YAh7Ph3-g8-BM4Ya1r_sMpoNrSrzCYJws3c2tYtcWs9I323fnpKMzPmQWp6-90Bq928gsWLzJKwrdAHBhxO8iBQhXys2GW_1h0BMyVYrTFGxcTVSAAG_PEBso3aChZBtM4v-0");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3">
+<p class="text-white text-sm font-bold leading-tight">Fantasy League</p>
+<p class="text-gray-300 text-[10px] mt-1 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span> 1.2k online
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Active Fan Groups Section -->
+<section class="mt-8">
+<h3 class="text-white text-lg font-bold leading-tight px-5 mb-4">Active Fan Groups</h3>
+<div class="flex flex-col gap-1 px-3">
+<!-- Group Item 1 -->
+<div class="flex items-center gap-4 bg-surface-dark/50 p-3 rounded-xl border border-white/5 active:scale-[0.98] transition-transform">
+<div class="shrink-0 relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 border-2 border-primary/20" data-alt="Raja CA Team Logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAgrsE4XHLTwiPHwsprUksZQXxu7qISGqLCG4Y5oPRWBwvzStz5iIPuDKwbxGYGtEubCllH97TgCzTDNqq3WcaYle_HH3Cl73IAKI9RhMycWL52xG3_fIzOiOFp9z2hg0bK13jbWSHCOjJaUirA86JCJFGPb3qawvisOb8NwYkmbBWnKNtOGqyRmu4hshs-kzpn18zTwUDLwstgCSh9rBRKuBdjAb6QxqtCaY6sqCXfYAosu_GJNbQLpHWSAuxPzmdJYHwpZGQeoyI");'></div>
+<div class="absolute -bottom-1 -right-1 bg-primary text-black text-[10px] font-bold px-1.5 rounded-full border border-background-dark">#1</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<p class="text-white text-sm font-bold truncate">Green Boys Hub</p>
+<p class="text-gray-400 text-xs truncate">Raja CA • 42k Ultras</p>
+</div>
+<button class="shrink-0 bg-primary hover:bg-primary/90 text-black text-xs font-bold px-4 py-2 rounded-lg transition-colors">
+                        Join
+                    </button>
+</div>
+<!-- Group Item 2 -->
+<div class="flex items-center gap-4 bg-surface-dark/50 p-3 rounded-xl border border-white/5 active:scale-[0.98] transition-transform">
+<div class="shrink-0 relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 border-2 border-white/10" data-alt="Wydad AC Team Logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBWRvgzKy1nog3D6GbXQM87Ov6jzOYMJT-eZWmfrkiNpnCCrMnO2nR0723h2f-_Yuww9TQYD9qATUpk-yDyuMe31DYfUOJPTDNDm8HFNaXaT6zl7xyszO3cksDKpN25B-rsX1pxOUX2EBccrwPfeH0_qquQceaUY3XCV94n5v7frbLJzARXAN9RViooa4y3yVYDdVyluG-sAorNZCWjMuYz3FIjCcPrZExjon9xZYFqHz_Rt8dGOhYxOmp8Kx8FC7SCR8xeC3p3cXY");'></div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<p class="text-white text-sm font-bold truncate">Winners 2005</p>
+<p class="text-gray-400 text-xs truncate">Wydad AC • 38k Members</p>
+</div>
+<button class="shrink-0 bg-surface-highlight hover:bg-white/10 text-white text-xs font-bold px-4 py-2 rounded-lg border border-white/10 transition-colors">
+                        View
+                    </button>
+</div>
+</div>
+</section>
+<!-- Global Fan Wall -->
+<section class="mt-8 mb-4">
+<div class="flex items-center justify-between px-5 mb-4 sticky top-[72px] z-30 py-2 bg-background-dark/95 backdrop-blur-sm">
+<h3 class="text-white text-lg font-bold leading-tight">Global Fan Wall</h3>
+<div class="flex gap-3 text-sm">
+<span class="text-primary font-bold border-b-2 border-primary pb-0.5">Live</span>
+<span class="text-gray-500 font-medium">Following</span>
+</div>
+</div>
+<div class="flex flex-col gap-6 px-3 pb-6">
+<!-- Post 1: Poll -->
+<div class="bg-surface-dark rounded-xl p-4 border border-white/5">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3 items-center">
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-white/10" data-alt="Portrait of user Ahmed_99" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBsRj4oTmmBNBIpdWTxz8fNbrxXNznj59AoHpOnKVLs3gu3bX8b448XrTxGPYJXqifMkD5XLWPniJYh9a5iMF5RyLPij-zZrrWsZ1h5tJSJcxhQPx2IGnpEX_HUGoP_g3tcWWosb8AaZVnv_W8aeIJ1vtK14u-y6FO6cLAQeDvrIbJTbmyhSqor-sGPo8RlxY760OO80ApdcBbT4geMnQ3za4kLk6cwBq5oaqfClLAlHcXBdB4riiq1Gc4EEjPDFU2Ijyx9Fg11Np0");'></div>
+<div>
+<div class="flex items-center gap-2">
+<p class="text-sm font-bold text-white">Ahmed_99</p>
+<span class="bg-primary/20 text-primary text-[10px] font-bold px-1.5 py-0.5 rounded">PRO</span>
+</div>
+<p class="text-xs text-gray-500">2h ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-500 text-xl">more_horiz</span>
+</div>
+<p class="text-sm text-gray-200 mb-4 font-normal leading-relaxed">Who is the MOTM tonight? The midfield battle was intense but I think Ziyech edged it.</p>
+<!-- Poll -->
+<div class="space-y-2 mb-4">
+<div class="relative bg-surface-highlight rounded-lg h-10 overflow-hidden cursor-pointer group">
+<div class="absolute left-0 top-0 h-full bg-primary/20 w-[75%] transition-all duration-1000"></div>
+<div class="absolute inset-0 flex items-center justify-between px-4 z-10">
+<span class="text-sm font-medium text-white group-hover:text-primary transition-colors">H. Ziyech</span>
+<span class="text-sm font-bold text-primary">75%</span>
+</div>
+</div>
+<div class="relative bg-surface-highlight rounded-lg h-10 overflow-hidden cursor-pointer group">
+<div class="absolute left-0 top-0 h-full bg-white/5 w-[25%] transition-all duration-1000"></div>
+<div class="absolute inset-0 flex items-center justify-between px-4 z-10">
+<span class="text-sm font-medium text-white group-hover:text-primary transition-colors">A. Hakimi</span>
+<span class="text-sm font-bold text-gray-400">25%</span>
+</div>
+</div>
+</div>
+<div class="text-xs text-gray-500 mb-4 pl-1">2,403 votes • 1 hour left</div>
+<!-- Actions -->
+<div class="flex items-center justify-between border-t border-white/5 pt-3">
+<div class="flex gap-6">
+<button class="flex items-center gap-1.5 text-gray-400 hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">favorite</span>
+<span class="text-xs font-medium">205</span>
+</button>
+<button class="flex items-center gap-1.5 text-gray-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-xs font-medium">42</span>
+</button>
+</div>
+<button class="text-gray-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</div>
+<!-- Post 2: Image -->
+<div class="bg-surface-dark rounded-xl p-4 border border-white/5">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3 items-center">
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-white/10" data-alt="Portrait of user Casablanca_Fan" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA0tqviGDUxUXbG1RxV5zxnDSA5JFG56xcNHVEGtKc_hn1iOehR1-_Dsmkmt1Y5ZQFI5l_kfZ7lmjGD15qMLIgPXySUUsEDf57pW2o6xRCZfuiSqU-WpzkIa_s7S0EQ8BED-qyP9rW43K1aYlu3Y8QbHIcD9F7NJQxGJHFL6u1h42iKNEonhgW0kW8mDJUIXWfyDTv3bwkA9ULexqALnAzKQTgfKQjoCepjticDJGn8lXOE20by8sNjWQZ6PoKrRiwqweCpyQJbPOw");'></div>
+<div>
+<p class="text-sm font-bold text-white">Casablanca_Fan</p>
+<p class="text-xs text-gray-500">Just now</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-500 text-xl">more_horiz</span>
+</div>
+<p class="text-sm text-gray-200 mb-3 font-normal">Incredible atmosphere at the derby! Can't hear myself think! 🥁📢 #CasablancaDerby</p>
+<div class="w-full h-56 rounded-lg bg-cover bg-center mb-4 border border-white/5" data-alt="Soccer fans holding red flares in a packed stadium" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCMQZrqWjdLfmmfA_3aJokDGY8kVK1SIbYFvb6sphgHWSEdcXWdWWN7MgdI8G6h8YHXypMSqSyYe_6SjIPNiiL5V686q3jmIfF2LTOEgqVzdPwg4pJKLRca9S6BnTEqnIY1Ku0agNhygRfkynBguSvaqe8lnm2Aaz8sv1PgqyeQMa5he6xagoRO0mTqiyCXWuxdDcXg5wwPVQfIZnmEnX18iUlJ1kiWvg1YLi77ObUohCPM7327XmUVqHU2-Xfd96ADod7ote832iI");'></div>
+<!-- Actions -->
+<div class="flex items-center justify-between border-t border-white/5 pt-3">
+<div class="flex gap-6">
+<button class="flex items-center gap-1.5 text-gray-400 hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">favorite</span>
+<span class="text-xs font-medium">856</span>
+</button>
+<button class="flex items-center gap-1.5 text-gray-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-xs font-medium">112</span>
+</button>
+</div>
+<button class="text-gray-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Spacer to clear Nav -->
+<div class="h-20"></div>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-background-dark/80 backdrop-blur-xl border-t border-white/10 max-w-md mx-auto">
+<div class="flex items-center justify-between px-6 py-3">
+<button class="flex flex-col items-center gap-1 group w-14">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-white text-2xl transition-colors">home</span>
+<span class="text-[10px] font-medium text-gray-500 group-hover:text-white transition-colors">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 group w-14">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-white text-2xl transition-colors">sports_soccer</span>
+<span class="text-[10px] font-medium text-gray-500 group-hover:text-white transition-colors">Matches</span>
+</button>
+<button class="flex flex-col items-center gap-1 group w-14">
+<div class="relative">
+<span class="material-symbols-outlined text-primary text-2xl drop-shadow-[0_0_8px_rgba(242,204,13,0.5)]">groups</span>
+<span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+</div>
+<span class="text-[10px] font-bold text-primary">Hub</span>
+</button>
+<button class="flex flex-col items-center gap-1 group w-14">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-white text-2xl transition-colors">bar_chart</span>
+<span class="text-[10px] font-medium text-gray-500 group-hover:text-white transition-colors">Stats</span>
+</button>
+<button class="flex flex-col items-center gap-1 group w-14">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-white text-2xl transition-colors">person</span>
+<span class="text-[10px] font-medium text-gray-500 group-hover:text-white transition-colors">Profile</span>
+</button>
+</div>
+</nav>
+</div>
+</body></html>

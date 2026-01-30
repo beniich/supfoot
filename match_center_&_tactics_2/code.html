@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FootballHub+ Store</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2cc0d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221f10",
+                        "surface-dark": "#2e2b1b",
+                        "field-green": "#1a4731", 
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                    boxShadow: {
+                        'glow': '0 0 15px rgba(242, 204, 13, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display text-white overflow-x-hidden selection:bg-primary selection:text-black">
+<div class="fixed top-0 left-0 right-0 z-50 bg-background-dark/80 backdrop-blur-md border-b border-white/10">
+<div class="flex items-center p-4 pb-2 justify-between max-w-md mx-auto w-full">
+<button class="text-white flex size-10 shrink-0 items-center justify-center hover:bg-white/10 rounded-full transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_back</span>
+</button>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight">FootballHub+ Store</h2>
+<div class="flex w-10 items-center justify-end relative">
+<button class="text-white flex size-10 shrink-0 items-center justify-center hover:bg-white/10 rounded-full transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">shopping_bag</span>
+</button>
+<div class="absolute top-2 right-1 w-2.5 h-2.5 bg-primary rounded-full border border-background-dark"></div>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full max-w-md mx-auto pt-[70px] pb-24 px-4 space-y-6">
+<div class="relative w-full h-64 rounded-2xl overflow-hidden shadow-2xl group cursor-pointer">
+<img alt="New Arrivals Jersey" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEpkFLww_HNWxfjmNBKXBqKJyBLV96Fwd7w3Z3zxCrRqK0NZzxEoivrJmNOP7BTRomNNqtc4WJxvJENnPAqYUrZ0PbtMHcgMCN4SwjhHb9f35uMT3LXz-R5Q8FyE2NlKOT5PdsDndaylZXZ7Qn9LoLcyE5NpEL8kjb1FIWJNrOtmuRhr3B8rzsAxg5LQ3pJ1gozzVMQ1zNMOsGO6X_LtYEYCMqg-isGrnPshURgk_Awh1mDXgBeM_xWHEz-bOusjZyf39L1_vGwoQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-5 w-full">
+<div class="inline-block px-2 py-1 bg-primary text-black text-[10px] font-bold uppercase tracking-wider rounded mb-2">New Season</div>
+<h1 class="text-2xl font-bold text-white mb-1">National Team Kit 2024</h1>
+<p class="text-gray-300 text-sm font-body mb-3">Engineered for victory. Worn by legends.</p>
+<div class="flex items-center text-primary font-bold text-sm">
+                    Shop Collection <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold">Categories</h3>
+<button class="text-xs text-primary font-medium">See All</button>
+</div>
+<div class="flex overflow-x-auto gap-4 pb-2 hide-scrollbar -mx-4 px-4">
+<button class="flex flex-col items-center gap-2 min-w-[72px] group">
+<div class="w-16 h-16 rounded-2xl bg-surface-dark border border-white/10 flex items-center justify-center group-hover:border-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-primary text-3xl">checkroom</span>
+</div>
+<span class="text-xs text-gray-400 group-hover:text-white transition-colors">Jerseys</span>
+</button>
+<button class="flex flex-col items-center gap-2 min-w-[72px] group">
+<div class="w-16 h-16 rounded-2xl bg-surface-dark border border-white/10 flex items-center justify-center group-hover:border-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-gray-300 text-3xl">fitness_center</span>
+</div>
+<span class="text-xs text-gray-400 group-hover:text-white transition-colors">Training</span>
+</button>
+<button class="flex flex-col items-center gap-2 min-w-[72px] group">
+<div class="w-16 h-16 rounded-2xl bg-surface-dark border border-white/10 flex items-center justify-center group-hover:border-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-gray-300 text-3xl">sports_soccer</span>
+</div>
+<span class="text-xs text-gray-400 group-hover:text-white transition-colors">Equipment</span>
+</button>
+<button class="flex flex-col items-center gap-2 min-w-[72px] group">
+<div class="w-16 h-16 rounded-2xl bg-surface-dark border border-white/10 flex items-center justify-center group-hover:border-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-gray-300 text-3xl">local_mall</span>
+</div>
+<span class="text-xs text-gray-400 group-hover:text-white transition-colors">Accessories</span>
+</button>
+<button class="flex flex-col items-center gap-2 min-w-[72px] group">
+<div class="w-16 h-16 rounded-2xl bg-surface-dark border border-white/10 flex items-center justify-center group-hover:border-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-gray-300 text-3xl">confirmation_number</span>
+</div>
+<span class="text-xs text-gray-400 group-hover:text-white transition-colors">Tickets</span>
+</button>
+</div>
+</div>
+<div class="space-y-3">
+<h3 class="text-lg font-bold">Featured Products</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-dark rounded-xl p-3 border border-white/5 hover:border-primary/30 transition-all group">
+<div class="relative aspect-[4/5] bg-background-dark rounded-lg overflow-hidden mb-3">
+<img alt="Home Jersey" class="w-full h-full object-cover mix-blend-overlay opacity-80 group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7D5-6rJ1x1N6fncUHrCsk7j1Lh4WTMB0gGg3127-IdnozAuNiKP-HBJlbv50hX_tsGCKHfU103RdiHRxpF_YKHpxAiR3PqFJVYeByjG4D4pPTpIILxtBXzUWST4VZkKRUjLQEaK1v065Mu2w-cHt3r5b1SLrWbIJuCkM1eBdRSIMaf9x007CFGdNNLOeKaQV_di2Da6-MK2S4K-F4x3X8j1LjLe9vhHA5T2WhTbwuA2yaEVjLIZOsSJVVy4herdR5R55acwFN2s4"/>
+<img alt="Home Jersey" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH9-exm_S8PEJDBO-h6Ujn3vPKkzG0r52aGTDzqowHlUmAyNXmPUshTBZTz7QdJgm9223w_PmZKgwWFUxVnssg6FFwqpOJ9ED3CjoG1AAeak1kCdaFgqMTdlIgZROins3AbmB_Fuxn6GiHgqryJtcNHnXlZ7oDpWfonMyN0yHltiChXw9DmrTDzc8nMbYwszcjuonyVrQlGaVVUvoXRCM4gMUg7H6bJRS6ZXB8zslMvoi7I_vECNGarLtMKn9k0zlg7jz3ZjWeYvA"/>
+<div class="absolute top-2 right-2 bg-black/50 backdrop-blur-sm p-1.5 rounded-full">
+<span class="material-symbols-outlined text-white text-[16px]">favorite</span>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-1 text-primary text-[10px]">
+<span class="material-symbols-outlined text-[12px] fill-current">star</span>
+<span class="font-bold">4.9</span>
+<span class="text-gray-500">(128)</span>
+</div>
+<h4 class="text-sm font-bold text-white leading-tight">National Team Home Jersey 2024</h4>
+<div class="flex items-center justify-between pt-2">
+<span class="text-primary font-bold text-lg">799 MAD</span>
+<button class="size-8 rounded-full bg-white text-black flex items-center justify-center hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-dark rounded-xl p-3 border border-white/5 hover:border-primary/30 transition-all group">
+<div class="relative aspect-[4/5] bg-background-dark rounded-lg overflow-hidden mb-3">
+<img alt="Pro Ball" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPRhDGBF89Br4tPuAZqd-L805aknU75XS_YDMPxbR1Vt3V6sCgIqH1jKog_Nj9NqgjwNkMNs6yd58tOtBFD9dBu3Vk83HA0AZJpBIDvJJDDiblDQ9TwIPQeqPRg6kn1TEW_Ae-vcrZp9vGLlUkHA8c0rg8uWa8lt_mvuk_ID6ubNx7_-epbIj5sE_kp9g4qBBFft1eV6a2nxpCmUbeCF-VhROn5d-ouztbM7RVHscgHh9u5-sX9R3Rrj3aPBlUaLlyGZpAUiTBSno"/>
+<div class="absolute top-2 left-2 bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded">
+                            Best Seller
+                        </div>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-1 text-primary text-[10px]">
+<span class="material-symbols-outlined text-[12px] fill-current">star</span>
+<span class="font-bold">5.0</span>
+<span class="text-gray-500">(84)</span>
+</div>
+<h4 class="text-sm font-bold text-white leading-tight">Pro Match Official Ball</h4>
+<div class="flex items-center justify-between pt-2">
+<span class="text-primary font-bold text-lg">1,200 MAD</span>
+<button class="size-8 rounded-full bg-white text-black flex items-center justify-center hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-dark rounded-xl p-3 border border-white/5 hover:border-primary/30 transition-all group">
+<div class="relative aspect-[4/5] bg-background-dark rounded-lg overflow-hidden mb-3">
+<img alt="Training Kit" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA67FQfvOwSI6jnPF4TEW79kZgXzfxO2R7f88LXLwOBJNQsncB0Fc44XbqOAwnWauGcOSdd7Vx0LG_PUG-Jqk1GlYjbvg1lGEjc3CNSg3BX8sqF0wQR9Pw5RwergDDG8N0ojEM211KjzuXP2MFdVdE3gmQPENkwFiltFyohxUehmgiPbFDcHSsr3Pvtv8U-SQ0QCtMiMj96xF8IVY1h1JWGzkUKadkYDmqdQAN0q-SaBYoOlcPQi8MjWiUo3aCJjLOocsnFOuR0hqA"/>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-1 text-primary text-[10px]">
+<span class="material-symbols-outlined text-[12px] fill-current">star</span>
+<span class="font-bold">4.7</span>
+<span class="text-gray-500">(45)</span>
+</div>
+<h4 class="text-sm font-bold text-white leading-tight">Elite Training Drill Top</h4>
+<div class="flex items-center justify-between pt-2">
+<span class="text-primary font-bold text-lg">450 MAD</span>
+<button class="size-8 rounded-full bg-white text-black flex items-center justify-center hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-dark rounded-xl p-3 border border-white/5 hover:border-primary/30 transition-all group">
+<div class="relative aspect-[4/5] bg-background-dark rounded-lg overflow-hidden mb-3">
+<img alt="Away Jersey" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGapCnIUGF7PWdBNcYpLtg6VrZHBY_ADYCYVTkF9_20CKZjA1n2v-KIjxpyhb8JgX014Q94X99raYt1tkWCT07r6CvkD4PSWg24MTjpfOtZx1Jn--_SGXAqn_CN5akzYfOmAgEJTRg6TASz5-qBj_H4h9J9kW76Yj72P3_iE2d3kt3ceehab3130FL7PArm5YUjE9wszlMSQxhzz84ALszYQ9xbjLzimjoluQvcvAhaoh_r_TI_1seLjktrxE4Dyf3flTj0W3MxD0"/>
+<div class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded">
+                            Sale
+                        </div>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-1 text-primary text-[10px]">
+<span class="material-symbols-outlined text-[12px] fill-current">star</span>
+<span class="font-bold">4.8</span>
+<span class="text-gray-500">(210)</span>
+</div>
+<h4 class="text-sm font-bold text-white leading-tight">National Team Away Jersey</h4>
+<div class="flex items-center justify-between pt-2">
+<div class="flex flex-col leading-none">
+<span class="text-gray-500 text-[10px] line-through decoration-red-500 decoration-2">900 MAD</span>
+<span class="text-primary font-bold text-lg">799 MAD</span>
+</div>
+<button class="size-8 rounded-full bg-white text-black flex items-center justify-center hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed bottom-0 left-0 right-0 bg-background-dark/95 backdrop-blur-lg border-t border-white/5 z-50 max-w-md mx-auto">
+<div class="flex items-center justify-around p-2 pb-6">
+<button class="flex flex-col items-center gap-1 p-2 text-gray-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-gray-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">sports_soccer</span>
+<span class="text-[10px] font-medium">Matches</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-primary transition-colors">
+<span class="material-symbols-outlined fill-1">storefront</span>
+<span class="text-[10px] font-medium font-bold">Store</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-gray-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</div>
+
+</body></html>

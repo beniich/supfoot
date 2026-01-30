@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Loyalty Rewards Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2d00d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#181711",
+                        "card-dark": "#221f10",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<div class="flex items-center px-4 py-4 pt-6 justify-between bg-background-light dark:bg-background-dark sticky top-0 z-50">
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em] flex-1">Rewards Hub</h2>
+<div class="flex items-center justify-end gap-3">
+<div class="flex items-center gap-1 bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20">
+<span class="material-symbols-outlined text-primary text-[20px] font-bold">bolt</span>
+<span class="text-sm font-bold text-primary">2,450</span>
+</div>
+<button class="flex items-center justify-center rounded-full h-10 w-10 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 text-slate-900 dark:text-white min-w-0 p-0 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">notifications</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-6 pb-24">
+<!-- Tier Status Card -->
+<div class="px-4">
+<div class="relative overflow-hidden rounded-xl bg-card-dark shadow-lg border border-white/5">
+<!-- Dynamic Background -->
+<div class="absolute inset-0 bg-cover bg-center opacity-60 mix-blend-overlay" data-alt="Abstract golden particles pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDeLxC31tZ8us85CRp3TkIukBQpxSzPmNusJxfWaTRUVy1DHUunI1sF6oNwzQcf9V6jOsk3ocPLErbf0IXMKTi_X21XG32ACvt42m05IEOqcrQfrcmXyVvcPHMgxP_UTuod7Od0OdrdoZCtAZka1othMC5LnW4Z6FyiIZDAfTiV-U7fX7esW0JWQBVmx9OWX1keaNnNoCyu6b5dsSdQdIDuDEKd4rGPDx9H3iVwLZLw_E8TjeDNY1C03ijw-WdpM4up_Ygr881w1N4");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10"></div>
+<div class="relative p-6 flex flex-col items-center text-center gap-4">
+<div class="rounded-full bg-gradient-to-b from-primary to-yellow-600 p-[2px] shadow-[0_0_20px_rgba(242,208,13,0.3)]">
+<div class="bg-black/80 rounded-full p-4 backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary text-[40px] filled">trophy</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-2xl font-extrabold text-white tracking-tight">Gold Striker</h3>
+<p class="text-slate-300 text-sm font-medium">Top 5% of fans this month</p>
+</div>
+<!-- Progress Bar Component -->
+<div class="w-full flex flex-col gap-2 mt-2">
+<div class="flex justify-between items-end px-1">
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Level 4</span>
+<span class="text-xs font-medium text-slate-400">550 pts to Platinum</span>
+</div>
+<div class="h-3 w-full bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
+<div class="h-full bg-gradient-to-r from-yellow-600 via-primary to-yellow-200 rounded-full shadow-[0_0_10px_rgba(242,208,13,0.5)]" style="width: 82%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Ways to Earn Section -->
+<div class="flex flex-col gap-0">
+<div class="flex items-center justify-between px-4 pb-3">
+<h3 class="text-lg font-bold leading-tight">Ways to Earn</h3>
+<button class="text-xs font-semibold text-primary">View All</button>
+</div>
+<!-- Carousel -->
+<div class="flex overflow-x-auto pb-4 px-4 gap-3 snap-x hide-scrollbar [-ms-overflow-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+<!-- Card 1 -->
+<div class="flex-none snap-start w-36 flex flex-col gap-3 p-3 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-white/5 shadow-sm">
+<div class="w-full aspect-square rounded-lg bg-primary/10 flex items-center justify-center text-primary relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary/20 scale-0 group-hover:scale-100 transition-transform rounded-lg"></div>
+<span class="material-symbols-outlined text-[32px] z-10">calendar_today</span>
+</div>
+<div>
+<p class="text-sm font-bold truncate">Daily Login</p>
+<p class="text-primary text-xs font-bold">+10 pts</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex-none snap-start w-36 flex flex-col gap-3 p-3 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-white/5 shadow-sm">
+<div class="w-full aspect-square rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 relative overflow-hidden group">
+<div class="absolute inset-0 bg-blue-500/20 scale-0 group-hover:scale-100 transition-transform rounded-lg"></div>
+<span class="material-symbols-outlined text-[32px] z-10">play_circle</span>
+</div>
+<div>
+<p class="text-sm font-bold truncate">Watch Highlights</p>
+<p class="text-primary text-xs font-bold">+50 pts</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex-none snap-start w-36 flex flex-col gap-3 p-3 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-white/5 shadow-sm">
+<div class="w-full aspect-square rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 relative overflow-hidden group">
+<div class="absolute inset-0 bg-emerald-500/20 scale-0 group-hover:scale-100 transition-transform rounded-lg"></div>
+<span class="material-symbols-outlined text-[32px] z-10">group_add</span>
+</div>
+<div>
+<p class="text-sm font-bold truncate">Refer a Friend</p>
+<p class="text-primary text-xs font-bold">+500 pts</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="flex-none snap-start w-36 flex flex-col gap-3 p-3 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-white/5 shadow-sm opacity-60">
+<div class="w-full aspect-square rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 relative overflow-hidden">
+<span class="material-symbols-outlined text-[32px] z-10">poll</span>
+</div>
+<div>
+<p class="text-sm font-bold truncate">Match Prediction</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px] text-slate-400">lock</span>
+<p class="text-slate-400 text-xs font-bold">Lvl 5 Reqd</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Rewards Store Grid -->
+<div class="flex flex-col gap-3 px-4">
+<h3 class="text-lg font-bold leading-tight">Rewards Store</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Reward Item 1 -->
+<div class="flex flex-col bg-white dark:bg-card-dark rounded-xl overflow-hidden border border-slate-200 dark:border-white/5 shadow-sm group">
+<div class="relative h-32 w-full bg-slate-800">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Football shop merchandise" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD3OemnUuquT3pDRh_A-GFm9wyduew8u2PcaYIYWMr9zj-fyzhuT6KS9KgB1VRUDASaRZsjmYCZuJal20QyHS1rNgOgWjI4r3oLdOWGqLZsk-q2IBJSJQ03mGBzSnFNB564RXhzyrtVsqRxCLuzTdno39UJB7UNdtXSDHd7enoSLF07jIDCY7zsgLkBKxcwr7bcvdBs5Msj3V3Z62RoR_Fh5cNhl54OWt35m4pIkMKSZPAYoiRQWs9beQ00yWmuTtVFwsxk81dZZtw");'></div>
+<div class="absolute top-2 right-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-primary border border-primary/20">
+                                1,000 pts
+                            </div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h4 class="font-bold text-sm mb-1 line-clamp-1">10% Shop Discount</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3 line-clamp-2">Get 10% off your next jersey purchase.</p>
+<button class="mt-auto w-full py-2 bg-primary hover:bg-yellow-400 text-black text-xs font-bold rounded uppercase tracking-wide transition-colors">
+                                Redeem
+                            </button>
+</div>
+</div>
+<!-- Reward Item 2 -->
+<div class="flex flex-col bg-white dark:bg-card-dark rounded-xl overflow-hidden border border-slate-200 dark:border-white/5 shadow-sm group opacity-75">
+<div class="relative h-32 w-full bg-slate-800">
+<div class="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Football stadium view from stands" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDU0e7bpfMdibpM0qytdT5Im4coPeiLMrSubTfOeQY7qpHrb04AO7YJDWTCAcnVB2B_SQYQl4GleTdmUcXKQUgoT_2cZZXZXn4N_ZOD8VWTV4UzVoN446oV_FSwgGQfaxQ1Q41IcqJwySVe7yjt8CYcaOOpKb7AmO3ySP36shB2PJHA1T8sOcXtqjfneqkV7vXyohOxT1GpdKSmgz5TT90snzT646KaJqQWpKB3d1Ccw7ITO8FyTGvkob7XBqbYEOyMCKrJetYxCw0");'></div>
+<div class="absolute top-2 right-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-slate-300 border border-white/10">
+                                5,000 pts
+                            </div>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20">
+<span class="material-symbols-outlined text-white/80 text-3xl drop-shadow-lg">lock</span>
+</div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h4 class="font-bold text-sm mb-1 line-clamp-1">VIP Match Tickets</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3 line-clamp-2">Exclusive box seats for the derby.</p>
+<button class="mt-auto w-full py-2 bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-500 text-xs font-bold rounded uppercase tracking-wide cursor-not-allowed">
+                                Not Enough Pts
+                            </button>
+</div>
+</div>
+<!-- Reward Item 3 -->
+<div class="flex flex-col bg-white dark:bg-card-dark rounded-xl overflow-hidden border border-slate-200 dark:border-white/5 shadow-sm group">
+<div class="relative h-32 w-full bg-slate-800">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Abstract digital AI network visualization" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDiNPcBwuWWWTN5n3JnHAzw7Jy_NLORM-COf9f8Fx1JTERaYMqCFwVAVOesm2J0nA_nems9ZUeyZvi4a18QkP4ESGQAEnuP7WqovzXYTcTaTF6TZXpZ2YuTzyBGiUw8hdoyGoxCawioHnbReAJng8wYazfyC6fIjsqiF-c_x7RvGCaBcHCZ_c5ivtamdOaVnRbp9Ev_6posK9wTsyFPYubCMHAXiXUayXT-tGEpsHYxFLONngpkG98fHD5XRqS5sdH-KAK5h8AcYeE");'></div>
+<div class="absolute top-2 right-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-primary border border-primary/20">
+                                500 pts
+                            </div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h4 class="font-bold text-sm mb-1 line-clamp-1">Exclusive AI Insights</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3 line-clamp-2">Deep dive stats for next match.</p>
+<button class="mt-auto w-full py-2 bg-primary hover:bg-yellow-400 text-black text-xs font-bold rounded uppercase tracking-wide transition-colors">
+                                Redeem
+                            </button>
+</div>
+</div>
+<!-- Reward Item 4 -->
+<div class="flex flex-col bg-white dark:bg-card-dark rounded-xl overflow-hidden border border-slate-200 dark:border-white/5 shadow-sm group">
+<div class="relative h-32 w-full bg-slate-800">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Signed football jersey" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCWABLhueBmpAoFl1FXTe4VM00bXdYUAGOOky5MIEg3neufvlnFFu7BVdttzSysIBc3ebuUNjIl4PPUUI8s3loeBnBBsEGt_ckdwBvAVzilrUuDJ0DoUdpgj1M4TzNXF3EdpVlIo2nCAVkkFHvgXyIyRgrUpOJBvJvTVPMG3X0QyKLO9IZk7dWEZieviksXHbfwaywjvCn_X9NbRgmebZNEO1YOep2iQnFLgSM6bd62mGckvOtAd6EQPqENQmWXMK4Fu9Th-Cc-mRI");'></div>
+<div class="absolute top-2 right-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-slate-300 border border-white/10">
+                                2,500 pts
+                            </div>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20">
+<span class="material-symbols-outlined text-white/80 text-3xl drop-shadow-lg">lock</span>
+</div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h4 class="font-bold text-sm mb-1 line-clamp-1">Signed Jersey</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3 line-clamp-2">Enter the raffle for a signed kit.</p>
+<button class="mt-auto w-full py-2 bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-500 text-xs font-bold rounded uppercase tracking-wide cursor-not-allowed">
+                                Not Enough Pts
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Mobile Navigation -->
+<div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white dark:bg-background-dark border-t border-slate-200 dark:border-white/10 px-6 py-2 pb-5 z-50">
+<div class="flex justify-between items-center">
+<button class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined">sports_soccer</span>
+<span class="text-[10px] font-medium">Matches</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-primary">
+<span class="material-symbols-outlined filled">stars</span>
+<span class="text-[10px] font-bold">Rewards</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Predictions Hub</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2cc0d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221f10",
+                        "surface-dark": "#2d2a1d", // Slightly lighter for cards
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .neon-text {
+            text-shadow: 0 0 10px rgba(242, 204, 13, 0.5);
+        }
+        .neon-border {
+            box-shadow: 0 0 8px rgba(242, 204, 13, 0.2);
+        }
+        /* Custom Scrollbar hide */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white pb-20">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-primary/10 px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center text-slate-900 dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex flex-col">
+<h1 class="text-lg font-bold tracking-tight leading-none uppercase">FootballHub<span class="text-primary">+</span></h1>
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase">Premium</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-10 rounded-full bg-surface-dark/50 text-white">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+<div class="size-8 rounded-full bg-gradient-to-tr from-primary to-orange-400 overflow-hidden border-2 border-primary/20">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBccjw1nkkVblg7cu_41PILIJg94GKkxNSEgGGQlEzuuwQmjU25MYUlG-YixASueVXZbVPYgrKXDrs-mnSnDIp8-Bl130flQHZWgLJlvmqix2JY-Mg5fQ9oVfivrNcTVvUArMXr4jxI__T43lFGlziAJ_D0CAuR2ZZh6gq97brrcrdFnWEvio6X3md1ad715quzOWroPPX3tfUd5BDU-ty5ffxnRGgGZNygVIFHPsP6VWCCAO5YG-GfHycjgzRVr2RE10ldXzWtkA8"/>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex flex-col gap-6 p-4">
+<!-- Hero: Featured Match Analysis -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold tracking-wide uppercase">Featured Match Analysis</h2>
+<span class="text-xs font-medium text-white/50 bg-white/5 px-2 py-1 rounded">LIVE ODDS</span>
+</div>
+<!-- Match Card & Chart -->
+<div class="relative overflow-hidden rounded-xl bg-surface-dark border border-white/5 p-6 shadow-xl">
+<!-- Background decorative element -->
+<div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Match Header -->
+<div class="flex justify-between items-center mb-6">
+<div class="text-center w-1/3">
+<div class="w-12 h-12 mx-auto bg-blue-100 rounded-full flex items-center justify-center text-blue-900 font-bold text-lg mb-2 shadow-lg shadow-blue-500/20">MC</div>
+<p class="text-sm font-bold uppercase">Man City</p>
+</div>
+<div class="text-center w-1/3 flex flex-col items-center">
+<span class="text-xs text-white/40 font-mono mb-1">19:45 GMT</span>
+<div class="text-2xl font-bold font-mono bg-black/20 px-3 py-1 rounded text-primary border border-primary/20">VS</div>
+</div>
+<div class="text-center w-1/3">
+<div class="w-12 h-12 mx-auto bg-red-100 rounded-full flex items-center justify-center text-red-900 font-bold text-lg mb-2 shadow-lg shadow-red-500/20">ARS</div>
+<p class="text-sm font-bold uppercase">Arsenal</p>
+</div>
+</div>
+<!-- Win Probability Gauge -->
+<div class="flex flex-col items-center justify-center relative py-2">
+<div class="relative size-48">
+<svg class="size-full -rotate-90" viewbox="0 0 100 100">
+<!-- Background Circle -->
+<circle class="text-white/5 stroke-current" cx="50" cy="50" fill="none" r="40" stroke-width="12"></circle>
+<!-- Segments calculated: C=251. 45%~113, 20%~50, 35%~88 -->
+<!-- Man City (45%) -->
+<circle class="text-primary stroke-current drop-shadow-[0_0_8px_rgba(242,204,13,0.4)]" cx="50" cy="50" fill="none" r="40" stroke-dasharray="113 251" stroke-dashoffset="0" stroke-linecap="butt" stroke-width="12"></circle>
+<!-- Draw (20%) -->
+<circle class="text-white/20 stroke-current" cx="50" cy="50" fill="none" r="40" stroke-dasharray="50 251" stroke-dashoffset="-115" stroke-linecap="butt" stroke-width="12"></circle>
+<!-- Arsenal (35%) -->
+<circle class="text-white/50 stroke-current" cx="50" cy="50" fill="none" r="40" stroke-dasharray="88 251" stroke-dashoffset="-167" stroke-linecap="butt" stroke-width="12"></circle>
+</svg>
+<!-- Center Text -->
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-xs text-white/50 uppercase tracking-widest">Home Win</span>
+<span class="text-4xl font-bold text-primary neon-text">45%</span>
+<span class="text-[10px] text-primary/80 bg-primary/10 px-2 py-0.5 rounded-full mt-1">AI CONFIDENCE</span>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex justify-center gap-6 mt-4 w-full">
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-primary shadow-[0_0_8px_rgba(242,204,13,0.4)]"></div>
+<span class="text-xs font-medium">City</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-white/20"></div>
+<span class="text-xs font-medium text-white/60">Draw</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-white/50"></div>
+<span class="text-xs font-medium text-white/80">Arsenal</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Smart Insights -->
+<section class="flex flex-col gap-4">
+<h2 class="text-xl font-bold tracking-wide uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+                Smart Insights
+            </h2>
+<div class="bg-gradient-to-br from-surface-dark to-background-dark border border-primary/30 rounded-xl p-5 relative overflow-hidden group">
+<!-- Animated shine effect placeholder -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-3">
+<div class="mt-1 bg-yellow-500/20 text-yellow-500 p-1.5 rounded-md">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</div>
+<div>
+<p class="text-white font-medium text-sm leading-relaxed">Haaland is doubtful (Ankle) for the upcoming fixture. City's xG drops by 0.8 without him.</p>
+</div>
+</div>
+<div class="w-full h-px bg-white/5"></div>
+<div class="flex items-start gap-3">
+<div class="mt-1 bg-green-500/20 text-green-500 p-1.5 rounded-md">
+<span class="material-symbols-outlined text-[20px]">trending_up</span>
+</div>
+<div>
+<p class="text-white font-medium text-sm leading-relaxed">Arsenal is unbeaten in their last 5 away games, averaging 2.1 goals per match.</p>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 flex justify-end">
+<button class="text-xs font-bold text-primary uppercase tracking-wider flex items-center gap-1 hover:text-white transition-colors">
+                        View Full Report <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Upcoming Predictions -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold tracking-wide uppercase">Upcoming Predictions</h2>
+<button class="text-primary text-sm font-bold">See All</button>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Match 1 -->
+<div class="bg-surface-dark rounded-lg p-4 border border-white/5 hover:border-primary/20 transition-all cursor-pointer">
+<div class="flex justify-between items-center mb-3">
+<div class="flex items-center gap-3">
+<span class="text-xs text-white/40 font-mono">Tomorrow, 20:00</span>
+<span class="text-[10px] bg-white/10 px-1.5 py-0.5 rounded text-white/70">PL</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="text-[10px] font-bold text-primary uppercase">High Confidence</span>
+<span class="material-symbols-outlined text-primary text-[14px]">verified</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col gap-2 flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-red-800 flex items-center justify-center text-[10px] font-bold">LIV</div>
+<span class="font-bold">Liverpool</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-blue-700 flex items-center justify-center text-[10px] font-bold">CHE</div>
+<span class="font-bold">Chelsea</span>
+</div>
+</div>
+</div>
+<!-- Prediction Score -->
+<div class="flex flex-col items-end pl-6 border-l border-white/10 ml-4">
+<span class="text-[10px] uppercase text-white/40 mb-1">Projected</span>
+<div class="text-2xl font-bold font-mono text-primary neon-text tracking-tighter">3 - 1</div>
+<div class="w-full bg-white/10 h-1 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full w-[85%] shadow-[0_0_5px_rgba(242,204,13,0.5)]"></div>
+</div>
+<span class="text-[10px] text-primary mt-1">85% Prob</span>
+</div>
+</div>
+</div>
+<!-- Match 2 -->
+<div class="bg-surface-dark rounded-lg p-4 border border-white/5 hover:border-primary/20 transition-all cursor-pointer">
+<div class="flex justify-between items-center mb-3">
+<div class="flex items-center gap-3">
+<span class="text-xs text-white/40 font-mono">Sun, 19:00</span>
+<span class="text-[10px] bg-white/10 px-1.5 py-0.5 rounded text-white/70">LL</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="text-[10px] font-bold text-yellow-600 uppercase">Med Confidence</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col gap-2 flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-white text-black flex items-center justify-center text-[10px] font-bold">RMA</div>
+<span class="font-bold">Real Madrid</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-blue-900 text-red-500 flex items-center justify-center text-[10px] font-bold border border-red-500">FCB</div>
+<span class="font-bold">Barcelona</span>
+</div>
+</div>
+</div>
+<!-- Prediction Score -->
+<div class="flex flex-col items-end pl-6 border-l border-white/10 ml-4">
+<span class="text-[10px] uppercase text-white/40 mb-1">Projected</span>
+<div class="text-2xl font-bold font-mono text-white tracking-tighter">2 - 2</div>
+<div class="w-full bg-white/10 h-1 rounded-full mt-2 overflow-hidden">
+<div class="bg-yellow-600 h-full w-[60%]"></div>
+</div>
+<span class="text-[10px] text-yellow-600 mt-1">60% Prob</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Card -->
+<div class="mt-4 p-4 rounded-xl relative overflow-hidden bg-cover bg-center" data-alt="Stadium lights background" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuAt4PCTu3LyslZw-t2LDpKqJDFwvI5eOrYATLd76OgEk-paa93n33ZxkchjpIsHDmXoOIWsGtJBfI0NcUEErI4UMvdUPbPhDFDglzKEa0H0b_bxs21PSNBVaBOe0KluOLJv64TwC_jJ2-LiuAJHp3H1U290J0XC_LSGBs5ufVm6t2uzQkED3Nb_SvNJQ5yYALweJ9b18ksSn6UKqB2q5ysXIxE3DzwEqmm2UAkabTmwf_tDGd-al0DG2IU2d8--1-X9e0Vay22nFkA');">
+<div class="relative z-10 flex flex-col gap-2 items-start">
+<span class="bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pro Feature</span>
+<h3 class="text-lg font-bold text-white">Unlock Detailed Player Stats</h3>
+<p class="text-sm text-white/80 max-w-[80%]">Get xG, heatmaps, and player ratings powered by our advanced AI engine.</p>
+<button class="mt-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-white/20 transition">Upgrade to Pro</button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 w-full bg-background-light dark:bg-[#181711] border-t border-white/5 pb-6 pt-3 px-6 flex justify-between items-end z-50">
+<button class="flex flex-col items-center gap-1 text-white/40 hover:text-white transition-colors group">
+<span class="material-symbols-outlined text-[24px] group-hover:-translate-y-1 transition-transform">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-white/40 hover:text-white transition-colors group">
+<span class="material-symbols-outlined text-[24px] group-hover:-translate-y-1 transition-transform">trophy</span>
+<span class="text-[10px] font-medium">Leagues</span>
+</button>
+<!-- Active Tab -->
+<button class="flex flex-col items-center gap-1 relative -top-4">
+<div class="size-14 bg-primary rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(242,204,13,0.4)] border-4 border-background-dark">
+<span class="material-symbols-outlined text-background-dark text-[28px]">smart_toy</span>
+</div>
+<span class="text-[10px] font-bold text-primary neon-text">AI Hub</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-white/40 hover:text-white transition-colors group">
+<span class="material-symbols-outlined text-[24px] group-hover:-translate-y-1 transition-transform">bar_chart</span>
+<span class="text-[10px] font-medium">Stats</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-white/40 hover:text-white transition-colors group">
+<span class="material-symbols-outlined text-[24px] group-hover:-translate-y-1 transition-transform">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</nav>
+</body></html>

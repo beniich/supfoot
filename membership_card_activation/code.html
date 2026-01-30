@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Membership Card Activation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2b90d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#181611",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gold-glow {
+            box-shadow: 0 0 40px rgba(242, 185, 13, 0.15);
+        }
+        .card-shimmer {
+            background: linear-gradient(135deg, rgba(242, 185, 13, 0.2) 0%, rgba(24, 22, 17, 0) 50%, rgba(242, 185, 13, 0.1) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col max-w-[430px] mx-auto overflow-x-hidden shadow-2xl">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div aria-label="Go back" class="text-white flex size-12 shrink-0 items-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-12">Activation</h2>
+</div>
+<div class="flex-1 flex flex-col items-stretch">
+<!-- Headline Section -->
+<div class="pt-8 pb-4">
+<h1 class="text-white tracking-tight text-[32px] font-bold leading-tight px-4 text-center">Setup Complete!</h1>
+<p class="text-white/60 text-sm font-normal text-center mt-2 px-8">Welcome to the inner circle of FootballHub+</p>
+</div>
+<!-- Membership Card Section -->
+<div class="p-6 relative">
+<!-- Subtle Gold Glow Behind Card -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-64 h-64 bg-primary/20 rounded-full blur-[80px]"></div>
+</div>
+<!-- Digital Membership Card -->
+<div class="relative z-10 bg-cover bg-center flex flex-col items-stretch justify-end rounded-xl pt-[160px] shadow-2xl border border-primary/20 overflow-hidden gold-glow" data-alt="Digital black membership card with gold accents" style='background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAmmsynUbRRVZ6_Fi_7rpDIbuKiTo3csRpXrayyHkSHuS6rTOmC9QAfO6THhbVEQQhMEsBNGmkuZiOy9-PCGxlTf_eS5oSOz-KBahISUkxZCsei2d5GypHUYMY-sHsK8Vgh2ioPfhIlOGc8H99rZMQF8gUVftJ_YTUimWLJrXp5F29c7U95dIRIj1cToleb7wcFlv-VcW1JPVL2X0Q2UZ3sZeYLaOhl-1BRYd31njs8yqIKQDjyiGjNG2Uy8x2gtUqu4o-D4iy8cP0");'>
+<!-- Shimmer Overlay -->
+<div class="absolute inset-0 card-shimmer pointer-events-none"></div>
+<!-- Card Details -->
+<div class="flex w-full items-end justify-between gap-4 p-6 bg-black/40 backdrop-blur-sm">
+<div class="flex max-w-[440px] flex-1 flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-sm">verified</span>
+<p class="text-primary text-[10px] font-bold tracking-[0.2em] uppercase">FootballHub+</p>
+</div>
+<p class="text-white tracking-tight text-2xl font-bold leading-tight uppercase">Alex Morgan</p>
+<div class="flex items-center gap-2">
+<p class="text-primary text-xs font-bold leading-normal tracking-widest uppercase">Elite Member</p>
+<div class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#f2b90d]"></div>
+</div>
+</div>
+<div class="flex flex-col items-end opacity-60">
+<p class="text-[8px] text-white/80 uppercase tracking-tighter">Member Since</p>
+<p class="text-[10px] text-white font-mono">2024</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Checklists -->
+<div class="px-6 py-4 flex-1">
+<div class="bg-primary/5 rounded-xl p-4 border border-white/5">
+<label class="flex gap-x-4 py-3 items-center border-b border-white/5">
+<div class="flex items-center justify-center h-6 w-6 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-[18px] font-bold">check</span>
+</div>
+<div class="flex flex-col">
+<p class="text-white text-base font-medium leading-tight">Account Created</p>
+<p class="text-white/40 text-[12px]">Verified and secured</p>
+</div>
+</label>
+<label class="flex gap-x-4 py-3 items-center border-b border-white/5">
+<div class="flex items-center justify-center h-6 w-6 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-[18px] font-bold">check</span>
+</div>
+<div class="flex flex-col">
+<p class="text-white text-base font-medium leading-tight">Teams Followed</p>
+<p class="text-white/40 text-[12px]">Real-time updates active</p>
+</div>
+</label>
+<label class="flex gap-x-4 py-3 items-center">
+<div class="flex items-center justify-center h-6 w-6 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-[18px] font-bold">check</span>
+</div>
+<div class="flex flex-col">
+<p class="text-white text-base font-medium leading-tight">Rewards Activated</p>
+<p class="text-white/40 text-[12px]">Exclusive perks unlocked</p>
+</div>
+</label>
+</div>
+</div>
+<!-- CTA Button Section -->
+<div class="px-6 py-8 mt-auto sticky bottom-0 bg-gradient-to-t from-background-dark via-background-dark to-transparent">
+<button class="flex min-w-full max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary text-[#181611] text-base font-bold leading-normal tracking-wide active:scale-[0.98] transition-transform duration-100 shadow-xl">
+<span class="truncate">Explore Dashboard</span>
+<span class="material-symbols-outlined ml-2 text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

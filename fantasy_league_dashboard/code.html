@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fantasy League Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#f2cc0d",
+              "background-light": "#f8f8f5",
+              "background-dark": "#221f10",
+              "card-dark": "#2d2a1d",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+            backgroundImage: {
+              'pitch': "linear-gradient(to bottom, #064e3b 0%, #065f46 50%, #064e3b 100%)",
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white min-h-screen flex flex-col overflow-x-hidden pb-32">
+<!-- Header -->
+<header class="sticky top-0 z-30 flex items-center justify-between p-4 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-white/5">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-primary/50" data-alt="User profile avatar with a determined look" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB5u9cnZP-1mzpR7CZ9xJbyMiLaaMbQUL2MgXmVnzxa2V6RxCu5mrw9c6oaAEQZSC1dHjGI8opTN7l9odFhYoSXJm41irEwTpHevSrPD8Q4x9wAwdJ-fE7aQ8BvURzDUidmTUgvmRJTtrZPvZx875q_3WpqeddnFnVVp7v3AH9DMvkhER311DV5T87oIHaehrtoKwLI6_sAHzo7dx04_Rvm26xmqaborYNuaGXS5gZaTlTjfWBc8CFHUi88yaKZKYi2e5n6--M4Bps");'></div>
+<div class="absolute -bottom-1 -right-1 bg-primary text-background-dark text-[10px] font-bold px-1.5 py-0.5 rounded-full">PRO</div>
+</div>
+<h1 class="text-xl font-bold tracking-tight">FootballHub<span class="text-primary">+</span></h1>
+</div>
+<button class="relative p-2 rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl text-white">notifications</span>
+<span class="absolute top-2 right-2 size-2.5 bg-red-500 rounded-full border border-background-dark"></span>
+</button>
+</header>
+<!-- Performance HUD -->
+<section class="px-4 py-6">
+<div class="grid grid-cols-3 gap-3">
+<div class="flex flex-col items-center justify-center p-4 rounded-xl bg-card-dark border border-white/5 shadow-lg">
+<span class="text-xs text-white/60 font-medium uppercase tracking-wider mb-1">Points</span>
+<span class="text-2xl font-bold text-primary">1,245</span>
+</div>
+<div class="flex flex-col items-center justify-center p-4 rounded-xl bg-card-dark border border-white/5 shadow-lg relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+<span class="text-xs text-white/60 font-medium uppercase tracking-wider mb-1">Rank</span>
+<span class="text-2xl font-bold text-white">#45k</span>
+</div>
+<div class="flex flex-col items-center justify-center p-4 rounded-xl bg-card-dark border border-white/5 shadow-lg">
+<span class="text-xs text-white/60 font-medium uppercase tracking-wider mb-1">GW 14</span>
+<div class="flex items-center gap-1 text-green-400">
+<span class="material-symbols-outlined text-sm font-bold">arrow_upward</span>
+<span class="text-sm font-bold">Live</span>
+</div>
+</div>
+</div>
+</section>
+<!-- My Team Section -->
+<section class="px-4 mb-6">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold tracking-tight uppercase">My Team</h2>
+<button class="text-sm text-primary font-medium hover:underline">View Full</button>
+</div>
+<!-- AI Insight Chip -->
+<div class="flex mb-4">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/30">
+<span class="material-symbols-outlined text-primary text-sm">auto_awesome</span>
+<p class="text-xs font-medium text-primary-light">AI Insight: Haaland is a risk this week</p>
+</div>
+</div>
+<!-- Pitch Visualizer -->
+<div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+<!-- Pitch Background -->
+<div class="absolute inset-0 bg-pitch opacity-90">
+<!-- Pitch Markings -->
+<div class="absolute inset-4 border-2 border-white/10 rounded-lg"></div>
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-16 border-b-2 border-l-2 border-r-2 border-white/10 rounded-b-lg"></div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/3 h-16 border-t-2 border-l-2 border-r-2 border-white/10 rounded-t-lg"></div>
+<div class="absolute top-1/2 left-0 right-0 border-t-2 border-white/10 -translate-y-1/2"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full border-2 border-white/10"></div>
+</div>
+<!-- Players (4-4-2 Formation) -->
+<div class="relative h-full flex flex-col justify-between py-6 z-10">
+<!-- Goalkeeper -->
+<div class="flex justify-center">
+<div class="flex flex-col items-center gap-1">
+<div class="relative size-10 bg-yellow-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
+<span class="text-[10px] font-bold">GK</span>
+<div class="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold px-1 rounded-full">6</div>
+</div>
+<div class="bg-black/40 px-2 py-0.5 rounded text-[10px] font-medium backdrop-blur-sm text-white truncate max-w-[60px]">Raya</div>
+</div>
+</div>
+<!-- Defenders -->
+<div class="flex justify-center gap-6">
+<div class="flex flex-col items-center gap-1">
+<div class="relative size-10 bg-red-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
+<span class="text-[10px] font-bold text-white">DEF</span>
+<div class="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold px-1 rounded-full">2</div>
+</div>
+<div class="bg-black/40 px-2 py-0.5 rounded text-[10px] font-medium backdrop-blur-sm text-white truncate max-w-[60px]">White</div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="relative size-10 bg-blue-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
+<span class="text-[10px] font-bold text-white">DEF</span>
+<!-- AI Pick Badge -->
+<div class="absolute -left-2 top-0 bg-primary text-black text-[8px] font-bold px-1 rounded border border-black/20">AI</div>
+</div>
+<div class="bg-black/40 px-2 py-0.5 rounded text-[10px] font-medium backdrop-blur-sm text-white truncate max-w-[60px]">Saliba</div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="relative size-10 bg-sky-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
+<span class="text-[10px] font-bold text-white">DEF</span>
+<div class="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold px-1 rounded-full">8</div>
+</div>
+<div class="bg-black/40 px-2 py-0.5 rounded text-[10px] font-medium backdrop-blur-sm text-white truncate max-w-[60px]">Dias</div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="relative size-10 bg-red-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
+<span class="text-[10px] font-bold text-white">DEF</span>
+</div>
+<div class="bg-black/40 px-2 py-0.5 rounded text-[10px] font-medium backdrop-blur-sm text-white truncate max-w-[60px]">Trent</div>
+</div>
+</div>
+<!-- Midfielders -->
+<div class="flex justify-center gap-6">
+<div class="flex flex-col items-center gap-1">
+<div class="relative size-10 bg-red-700 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
+<span class="text-[10px] font-bold text-white">MID</span>
+<div class="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold px-1 rounded-full">12</div>
+</div>
+<div class="bg-black/40 px-2 py-0.5 rounded text-[10px] font-medium backdrop-blur-sm text-white truncate max-w-[60px]">Salah</div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="relative size-10 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-black/20">
+<span class="text-[10px] font-bold text-black">MID</span>
+<div class="absolute bottom-0 right-0 bg-black text-primary text-[8px] font-bold size-4 flex items-center justify-center rounded-full border border-primary">C</div>
+</div>
+<div class="bg-black/40 px-2 py-0.5 rounded text-[10px] font-medium backdrop-blur-sm text-white truncate max-w-[60px]">Saka</div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="relative size-10 bg-blue-800 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
+<span class="text-[10px] font-bold text-white">MID</span>
+</div>
+<div class="bg-black/40 px-2 py-0.5 rounded text-[10px] font-medium backdrop-blur-sm text-white truncate max-w-[60px]">Palmer</div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="relative size-10 bg-black rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
+<span class="text-[10px] font-bold text-white">MID</span>
+</div>
+<div class="bg-black/40 px-2 py-0.5 rounded text-[10px] font-medium backdrop-blur-sm text-white truncate max-w-[60px]">Bruno</div>
+</div>
+</div>
+<!-- Forwards -->
+<div class="flex justify-center gap-12">
+<div class="flex flex-col items-center gap-1">
+<div class="relative size-10 bg-sky-300 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
+<span class="text-[10px] font-bold text-black">FWD</span>
+<div class="absolute bottom-0 right-0 bg-gray-500 text-white text-[8px] font-bold size-4 flex items-center justify-center rounded-full border border-white">V</div>
+<div class="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold px-1 rounded-full">2</div>
+</div>
+<div class="bg-black/40 px-2 py-0.5 rounded text-[10px] font-medium backdrop-blur-sm text-white truncate max-w-[60px]">Haaland</div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="relative size-10 bg-purple-700 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
+<span class="text-[10px] font-bold text-white">FWD</span>
+<div class="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold px-1 rounded-full">5</div>
+</div>
+<div class="bg-black/40 px-2 py-0.5 rounded text-[10px] font-medium backdrop-blur-sm text-white truncate max-w-[60px]">Watkins</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Leagues Leaderboard -->
+<section class="px-4 mb-6">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold tracking-tight uppercase">Leagues</h2>
+<div class="flex bg-card-dark rounded-lg p-1 border border-white/5">
+<button class="px-3 py-1 rounded text-xs font-bold bg-primary text-background-dark shadow-sm">Private</button>
+<button class="px-3 py-1 rounded text-xs font-bold text-white/50 hover:text-white">Global</button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Rank 1 -->
+<div class="flex items-center gap-4 p-3 rounded-lg bg-card-dark border border-white/5">
+<div class="flex flex-col items-center w-8">
+<span class="material-symbols-outlined text-primary text-lg">military_tech</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-white">Office Legends</p>
+<p class="text-xs text-white/50">Manager: Sarah K.</p>
+</div>
+<div class="text-right">
+<p class="text-base font-bold text-white">1,302</p>
+<p class="text-[10px] text-green-400 font-medium">▲ 12</p>
+</div>
+</div>
+<!-- Rank 2 -->
+<div class="flex items-center gap-4 p-3 rounded-lg bg-card-dark border border-white/5">
+<div class="flex flex-col items-center w-8">
+<span class="text-white/40 font-bold">2</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-white">Sunday League Pro</p>
+<p class="text-xs text-white/50">Manager: Mike R.</p>
+</div>
+<div class="text-right">
+<p class="text-base font-bold text-white">1,288</p>
+<p class="text-[10px] text-red-400 font-medium">▼ 4</p>
+</div>
+</div>
+<!-- Current User (Highlighted) -->
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white/5 border border-primary/30 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex flex-col items-center w-8">
+<span class="text-white font-bold">3</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-white flex items-center gap-2">You <span class="text-[10px] bg-primary/20 text-primary px-1.5 rounded">ME</span></p>
+<p class="text-xs text-white/50">FootballHub FC</p>
+</div>
+<div class="text-right">
+<p class="text-base font-bold text-primary">1,245</p>
+<p class="text-[10px] text-green-400 font-medium">▲ 24</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Floating Transfer Bar & Bottom Nav -->
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-background-dark/80 backdrop-blur-xl border-t border-white/10 pb-safe">
+<!-- Transfer Market CTA -->
+<div class="px-4 -mt-6 mb-2">
+<button class="w-full bg-primary hover:bg-yellow-400 text-background-dark font-bold text-lg h-14 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-between px-6 transition-all active:scale-[0.98]">
+<div class="flex flex-col items-start">
+<span class="leading-none">Transfer Market</span>
+<span class="text-[10px] opacity-80 font-normal mt-1">Deadline: Fri, 18:30</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-sm font-mono bg-black/10 px-2 py-1 rounded">02:14:35</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</button>
+</div>
+<!-- Tab Bar -->
+<nav class="flex justify-around items-center h-16 px-2">
+<button class="flex flex-col items-center justify-center w-16 h-full gap-1 text-white/40 hover:text-white transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center w-16 h-full gap-1 text-white/40 hover:text-white transition-colors">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-[10px] font-medium">Stats</span>
+</button>
+<button class="flex flex-col items-center justify-center w-16 h-full gap-1 text-primary transition-colors">
+<span class="material-symbols-outlined fill-current">sports_soccer</span>
+<span class="text-[10px] font-medium">Fantasy</span>
+</button>
+<button class="flex flex-col items-center justify-center w-16 h-full gap-1 text-white/40 hover:text-white transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</nav>
+<!-- Safe Area Spacer for iOS -->
+<div class="h-5 w-full"></div>
+</div>
+</body></html>

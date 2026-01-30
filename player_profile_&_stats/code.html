@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Player Profile &amp; Stats - FootballHub+</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f4d125",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#121212",
+                        "card-dark": "#1e1e1e",
+                        "charcoal-accent": "#2a2a2a",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-white/10">
+<div class="flex items-center p-4 justify-between max-w-md mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined cursor-pointer">arrow_back_ios</span>
+<h1 class="text-lg font-bold leading-tight tracking-tight">Player Profile</h1>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined cursor-pointer">favorite</span>
+<span class="material-symbols-outlined cursor-pointer">share</span>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-md mx-auto w-full pb-24">
+<!-- Hero Section -->
+<div class="relative w-full aspect-[4/5] overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent z-10"></div>
+<div class="w-full h-full bg-cover bg-center" data-alt="Achraf Hakimi action shot in PSG kit" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDTdKBFLr9N3PUud57rW_3aaCwV00X6u6pZ-95PagxlClBnYyjT4XmTNnzyavUPOBGKQII8uGa8FOeQ7Yup-xmlxjt3l2LVfS40SWM0M8fkoKMXZMXgXIeKMvz55RGt1V0w8ImMeGIz1Fn8GwfM62LQqSf1eTVPdilDd1AMr3peegnPnrAX4iTUoefHaDuylvJV9QCXdXLWH-lIuSVyJlW6-QUILQbKfvcWI-XV-PMikofTH7h-Lr6BUeihl_-MP-5QCAjbMDIAxJY');">
+</div>
+<!-- Overall Rating Hexagon -->
+<div class="absolute bottom-6 left-6 z-20 flex flex-col items-start">
+<div class="hexagon bg-primary w-20 h-24 flex items-center justify-center shadow-xl shadow-primary/20">
+<span class="text-background-dark text-4xl font-black">87</span>
+</div>
+<p class="mt-2 text-primary font-bold tracking-widest text-xs uppercase">Overall Rating</p>
+</div>
+<!-- Player Basic Info Overlay -->
+<div class="absolute bottom-6 right-6 z-20 text-right">
+<h2 class="text-3xl font-bold text-white mb-1">Achraf Hakimi</h2>
+<div class="flex items-center justify-end gap-2">
+<span class="text-primary text-sm font-medium">RB / RWB</span>
+<div class="w-1 h-1 bg-white/40 rounded-full"></div>
+<span class="text-white/80 text-sm">Paris Saint-Germain</span>
+</div>
+</div>
+</div>
+<!-- Key Stats Bar -->
+<div class="px-4 -mt-4 relative z-30">
+<div class="bg-card-dark rounded-xl p-5 shadow-2xl border border-white/5 flex justify-between items-center gap-2 overflow-x-auto no-scrollbar">
+<div class="flex flex-col items-center min-w-[60px]">
+<span class="text-primary text-xl font-bold">95</span>
+<span class="text-white/50 text-[10px] uppercase font-bold tracking-tighter">Pace</span>
+</div>
+<div class="w-px h-8 bg-white/10"></div>
+<div class="flex flex-col items-center min-w-[60px]">
+<span class="text-primary text-xl font-bold">80</span>
+<span class="text-white/50 text-[10px] uppercase font-bold tracking-tighter">Pass</span>
+</div>
+<div class="w-px h-8 bg-white/10"></div>
+<div class="flex flex-col items-center min-w-[60px]">
+<span class="text-primary text-xl font-bold">83</span>
+<span class="text-white/50 text-[10px] uppercase font-bold tracking-tighter">Drib</span>
+</div>
+<div class="w-px h-8 bg-white/10"></div>
+<div class="flex flex-col items-center min-w-[60px]">
+<span class="text-primary text-xl font-bold">76</span>
+<span class="text-white/50 text-[10px] uppercase font-bold tracking-tighter">Def</span>
+</div>
+<div class="w-px h-8 bg-white/10"></div>
+<div class="flex flex-col items-center min-w-[60px]">
+<span class="text-primary text-xl font-bold">72</span>
+<span class="text-white/50 text-[10px] uppercase font-bold tracking-tighter">Phy</span>
+</div>
+</div>
+</div>
+<!-- Season Performance Section -->
+<section class="mt-8 px-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold">Season Performance</h3>
+<span class="text-primary text-sm font-medium">2023/24 League 1</span>
+</div>
+<div class="bg-card-dark rounded-xl p-4 border border-white/5">
+<!-- Mock Chart Area -->
+<div class="h-40 w-full relative flex items-end justify-between px-2">
+<!-- Simple Bar Representation for Chart -->
+<div class="w-8 bg-primary/20 rounded-t-sm h-[60%] relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-primary text-background-dark text-[10px] font-bold px-1 rounded transition-opacity">7.2</div>
+</div>
+<div class="w-8 bg-primary/40 rounded-t-sm h-[80%]"></div>
+<div class="w-8 bg-primary/20 rounded-t-sm h-[55%]"></div>
+<div class="w-8 bg-primary/60 rounded-t-sm h-[90%]"></div>
+<div class="w-8 bg-primary rounded-t-sm h-[100%]"></div>
+<div class="w-8 bg-primary/40 rounded-t-sm h-[75%]"></div>
+</div>
+<div class="flex justify-between mt-2 px-2">
+<span class="text-[10px] text-white/40">SEP</span>
+<span class="text-[10px] text-white/40">OCT</span>
+<span class="text-[10px] text-white/40">NOV</span>
+<span class="text-[10px] text-white/40">DEC</span>
+<span class="text-[10px] text-white/40">JAN</span>
+<span class="text-[10px] text-white/40">FEB</span>
+</div>
+</div>
+</section>
+<!-- Career History -->
+<section class="mt-8 px-4">
+<h3 class="text-lg font-bold mb-4">Career History</h3>
+<div class="space-y-3">
+<!-- Club Row -->
+<div class="flex items-center justify-between p-3 bg-card-dark rounded-xl border border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-charcoal-accent flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">shield</span>
+</div>
+<div>
+<p class="font-bold text-sm">Paris Saint-Germain</p>
+<p class="text-white/50 text-xs">2021 - Present</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-primary">14 Goals</p>
+<p class="text-white/40 text-[10px]">82 Apps</p>
+</div>
+</div>
+<!-- Club Row -->
+<div class="flex items-center justify-between p-3 bg-card-dark rounded-xl border border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-charcoal-accent flex items-center justify-center">
+<span class="material-symbols-outlined text-white/30">shield</span>
+</div>
+<div>
+<p class="font-bold text-sm">Inter Milan</p>
+<p class="text-white/50 text-xs">2020 - 2021</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-white/70">7 Goals</p>
+<p class="text-white/40 text-[10px]">37 Apps</p>
+</div>
+</div>
+<!-- Club Row -->
+<div class="flex items-center justify-between p-3 bg-card-dark rounded-xl border border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-charcoal-accent flex items-center justify-center">
+<span class="material-symbols-outlined text-white/30">shield</span>
+</div>
+<div>
+<p class="font-bold text-sm">Borussia Dortmund</p>
+<p class="text-white/50 text-xs">2018 - 2020</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-white/70">12 Goals</p>
+<p class="text-white/40 text-[10px]">54 Apps</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent News -->
+<section class="mt-8 px-4">
+<h3 class="text-lg font-bold mb-4">Recent News</h3>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-4">
+<!-- News Card -->
+<div class="min-w-[280px] bg-card-dark rounded-xl overflow-hidden border border-white/5">
+<div class="h-32 bg-cover bg-center" data-alt="Hakimi celebrating a goal during match" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDs80vIueqLBIBmBaPQQimicmtThxDiTLsqnr0Abet0aVAceuIEshDcD2MvdDKeQ2eyEiT_Hzn89AlKHkfWX9c2h93eMe8-vSAMK8EPN3wWZUnD7gmDcm7nFjdZchoNvog6rK_V07UUvlLM1ofrhgPnuuU9W9yHUkbLhrjbnefFPPXKEPe4IqrR97g1VevTTAH2sRhroqmm110KClE7K7Tnc80GltYZ3scBRJwc6S84--yoN5Q0c4_CcNxFgrenY3nSX32Ztmbtjmg');"></div>
+<div class="p-3">
+<p class="text-[10px] text-primary font-bold uppercase mb-1">Match Report</p>
+<p class="text-sm font-bold line-clamp-2">Hakimi Masterclass leads PSG to Champions League Victory</p>
+<p class="text-xs text-white/40 mt-2">2 hours ago</p>
+</div>
+</div>
+<!-- News Card -->
+<div class="min-w-[280px] bg-card-dark rounded-xl overflow-hidden border border-white/5">
+<div class="h-32 bg-cover bg-center" data-alt="Transfer market rumors concept image" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD3Odd6UPMoUJk4B2pn5yP1bWNY6qF0UbpA0zPDRtfQl9UILcJcc3n16dwUgfTlZCLs7wVTIkfXl_YDJAMujX2vW4cD1ujOaeVSFwZLxpqu4nsHpBeTe9-ph9N0Q9StFFE9u1PVmNWBjTmIUEWKz12GQiNNKD3D2XwWty4cjXxh6bq6ku54pxHFUVDhiAJR3WDWbTi1GUTj5YTtmMenxk5EVvpqS6eFe9qijtjj81R9e2_d7uH4O3GbIl4eLEadK1nTFg4iQi3yVms');"></div>
+<div class="p-3">
+<p class="text-[10px] text-primary font-bold uppercase mb-1">Transfer Rumors</p>
+<p class="text-sm font-bold line-clamp-2">Multiple clubs interested in Hakimi ahead of summer window</p>
+<p class="text-xs text-white/40 mt-2">5 hours ago</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (iOS Style) -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-lg border-t border-gray-200 dark:border-white/10 pb-6 pt-3">
+<div class="max-w-md mx-auto flex justify-around items-center">
+<div class="flex flex-col items-center gap-1 text-white/40 hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-white/40 hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-medium">Scout</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-white/40 hover:text-primary transition-colors cursor-pointer">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center -mt-8 shadow-lg shadow-primary/30 border-4 border-background-dark">
+<span class="material-symbols-outlined text-background-dark text-3xl font-bold">compare_arrows</span>
+</div>
+<span class="text-[10px] font-medium text-primary">Compare</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-white/40 hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-[10px] font-medium">Analysis</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</div>
+</div>
+</nav>
+<!-- iOS Home Indicator -->
+<div class="fixed bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/20 rounded-full z-[60]"></div>
+</body></html>

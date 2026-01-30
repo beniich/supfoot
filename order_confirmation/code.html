@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Confirmation - FootballHub+</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2cc0d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#181711", // Updated to match the specific charcoal look requested
+                        "surface-dark": "#23221b",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom animation for the checkmark */
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-scale-in {
+            animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white pb-24">
+<!-- Main Container -->
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center p-4 pt-8 pb-4 justify-between sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<!-- Left Icon Placeholder for spacing/back -->
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-transparent">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">close</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Order Confirmation</h2>
+<!-- Right Icon Placeholder -->
+<div class="w-8 h-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">share</span>
+</div>
+</div>
+<!-- Success Animation & Hero -->
+<div class="flex flex-col items-center justify-center py-8 px-4">
+<div class="relative w-24 h-24 mb-6 flex items-center justify-center rounded-full bg-green-900/20 border-2 border-green-500/30 animate-scale-in">
+<div class="absolute inset-0 rounded-full bg-green-500 blur-xl opacity-20"></div>
+<span class="material-symbols-outlined text-green-500 text-6xl">check_circle</span>
+</div>
+<h1 class="text-slate-900 dark:text-white tracking-tight text-[32px] font-bold leading-tight px-4 text-center mb-2">Payment Successful!</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal px-4 text-center">Order #FH-98234 is confirmed</p>
+<p class="text-primary text-sm font-medium mt-2">Estimated Delivery: Oct 24 - Oct 26</p>
+</div>
+<!-- Spacer -->
+<div class="h-4"></div>
+<!-- What's Next Section -->
+<div class="px-4 w-full">
+<h3 class="text-slate-900 dark:text-white text-[20px] font-bold leading-tight tracking-tight mb-4">What's Next?</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Card 1: Track Order -->
+<button class="group flex flex-col items-center justify-center p-6 bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all active:scale-95">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-2xl">local_shipping</span>
+</div>
+<span class="text-slate-900 dark:text-white font-bold text-base">Track Order</span>
+<span class="text-slate-500 dark:text-slate-400 text-xs mt-1 text-center">View shipping updates</span>
+</button>
+<!-- Card 2: Continue Shopping -->
+<button class="group flex flex-col items-center justify-center p-6 bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all active:scale-95">
+<div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-3 group-hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300 text-2xl">shopping_bag</span>
+</div>
+<span class="text-slate-900 dark:text-white font-bold text-base">Keep Shopping</span>
+<span class="text-slate-500 dark:text-slate-400 text-xs mt-1 text-center">Browse more gear</span>
+</button>
+</div>
+</div>
+<!-- Spacer -->
+<div class="h-8"></div>
+<!-- Order Summary Widget -->
+<div class="px-4 w-full">
+<div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-center mb-4 border-b border-slate-100 dark:border-slate-700 pb-4">
+<h4 class="text-slate-900 dark:text-white font-bold text-lg">Purchase Summary</h4>
+<span class="px-2 py-1 rounded bg-green-500/10 text-green-500 text-xs font-bold uppercase tracking-wider">Paid</span>
+</div>
+<!-- Item 1 -->
+<div class="flex gap-4 mb-4">
+<div class="w-16 h-16 rounded-lg bg-slate-800 overflow-hidden flex-shrink-0 relative">
+<div class="w-full h-full bg-center bg-cover" data-alt="Premium Football Jersey Red and White" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDVyPMM3oDKGyrU9KMxLJK_Kh_USaQtzv0WWhv2NZxwIou93vnnuotyUtChHh2N1Hl2RLX4jDUH-77QlE_6A7f7eH2eEKrGvEv1UrjeA4i7pPCw0dlxJeJ7AFLjDmyYoxL0SmWhL1wqLk7gsVAkjbwavn0i5G6vGeX89cAoQ1A_NPEExBJm01HjY7TZahfDdLaeGrl2krBcLIA5WZkGx6biJbzsIpopzUgQYOg_2HVl8Nb7sUQCyvC9KDO2Km12cV-9p5lrOTVME9I");'></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-slate-900 dark:text-white font-medium line-clamp-1">Pro Elite Jersey 23/24</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Size: L • Color: Red</p>
+</div>
+<p class="text-slate-900 dark:text-white font-bold">$89.99</p>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4 mb-4">
+<div class="w-16 h-16 rounded-lg bg-slate-800 overflow-hidden flex-shrink-0 relative">
+<div class="w-full h-full bg-center bg-cover" data-alt="Black Football Cleats side view" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDKv7g0liNPZug39Dj8SSNCEygE2GE_Ei0cfSC2JqOknJwdv3w_QjGYsApQO-7R5o6jnZZhRQVtK3KmYgdcaohb7QgneL3L-c_qClZDSrImXQb3GfC7adQDDWB2PAZUZJeWz0_23UeMTKM3ypJWF0E65wNeroxWNmOiZOkPGZxMPpDpS1xPKIVwtlhZlSmiZ1S0THorLdSdXxEgzlt3JlT8bh34liKq0jVrgQBsKmjzQkVBmoeCTdXkPqxxcNZjqatDqYn1Ynfco0c");'></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-slate-900 dark:text-white font-medium line-clamp-1">Speedster Cleats</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Size: 10 • Surface: FG</p>
+</div>
+<p class="text-slate-900 dark:text-white font-bold">$60.00</p>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 mt-2">
+<span class="text-slate-500 dark:text-slate-400 font-medium">Total Paid</span>
+<span class="text-slate-900 dark:text-white text-xl font-bold tracking-tight">$149.99</span>
+</div>
+<div class="mt-6">
+<button class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-background-dark font-bold text-base py-3.5 px-6 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                        Download Receipt
+                    </button>
+</div>
+</div>
+</div>
+<div class="h-8"></div>
+</div>
+<!-- Bottom Navigation -->
+<div class="fixed bottom-0 left-0 right-0 bg-white dark:bg-background-dark/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-safe z-50">
+<div class="flex justify-around items-center h-16 px-2">
+<button class="flex flex-col items-center justify-center w-full h-full space-y-1">
+<span class="material-symbols-outlined text-slate-400 text-[24px]">home</span>
+<span class="text-[10px] font-medium text-slate-400">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full space-y-1">
+<span class="material-symbols-outlined text-slate-400 text-[24px]">sports_soccer</span>
+<span class="text-[10px] font-medium text-slate-400">Matches</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full space-y-1 relative">
+<div class="absolute top-2 right-6 w-2 h-2 bg-primary rounded-full"></div>
+<span class="material-symbols-outlined text-primary text-[24px]">shopping_bag</span>
+<span class="text-[10px] font-medium text-primary">Shop</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full space-y-1">
+<span class="material-symbols-outlined text-slate-400 text-[24px]">person</span>
+<span class="text-[10px] font-medium text-slate-400">Profile</span>
+</button>
+</div>
+<!-- Safe area spacing for iOS home indicator -->
+<div class="h-4 w-full"></div>
+</div>
+</body></html>

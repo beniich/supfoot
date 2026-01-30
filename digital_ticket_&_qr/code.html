@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Ticket &amp; QR</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2cc0d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221f10",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "3xl": "1.5rem", "full": "9999px" },
+                    animation: {
+                        'shimmer': 'shimmer 2s linear infinite',
+                    },
+                    keyframes: {
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom pattern for the security strip */
+        .security-strip {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(242, 204, 13, 0.2) 25%, 
+                rgba(242, 204, 13, 0.8) 50%, 
+                rgba(242, 204, 13, 0.2) 75%, 
+                transparent 100%);
+            background-size: 200% 100%;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white overflow-x-hidden selection:bg-primary selection:text-black">
+<div class="relative flex h-full min-h-screen w-full flex-col pb-24">
+<!-- Header -->
+<div class="fixed top-0 left-0 right-0 z-50 flex items-center bg-background-dark/95 backdrop-blur-sm p-4 pb-2 justify-between border-b border-white/5">
+<button class="text-white flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_back_ios_new</span>
+</button>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">My Ticket</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex size-12 cursor-pointer items-center justify-center rounded-full hover:bg-white/10 transition-colors text-white">
+<span class="material-symbols-outlined" style="font-size: 24px;">ios_share</span>
+</button>
+</div>
+</div>
+<div class="h-16"></div> <!-- Spacer for fixed header -->
+<!-- Match Experience (Hero Section) -->
+<div class="relative w-full p-4 pb-0">
+<div class="relative w-full overflow-hidden rounded-2xl bg-[#181711] shadow-2xl ring-1 ring-white/10">
+<!-- Stadium Background Image -->
+<div class="absolute inset-0 bg-cover bg-center opacity-60" data-alt="Dark moody football stadium with floodlights at night" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCwLdk62mCbbba4H-8xkwFukJC4LfidcF9CPy0dLaEjKj5i_s-AfXZl5O_9BvzLxJRc0unLjwV3Y2ujn61pipbEIjkGkCJYR9jTAo32YNJbmebP0ztd8vVhPIjRiWnjEYOvNupv6uC8hSKsERKKB1K4NBDXm0QFtyodnPBCr76PNWZeFkTX4OMUwovbuGgEwzpbjnBP7bgXExiz6Y-Yam_83m21cRNfVmRymUxUuJmw5ihFT28N8_BNgGW_ZFUhjiyLWzbV0HwtidM");'>
+</div>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/60 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
+<!-- Match Content -->
+<div class="relative z-10 flex flex-col items-center pt-8 pb-8 px-4 text-center">
+<!-- Competition Badge -->
+<div class="mb-4 flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 backdrop-blur-md border border-white/10">
+<span class="material-symbols-outlined text-primary text-[18px]">trophy</span>
+<span class="text-xs font-medium uppercase tracking-wider text-white">Champions League</span>
+</div>
+<!-- Teams & Score -->
+<div class="flex w-full items-center justify-between gap-2 max-w-sm">
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="size-16 rounded-full bg-white/10 p-2 backdrop-blur-sm ring-1 ring-white/20">
+<img alt="Man City Logo" class="h-full w-full object-contain" data-alt="Manchester City football club logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlmGfuBj5ADvd35Kl9k2zpsWyw0AOGRnFhxHwqhStb81NkHYSk2ckxQpXO9dILuEDFTa_jYL4RU5gWUPtSlNbs_TYioIWbPC5XCva-8zWvd7D6UL__Gfvoe0JVBCC6yt7M9qJpkXbMPSJRGaGAdfPo9KQKVC2e_Zvk22nlgdgV7eBZqtaPQtIuoeAPED-Kv3NxAHGScKuoeC9GxfsFUVUQl7LjQwC49d1qBgwBrc2nUG1N4iHGnqSaAkJ7ohykv6j3UCJ1LUZjBg0"/>
+</div>
+<span class="text-sm font-bold text-white">Man City</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="rounded-lg bg-red-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg animate-pulse">
+                                Live
+                            </div>
+<div class="text-3xl font-bold tracking-tight text-white">
+                                2 <span class="text-white/40">-</span> 1
+                            </div>
+<div class="text-xs font-medium text-primary">34:12</div>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="size-16 rounded-full bg-white/10 p-2 backdrop-blur-sm ring-1 ring-white/20">
+<img alt="Arsenal Logo" class="h-full w-full object-contain" data-alt="Arsenal football club logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDysAPq04V7bza8t9fZsBPhHM4elhOB5jmT4RRXN89TXZmlVD0JNBcPlpGnZ4renQv-CvSZ1iZ8pxEuUbgjzuTJTYx9cuPAlzmLbEPOUwfBI6UBrG3F8FYvSmhiBG0bgrgsVbWg15t9qeBcekrEq-uy0r62agY6lVP6g9fK_uHnsoFTtvL0feY4brkD39ClCViVnXKKJsx_fsPynWq1qdYp1hkn7wk7w6DVf30JvOCnNmt9EIet_Bstm3qLhWOa4vOYQkEihJlOGtI"/>
+</div>
+<span class="text-sm font-bold text-white">Arsenal</span>
+</div>
+</div>
+<!-- Venue Info -->
+<div class="mt-6 flex flex-col items-center gap-1">
+<p class="text-lg font-bold text-white">Etihad Stadium</p>
+<p class="text-sm text-gray-400">Oct 24 • Kickoff 20:00</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Ticket & QR Section -->
+<div class="px-4 mt-6">
+<!-- White Ticket Card -->
+<div class="relative w-full rounded-2xl bg-white p-1 shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+<!-- Inner Container -->
+<div class="flex flex-col items-center rounded-xl border border-dashed border-gray-300 p-6 pb-4">
+<!-- Dynamic Security Strip -->
+<div class="relative mb-6 h-2 w-full overflow-hidden rounded-full bg-gray-100">
+<div class="security-strip h-full w-full animate-shimmer"></div>
+</div>
+<!-- QR Code -->
+<div class="relative aspect-square w-full max-w-[240px] overflow-hidden rounded-lg mix-blend-multiply">
+<!-- Using a generic QR code placeholder -->
+<img alt="Scan this QR code at the turnstile" class="h-full w-full object-contain" data-alt="High contrast QR code for entry scanning" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA21WTi15w2rYX8o7LT7YJZ7dS5ReZizSKHfZX7q8aACUabI4Y7r2iYhPu37TWQAqQcrnMjfLmlOdDWalND04EjGrYtqJ6rCkkcTE6I8BKGIKTDV21uSKQei_xlmAOmiWXg22wuRHD2k4gZvxFbpS5wftykdngKh5X6vNWGkNHrhSdwPwbYRbnxVfMLh5PxYW26Zl9IPXxGQYThWqvIV83BObLeJIYvNH0XHPSOrospCnWlikMaVGSOdTTeKc1ebmREfMbi3FgN1Wc"/>
+</div>
+<!-- Scan Helper -->
+<div class="mt-4 flex items-center gap-2 text-gray-500">
+<span class="material-symbols-outlined text-lg">qr_code_scanner</span>
+<span class="text-sm font-medium">Scan at Turnstile B</span>
+</div>
+</div>
+<!-- Decorative Cutouts (Ticket Notches) -->
+<div class="absolute -left-2 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-background-dark"></div>
+<div class="absolute -right-2 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-background-dark"></div>
+</div>
+</div>
+<!-- Seat Details Grid -->
+<div class="px-4 mt-6">
+<h3 class="sr-only">Seat Information</h3>
+<div class="grid grid-cols-4 gap-3">
+<!-- Gate -->
+<div class="flex flex-col items-center justify-center gap-1 rounded-xl border border-white/10 bg-white/5 p-3 text-center backdrop-blur-sm">
+<span class="text-[10px] font-medium uppercase tracking-widest text-gray-400">Gate</span>
+<span class="text-2xl font-bold text-white">B</span>
+</div>
+<!-- Section -->
+<div class="flex flex-col items-center justify-center gap-1 rounded-xl border border-white/10 bg-white/5 p-3 text-center backdrop-blur-sm">
+<span class="text-[10px] font-medium uppercase tracking-widest text-gray-400">Sec</span>
+<span class="text-2xl font-bold text-white">102</span>
+</div>
+<!-- Row -->
+<div class="flex flex-col items-center justify-center gap-1 rounded-xl border border-primary/30 bg-primary/10 p-3 text-center backdrop-blur-sm ring-1 ring-primary/20">
+<span class="text-[10px] font-medium uppercase tracking-widest text-primary">Row</span>
+<span class="text-2xl font-bold text-primary">12</span>
+</div>
+<!-- Seat -->
+<div class="flex flex-col items-center justify-center gap-1 rounded-xl border border-primary/30 bg-primary/10 p-3 text-center backdrop-blur-sm ring-1 ring-primary/20">
+<span class="text-[10px] font-medium uppercase tracking-widest text-primary">Seat</span>
+<span class="text-2xl font-bold text-primary">45</span>
+</div>
+</div>
+</div>
+<!-- Add to Wallet Button -->
+<div class="px-4 mt-6 mb-4">
+<button class="flex w-full items-center justify-center gap-3 rounded-xl bg-[#1C1C1E] py-4 text-white hover:bg-[#2C2C2E] transition-colors border border-white/10 shadow-lg group">
+<div class="relative flex items-center justify-center">
+<svg class="h-6 w-6 fill-current text-white" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+<path d="M26,19H21a3,3,0,0,1-3-3V11H7a3,3,0,0,0-3,3v9a3,3,0,0,0,3,3H26a3,3,0,0,0,3-3V22A3,3,0,0,0,26,19ZM9,24a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,9,24Z"></path>
+<path d="M21,9h6.88l-2-3.46A2.57,2.57,0,0,0,23.63,4H10.87A2.66,2.66,0,0,0,8.5,5.55L7.24,8H18A3,3,0,0,1,21,9Z"></path>
+</svg>
+</div>
+<span class="text-base font-semibold">Add to Apple Wallet</span>
+</button>
+</div>
+<!-- Bottom Navigation -->
+<div class="fixed bottom-0 left-0 right-0 z-50 border-t border-white/5 bg-background-dark/95 backdrop-blur-lg pb-safe">
+<div class="flex h-16 items-center justify-around px-2">
+<button class="flex flex-1 flex-col items-center gap-1 py-1 text-gray-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-1 flex-col items-center gap-1 py-1 text-primary">
+<span class="material-symbols-outlined text-[24px] fill-1">confirmation_number</span>
+<span class="text-[10px] font-medium">Tickets</span>
+</button>
+<button class="flex flex-1 flex-col items-center gap-1 py-1 text-gray-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">storefront</span>
+<span class="text-[10px] font-medium">Shop</span>
+</button>
+<button class="flex flex-1 flex-col items-center gap-1 py-1 text-gray-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+        // Simulate brightness increase
+        console.log("Setting screen brightness to 100% for scanning mode.");
+    </script>
+</body></html>

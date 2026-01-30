@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FootballHub+ About Us</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2d00d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221f10", // Charcoal/Dark Brownish base
+                        "surface-dark": "#2d2a1d", // Slightly lighter for cards
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary selection:text-background-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md p-4 pb-2 justify-between border-b border-primary/10">
+<div class="flex items-center justify-center size-10 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-slate-900 dark:text-white text-2xl">menu</span>
+</div>
+<h1 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-2">
+                FootballHub<span class="text-primary">+</span>
+</h1>
+<div class="flex w-10 items-center justify-end">
+<span class="material-symbols-outlined text-slate-500 dark:text-[#bab59c] hover:text-primary transition-colors cursor-pointer">account_circle</span>
+</div>
+</header>
+<!-- Hero Section -->
+<div class="@container w-full">
+<div class="@[480px]:px-4 @[480px]:py-6">
+<div class="relative flex flex-col justify-end overflow-hidden bg-background-dark min-h-[500px] @[480px]:rounded-xl w-full">
+<!-- Background Image -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="Cinematic shot of a football team in a dark stadium with dramatic lighting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBlb9YU5dtwQs3j7zXb7ZlY_xDK0K7Umz-cjzcaOffCLAh2155EQBDZrviuLhb9PWWCxLqVByKlVADSpJVya6ZkOA8H4zKLAIk02idH4XVQt-ruzjb9TTYs-1xdGoR9a52YNZp1fxm-UEcV7yoUVKukyy4aztBmqIHF8ONNT4zdHnjdrxIFmFv7lJHOElSdm1LWXSUnej9BFKjSjR1-A2jde--XCOQtVkeWEV_fxplqYYX8MZZd7TvVXPe9vNUrbMFcmFsaH5Clm2c");'>
+</div>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/60 to-transparent"></div>
+<!-- Content -->
+<div class="relative z-10 flex flex-col p-6 pb-10 gap-2">
+<span class="inline-block px-3 py-1 mb-2 text-xs font-bold tracking-widest text-background-dark uppercase bg-primary rounded-full w-fit">
+                            Since 2020
+                        </span>
+<h2 class="text-primary tracking-tight text-4xl font-bold leading-[1.1]">
+                            Elevating the<br/>Football Experience
+                        </h2>
+<p class="text-white/80 text-lg font-light mt-2 max-w-md leading-relaxed">
+                            Merging elite technology with the passion of the beautiful game to empower clubs worldwide.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<div class="h-8"></div>
+<!-- Section: Our Journey (Timeline) -->
+<section class="px-4">
+<h2 class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-tight mb-6">Our Journey</h2>
+<div class="grid grid-cols-[40px_1fr] gap-x-2">
+<!-- Item 1 -->
+<div class="flex flex-col items-center gap-1 pt-1">
+<div class="flex items-center justify-center size-8 rounded-full bg-primary/10 border border-primary/20 text-primary">
+<span class="material-symbols-outlined text-[18px]">flag</span>
+</div>
+<div class="w-[1px] bg-gradient-to-b from-primary/50 to-white/10 h-full grow min-h-8"></div>
+</div>
+<div class="flex flex-1 flex-col pt-1 pb-8 pl-2">
+<span class="text-primary text-sm font-bold uppercase tracking-wider mb-1">2020</span>
+<h3 class="text-slate-900 dark:text-white text-lg font-medium leading-normal">Concept &amp; Alpha</h3>
+<p class="text-slate-500 dark:text-[#bab59c] text-sm leading-relaxed mt-1">
+                        We launched the initial beta to a select group of local clubs, gathering crucial data on performance metrics.
+                    </p>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-[1px] bg-white/10 h-2"></div>
+<div class="flex items-center justify-center size-8 rounded-full bg-surface-dark border border-white/10 text-white">
+<span class="material-symbols-outlined text-[18px]">handshake</span>
+</div>
+<div class="w-[1px] bg-white/10 h-full grow min-h-8"></div>
+</div>
+<div class="flex flex-1 flex-col pt-2 pb-8 pl-2">
+<span class="text-slate-500 dark:text-gray-400 text-sm font-bold uppercase tracking-wider mb-1">2021</span>
+<h3 class="text-slate-900 dark:text-white text-lg font-medium leading-normal">First Major Partnership</h3>
+<p class="text-slate-500 dark:text-[#bab59c] text-sm leading-relaxed mt-1">
+                        Secured official data provider status for the National Youth League.
+                    </p>
+</div>
+<!-- Item 3 -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-[1px] bg-gradient-to-b from-white/10 to-primary/50 h-2"></div>
+<div class="flex items-center justify-center size-8 rounded-full bg-primary text-background-dark shadow-[0_0_15px_rgba(242,208,13,0.3)]">
+<span class="material-symbols-outlined text-[18px]">public</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col pt-2 pb-2 pl-2">
+<span class="text-primary text-sm font-bold uppercase tracking-wider mb-1">2023</span>
+<h3 class="text-slate-900 dark:text-white text-lg font-medium leading-normal">Global Expansion</h3>
+<p class="text-slate-500 dark:text-[#bab59c] text-sm leading-relaxed mt-1">
+                        Opening offices in London and São Paulo to serve our growing international user base.
+                    </p>
+</div>
+</div>
+</section>
+<div class="h-12"></div>
+<!-- Section: Our Core Values -->
+<section class="bg-surface-dark/30 py-10">
+<div class="px-4 mb-6">
+<h2 class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-tight">Our Core Values</h2>
+<p class="text-slate-500 dark:text-[#bab59c] text-sm mt-2">The principles that drive our innovation engine.</p>
+</div>
+<div class="flex flex-col gap-4 px-4">
+<!-- Card 1 -->
+<div class="flex items-start gap-4 p-5 rounded-xl bg-background-light dark:bg-surface-dark border border-slate-200 dark:border-white/5">
+<div class="flex items-center justify-center size-12 shrink-0 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-lg mb-1">Innovation</h3>
+<p class="text-slate-500 dark:text-gray-400 text-sm leading-relaxed">
+                            Constantly pushing the boundaries of what data can reveal about the game.
+                        </p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex items-start gap-4 p-5 rounded-xl bg-background-light dark:bg-surface-dark border border-slate-200 dark:border-white/5">
+<div class="flex items-center justify-center size-12 shrink-0 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">diversity_3</span>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-lg mb-1">Community</h3>
+<p class="text-slate-500 dark:text-gray-400 text-sm leading-relaxed">
+                            Building a global network of coaches, players, and analysts.
+                        </p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex items-start gap-4 p-5 rounded-xl bg-background-light dark:bg-surface-dark border border-slate-200 dark:border-white/5">
+<div class="flex items-center justify-center size-12 shrink-0 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">military_tech</span>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-lg mb-1">Excellence</h3>
+<p class="text-slate-500 dark:text-gray-400 text-sm leading-relaxed">
+                            Delivering premium quality in every pixel and every data point.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<div class="h-8"></div>
+<!-- Section: Meet the Team -->
+<section class="overflow-hidden">
+<div class="px-4 mb-5 flex justify-between items-end">
+<h2 class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-tight">Meet the Team</h2>
+<div class="flex gap-2">
+<button class="size-8 rounded-full border border-slate-300 dark:border-white/20 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-white/10 transition">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+</button>
+<button class="size-8 rounded-full bg-primary text-background-dark flex items-center justify-center hover:bg-primary/90 transition">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Carousel -->
+<div class="flex overflow-x-auto pb-8 pt-2 px-4 gap-4 snap-x snap-mandatory scrollbar-hide">
+<!-- Team Member 1 -->
+<div class="min-w-[200px] snap-center group">
+<div class="h-64 w-full rounded-xl overflow-hidden relative mb-3">
+<img alt="Marcus Thorne" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Portrait of Marcus Thorne, CEO, in a suit standing in a modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsLhs5T4AoHg7E3uGWkq1YBcpg3xEcyj1Rc6X7dFuATY02w08k_dfalVEXvsLZXoCzOBEerpP0ixqoIB2KaIl-uvEOv0Z10ZsXsscg-g_mYUzjcPJnNUwtP9wmdiw0MxQb7BVZ1eS-I0RLUWhN3okexwzt-h42oVYivbtyZM2zj4nA3gnUaHyMtoNjTacUiINS3Y2GQtbYyN_B78l1b0UU_E-3gh59W4mGbfUKXBocmjAeWQ0uX8THKg-2cVrAmLNqZt-NxKo_l_A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 to-transparent opacity-60"></div>
+<div class="absolute bottom-3 left-3">
+<span class="material-symbols-outlined text-primary text-xl">verified_user</span>
+</div>
+</div>
+<h3 class="text-slate-900 dark:text-white font-bold text-lg">Marcus Thorne</h3>
+<p class="text-primary text-sm font-medium uppercase tracking-wide">CEO &amp; Founder</p>
+</div>
+<!-- Team Member 2 -->
+<div class="min-w-[200px] snap-center group">
+<div class="h-64 w-full rounded-xl overflow-hidden relative mb-3">
+<img alt="Sarah Jenkins" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Portrait of Sarah Jenkins, CTO, wearing glasses and smiling in a tech environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxUJgPiIPRO6-JEuKo1mNxUrTInF-iRxlUNHtAg9jKh2ouzJRRScaO6wHA8Cdvf9Fzfvip_e74HnB6FjKtIJlPRr2S2lZ6G-BrydykzmhrlOIp2Oizz_5NGUDmBvFQuiKvZyn2BUchkEv__wua2oc4wR10guDJ4gOw52K-OMLKOwSXh0omT3kgrmOD2RkvZWA-uPRTZhSdj9c9SyUiHCEhD3zdvuy0y_vk1Y0JxET8mfVRQ7WrI-urFLo9FPurp9FDY8S6FzFe1H8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 to-transparent opacity-60"></div>
+</div>
+<h3 class="text-slate-900 dark:text-white font-bold text-lg">Sarah Jenkins</h3>
+<p class="text-primary text-sm font-medium uppercase tracking-wide">Chief Tech Officer</p>
+</div>
+<!-- Team Member 3 -->
+<div class="min-w-[200px] snap-center group">
+<div class="h-64 w-full rounded-xl overflow-hidden relative mb-3">
+<img alt="David Rossi" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Portrait of David Rossi, Head of Partnerships, smiling confidently" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi77ZOy4XpxnwZfH-Ob8UOyqufi1eCp3v1rp3Lmpmmx9h7Rgbg46v-t1VX2vYJKzEVxRhiE3bKkX5OYIuYTShvLv_rhm9EtTDNQ6dDp0DAMN5iLThjRWFzlafOT9_CSZIVLS6Md77UUOw-7qgMLPMeJ6d4hQGO3D9J9mkHMkgdGeXE3pv7-Tn6wF5FldAibKKJyuC95hfyh725D-XaCoZvrjZ7da37M_sor4jkGP50JZJTuDJ6Ek2eo9utR_ZChDlIAzxazJopefs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 to-transparent opacity-60"></div>
+</div>
+<h3 class="text-slate-900 dark:text-white font-bold text-lg">David Rossi</h3>
+<p class="text-primary text-sm font-medium uppercase tracking-wide">Head of Partnerships</p>
+</div>
+</div>
+</section>
+<!-- Footer / CTA -->
+<section class="mt-8 px-4 pb-12">
+<div class="rounded-2xl bg-gradient-to-br from-primary to-yellow-600 p-8 text-center relative overflow-hidden">
+<!-- Abstract Pattern Background -->
+<div class="absolute top-0 right-0 -mt-10 -mr-10 size-40 bg-white/10 rounded-full blur-2xl"></div>
+<div class="absolute bottom-0 left-0 -mb-10 -ml-10 size-40 bg-black/10 rounded-full blur-2xl"></div>
+<h2 class="text-background-dark text-2xl font-bold mb-3 relative z-10">Ready to level up?</h2>
+<p class="text-background-dark/80 mb-6 font-medium relative z-10">Join the platform redefining modern football management.</p>
+<button class="relative z-10 w-full bg-background-dark text-white font-bold py-4 rounded-xl shadow-lg hover:bg-gray-900 transition-colors flex items-center justify-center gap-2">
+<span>Contact Sales</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="flex justify-center mt-8 gap-6 opacity-40">
+<span class="material-symbols-outlined text-white">podcasts</span>
+<span class="material-symbols-outlined text-white">mail</span>
+<span class="material-symbols-outlined text-white">nest_cam_wired_stand</span>
+</div>
+<p class="text-center text-xs text-slate-500 dark:text-white/30 mt-4">© 2023 FootballHub+. All rights reserved.</p>
+</section>
+<div class="h-5 bg-background-light dark:bg-background-dark"></div>
+</div>
+</body></html>

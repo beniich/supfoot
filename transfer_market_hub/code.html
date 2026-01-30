@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transfer Market Hub | FootballHub+</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2b90d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#181611",
+                        "card-dark": "#221e10",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Lexend', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen pb-24">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-50 bg-background-light dark:bg-background-dark/95 backdrop-blur-md border-b border-gray-200 dark:border-white/10">
+<div class="flex items-center p-4 justify-between">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">sports_soccer</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 px-2">FootballHub+</h2>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-full h-10 w-10 bg-gray-100 dark:bg-white/10 text-slate-900 dark:text-white">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="flex items-center justify-center rounded-full h-10 w-10 bg-gray-100 dark:bg-white/10 text-slate-900 dark:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Breaking News Carousel -->
+<div class="@container mt-2">
+<div class="px-4 py-2">
+<div class="relative bg-cover bg-center flex flex-col justify-end overflow-hidden rounded-xl min-h-64 shadow-2xl" data-alt="Mbappe wearing Real Madrid kit cheering" style='background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA5rObJbmvos-GoTGaRYxNkJvWRIQlHmO11FejGhhIuZFIQI5ecz1nOtyI1B3RzU9wrVu0ugjZbl12wnqSUepasDPq--y7LA1IjqrWRtIR7tB3VUH6MAojmjlEwa9m1KSSZkgwUpkovYgS_vfHStM62JFv3OmHsWqKoOBVVeIQ7lxutndQEa3GiBtr-GE96yHZ-CW5KPrm8vqF4qDp1mwd_UjR-Yu_4gXk9GNYAiVvge5tP5IgmkuvQKP9ClQZZBD52I3L373tgHqU");'>
+<div class="absolute top-4 left-4 bg-primary text-black text-[10px] font-black uppercase px-2 py-1 rounded tracking-wider flex items-center gap-1">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
+</span>
+                    Breaking
+                </div>
+<div class="p-5">
+<p class="text-white text-2xl font-black leading-tight mb-1">DONE DEAL: Mbappé Signs 5-Year Contract with Real Madrid</p>
+<p class="text-primary text-sm font-medium">Verified by Fabrizio Romano • 2m ago</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Page Indicators -->
+<div class="flex w-full flex-row items-center justify-center gap-2 py-2">
+<div class="h-1.5 w-6 rounded-full bg-primary"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-gray-300 dark:bg-white/20"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-gray-300 dark:bg-white/20"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-gray-300 dark:bg-white/20"></div>
+</div>
+<!-- Transfer Tracker Section -->
+<div class="flex items-center justify-between px-4 pt-6 pb-2">
+<h2 class="text-slate-900 dark:text-white text-xl font-black tracking-tight flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">published_with_changes</span>
+            Transfer Tracker
+        </h2>
+<span class="text-primary text-xs font-bold uppercase tracking-widest">Latest Confirmed</span>
+</div>
+<div class="space-y-1 px-2">
+<!-- List Item 1 -->
+<div class="flex items-center gap-4 bg-white dark:bg-card-dark rounded-xl px-4 py-3 justify-between border border-gray-100 dark:border-white/5 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 border-2 border-primary" data-alt="Declan Rice professional portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD9ZvJ5PLpwHpSlbpRzSP8LvFppF12DRZj3uFmJ_ZBkZWO6XOcn3VdZU_Zw0ZiDbAjehneKc63Kcg7GdA2eGR7V_YaiD1B8wX7dIX_fK5oHfxiXnRbGgyaRQb-fNoIDUCy4T1R9qneVoEcdDeERE0olree0-gaxzV18JceulLRB6C4HSLIEkVVIBTsvO2NCwjdmIGocsGLJuPmW6sUj7ZtB8nGznIt8avgS66sYQzJb4sLHU5qvRbOGYpAt7qk6ICPTWWsT19RLPO8");'></div>
+<div class="absolute -bottom-1 -right-1 bg-white dark:bg-zinc-800 rounded-full p-0.5 border border-gray-200 dark:border-white/10">
+<div class="h-5 w-5 bg-contain bg-center bg-no-repeat" data-alt="Arsenal club crest" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAVAgSWfkCnwAec-vOkC2Mw5-uYX8MmtwmDIn0qp6kourS5aekydQJb9nABApu_1Hzp9p5_8U6gmK0cRf56Egax5b6pU-2794p_mxlCWhj9h0-ndaFUNVitwUxopBl3N7PkKsNVnIsshS2jO0dJtJfvTbcXPOeBSOpSkrUVDtP7q-R7B4VRIoXcIhLKyQmzD4gs3dU9Hz3xwFjkNTNjLEB8KU2GTbTiLa-GCJXY0RK6lcPcHjZBLvR3oI_4e_jcJ66bIU6bNMhmHAE');"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-none mb-1">Declan Rice</p>
+<p class="text-slate-500 dark:text-primary/70 text-xs font-medium uppercase tracking-tighter">West Ham <span class="material-symbols-outlined text-[10px] align-middle">arrow_forward</span> Arsenal</p>
+</div>
+</div>
+<div class="shrink-0 text-right">
+<p class="text-primary text-lg font-black leading-none">€105M</p>
+<p class="text-slate-400 text-[10px] uppercase font-bold">Confirmed</p>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="flex items-center gap-4 bg-white dark:bg-card-dark rounded-xl px-4 py-3 justify-between border border-gray-100 dark:border-white/5 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 border-2 border-primary" data-alt="Jude Bellingham in action" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPhByhEhOJ0PUp_AzvXVQnpz-Qbyv3w8jBL7RILTHGqkVEuKKjInNLvLpX1WZZOAZhtJbVds9rjIOIiimiHCu2mABwDABC0WWZaxZJ5EIh_9wkXEXmGoORLa9atSQp8N25XF2rI1jjbd2qNu3zp4KoaaZbdOrRQUqGffFf-GbvwS_Ya_H0JxDuIy7EOcxh-XZom03oF7FDbA0EbdN_3v9U5M05Lmw0jEN4Yw7jViADoVDaFrLtYmUZZ8DFOxaL26b7xvXiHSPL1AU");'></div>
+<div class="absolute -bottom-1 -right-1 bg-white dark:bg-zinc-800 rounded-full p-0.5 border border-gray-200 dark:border-white/10">
+<div class="h-5 w-5 bg-contain bg-center bg-no-repeat" data-alt="Real Madrid club crest" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtZMK4COs_5afQDKV7Pae4VbykZhBG_j-A9_pf0_df4L9kC99LiWYtNR24vQ0AZboyVREmdW694P1SVg7bmgaZd4K7N2bHd7wYT_ESCjYU6iligsqsVKVrIJppul4-yQjH_V5doMOuFXAW9i77Cg-DLzFdc-uZsaV_nrIw1ywRDX1rku9YtB5uo2X_kWLwVZ80_GEyGNMPpUchbIfZk5PE80iDPI90k9kylaTxJ3M8rKiMg2srvA5qb7kD9s-C7hmO3cWzQVrd4AU');"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-none mb-1">Jude Bellingham</p>
+<p class="text-slate-500 dark:text-primary/70 text-xs font-medium uppercase tracking-tighter">Dortmund <span class="material-symbols-outlined text-[10px] align-middle">arrow_forward</span> Real Madrid</p>
+</div>
+</div>
+<div class="shrink-0 text-right">
+<p class="text-primary text-lg font-black leading-none">€103M</p>
+<p class="text-slate-400 text-[10px] uppercase font-bold">Confirmed</p>
+</div>
+</div>
+</div>
+<!-- Rumor Mill Section -->
+<div class="flex items-center justify-between px-4 pt-8 pb-3">
+<h2 class="text-slate-900 dark:text-white text-xl font-black tracking-tight flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">dynamic_feed</span>
+            Rumor Mill
+        </h2>
+<span class="text-slate-400 text-xs font-bold uppercase tracking-widest">In Progress</span>
+</div>
+<div class="px-4 space-y-4">
+<!-- Rumor Card 1 -->
+<div class="bg-white dark:bg-[#2a2618] rounded-xl p-4 border border-gray-200 dark:border-primary/20 shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-lg bg-gray-100 dark:bg-white/5 flex items-center justify-center border border-gray-200 dark:border-white/10 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Harry Kane portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoipNoitvBSYkQBHoRNMpyk_W3s-ah_DPRdpATfC-p1ChhYqMyAZF6-ctQ9L7li3dg0YaylXlCnPe1N9iubHyP0bSXBMBxaiY8AwgHBbIevDkqwJERZQJx4eyk_v9JRAqc6XnKBM_kvW-vwweUoarre0kWxyR6F-EFvt91YqcY7h62JmKtHu3BKepjwkOh_cxdyz5rP4u6kMUJJyD6b02-NiNgYiJmOgMBirh7FdKYE_usyJ1ZNXxAy_blxrjOEbISXAeBG-L0Rl0"/>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-sm">Harry Kane</h3>
+<p class="text-slate-500 dark:text-slate-400 text-[10px] uppercase font-bold tracking-wider">Tottenham <span class="material-symbols-outlined text-[8px] align-middle">trending_flat</span> FC Bayern</p>
+</div>
+</div>
+<div class="bg-primary/10 text-primary text-[10px] font-black px-2 py-1 rounded">TIER 1 SOURCE</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-end">
+<span class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Probability</span>
+<span class="text-primary text-sm font-black tracking-tighter">85%</span>
+</div>
+<div class="w-full h-2.5 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full shadow-[0_0_8px_rgba(242,185,13,0.5)]" style="width: 85%"></div>
+</div>
+</div>
+<p class="mt-3 text-[11px] leading-relaxed text-slate-600 dark:text-slate-300 italic">"Personal terms agreed. Final fee structure being negotiated between clubs tonight."</p>
+</div>
+<!-- Rumor Card 2 -->
+<div class="bg-white dark:bg-[#2a2618] rounded-xl p-4 border border-gray-200 dark:border-primary/20 shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-lg bg-gray-100 dark:bg-white/5 flex items-center justify-center border border-gray-200 dark:border-white/10 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Neymar Jr portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADL_MICMIj9VBu2VoIzOgsT4GYsXYjzJ7W-S-vlHwV-sltL6g8ziOV3e0e3V7_dzwr72GhJSbdZ0HGtbRkFeIVJdEordoJrqhSQdehAfLU_KO4qaQp5FQnkk6lxPKsIc2glwyxW6b-HCjT65NJBbaHchdOtO7fjeGqrj8FZYBQ0hV8VVoinR0TRJCTbDwHMeNpbareTzuNaNhY8jwhyroCceXevIOYkZHPPAMcEvvJ4fxxWu6bJDYFRAQO0Vyk56ZEN5WnbOc2Klw"/>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-sm">Neymar Jr</h3>
+<p class="text-slate-500 dark:text-slate-400 text-[10px] uppercase font-bold tracking-wider">PSG <span class="material-symbols-outlined text-[8px] align-middle">trending_flat</span> Al-Hilal</p>
+</div>
+</div>
+<div class="bg-gray-100 dark:bg-white/5 text-slate-500 dark:text-slate-400 text-[10px] font-black px-2 py-1 rounded uppercase">Speculation</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-end">
+<span class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Probability</span>
+<span class="text-primary text-sm font-black tracking-tighter">42%</span>
+</div>
+<div class="w-full h-2.5 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 42%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- iOS Bottom Navigation -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-background-dark/95 backdrop-blur-xl border-t border-gray-200 dark:border-white/10 px-6 pb-6 pt-3 shadow-[0_-5px_20px_rgba(0,0,0,0.1)]">
+<div class="flex justify-between items-center max-w-md mx-auto">
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sync_alt</span>
+<span class="text-[10px] font-bold">Market</span>
+</button>
+<div class="relative -top-6">
+<button class="flex items-center justify-center bg-primary text-black h-14 w-14 rounded-full shadow-lg shadow-primary/30 border-4 border-white dark:border-background-dark">
+<span class="material-symbols-outlined text-[32px]">bolt</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">person_search</span>
+<span class="text-[10px] font-medium">Scout</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transfer Details &amp; Analysis | FootballHub+</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2b90d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#121212",
+                        "charcoal": "#1e1e1e",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Lexend', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
+        .pitch-gradient { background: radial-gradient(circle at center, #2a2a2a 0%, #121212 100%); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen pb-24">
+<!-- Top Navigation Bar -->
+<div class="sticky top-0 z-50 flex items-center bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md p-4 justify-between border-b border-white/10">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center">Transfer Intelligence</h2>
+<div class="flex w-10 items-center justify-end">
+<button class="flex cursor-pointer items-center justify-center text-primary">
+<span class="material-symbols-outlined">ios_share</span>
+</button>
+</div>
+</div>
+<!-- Hero Announcement Banner -->
+<div class="@container">
+<div class="px-0 @[480px]:px-4 py-0 @[480px]:py-3">
+<div class="relative bg-cover bg-center flex flex-col justify-end overflow-hidden bg-charcoal @[480px]:rounded-xl min-h-[400px]" data-alt="Professional football player celebrating in a new team jersey" style='background-image: linear-gradient(0deg, rgba(18, 18, 18, 1) 5%, rgba(18, 18, 18, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBDQR9ZveXLbtCl4Z7oI9-fbk2KdI4jwnkKHUInXK8PUno6ek1UWI_9Y7RjHLxnf91T_FtN_AuekUxeUnFRLTi4Egq2qOdIW6k3uuxw3NjG6ofIyEqlgPkt4q49nHCapd_5aotKfAaoB2SKTwkPn_czM6m2oSWS7wRhkJalFffERscVYtHKA3lBcwNatZVDL-SUO5uUiY53HA6ffMac0dRJBxscNbtlren5ZAYHqB3xOC48PXXDHFDzwYnZqjHhhoNmA5ZNqOl4LTI");'>
+<div class="absolute top-4 left-4 bg-primary text-background-dark font-black px-3 py-1 rounded text-sm tracking-tighter">
+                    DONE DEAL
+                </div>
+<div class="flex flex-col p-6">
+<h1 class="text-white text-4xl font-black leading-none uppercase tracking-tighter">Jude Bellingham</h1>
+<p class="text-primary text-sm font-medium mt-1">Real Madrid • 20 Years Old • Midfielder</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Contract Details Cards -->
+<div class="px-4 py-6">
+<h3 class="text-white text-xs font-bold uppercase tracking-widest mb-4 opacity-50">Contract Terms</h3>
+<div class="grid grid-cols-3 gap-3">
+<div class="bg-charcoal p-4 rounded-xl border border-white/5 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary mb-2 text-xl">payments</span>
+<span class="text-white text-lg font-bold">€103M</span>
+<span class="text-xs text-slate-400">Fixed Fee</span>
+</div>
+<div class="bg-charcoal p-4 rounded-xl border border-white/5 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary mb-2 text-xl">calendar_today</span>
+<span class="text-white text-lg font-bold">6 Years</span>
+<span class="text-xs text-slate-400">Duration</span>
+</div>
+<div class="bg-charcoal p-4 rounded-xl border border-white/5 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary mb-2 text-xl">account_balance_wallet</span>
+<span class="text-white text-lg font-bold">€20M</span>
+<span class="text-xs text-slate-400">Annual Wage</span>
+</div>
+</div>
+</div>
+<!-- Tactical Fit Section -->
+<div class="px-4 py-2">
+<div class="bg-charcoal rounded-2xl overflow-hidden border border-white/5">
+<div class="p-4 flex justify-between items-center border-b border-white/5">
+<h3 class="text-white font-bold">Tactical Fit Analysis</h3>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded">System: 4-3-3</span>
+</div>
+<div class="pitch-gradient h-64 relative overflow-hidden flex items-center justify-center">
+<!-- Mini Pitch Visualization -->
+<div class="absolute inset-0 border-[1px] border-white/10 m-6 rounded-lg">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-12 border-b border-x border-white/10"></div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-12 border-t border-x border-white/10"></div>
+<div class="absolute top-1/2 w-full h-[1px] bg-white/10"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 border border-white/10 rounded-full"></div>
+</div>
+<!-- Player Position Marker -->
+<div class="relative z-10 flex flex-col items-center -mt-8 ml-16">
+<div class="w-4 h-4 bg-primary rounded-full shadow-[0_0_15px_rgba(242,185,13,0.8)] animate-pulse"></div>
+<span class="mt-2 text-[10px] font-bold text-white bg-black/60 px-2 py-0.5 rounded backdrop-blur-sm">CENTRAL MIDFIELD</span>
+</div>
+<!-- Teammate Ghost Markers -->
+<div class="absolute top-1/4 left-1/4 w-3 h-3 bg-white/20 rounded-full"></div>
+<div class="absolute top-1/4 right-1/4 w-3 h-3 bg-white/20 rounded-full"></div>
+<div class="absolute bottom-1/4 left-1/3 w-3 h-3 bg-white/20 rounded-full"></div>
+</div>
+<div class="p-4">
+<p class="text-slate-400 text-sm leading-relaxed">
+                    Bellingham projects to occupy the <span class="text-primary font-medium">Box-to-Box role</span>. Data suggests his progressive carries will increase the team's transition speed by 14%.
+                </p>
+</div>
+</div>
+</div>
+<!-- Fan Reaction Poll -->
+<div class="px-4 py-6">
+<div class="bg-primary/5 rounded-2xl p-5 border border-primary/20">
+<h3 class="text-white font-bold mb-1">Fan Sentiment Poll</h3>
+<p class="text-slate-400 text-xs mb-4">How do you rate this signing?</p>
+<div class="space-y-4">
+<div class="relative">
+<div class="flex justify-between text-sm mb-1">
+<span class="text-white font-medium">Masterclass</span>
+<span class="text-primary font-bold">82%</span>
+</div>
+<div class="w-full bg-charcoal h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[82%]"></div>
+</div>
+</div>
+<div class="relative">
+<div class="flex justify-between text-sm mb-1">
+<span class="text-white font-medium">Fair Value</span>
+<span class="text-primary font-bold">15%</span>
+</div>
+<div class="w-full bg-charcoal h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[15%]"></div>
+</div>
+</div>
+<div class="relative">
+<div class="flex justify-between text-sm mb-1">
+<span class="text-white font-medium">Overpriced</span>
+<span class="text-primary font-bold">3%</span>
+</div>
+<div class="w-full bg-charcoal h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[3%]"></div>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 bg-primary text-background-dark font-bold py-3 rounded-xl flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">how_to_vote</span>
+                Cast Your Vote
+            </button>
+</div>
+</div>
+<!-- iOS Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-0 right-0 glass border-t border-white/10 px-6 py-3 flex justify-between items-center z-50">
+<div class="flex flex-col items-center gap-1 opacity-50 cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Feed</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-50 cursor-pointer">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-medium">Market</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary cursor-pointer">
+<span class="material-symbols-outlined fill-1">insights</span>
+<span class="text-[10px] font-bold">Analysis</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-50 cursor-pointer">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-[10px] font-medium">Alerts</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-50 cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</div>
+</div>
+</body></html>

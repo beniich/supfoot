@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FootballHub+ Notification Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2d00d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#181711", // Deep charcoal from example
+                        "surface-dark": "#22201a", // Slightly lighter for cards
+                        "secondary-text": "#bab59c",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for cleaner mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased overflow-x-hidden">
+<div class="relative flex flex-col min-h-screen w-full max-w-md mx-auto shadow-2xl overflow-hidden bg-background-light dark:bg-background-dark">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-4 py-3 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-black/5 dark:border-white/5">
+<h2 class="text-xl font-bold leading-tight tracking-tight flex-1">Notifications</h2>
+<button class="flex items-center justify-end hover:opacity-80 transition-opacity">
+<p class="text-secondary-text text-sm font-bold leading-normal tracking-wide">Mark all read</p>
+</button>
+</header>
+<!-- Segmented Control -->
+<div class="px-4 py-4 bg-background-light dark:bg-background-dark">
+<div class="flex h-10 w-full items-center justify-center rounded-lg bg-gray-200 dark:bg-[#393728] p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-[0.35rem] px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-sm transition-all duration-200 group">
+<span class="text-gray-500 dark:text-secondary-text text-sm font-medium group-has-[:checked]:text-primary dark:group-has-[:checked]:text-primary">All</span>
+<input checked="" class="invisible w-0 h-0 absolute" name="filter" type="radio" value="All"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-[0.35rem] px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-sm transition-all duration-200 group">
+<span class="text-gray-500 dark:text-secondary-text text-sm font-medium group-has-[:checked]:text-primary dark:group-has-[:checked]:text-primary">Unread</span>
+<input class="invisible w-0 h-0 absolute" name="filter" type="radio" value="Unread"/>
+</label>
+</div>
+</div>
+<!-- Notification List -->
+<div class="flex-1 overflow-y-auto pb-24">
+<!-- Section: Today -->
+<div class="sticky top-[72px] z-10 bg-background-light dark:bg-background-dark">
+<h3 class="text-gray-800 dark:text-white text-base font-bold leading-tight px-4 pb-2 pt-2">Today</h3>
+</div>
+<!-- Item: Match Alert (Unread) -->
+<div class="group relative flex items-start gap-4 px-4 py-4 border-b border-gray-100 dark:border-white/5 bg-white dark:bg-[#1f1e16] hover:bg-gray-50 dark:hover:bg-[#2a281f] transition-colors">
+<!-- Unread Indicator -->
+<div class="absolute left-0 top-6 h-2 w-1 rounded-r-full bg-primary shadow-[0_0_8px_rgba(242,208,13,0.6)]"></div>
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-100 dark:bg-[#393728] text-gray-900 dark:text-white">
+<span class="material-symbols-outlined !text-[24px]">sports_soccer</span>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex justify-between items-start">
+<p class="text-gray-900 dark:text-white text-sm font-semibold leading-tight line-clamp-1">Man City 2 - 1 Liverpool</p>
+<span class="text-secondary-text text-xs whitespace-nowrap ml-2">2m ago</span>
+</div>
+<p class="text-gray-600 dark:text-secondary-text text-sm leading-normal line-clamp-2">
+<span class="text-primary font-medium">Goal!</span> Julian Alvarez (88') hammers it into the top corner!
+                    </p>
+</div>
+</div>
+<!-- Item: AI Prediction (Unread) -->
+<div class="group relative flex items-start gap-4 px-4 py-4 border-b border-gray-100 dark:border-white/5 bg-white dark:bg-[#1f1e16] hover:bg-gray-50 dark:hover:bg-[#2a281f] transition-colors">
+<!-- Unread Indicator -->
+<div class="absolute left-0 top-6 h-2 w-1 rounded-r-full bg-primary shadow-[0_0_8px_rgba(242,208,13,0.6)]"></div>
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 text-primary">
+<span class="material-symbols-outlined !text-[24px] fill-1">smart_toy</span>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex justify-between items-start">
+<p class="text-gray-900 dark:text-white text-sm font-semibold leading-tight line-clamp-1">Real Madrid vs. Barcelona</p>
+<span class="text-secondary-text text-xs whitespace-nowrap ml-2">2h ago</span>
+</div>
+<p class="text-gray-600 dark:text-secondary-text text-sm leading-normal line-clamp-2">
+                        New AI prediction available. High confidence on Over 2.5 Goals.
+                    </p>
+</div>
+</div>
+<!-- Section: Yesterday -->
+<div class="sticky top-[72px] z-10 bg-background-light dark:bg-background-dark">
+<h3 class="text-gray-800 dark:text-white text-base font-bold leading-tight px-4 pb-2 pt-6">Yesterday</h3>
+</div>
+<!-- Item: Store Update (Read) -->
+<div class="group relative flex items-start gap-4 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-[#1f1e16] transition-colors">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-100 dark:bg-[#393728] text-gray-900 dark:text-white">
+<span class="material-symbols-outlined !text-[24px]">shopping_bag</span>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex justify-between items-start">
+<p class="text-gray-900 dark:text-white text-sm font-semibold leading-tight line-clamp-1">Flash Sale: 2024 Kits</p>
+<span class="text-secondary-text text-xs whitespace-nowrap ml-2">1d ago</span>
+</div>
+<p class="text-gray-600 dark:text-secondary-text text-sm leading-normal line-clamp-2 pr-12">
+                        Get 20% off all new season jerseys. Limited time offer for premium members.
+                    </p>
+</div>
+<!-- Product Thumbnail -->
+<div class="absolute right-4 top-4 h-12 w-12 rounded-lg bg-gray-800 overflow-hidden border border-white/10">
+<img alt="Soccer jersey thumbnail" class="h-full w-full object-cover opacity-80" data-alt="Close up of a red soccer jersey fabric texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-wDuUfOU6nu5-lyBVpyjQIgOXMCSK2LT4lERinDOpvCW6AfEh4KU734wNN0902VZoKSYGQUITEZK-HxS-7vjEcJ6rTOBIc-EkJtKEqKMXD8qxC-KHKIDGBmYUVZLNxPakpQRvV13ovI03HRzKvx7Okz9cKPGmrktdF-zNQumu5jfZrdDm_DhxiADaGJT68H0Ujj9wz8_OhVHk_pk5ULnkTp7YThAkbXVQIJnUV0uhBwt2MzPJ1dvqVuBGi5g1U1jH8U3qJ2QfQn8"/>
+</div>
+</div>
+<!-- Item: System Update (Read) -->
+<div class="group relative flex items-start gap-4 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-[#1f1e16] transition-colors">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-100 dark:bg-[#393728] text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined !text-[24px]">settings</span>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex justify-between items-start">
+<p class="text-gray-900 dark:text-white text-sm font-semibold leading-tight line-clamp-1">Subscription Renewed</p>
+<span class="text-secondary-text text-xs whitespace-nowrap ml-2">1d ago</span>
+</div>
+<p class="text-gray-600 dark:text-secondary-text text-sm leading-normal line-clamp-2">
+                        Your FootballHub+ Premium subscription was successfully renewed.
+                    </p>
+</div>
+</div>
+<!-- Item: Match Alert (Read) -->
+<div class="group relative flex items-start gap-4 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-[#1f1e16] transition-colors">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-100 dark:bg-[#393728] text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined !text-[24px]">sports_soccer</span>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex justify-between items-start">
+<p class="text-gray-900 dark:text-white text-sm font-semibold leading-tight line-clamp-1">Arsenal 1 - 0 Chelsea</p>
+<span class="text-secondary-text text-xs whitespace-nowrap ml-2">1d ago</span>
+</div>
+<p class="text-gray-600 dark:text-secondary-text text-sm leading-normal line-clamp-2">
+                        Full time stats are now available for review.
+                    </p>
+</div>
+</div>
+<!-- Loading / End of list state -->
+<div class="p-8 flex flex-col items-center justify-center opacity-40">
+<div class="w-1 h-1 bg-white rounded-full mb-1"></div>
+<div class="w-1 h-1 bg-white rounded-full mb-1"></div>
+<div class="w-1 h-1 bg-white rounded-full"></div>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 w-full max-w-md bg-white dark:bg-[#181711] border-t border-gray-200 dark:border-white/5 pb-5 pt-3 px-6 z-50">
+<div class="flex justify-between items-center">
+<button class="flex flex-col items-center justify-center gap-1 w-16 group">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">home</span>
+<span class="text-[10px] font-medium text-gray-400 group-hover:text-primary transition-colors">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 w-16 group">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">scoreboard</span>
+<span class="text-[10px] font-medium text-gray-400 group-hover:text-primary transition-colors">Matches</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 w-16 group">
+<div class="relative">
+<span class="material-symbols-outlined text-primary font-bold">notifications</span>
+<div class="absolute top-0 right-0 h-2 w-2 rounded-full bg-primary border-2 border-background-dark"></div>
+</div>
+<span class="text-[10px] font-medium text-primary">Alerts</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 w-16 group">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">person</span>
+<span class="text-[10px] font-medium text-gray-400 group-hover:text-primary transition-colors">Profile</span>
+</button>
+</div>
+</nav>
+</div>
+</body></html>

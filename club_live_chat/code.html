@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Club Live Chat</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2cc0d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221f10",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for clean look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(34, 31, 16, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased selection:bg-primary selection:text-black overflow-hidden h-screen w-full flex flex-col">
+<!-- Background Watermark -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
+<div class="w-[80vw] h-[80vw] opacity-[0.03] dark:opacity-[0.04] bg-contain bg-center bg-no-repeat grayscale" data-alt="Raja CA Club Crest Watermark" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBAvCu_6Ses2GB6AXfBPABihr86kwEMaUwO6eQ2tVMT_yxit86mH4qzAHBZdn2kiyHEjJQ_x19VFX9CONfU6vCTAXcDiwnuHb1oKLf0W0OgQx748OAr7PswPnTpp1jNQxDrKTsODXqSwcHXrywY1MhPHG9x_N4mPJkmwOFQ3SviykwCAOaevtEtACQPOQOAyltgJoq-mwypDfCO6znJlfl_Q1GZuROSLOHMXLgj8DYxynkJd42ThdpakujOnW7FdFZ8b6NrguuuSBo");'>
+</div>
+</div>
+<!-- Header -->
+<header class="relative z-30 flex items-center justify-between p-4 pt-6 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-gray-200 dark:border-white/5 shadow-sm">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl text-slate-700 dark:text-white">chevron_left</span>
+</button>
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-contain bg-white rounded-full size-10 border border-gray-200 dark:border-white/10 shadow-inner" data-alt="Raja CA Club Logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAJ6Z875IIozwchyR7IG01uDaLbPVcD78NCVdPHsx8rgBbQqs5BnJS2xZjjnAhAAAg4OfP0YkRjRgsFpTig7aaT7fW2Euhs0CjxYKVjZVYHzEiIRejT0xBfmuyPF4Hvjp3fqf6fHSPkoqrgx0ZsV6WjIwq6L6J8kgFlK019zufvzPsOlOD4OD3-xrIHR0WwRHct5Q6nkK1g_FuY3cZA-czyd3lfCWw7XBwBaqpSmlK0IeAlNmdlqOYZ79QDSIR0cVGCHvNjTtAj38s");'>
+</div>
+<div class="absolute -bottom-0.5 -right-0.5 size-3 bg-green-500 rounded-full border-2 border-background-light dark:border-background-dark animate-pulse"></div>
+</div>
+<div class="flex flex-col">
+<h2 class="text-base font-bold leading-tight tracking-tight text-slate-900 dark:text-white">Raja CA</h2>
+<p class="text-xs font-normal text-slate-500 dark:text-gray-400">1,245 Online</p>
+</div>
+</div>
+</div>
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-slate-700 dark:text-white">
+<span class="material-symbols-outlined text-2xl">info</span>
+</button>
+</header>
+<!-- Chat Area -->
+<main class="flex-1 overflow-y-auto overflow-x-hidden p-4 pb-0 z-10 flex flex-col gap-6 w-full max-w-2xl mx-auto scroll-smooth no-scrollbar">
+<!-- Date Divider -->
+<div class="flex justify-center py-2">
+<span class="bg-gray-200 dark:bg-white/10 text-slate-600 dark:text-gray-400 text-[11px] font-medium px-3 py-1 rounded-full uppercase tracking-wider">Today, Match Day 14</span>
+</div>
+<!-- System Message -->
+<div class="flex justify-center">
+<div class="bg-primary/10 border border-primary/20 p-3 rounded-xl text-center max-w-[85%]">
+<p class="text-xs text-primary font-medium">👋 Welcome to the official match day chat! Please keep the conversation respectful.</p>
+</div>
+</div>
+<!-- SingleMessage: User A -->
+<div class="flex items-end gap-3 group">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 shrink-0 bg-gray-700" data-alt="User Avatar Yassine" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBUp95RVDnewRG_gil9GRY0TG0omNcSrOHAZYe0EsM2B5oboLTn1an7ejgQsUnD0lPpTe18HQlID9bisL2-ayuS9tEgog7jLYERZHyolrte4Wk0PMr6m5cbrzAlBX9wtdKS_w7rt5E4n9pIzUHC_IrEU2GBVPqUrcKepT5tT5X8ZQvuiiozt9wYQv1vB4AWYjZkwS_nF9_zi1BaOA8wgX-KtArsGtRCY6Kvcq6mAx-sGd7MBfM9FdPnqP46fRhFJiusBLRDCbQVwz8");'></div>
+<div class="flex flex-col gap-1 items-start max-w-[75%]">
+<div class="flex items-baseline gap-2 pl-1">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-medium">Yassine</p>
+</div>
+<div class="p-3 bg-white dark:bg-[#393628] rounded-2xl rounded-bl-none text-sm text-slate-800 dark:text-gray-100 shadow-sm leading-relaxed">
+                    Can't believe that tackle! Ref is blind. Where is the VAR?!
+                </div>
+<p class="text-[10px] text-gray-400 pl-1 opacity-0 group-hover:opacity-100 transition-opacity">10:42 AM</p>
+</div>
+</div>
+<!-- SingleMessage: User B (Premium) -->
+<div class="flex items-end gap-3 group">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 shrink-0 bg-gray-700 ring-2 ring-primary/40" data-alt="User Avatar Karim" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD4Pz9ofQF2RmuHEfHDVgNT2_CaDFHLDY_3c7L44SAd_U0hOU-xMUWb_D7QdJy3r6oE7LNylzJcv7sH6cDe3rm-iWJxq07UGq2JKJ5iyk-ZE4WzrUaXWY3xeQXVRvHyMe2zMaAwoL8PNfFLsyfJerXcY0j_zPOIpelvi-ku8qaeFumlGBEjUkwhqhYjsDa9NSFFbtOx7hKTEzkfLUDx_JJ2DLdMBwYAfDr9xL2QJBwFh6ToRBG5T3Jxv-7LKCzgdhvpzjvWhqJxOBg");'></div>
+<div class="flex flex-col gap-1 items-start max-w-[75%]">
+<div class="flex items-center gap-1 pl-1">
+<p class="text-primary text-xs font-semibold">Karim</p>
+<span class="material-symbols-outlined text-[14px] text-primary" title="Club Insider">verified</span>
+<span class="text-[10px] text-primary/60 bg-primary/10 px-1.5 py-0.5 rounded ml-1 font-bold tracking-wide">INSIDER</span>
+</div>
+<div class="p-3 bg-gradient-to-br from-[#393628] to-[#454130] dark:from-[#393628] dark:to-[#2d2a1f] border border-primary/20 rounded-2xl rounded-bl-none text-sm text-gray-100 shadow-sm leading-relaxed">
+                    Just heard from the sideline. Coach is prepping a double sub for the second half. Changing to 4-3-3. 🦅
+                </div>
+<p class="text-[10px] text-gray-400 pl-1 opacity-0 group-hover:opacity-100 transition-opacity">10:44 AM</p>
+</div>
+</div>
+<!-- SingleMessage: Self -->
+<div class="flex items-end gap-3 justify-end group">
+<div class="flex flex-col gap-1 items-end max-w-[75%]">
+<div class="p-3 bg-primary text-black rounded-2xl rounded-br-none text-sm font-medium shadow-md leading-relaxed">
+                    Let's go team! 🦅 We need a goal now.
+                </div>
+<div class="flex items-center gap-1 pr-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<p class="text-[10px] text-gray-400">10:45 AM</p>
+<span class="material-symbols-outlined text-[12px] text-primary">done_all</span>
+</div>
+</div>
+</div>
+<!-- SingleMessage: User C -->
+<div class="flex items-end gap-3 group">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 shrink-0 bg-gray-700" data-alt="User Avatar Sarah" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCMnvvPQn7Tjz7yvomr4LsrFeubfpFlSibiUP_8TIMGC6BNH-z-OY7bSsacf88ZXKCuDIc77TkdxrrmVmU5NKfkeGpoGbUT6ZgmCj3PfkrZI1krs65serVudM4Ta1DYrSWlTkpQwz3l0dUfj-8PnNdRiQrvIn9453M7Vf0lTs7xP3v-8zxWvCiMFx8ynMvHAmQBe_nImbfB3qMYXi5YGn9r5y37aQaIpVHA-42mHJOJrDX-v93AVDhejGjjAmcRkuK7TBFphOfdvNI");'></div>
+<div class="flex flex-col gap-1 items-start max-w-[75%]">
+<div class="flex items-baseline gap-2 pl-1">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-medium">Sarah</p>
+</div>
+<div class="p-3 bg-white dark:bg-[#393628] rounded-2xl rounded-bl-none text-sm text-slate-800 dark:text-gray-100 shadow-sm leading-relaxed">
+                    Anyone see if Ziyech is warming up?
+                </div>
+</div>
+</div>
+<!-- Spacer for bottom elements -->
+<div class="h-[180px]"></div>
+</main>
+<!-- Bottom Interactive Area -->
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-t from-background-light via-background-light to-transparent dark:from-background-dark dark:via-background-dark dark:to-transparent pt-8">
+<!-- Reaction Bar -->
+<div class="flex gap-3 overflow-x-auto px-4 pb-3 no-scrollbar mask-gradient">
+<button class="flex shrink-0 items-center gap-1.5 px-4 py-2 bg-white dark:bg-white/10 rounded-full border border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/20 transition-all active:scale-95 shadow-sm">
+<span class="text-lg">🔥</span>
+<span class="text-xs font-bold text-slate-700 dark:text-white">On Fire</span>
+</button>
+<button class="flex shrink-0 items-center gap-1.5 px-4 py-2 bg-white dark:bg-white/10 rounded-full border border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/20 transition-all active:scale-95 shadow-sm">
+<span class="text-lg">🦅</span>
+<span class="text-xs font-bold text-slate-700 dark:text-white">Dima Raja</span>
+</button>
+<button class="flex shrink-0 items-center gap-1.5 px-4 py-2 bg-white dark:bg-white/10 rounded-full border border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/20 transition-all active:scale-95 shadow-sm">
+<span class="text-lg">⚽️</span>
+<span class="text-xs font-bold text-slate-700 dark:text-white">Goal!</span>
+</button>
+<button class="flex shrink-0 items-center gap-1.5 px-4 py-2 bg-white dark:bg-white/10 rounded-full border border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/20 transition-all active:scale-95 shadow-sm">
+<span class="text-lg">🟥</span>
+<span class="text-xs font-bold text-slate-700 dark:text-white">Red Card</span>
+</button>
+</div>
+<!-- Input Area -->
+<div class="px-4 pb-4">
+<div class="flex items-end gap-2 bg-white dark:bg-[#1a180e] p-2 rounded-[24px] border border-gray-200 dark:border-white/10 shadow-lg ring-1 ring-black/5 dark:ring-white/5">
+<button class="p-2 text-gray-400 hover:text-primary transition-colors rounded-full shrink-0">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<textarea class="w-full bg-transparent border-none text-slate-800 dark:text-white placeholder-gray-500 focus:ring-0 text-sm py-3 resize-none max-h-24 font-normal" placeholder="Say something..." rows="1"></textarea>
+<button class="p-2 text-gray-400 hover:text-primary transition-colors rounded-full shrink-0">
+<span class="material-symbols-outlined text-[24px]">mood</span>
+</button>
+<button class="size-10 flex items-center justify-center bg-primary hover:bg-yellow-400 text-black rounded-full shadow-md transition-all active:scale-90 shrink-0">
+<span class="material-symbols-outlined text-[20px] font-bold">send</span>
+</button>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<div class="bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-white/5 pb-6 pt-2 px-2">
+<nav class="flex justify-around items-center">
+<a class="flex flex-col items-center gap-1 p-2 w-16 text-gray-400 hover:text-slate-600 dark:hover:text-gray-200 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 w-16 text-gray-400 hover:text-slate-600 dark:hover:text-gray-200 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">sports_soccer</span>
+<span class="text-[10px] font-medium">Matches</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 w-16 text-primary transition-colors relative" href="#">
+<div class="absolute top-1 right-3 size-2 bg-red-500 rounded-full ring-2 ring-background-light dark:ring-background-dark"></div>
+<span class="material-symbols-outlined text-2xl fill-1">chat_bubble</span>
+<span class="text-[10px] font-bold">Chat</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 w-16 text-gray-400 hover:text-slate-600 dark:hover:text-gray-200 transition-colors" href="#">
+<div class="size-6 rounded-full bg-gray-300 bg-cover bg-center" data-alt="My Profile Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0Py8tKssUeWB60kGxwLEpPieEbodXA4OrRp2nTGzCPoxQQGPRDoUN256EzOuyfjbO7VVo9BxIzk9K0Bm6jThITiBsaW7UqxUwpFT21GomvmlaN74vImcJVHz08TvMa-9YcjyAnyN1pRenpEIGYV4Ntu-rT-GvD-Z3Stl1gGljbnKqvMkYVSsPDFdPn1_0__uCeQgSt8gBxNomcd5ga8zBRf8iqICibCk_hbItNTW8i2rlO7HckgRo8SS5E5doZLplSTClWqONpBc");'></div>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</nav>
+</div>
+</div>
+</body></html>

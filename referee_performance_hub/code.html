@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Referee Performance Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2b90d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#181611",
+                        "card-dark": "#27241b",
+                        "surface-dark": "#393528",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white">
+<!-- Top Navigation Bar -->
+<div class="fixed top-0 left-0 right-0 z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Referee Hub</h2>
+<div class="flex w-10 items-center justify-end">
+<button class="flex size-10 items-center justify-center rounded-full bg-surface-dark/20 text-primary">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<main class="pt-16 pb-24">
+<!-- Search Section -->
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm">
+<div class="text-[#bab29c] flex border-none bg-background-light dark:bg-surface-dark items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-gray-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-background-light dark:bg-surface-dark focus:border-none h-full placeholder:text-[#bab29c] px-4 pl-2 text-base font-normal leading-normal" placeholder="Search officials..."/>
+</div>
+</label>
+</div>
+<!-- Featured Referee: Referee of the Month -->
+<div class="p-4 @container">
+<div class="relative overflow-hidden flex flex-col items-stretch justify-start rounded-xl shadow-xl bg-card-dark border border-primary/20">
+<div class="absolute top-3 right-3 z-10 bg-primary px-3 py-1 rounded-full flex items-center gap-1 shadow-lg">
+<span class="material-symbols-outlined text-[16px] text-background-dark">workspace_premium</span>
+<span class="text-background-dark text-[10px] font-bold uppercase tracking-wider">Gold Badge</span>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-[16/9] bg-cover" data-alt="Close up professional portrait of a football referee on field" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAeSNPJPJA3Ub_XCadDUKUQiWJ-cU2vmem2SkY-mCURODaWvBPCZYzXZvOaBqW1iTEjLJ_WZnBmUybz8zGf2c0AIM7zW8cWnrxZF4kcfdFPduzOkY3ISg4G232I3CyLfRJE32epsld4wzTnfGW03pcMef6Pt8RbSkhMOHCWY8LlWGVP77fZBsNWl9Ougxp2AYEijD-ppeUVX5HtPwYH73XXIUWgMLnGF0p47a-gcoe_bktgHPjfgdOaCJgWwjpD0FBhV8DnLwmr1Ik");'>
+<div class="w-full h-full bg-gradient-to-t from-card-dark via-transparent to-transparent"></div>
+</div>
+<div class="flex w-full grow flex-col items-stretch justify-center gap-1 py-4 px-5 -mt-8 relative z-10">
+<p class="text-primary text-xs font-bold leading-normal tracking-widest uppercase">Referee of the Month</p>
+<p class="text-white text-2xl font-bold leading-tight tracking-[-0.015em]">Victor Gomes</p>
+<div class="flex items-center gap-3 justify-between mt-2">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5">
+<span class="text-primary font-bold text-lg">98.5%</span>
+<p class="text-[#bab29c] text-xs font-medium uppercase tracking-tighter">Fairness &amp; Accuracy</p>
+</div>
+<p class="text-[#bab29c]/80 text-[10px]">Top performer in the Premier League (Oct)</p>
+</div>
+<button class="flex h-9 px-4 bg-primary text-background-dark rounded-lg items-center justify-center font-bold text-sm shadow-md active:scale-95 transition-transform">
+                            Details
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- League Averages Section -->
+<div class="mt-2">
+<h3 class="text-gray-900 dark:text-white text-sm font-bold leading-tight tracking-widest uppercase px-4 pb-2">League Metrics</h3>
+<div class="flex gap-3 px-4 pb-4 overflow-x-auto no-scrollbar">
+<div class="flex h-12 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-surface-dark px-4 border border-white/5">
+<span class="material-symbols-outlined text-yellow-400 text-sm">square</span>
+<p class="text-white text-sm font-medium leading-normal whitespace-nowrap">3.2 <span class="text-white/50 text-xs font-normal">/gm</span></p>
+</div>
+<div class="flex h-12 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-surface-dark px-4 border border-white/5">
+<span class="material-symbols-outlined text-red-500 text-sm">square</span>
+<p class="text-white text-sm font-medium leading-normal whitespace-nowrap">0.15 <span class="text-white/50 text-xs font-normal">/gm</span></p>
+</div>
+<div class="flex h-12 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-surface-dark px-4 border border-white/5">
+<span class="material-symbols-outlined text-primary text-sm">video_settings</span>
+<p class="text-white text-sm font-medium leading-normal whitespace-nowrap">12% <span class="text-white/50 text-xs font-normal">VAR Corr</span></p>
+</div>
+<div class="flex h-12 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-surface-dark px-4 border border-white/5">
+<span class="material-symbols-outlined text-green-400 text-sm">sports_handball</span>
+<p class="text-white text-sm font-medium leading-normal whitespace-nowrap">0.4 <span class="text-white/50 text-xs font-normal">Pens</span></p>
+</div>
+</div>
+</div>
+<!-- Detailed List Header -->
+<div class="flex items-center justify-between px-4 pt-4 pb-2">
+<h3 class="text-gray-900 dark:text-white text-sm font-bold leading-tight tracking-widest uppercase">Performance Rankings</h3>
+<button class="text-primary text-xs font-bold flex items-center gap-1">
+                Filters <span class="material-symbols-outlined text-[14px]">filter_list</span>
+</button>
+</div>
+<!-- Referee List -->
+<div class="flex flex-col gap-3 px-4">
+<!-- Referee Item 1 -->
+<div class="bg-card-dark rounded-xl p-4 border border-white/5 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-full bg-center bg-cover bg-surface-dark ring-2 ring-primary/20" data-alt="Profile photo of referee Szymon Marciniak" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB3VCBQpgu_NG1bBIL3Z2M5M5HveoO6uui5nfI0Q6iPYtemiETez9kZOIMyDtfxoDPELcuKCfGRScz2Ibu71II77RqpY4p8cChMHfXFjFqx5ECMS8hXcB_dzuIqzvND9IQGaJUlivjtUDN5VU2_8XjXaYYZQuJGDhrEKRe16uUDHq3n9vQwOH3CtuFQwwmPWEkvhAbfoDUgouDbbguxe2Rzwwcnrct2h70t-Dxa9kFKMwK4DC-7OybKHzdO8Ev8eNwB2vmR9o19V54');"></div>
+<div>
+<p class="text-white font-bold text-base leading-tight">Szymon Marciniak</p>
+<p class="text-[#bab29c] text-xs">UEFA Elite Referee</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-primary font-bold text-lg leading-none">98.2%</p>
+<p class="text-[#bab29c] text-[10px] uppercase font-bold">VAR Acc.</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="bg-surface-dark/40 rounded-lg p-2 flex flex-col items-center">
+<p class="text-[10px] text-[#bab29c] uppercase font-medium">Games</p>
+<p class="text-white font-bold text-sm">18</p>
+</div>
+<div class="bg-surface-dark/40 rounded-lg p-2 flex flex-col items-center">
+<p class="text-[10px] text-[#bab29c] uppercase font-medium">Cards/gm</p>
+<p class="text-white font-bold text-sm">4.1</p>
+</div>
+<div class="bg-surface-dark/40 rounded-lg p-2 flex flex-col items-center overflow-hidden">
+<p class="text-[10px] text-[#bab29c] uppercase font-medium">Trend</p>
+<div class="w-full h-4 mt-1 flex items-end justify-center gap-0.5">
+<div class="w-1.5 h-2 bg-primary/40 rounded-t-sm"></div>
+<div class="w-1.5 h-3 bg-primary/60 rounded-t-sm"></div>
+<div class="w-1.5 h-2 bg-primary/40 rounded-t-sm"></div>
+<div class="w-1.5 h-4 bg-primary rounded-t-sm"></div>
+<div class="w-1.5 h-3 bg-primary/80 rounded-t-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Referee Item 2 -->
+<div class="bg-card-dark rounded-xl p-4 border border-white/5 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-full bg-center bg-cover bg-surface-dark ring-2 ring-primary/20" data-alt="Profile photo of referee Michael Oliver" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDTE7c8ZsXUekHx--1eBqgXMDbskNqwTh4HE4Mi9VqxZv25J2CU9AI5Vt_E87VnYp69alON8XxTQiUpXCezQVOeebTEqRMTQREpznixMYoFXvMrtB3io1qrVG2QN3M7unApkSITWzUuakDTKD_P8p49D7CcCitwz2Ruh20GUuW2ZUc2wfSyV4vzgvnl9STjOtzW1pCvk4u-SykaVEZTARSlV924BvdGp6sIPbhw28HKEGHg5omk15E5OIuT3FxcKzmrBAaBPhUMZrc');"></div>
+<div>
+<p class="text-white font-bold text-base leading-tight">Michael Oliver</p>
+<p class="text-[#bab29c] text-xs">Premier League</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-primary font-bold text-lg leading-none">94.8%</p>
+<p class="text-[#bab29c] text-[10px] uppercase font-bold">VAR Acc.</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="bg-surface-dark/40 rounded-lg p-2 flex flex-col items-center">
+<p class="text-[10px] text-[#bab29c] uppercase font-medium">Games</p>
+<p class="text-white font-bold text-sm">22</p>
+</div>
+<div class="bg-surface-dark/40 rounded-lg p-2 flex flex-col items-center">
+<p class="text-[10px] text-[#bab29c] uppercase font-medium">Cards/gm</p>
+<p class="text-white font-bold text-sm">3.8</p>
+</div>
+<div class="bg-surface-dark/40 rounded-lg p-2 flex flex-col items-center overflow-hidden">
+<p class="text-[10px] text-[#bab29c] uppercase font-medium">Trend</p>
+<div class="w-full h-4 mt-1 flex items-end justify-center gap-0.5">
+<div class="w-1.5 h-4 bg-primary rounded-t-sm"></div>
+<div class="w-1.5 h-3 bg-primary/70 rounded-t-sm"></div>
+<div class="w-1.5 h-3.5 bg-primary/90 rounded-t-sm"></div>
+<div class="w-1.5 h-2 bg-primary/40 rounded-t-sm"></div>
+<div class="w-1.5 h-2.5 bg-primary/60 rounded-t-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Referee Item 3 -->
+<div class="bg-card-dark rounded-xl p-4 border border-white/5 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-full bg-center bg-cover bg-surface-dark ring-2 ring-primary/20" data-alt="Profile photo of referee Stephanie Frappart" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDFF19O8bVBZIdesl0JoSzC8PPXpPh8ctjq3zG_Kg62-U_raVF_xvkSN3WDiZFlAx3gGZnBWoGqBx2LQfB_fQ9iKlzihe8E7XiCKu9SsKrXWWinXquT38-2J1C-iIpm2EvPQZuBvMCiPvedsJchs9xZuZYTBztRCSkdaGZBtOOBmDVYTvuKNV6VV0oOpaNQbTsNq4UbuUo8LIrPDw_BLENb9rtxWm8ST7y2RE7xfgP3pE2M6y_dxvbqutQJxuW0YjKDlp4LxUgLKlc');"></div>
+<div>
+<p class="text-white font-bold text-base leading-tight">Stephanie Frappart</p>
+<p class="text-[#bab29c] text-xs">Ligue 1</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-primary font-bold text-lg leading-none">96.1%</p>
+<p class="text-[#bab29c] text-[10px] uppercase font-bold">VAR Acc.</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="bg-surface-dark/40 rounded-lg p-2 flex flex-col items-center">
+<p class="text-[10px] text-[#bab29c] uppercase font-medium">Games</p>
+<p class="text-white font-bold text-sm">15</p>
+</div>
+<div class="bg-surface-dark/40 rounded-lg p-2 flex flex-col items-center">
+<p class="text-[10px] text-[#bab29c] uppercase font-medium">Cards/gm</p>
+<p class="text-white font-bold text-sm">4.5</p>
+</div>
+<div class="bg-surface-dark/40 rounded-lg p-2 flex flex-col items-center overflow-hidden">
+<p class="text-[10px] text-[#bab29c] uppercase font-medium">Trend</p>
+<div class="w-full h-4 mt-1 flex items-end justify-center gap-0.5">
+<div class="w-1.5 h-2 bg-primary/40 rounded-t-sm"></div>
+<div class="w-1.5 h-2.5 bg-primary/50 rounded-t-sm"></div>
+<div class="w-1.5 h-3 bg-primary/70 rounded-t-sm"></div>
+<div class="w-1.5 h-3.5 bg-primary/90 rounded-t-sm"></div>
+<div class="w-1.5 h-4 bg-primary rounded-t-sm"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-gray-200 dark:border-white/5 pb-6">
+<div class="flex items-center justify-around h-16">
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">sports</span>
+<span class="text-[10px] font-bold">Referees</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="text-[10px] font-medium">Stats</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-[10px] font-medium">Alerts</span>
+</button>
+</div>
+</div>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

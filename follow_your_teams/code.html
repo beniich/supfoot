@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Follow Your Teams - FootballHub+</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2cc0d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221f10",
+                        "card-dark": "#2e2b1d", // Custom card color slightly lighter than bg
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar hiding for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col overflow-hidden text-[#111] dark:text-white antialiased transition-colors duration-200">
+<!-- Header & Progress -->
+<header class="px-5 pt-6 pb-2 flex items-center justify-between shrink-0 bg-background-light dark:bg-background-dark z-10">
+<!-- Page Indicators -->
+<div class="flex flex-row items-center gap-2">
+<!-- Step 1 (Completed) -->
+<div class="h-1.5 w-8 rounded-full bg-primary/40"></div>
+<!-- Step 2 (Active) -->
+<div class="h-1.5 w-8 rounded-full bg-primary shadow-[0_0_10px_rgba(242,204,13,0.3)]"></div>
+<!-- Step 3 -->
+<div class="h-1.5 w-8 rounded-full bg-gray-300 dark:bg-white/10"></div>
+<!-- Step 4 -->
+<div class="h-1.5 w-8 rounded-full bg-gray-300 dark:bg-white/10"></div>
+</div>
+<!-- Skip Button -->
+<button class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
+            Skip
+        </button>
+</header>
+<!-- Scrollable Content -->
+<main class="flex-1 overflow-y-auto no-scrollbar pb-24 px-5">
+<!-- Headlines -->
+<div class="py-4">
+<h1 class="text-3xl font-bold leading-tight tracking-tight mb-2 text-gray-900 dark:text-white">
+                Personalize Your Feed
+            </h1>
+<p class="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
+                Follow your favorite leagues and clubs to never miss a match.
+            </p>
+</div>
+<!-- Search Bar -->
+<div class="sticky top-0 z-30 pt-2 pb-4 bg-background-light dark:bg-background-dark/95 backdrop-blur-sm">
+<label class="relative flex w-full group">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="block w-full h-12 pl-12 pr-4 text-base rounded-xl border-none bg-white dark:bg-card-dark text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-primary/50 shadow-sm transition-all" placeholder="Search teams (e.g., Raja CA)..." type="text"/>
+</label>
+</div>
+<!-- Popular Leagues -->
+<div class="mt-2">
+<h2 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800 dark:text-gray-100">
+<span class="material-symbols-outlined text-primary text-[22px]">trophy</span>
+                Popular Leagues
+            </h2>
+<div class="grid grid-cols-2 gap-3">
+<!-- Selected League Card -->
+<button class="relative flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-card-dark border-2 border-primary shadow-[0_4px_12px_rgba(242,204,13,0.15)] transition-all transform active:scale-[0.98]">
+<div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center overflow-hidden shrink-0 border border-gray-100 dark:border-white/10">
+<img alt="Premier League Logo" class="w-full h-full object-cover" data-alt="Premier League logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjIrvDK0OGo_eoSFUJvKLTHdZfkggXTB11WIBIe7lgeB9HbSlEOXoHg_6PIZiA0cEc0niCditKKfBu_aubgz7XTQeBKZ7Pncje8Tj9XqeXHK7lsfaazNHyVrO83QvAO4-Z48UqT9YT9pyMewB_Cw1-IWB8qjobN6iDRpv9zzBgtqardpsSpva2eHqb5U2YiKw9ZqW9x7RhmZk6suAHVFpWSxV-r6g4pnnI11FZQTHH8cj-EIXxd4Os-Nuc7emGalAQD2uuTdQBHB8"/>
+</div>
+<div class="text-left flex-1 min-w-0">
+<p class="font-bold text-sm truncate text-gray-900 dark:text-white">Premier League</p>
+<p class="text-xs text-primary font-medium">Following</p>
+</div>
+<div class="absolute top-2 right-2 text-primary animate-in fade-in zoom-in duration-200">
+<span class="material-symbols-outlined text-[18px] icon-filled">check_circle</span>
+</div>
+</button>
+<!-- Unselected League Card -->
+<button class="relative flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-card-dark border-2 border-transparent hover:border-primary/30 transition-all transform active:scale-[0.98]">
+<div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center overflow-hidden shrink-0 border border-gray-100 dark:border-white/10">
+<img alt="Botola Pro Logo" class="w-full h-full object-cover" data-alt="Botola Pro logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpp-sfu0dc1vPpntZSIMuJ6U3iV_pLdS-f3XFySavDWuYR55R-trudMNFIW74kOE5m6egr3HHsACTHPMB1dxysAIYTFblmlofqVdVCy3XGRrfUMFpOetB9n-eLlz1egZ3OTOqjKgnt1FfApz4twE5mYHqIhdnDm8UpZwNvD6_IzMLNWxZI0xU9s_FtUsyGhSoQhO3cUv_w3IBemIu7xSrwFttXCRmImIQEDTSjuQSetwfSXC1ynowyIE8V5MFoqoCWu6d_q1pOBG0"/>
+</div>
+<div class="text-left flex-1 min-w-0">
+<p class="font-bold text-sm truncate text-gray-900 dark:text-white">Botola Pro</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Morocco</p>
+</div>
+<div class="absolute top-2 right-2 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</div>
+</button>
+<!-- Unselected League Card -->
+<button class="relative flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-card-dark border-2 border-transparent hover:border-primary/30 transition-all transform active:scale-[0.98]">
+<div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center overflow-hidden shrink-0 border border-gray-100 dark:border-white/10">
+<img alt="La Liga Logo" class="w-full h-full object-cover" data-alt="La Liga logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPpBb0rXLewGW8G4_XW3KkQ4ttZ1f7uENbXI4EQIWBG5a3Ekoev0MvH6eTSoDKCsZ2nLKTT0XV-tfuaazWU291FBQn_8YKjOpsuWg48oIzHxlDaa3cItdI82pxKzWtHZOjt9zww1oe6X2kIEiJlqWor585Ljo5fNNhHI_dyjLCQN206Aesh2fuizwAniyPrgMWIfu5hR7NJgW535AVTBdwvs2VXr18jl1lQToamTbaefi81g5ZczGwRkEkb5MWSqWrcI5n7tco5wQ"/>
+</div>
+<div class="text-left flex-1 min-w-0">
+<p class="font-bold text-sm truncate text-gray-900 dark:text-white">La Liga</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Spain</p>
+</div>
+</button>
+<!-- Unselected League Card -->
+<button class="relative flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-card-dark border-2 border-transparent hover:border-primary/30 transition-all transform active:scale-[0.98]">
+<div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center overflow-hidden shrink-0 border border-gray-100 dark:border-white/10">
+<img alt="Serie A Logo" class="w-full h-full object-cover" data-alt="Serie A logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq5doKdkDb2TwXEdT4kAIsuwc7DimMT9IU6kSyf3-Sj6w5Ej5YAgQ8CY9VlOdGuEPVwA3Wah5zmdilnLZ3NFdO7Di1jbp-o_EMBGijdCxmzOnhYd64e2MB6Tp-RqEkQnI-7COpsOafjX2nUs0oDPGHqiOIMa1tR08tpQzQy0g1ElydXSkDLnogSblqDJeZZyy2-duOct5nkP4PMhesIl8iKCQLeMAiQVuiGB9llqz6kZB5KvPMt1kQoWda6PN4YyXcTp8DkcfWybc"/>
+</div>
+<div class="text-left flex-1 min-w-0">
+<p class="font-bold text-sm truncate text-gray-900 dark:text-white">Serie A</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Italy</p>
+</div>
+</button>
+</div>
+</div>
+<!-- Popular Teams -->
+<div class="mt-8">
+<h2 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800 dark:text-gray-100">
+<span class="material-symbols-outlined text-primary text-[22px]">groups</span>
+                Popular Teams
+            </h2>
+<div class="grid grid-cols-3 gap-3">
+<!-- Team Card -->
+<button class="group flex flex-col items-center gap-2 p-3 rounded-xl bg-white dark:bg-card-dark border-2 border-transparent hover:border-primary/30 transition-all transform active:scale-[0.95]">
+<div class="w-16 h-16 rounded-full bg-white dark:bg-white/10 p-0.5 shadow-sm flex items-center justify-center overflow-hidden relative">
+<img alt="Raja CA Logo" class="w-full h-full rounded-full object-cover" data-alt="Raja CA club logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRnNmL043_fw-LqW6oS2ZStwQDXKIK21R-vYi9K5NwcBYjfkgEjlENmeZ-mEQ58dxDZDdU_pRMofQ1vqtMeLB9bTUPaygjtEsYUXfywj0-PoQXD6h2h0V6eKJrY2fZgaR5ZgNytVYDeMkpnUGmZdHDFKR9eDGay6KkyBYAb91xVN045uPRsWd6mvm-YfbqXkZ14IayRXvU69rj4DKpr-wxWrjOlxgWS_SAgiz0al9tsAbD-bQXAqSzwCf0JqOVaA-qJ7Oih2lG2IY"/>
+</div>
+<p class="font-medium text-xs truncate w-full text-center text-gray-900 dark:text-white">Raja CA</p>
+</button>
+<!-- Selected Team Card -->
+<button class="group flex flex-col items-center gap-2 p-3 rounded-xl bg-white dark:bg-card-dark border-2 border-primary shadow-[0_4px_12px_rgba(242,204,13,0.15)] transition-all transform active:scale-[0.95] relative">
+<div class="absolute top-1.5 right-1.5 text-primary bg-white dark:bg-card-dark rounded-full">
+<span class="material-symbols-outlined text-[18px] icon-filled">check_circle</span>
+</div>
+<div class="w-16 h-16 rounded-full bg-white dark:bg-white/10 p-0.5 shadow-sm flex items-center justify-center overflow-hidden">
+<img alt="Wydad AC Logo" class="w-full h-full rounded-full object-cover" data-alt="Wydad AC club logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQnPxQVFvuMU9GNubRhQ7tsen9ims5kJys794xV-TZioe-q4iBM_x9LIWLoSVcWzhTRr4NE-u8s1pj-BxsvebiVLvJHR5fCGCQP7gVcpazVcZjpnTpC85CywPqtVajn9Z1z1VqD4_tR6cBUFAdhQ0chU8mIZsZF7Y8G28eZclLMQbYgsDkXvNLu42UQrgWA5-tIT14lCXDXVjjh__TzEI1mWawPnKnLEtFGI-AfnAggn7bmU5N-rS3G4APuf2_OZAquRbqN1VSzCQ"/>
+</div>
+<p class="font-bold text-xs truncate w-full text-center text-primary">Wydad AC</p>
+</button>
+<!-- Team Card -->
+<button class="group flex flex-col items-center gap-2 p-3 rounded-xl bg-white dark:bg-card-dark border-2 border-transparent hover:border-primary/30 transition-all transform active:scale-[0.95]">
+<div class="w-16 h-16 rounded-full bg-white dark:bg-white/10 p-0.5 shadow-sm flex items-center justify-center overflow-hidden">
+<img alt="RS Berkane Logo" class="w-full h-full rounded-full object-cover" data-alt="RS Berkane club logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvrdoJ8B6I9O96KkJlIWocVtHmHeb1dJnhdN3pkp4V_uAXcpdjVgnvW0HNpbL-skQZQk-6tXkoO1-SmQUkaHqIHWCggbbkQUfamGhufc78SZ_GKl6qQURFS0PzZAnwrcLtPRr8xL9W_3YVp9n0bmrR5zdU0Ytly93hFJuWBdX84w5DFK28r-xBgA-neIUt4WNaRdpf6i22ZQcY9rjoWpirgkV1HKZxfm1GFWwKUfKp4DyKeERL_0__VeY2eYiPm9R_ejaZxdoTBNg"/>
+</div>
+<p class="font-medium text-xs truncate w-full text-center text-gray-900 dark:text-white">RS Berkane</p>
+</button>
+<!-- Team Card -->
+<button class="group flex flex-col items-center gap-2 p-3 rounded-xl bg-white dark:bg-card-dark border-2 border-transparent hover:border-primary/30 transition-all transform active:scale-[0.95]">
+<div class="w-16 h-16 rounded-full bg-white dark:bg-white/10 p-0.5 shadow-sm flex items-center justify-center overflow-hidden">
+<img alt="Man City Logo" class="w-full h-full rounded-full object-cover" data-alt="Manchester City club logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXJY37zpVQB0rJEfsfxQSYdDfiWg27rX8IB3yNm6FtDzv9FrEmO9UMGN5HRTSLcBxDltvQRE2XflGeiDEeGFy2L4c3pDIRM3A1NTxJxgoEJumZ_Sp0i0mD45aBUypIIrd2pW_S5KDa464KKInBOZ_ORUSsqAgjmo5OF-lLLAxmJBLhXnbu7BE0wYL6pNsFrM8xdvuSe-k4xD6kZCuIgeOPsg-OrXL-PscdVZaXR834XbjGoHbWGNIJXUylzk3XsqI_RQzj1Qjekmo"/>
+</div>
+<p class="font-medium text-xs truncate w-full text-center text-gray-900 dark:text-white">Man City</p>
+</button>
+<!-- Team Card -->
+<button class="group flex flex-col items-center gap-2 p-3 rounded-xl bg-white dark:bg-card-dark border-2 border-transparent hover:border-primary/30 transition-all transform active:scale-[0.95]">
+<div class="w-16 h-16 rounded-full bg-white dark:bg-white/10 p-0.5 shadow-sm flex items-center justify-center overflow-hidden">
+<img alt="Real Madrid Logo" class="w-full h-full rounded-full object-cover" data-alt="Real Madrid club logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfVvyKDQnOyuOazOS3Hc2VIypIlS6rIfDeImIg_MNz4SIWFUuapr0F4aT2C049CuaG6M5y_hqBwOIQ2NRbIc3F7eP2uETaq_7XC1uALmsYKdgACNNOUIjzeHLh6IvQWwOneo4HsTpPDcc1yJWxf5M37wJGOricvFsOeMyC3IOhg7ZR0Lujav4cDwUJkZRk34hKy3MYlBJG73XB_ViQUrySNmKKJBVlTmskehTrQMyPOvdspGyK8Lxd74jhWTi16pK6RZELizBXPzY"/>
+</div>
+<p class="font-medium text-xs truncate w-full text-center text-gray-900 dark:text-white">Real Madrid</p>
+</button>
+<!-- See All Button -->
+<button class="group flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-transparent border-2 border-dashed border-gray-300 dark:border-white/10 hover:border-primary hover:bg-primary/5 transition-all h-full">
+<div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center text-gray-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</div>
+<p class="font-medium text-xs text-gray-500 group-hover:text-primary transition-colors">See All</p>
+</button>
+</div>
+</div>
+<div class="h-8"></div>
+</main>
+<!-- Sticky Footer -->
+<footer class="w-full px-5 py-4 bg-background-light/95 dark:bg-background-dark/95 border-t border-gray-200 dark:border-white/5 z-40 backdrop-blur-md">
+<button class="w-full h-14 bg-primary text-background-dark font-bold rounded-xl text-lg shadow-[0_4px_14px_rgba(242,204,13,0.4)] hover:brightness-110 active:scale-[0.99] transition-all flex items-center justify-center gap-3">
+            Continue
+            <span class="material-symbols-outlined text-[22px] font-bold">arrow_forward</span>
+</button>
+</footer>
+</body></html>

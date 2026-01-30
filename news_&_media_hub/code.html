@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>News &amp; Media Hub - FootballHub+</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Lexend -->
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2cc0d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221f10", // Deep charcoal/dark brown base
+                        "card-dark": "#2c291b", // Slightly lighter for cards
+                        "surface-dark": "#181711",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Utilities */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-nav {
+            background: rgba(34, 31, 16, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased pb-24 selection:bg-primary selection:text-black">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-40 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm px-4 py-3 flex items-center justify-between border-b border-black/5 dark:border-white/5">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary flex items-center justify-center text-background-dark font-bold text-lg">
+<span class="material-symbols-outlined text-[20px]">sports_soccer</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">FootballHub<span class="text-primary">+</span></h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-background-dark"></span>
+</button>
+</div>
+</div>
+<!-- Main Content Area -->
+<main class="flex flex-col gap-6">
+<!-- Hero Section: Immersive Video Card -->
+<div class="relative w-full aspect-[4/5] md:aspect-video px-4 pt-4">
+<div class="relative h-full w-full rounded-2xl overflow-hidden shadow-2xl group cursor-pointer">
+<!-- Background Image (Simulating Video Poster) -->
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Intense football match scene with stadium lights at night" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCBxZ-al79OoHnL0wYl0-F7qzMRtGtyifHCujoSr8VTjVgLbOWaGmrzqw7nC7f_xJHUaYj-y037i_oTBPGksiXde0iSHSh9kg5VvkGCffkkmfaqcQpRO6-oWJqeSc25V5pdnyusTun0VxniehuLul91O70V3acUOuxOxA7_yYHUOKmu_c7dsmp8sPRpDGPBcSEaftFj3PA9Tzy44hVrmbau6XgxNftpDHOKr9BWkjz_0O7d5HR8RCbh24oQSWUmzimrkxgaKVidq20');">
+</div>
+<!-- Gradient Overlay for readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90"></div>
+<!-- Video Controls / Badge -->
+<div class="absolute top-4 right-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-2 border border-white/10">
+<span class="material-symbols-outlined text-white text-[16px]">volume_off</span>
+<span class="text-xs font-medium text-white/90">Preview</span>
+</div>
+<div class="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-sm">
+                    Live Highlights
+                </div>
+<!-- Content Overlay -->
+<div class="absolute bottom-0 left-0 w-full p-6 flex flex-col items-start gap-4">
+<div class="space-y-1">
+<h2 class="text-3xl font-extrabold leading-tight text-white tracking-tight">
+                            Derby Day: <br/> <span class="text-primary">City vs. United</span>
+</h2>
+<p class="text-gray-300 text-sm font-medium line-clamp-2">
+                            Catch the extended highlights of the season's most intense rivalry. Every goal, every tackle, every moment.
+                        </p>
+</div>
+<div class="flex items-center gap-3 w-full">
+<button class="flex-1 bg-primary hover:bg-yellow-400 text-background-dark h-12 px-6 rounded-xl font-bold text-base flex items-center justify-center gap-2 transition-all active:scale-95 shadow-[0_0_20px_rgba(242,204,13,0.3)]">
+<span class="material-symbols-outlined fill-1">play_arrow</span>
+                            Watch Now
+                        </button>
+<button class="size-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Stories Horizontal Scroll -->
+<section class="flex flex-col gap-3">
+<div class="px-4 flex items-center justify-between">
+<h3 class="text-xl font-bold text-white tracking-tight">Top Stories</h3>
+<a class="text-primary text-sm font-semibold hover:underline" href="#">View All</a>
+</div>
+<div class="flex overflow-x-auto no-scrollbar pb-2 px-4 gap-4 snap-x snap-mandatory">
+<!-- Story Card 1 -->
+<div class="snap-center shrink-0 w-[280px] flex flex-col gap-3 group">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-card-dark">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Football player celebrating a goal passionately" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtu6G3T-l_VaLJiQZ9iQgvBKg6rTmXVfQ4cPPmNgasemS-I7zNWr_SIeHYgKzT74ct80j3ks6hEDAW3E8EA0HsB8Gau-2YLz9EmpryAsFycOlMq9ev0Saqkynf47WluwNze2g-kNgLXDfyshkT-jMRErZgXKBsJmE8YRiJ8QBt78LRWRWxUKsUC9v-dZeV3kiet6PIH2SdpZzoTdJb-uQfs3vPAIfoaBckLbxVw4u0mwRMH5C55_J0etegjLrzwu_XXvptFtwZqOc');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-white/80 bg-white/10 backdrop-blur-sm px-2 py-0.5 rounded">Exclusive</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="text-primary font-bold text-lg leading-tight group-hover:text-white transition-colors">Golden Boot Race Heats Up</h4>
+<p class="text-gray-400 text-xs">News • 3h ago</p>
+</div>
+</div>
+<!-- Story Card 2 -->
+<div class="snap-center shrink-0 w-[280px] flex flex-col gap-3 group">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-card-dark">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Manager shouting instructions from the sideline" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDBzJqlsyamER7BsJ-izli2OKjG4aKZjk4z0l4J03Bnb9ESjWWmNOZGCeLTdsUHmIBbW3IMK2NR3VInERiTUsJvhkORhvSmilZBLdWZ1_veGGMoCOIO3TizIodM381qJ4RQZLRdlEM15ouxL8GdpjtE8Qb7Ko63mEBhhpgizQ90ahc_3b5YK-k9h5cdVs7cBzsc0sCmrAFsKhFxxCOPVMRYF9CyEWKveJ4cSa12R0okA6cKLRk0WWmktRNlNMlrx6BEX7Z-uCOsG40');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-white/80 bg-white/10 backdrop-blur-sm px-2 py-0.5 rounded">Analysis</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="text-primary font-bold text-lg leading-tight group-hover:text-white transition-colors">Tactical Breakdown: The High Press</h4>
+<p class="text-gray-400 text-xs">Analysis • 5h ago</p>
+</div>
+</div>
+<!-- Story Card 3 -->
+<div class="snap-center shrink-0 w-[280px] flex flex-col gap-3 group">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-card-dark">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Transfer market graphic with player silhouettes" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjUGEraXkShgCDmCR20cguQB8XAh0FsRzi8P7vo9SEcfYhHAh3Lf_mInrlKhTB3GDRJ64UeD5qZ1wC0ajKu-OZtgB8gvbxKs4dMBhISiEwufStwscxtpVxZCumh2i74i_1olhaeL_hKX4JU8k-SG5ADj6WY4n4AqiRQuh7ehX2LAmhnR77uZAobTjj8hiZaX50uwBXcm24swWlG8sqJ9dO2rpXuTWmWMcotRiy33T87-O8iETm_vWmItiL1QTGfAsHxhngeyhqVb0');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="text-primary font-bold text-lg leading-tight group-hover:text-white transition-colors">Transfer Rumors: Summer Window</h4>
+<p class="text-gray-400 text-xs">Rumors • 8h ago</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Video Categories & Filter Chips -->
+<section class="flex flex-col gap-3">
+<h3 class="text-xl font-bold text-white tracking-tight px-4">Video Categories</h3>
+<div class="flex overflow-x-auto no-scrollbar px-4 gap-2">
+<button class="whitespace-nowrap rounded-full px-5 py-2.5 bg-primary text-background-dark text-sm font-bold shadow-md">
+                    Highlights
+                </button>
+<button class="whitespace-nowrap rounded-full px-5 py-2.5 bg-card-dark text-gray-300 text-sm font-medium border border-white/5 hover:bg-white/5 transition-colors">
+                    Interviews
+                </button>
+<button class="whitespace-nowrap rounded-full px-5 py-2.5 bg-card-dark text-gray-300 text-sm font-medium border border-white/5 hover:bg-white/5 transition-colors">
+                    Tactical Analysis
+                </button>
+<button class="whitespace-nowrap rounded-full px-5 py-2.5 bg-card-dark text-gray-300 text-sm font-medium border border-white/5 hover:bg-white/5 transition-colors">
+                    Press Confs
+                </button>
+<button class="whitespace-nowrap rounded-full px-5 py-2.5 bg-card-dark text-gray-300 text-sm font-medium border border-white/5 hover:bg-white/5 transition-colors">
+                    Shorts
+                </button>
+</div>
+</section>
+<!-- Vertical Content List -->
+<section class="flex flex-col px-4 gap-4">
+<!-- List Item 1 -->
+<div class="flex flex-col bg-card-dark rounded-xl overflow-hidden shadow-sm border border-white/5">
+<div class="relative w-full aspect-[21/9]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Close up of a football sitting on the grass" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGBUGvBqkn-BU4IEe5_xYZvMSdLHsNgNkB8UffOCaplg0Ty4TvFQV6lWMa2DYxfsrUMsGOyoq8UFuYqI7m51Mqc7HXKIvkY_WChFet2y3fP0fMojVOTPSUoktROcmmCkjPTt81kgansXtnsBM5vIfh1msuyGZtp_d4UC19oirAmsiCAaJzw2vpsgFxKwipM9UTCWV7GWkJyDh18z9zcmcYt8hzbY35ruu_MCs8dsTFYfQMj2oCkvxXolWh1PjrwLQrPjcc4kPgPhs');">
+</div>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors">
+<div class="size-10 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center border border-white/20">
+<span class="material-symbols-outlined text-white text-[24px]">play_arrow</span>
+</div>
+</div>
+<span class="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">04:22</span>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<h4 class="text-white text-base font-bold leading-snug">Goal of the Month Contenders: October</h4>
+<div class="flex items-center justify-between text-gray-400 text-xs">
+<span>Premier League</span>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">visibility</span> 12k</span>
+<span>2h ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="flex flex-col bg-card-dark rounded-xl overflow-hidden shadow-sm border border-white/5">
+<div class="relative w-full aspect-[21/9]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Football players shaking hands before a match" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDi6Jk9JfDC4V-alsiv9fi3xZDcIM6O3adnQomK_vvtmKh8GHlh8DMvsnIcqy0UN4lpIAhzfGPxZ-glXTcGumCd6GE4ulnqR4UiUfZM7Map2qWnOtSQBiqN-987pb6kWwkfY5kJM5_7eZFqBeb7AZGwKgck4A9OzZvpjOncz_nElfkraPyZSX0WsbmuWiiMf2bUuL-3CpOzpV1i6Ydvsk8_bQ1Ds0JCr20gU4-mSxCf8vJtp1mFKI89rqZOjvBmA6CmkE-6W6R1oHw');">
+</div>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20">
+<div class="size-10 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center border border-white/20">
+<span class="material-symbols-outlined text-white text-[24px]">play_arrow</span>
+</div>
+</div>
+<span class="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">12:05</span>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<h4 class="text-white text-base font-bold leading-snug">Pre-Match Conference: Manager Thoughts</h4>
+<div class="flex items-center justify-between text-gray-400 text-xs">
+<span>Champions League</span>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">visibility</span> 8.5k</span>
+<span>4h ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="flex flex-col bg-card-dark rounded-xl overflow-hidden shadow-sm border border-white/5">
+<div class="relative w-full aspect-[21/9]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Soccer player dribbling the ball in a stadium" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCwxtMDFa6XxinTa-4kRZHlsO92XwIdCB_pemEnKnDLS6NXX2oFEjsTGO4_-PkMBFeXVf6o-VqzBCUj6_tVJWKcg9W64e8g9HEarznADyoQP4HA0sfV4OgiOevzAtSQyZnNjxnzHWKMIEp-23kOWeGdui_t466q-qzwwUpNCnyyABDZUd6kfkmgszivCksICQaOW0NzBGJql4lXnUeZvL-QmYENX6rH_Ar6hXjQKBhb6DU6fdHto_guxUEZwWXaxiK_4PRMuusNpzI');">
+</div>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20">
+<div class="size-10 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center border border-white/20">
+<span class="material-symbols-outlined text-white text-[24px]">play_arrow</span>
+</div>
+</div>
+<span class="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">08:15</span>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<h4 class="text-white text-base font-bold leading-snug">Skills &amp; Tricks: Best of the Week</h4>
+<div class="flex items-center justify-between text-gray-400 text-xs">
+<span>Compilation</span>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">visibility</span> 22k</span>
+<span>1d ago</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full glass-nav border-t border-white/5 px-6 pb-6 pt-3 z-50">
+<div class="flex items-center justify-between max-w-lg mx-auto">
+<button class="flex flex-col items-center gap-1 text-gray-400 hover:text-white transition-colors w-12 group">
+<span class="material-symbols-outlined text-[26px] group-hover:-translate-y-0.5 transition-transform">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400 hover:text-white transition-colors w-12 group">
+<span class="material-symbols-outlined text-[26px] group-hover:-translate-y-0.5 transition-transform">leaderboard</span>
+<span class="text-[10px] font-medium">Stats</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary w-12">
+<div class="relative">
+<span class="material-symbols-outlined text-[28px] fill-1 drop-shadow-[0_0_8px_rgba(242,204,13,0.5)]">play_circle</span>
+</div>
+<span class="text-[10px] font-bold">Media</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400 hover:text-white transition-colors w-12 group">
+<span class="material-symbols-outlined text-[26px] group-hover:-translate-y-0.5 transition-transform">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</nav>
+</body></html>

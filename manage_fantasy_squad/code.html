@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manage Fantasy Squad - FootballHub+</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#f2cc0d",
+              "background-light": "#f8f8f5",
+              "background-dark": "#181711", // Using the charcoal from the example/request
+              "surface-dark": "#23221b",
+              "pitch-light": "#365c32",
+              "pitch-dark": "#2a4925",
+            },
+            fontFamily: {
+              "display": ["Lexend", "sans-serif"],
+              "body": ["Noto Sans", "sans-serif"],
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            backgroundImage: {
+                'pitch-pattern': "repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0,0,0,0.1) 40px, rgba(0,0,0,0.1) 80px)",
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetics */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .glass-panel {
+            background: rgba(24, 23, 17, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .pitch-container {
+            background-color: #365c32;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0,0,0,0.08) 40px, rgba(0,0,0,0.08) 80px),
+                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 60%);
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.6);
+        }
+        
+        /* Pitch markings */
+        .pitch-line {
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .pitch-circle {
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-white font-display overflow-hidden selection:bg-primary selection:text-black">
+<!-- Main App Container -->
+<div class="relative flex flex-col h-screen w-full max-w-md mx-auto bg-background-dark shadow-2xl overflow-hidden">
+<!-- Top Bar -->
+<header class="z-30 flex items-center justify-between px-4 py-3 bg-background-dark border-b border-[#333]">
+<div class="flex flex-col">
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight">Manage Squad</h2>
+<span class="text-[#bab59c] text-xs font-normal">GW34 Deadline: <span class="text-primary/90">Fri 18:30</span></span>
+</div>
+<button class="bg-primary hover:bg-yellow-400 text-black px-4 py-1.5 rounded-full text-sm font-bold transition-colors shadow-[0_0_10px_rgba(242,204,13,0.3)]">
+                Save Team
+            </button>
+</header>
+<!-- Stats Strip -->
+<div class="z-20 bg-surface-dark px-4 py-2 flex justify-between items-center border-b border-[#333] shadow-md">
+<div class="flex flex-col items-start">
+<span class="text-[#bab59c] text-[10px] uppercase tracking-wider font-bold">Bank</span>
+<span class="text-white text-sm font-bold">£2.5m</span>
+</div>
+<div class="h-6 w-px bg-[#333]"></div>
+<div class="flex flex-col items-center">
+<span class="text-[#bab59c] text-[10px] uppercase tracking-wider font-bold">Free Transfers</span>
+<span class="text-primary text-sm font-bold">1</span>
+</div>
+<div class="h-6 w-px bg-[#333]"></div>
+<div class="flex flex-col items-end">
+<span class="text-[#bab59c] text-[10px] uppercase tracking-wider font-bold">Total Pts</span>
+<span class="text-white text-sm font-bold">1,240</span>
+</div>
+</div>
+<!-- Main Content Area: The Pitch -->
+<main class="flex-1 relative w-full overflow-hidden flex flex-col">
+<!-- Pitch Background & Markings -->
+<div class="absolute inset-0 pitch-container z-0">
+<!-- Center Circle -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full pitch-circle opacity-30"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-white/30 rounded-full"></div>
+<div class="absolute top-1/2 left-0 right-0 h-px bg-white/20"></div>
+<!-- Penalty Boxes -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-16 border-b border-l border-r border-white/20"></div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-16 border-t border-l border-r border-white/20"></div>
+</div>
+<!-- Formation Toggle (Floating) -->
+<div class="relative z-10 w-full flex justify-center pt-4">
+<div class="flex h-8 items-center justify-center rounded-full bg-black/60 backdrop-blur-md p-1 border border-white/10">
+<label class="cursor-pointer px-3 py-1 rounded-full has-[:checked]:bg-primary has-[:checked]:text-black text-white/70 text-xs font-bold transition-all">
+<span>4-4-2</span>
+<input checked="" class="hidden" name="formation" type="radio" value="4-4-2"/>
+</label>
+<label class="cursor-pointer px-3 py-1 rounded-full has-[:checked]:bg-primary has-[:checked]:text-black text-white/70 text-xs font-bold transition-all">
+<span>3-5-2</span>
+<input class="hidden" name="formation" type="radio" value="3-5-2"/>
+</label>
+<label class="cursor-pointer px-3 py-1 rounded-full has-[:checked]:bg-primary has-[:checked]:text-black text-white/70 text-xs font-bold transition-all">
+<span>4-3-3</span>
+<input class="hidden" name="formation" type="radio" value="4-3-3"/>
+</label>
+</div>
+</div>
+<!-- Players on Pitch -->
+<div class="relative z-10 flex-1 flex flex-col justify-between py-6 px-2 pb-24">
+<!-- GK -->
+<div class="flex justify-center w-full">
+<!-- Player Card: GK -->
+<div class="flex flex-col items-center gap-1 w-20 group cursor-pointer active:scale-95 transition-transform">
+<div class="relative">
+<div class="w-14 h-14 rounded-full border-2 border-yellow-500 bg-gray-800 bg-cover bg-center shadow-lg" data-alt="Goalkeeper portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXIS51gxak6xDOPJoufkS-4Z4eVOAMp_hbI4TVCqwlXbNb9XzFfWqkcWMpYJfxGBN2T34E2MkP_MmG_Y8sQEnm23B2Kj8smMgwh6Mzl5ePdiDuCWVfuc5y46MO6drWo6HZQlqaXStkIkJ8HNLXMi4IhwHz1IukOnFgKNjzO6nnGs6pOiJCP0eSooim2VIJYhvvjTu3tYN1wdvhORLulP24m4YMsHKMn-IkJHG5grDN9-wed6wKNyGynPQeN2umKZW_R9X5fU_dL1k')"></div>
+<div class="absolute -bottom-1 -right-1 bg-gray-900 rounded-full p-0.5 border border-gray-600">
+<span class="material-symbols-outlined text-white text-[12px] block">shield</span>
+</div>
+</div>
+<div class="bg-black/70 backdrop-blur-sm rounded px-2 py-1 text-center w-full border border-white/10">
+<p class="text-white text-[11px] font-bold leading-none truncate">Ramsdale</p>
+<p class="text-[#bab59c] text-[9px] leading-tight">£5.0 | 45</p>
+</div>
+</div>
+</div>
+<!-- DEF -->
+<div class="flex justify-center items-end gap-2 sm:gap-6 w-full px-2">
+<!-- DEF 1 -->
+<div class="flex flex-col items-center gap-1 w-16 group cursor-pointer active:scale-95 transition-transform">
+<div class="relative">
+<div class="w-12 h-12 rounded-full border-2 border-white/30 bg-gray-800 bg-cover bg-center shadow-lg" data-alt="Defender 1 portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHrIXDog0VYn9uLtVWHWKMav9EztIMHHdUfQ45X1zfhGhKMy2C5csqLTY3thfD7xjjLf-N6FKXlZeHPWbDTEbsrUF6UORea3foDcgohsXhVYkTf5vtcB9Vs2Dixv_rKM8go7iWdyQ4GQ0tpZQuzU6mjGxwxxgDcNd1YowhB-IOnZdk6Ff_AK6J3Lz22ABd1C2sCndng1DCF9RlcnrM3u9TXeyf8Kw3u4zfSwP0Q-_UWQ9nqmKnFt8NAYCC-4UMt4U_Gn1kEx8NwJ0')"></div>
+<!-- AI Insight Badge -->
+<div class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold shadow-sm animate-pulse">!</div>
+</div>
+<div class="bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 text-center w-full border border-white/10">
+<p class="text-white text-[10px] font-bold leading-none truncate">White</p>
+<p class="text-[#bab59c] text-[9px] leading-tight">£5.5</p>
+</div>
+</div>
+<!-- DEF 2 -->
+<div class="flex flex-col items-center gap-1 w-16 group cursor-pointer active:scale-95 transition-transform pb-2">
+<div class="relative">
+<div class="w-12 h-12 rounded-full border-2 border-white/30 bg-gray-800 bg-cover bg-center shadow-lg" data-alt="Defender 2 portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdl0uipRqnqhIOwqq1LwYHVCo-zEDUQojivwfdoJ_hR2PldzxebQuMjXAKPJi8GlXNRn0hS2ZKEgbHHP54nw-LWVkoA4_-lvIQBbGlV6xeX72M8gBdYotOnYMmOwLwuD3qZNbwa1NSemwF30KLgSxEny9PUFSTSejJfT7h5CVv2OqKvCp_F_Ixotoc7FbAFFZoXuqK2ycrHZ2pvcRbxhYmTIC0C6MB01LP2ixIwabWDxXvQDFJyJtVoIAbRcOWIOYSnQTwPMzs3Xc')"></div>
+</div>
+<div class="bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 text-center w-full border border-white/10">
+<p class="text-white text-[10px] font-bold leading-none truncate">Saliba</p>
+<p class="text-[#bab59c] text-[9px] leading-tight">£5.2</p>
+</div>
+</div>
+<!-- DEF 3 -->
+<div class="flex flex-col items-center gap-1 w-16 group cursor-pointer active:scale-95 transition-transform pb-2">
+<div class="relative">
+<div class="w-12 h-12 rounded-full border-2 border-white/30 bg-gray-800 bg-cover bg-center shadow-lg" data-alt="Defender 3 portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB9TUSecP26Xm2OX3sR_Hr7TDfx0JqQdlNlAzH2Xh2IEXfMmzrko0_sPZBtLXI234ZurNHelBJsqON7B0QEoYoI8NXFDdd4p1n5IkGIiruTMkkBXx33gijmfmnnq1BTXMQ7s0IRW2Pyo9SY8ugmKyvnMXWvHFpi96iwUwAp_q__xe6T8KKkV553nKXlqYtYxvdZtM6aK_pej81_H9k6PkgfZI3T6jy15aBDotlVx16vWWAS8xq80vn2d8NcKqdJQfUfAQMuM3Tl0oI')"></div>
+</div>
+<div class="bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 text-center w-full border border-white/10">
+<p class="text-white text-[10px] font-bold leading-none truncate">Gabriel</p>
+<p class="text-[#bab59c] text-[9px] leading-tight">£5.1</p>
+</div>
+</div>
+<!-- DEF 4 -->
+<div class="flex flex-col items-center gap-1 w-16 group cursor-pointer active:scale-95 transition-transform">
+<div class="relative">
+<div class="w-12 h-12 rounded-full border-2 border-white/30 bg-gray-800 bg-cover bg-center shadow-lg" data-alt="Defender 4 portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB69H3LFDCbInAUvxJXaWZePKuaQ9mZKlthjQzifBwdiKmXJtxwc6yYY3YG7lH_FDQs2yKcLj9uAPkNU-DOG1R3Js0a9YrfxRmLhc2JYDUFWXTsD25OSblhPrBqVGqww9a95mpKc8PUGP3yGg3LRKvrY9pgnb9rwZ2Irdal158orZiUO9b71ptcAX8Uddftg4C_mJEZenG6UyizpCxFDiOPlHFZUUd20XZQn-BvaZzShG0SQG-ADJKHRnZx1t8o3b96LxhmbchzSQ8')"></div>
+</div>
+<div class="bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 text-center w-full border border-white/10">
+<p class="text-white text-[10px] font-bold leading-none truncate">Zinchenko</p>
+<p class="text-[#bab59c] text-[9px] leading-tight">£5.0</p>
+</div>
+</div>
+</div>
+<!-- MID -->
+<div class="flex justify-center items-center gap-2 sm:gap-6 w-full px-2">
+<!-- MID 1 (Captain) -->
+<div class="flex flex-col items-center gap-1 w-16 group cursor-pointer active:scale-95 transition-transform">
+<div class="relative">
+<div class="w-12 h-12 rounded-full border-2 border-primary bg-gray-800 bg-cover bg-center shadow-[0_0_15px_rgba(242,204,13,0.4)]" data-alt="Midfielder 1 portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBkb3xxrzoZ1FYoSTh5jS9sH185kghZzvqYbALxK3lkQ1gbDIR4sDYeQ8mu20nVxa64G4jBz9xziDNFY30IAMkgest-fQlm3BPQmZRIZ_hgczIuhme3_GNxHAG4h9JLb9w_fWCr5bqNFyWX1xt9DP7Y6dIPYRy7FTA3IG-5m4c5Zepc5-Tgo9QGMngVVZ0ciBj-o8cqb2He98zmVuJWstFX9CR5hrOHKhy5sSEb3w4tfEMHtnxoEwFw4Vm-TuqyYdS_b6_DMktiV5U')"></div>
+<div class="absolute -top-2 -left-1 bg-white text-black text-[8px] font-black w-4 h-4 flex items-center justify-center rounded-full border border-gray-300">C</div>
+</div>
+<div class="bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 text-center w-full border border-primary/50">
+<p class="text-primary text-[10px] font-bold leading-none truncate">Saka</p>
+<p class="text-[#bab59c] text-[9px] leading-tight">£9.0</p>
+</div>
+</div>
+<!-- MID 2 -->
+<div class="flex flex-col items-center gap-1 w-16 group cursor-pointer active:scale-95 transition-transform">
+<div class="relative">
+<div class="w-12 h-12 rounded-full border-2 border-white/30 bg-gray-800 bg-cover bg-center shadow-lg" data-alt="Midfielder 2 portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_T6c6bR9Ass_oXX6y44sAJvH_E-bq0BN4A_4JJQM5Q85yCiKXMlFe3ZeDC5OpK4t8TzLzhFOyTCJm6ze9C801cpFGarWc0HavTmvJAENLOuHLkWwR10kPnlduwBb3a-r9EDtMzLv3qP2P6WN4gM7zq54wgeoS1rFEURBtAm6RKgZiue3Vuwm9R_7JhDtsHXbohO8WhCr2GyBWx9F4A--xcB5YnNKMQEsA0b5DGw9fy2hUGE4Boe2dV2Qntwxfn_BimjVuHsciOS8')"></div>
+</div>
+<div class="bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 text-center w-full border border-white/10">
+<p class="text-white text-[10px] font-bold leading-none truncate">Odegaard</p>
+<p class="text-[#bab59c] text-[9px] leading-tight">£8.5</p>
+</div>
+</div>
+<!-- MID 3 -->
+<div class="flex flex-col items-center gap-1 w-16 group cursor-pointer active:scale-95 transition-transform">
+<div class="relative">
+<div class="w-12 h-12 rounded-full border-2 border-white/30 bg-gray-800 bg-cover bg-center shadow-lg" data-alt="Midfielder 3 portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDslPycI5PjjBdAmyeytb4WmZKUtuu0Khf9EqJAJyTEVwW-RPmVG6htSKzG6IotYldDu9eBX8RzLfXQub4kJqYSGEpiNRvkg9F3lTlyEb6aHAKW8Xi9xrUIvdUU53y2-2YcQcz6FQ6GsbvyI0lOwjoiVMwg875y0sS3FppDn5JADu9Je_brcGkOcLzGsSyI-rg1X8iOr2L70ro3zsCx5poBmcHfcIXeLj7BvlCmsCT4U6CAfyaXWpuCiqJh9_JEniUdMa7w16apvrw')"></div>
+</div>
+<div class="bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 text-center w-full border border-white/10">
+<p class="text-white text-[10px] font-bold leading-none truncate">Rice</p>
+<p class="text-[#bab59c] text-[9px] leading-tight">£7.0</p>
+</div>
+</div>
+<!-- MID 4 -->
+<div class="flex flex-col items-center gap-1 w-16 group cursor-pointer active:scale-95 transition-transform">
+<div class="relative">
+<div class="w-12 h-12 rounded-full border-2 border-white/30 bg-gray-800 bg-cover bg-center shadow-lg" data-alt="Midfielder 4 portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCjA8hHAi1u_QxgNgSv_upWU0ZIVSzZ1-uum6b_lrJdAXeolKUT_Z8cpeKPwDNLAQZopQ8k-ZQ-F_sDjxUnX4XUqdJUMyUkbKxCKo0zSqbsVVu_98NgkOkLAvEECdvyW0PgWs1ZxWOj3gYN0lHtThO0kHMuMhwD2WrEb2g7s5ssor_ZjLgZ54laalE2Zznu-50D9FMgpBOgHD4rjoQUd9fYw8uwbj5DX0ft_qNHRn8xDPaDY4GaTW1GI4Yv5seSylHZMzd5mOyYDuw')"></div>
+<!-- AI Insight Badge -->
+<div class="absolute -top-1 -right-1 bg-primary text-black text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold shadow-sm">
+<span class="material-symbols-outlined text-[10px] font-bold">trending_up</span>
+</div>
+</div>
+<div class="bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 text-center w-full border border-white/10">
+<p class="text-white text-[10px] font-bold leading-none truncate">Martinelli</p>
+<p class="text-[#bab59c] text-[9px] leading-tight">£8.0</p>
+</div>
+</div>
+</div>
+<!-- FWD -->
+<div class="flex justify-center items-start gap-8 w-full">
+<!-- FWD 1 -->
+<div class="flex flex-col items-center gap-1 w-16 group cursor-pointer active:scale-95 transition-transform">
+<div class="relative">
+<div class="w-12 h-12 rounded-full border-2 border-white/30 bg-gray-800 bg-cover bg-center shadow-lg" data-alt="Forward 1 portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRhvoaglVauPtOMWBvHTw-djKZlqVoPVJ7r1Wwdj1lV_UlRswFSSxvjjcqEFr_GlFBf6PYnacfdRNOu1jWgIogRHOOkBL79ZfAThcxdmOSYH5bR9vYFQbRAT74gkZKR_nXVfU2dNsz8P3zaHxBUL8879VMBjyABeQsT_29pcQACMspNrhomfPw5t6qDyJy-7CNNBrRAx2vJJvLkxRW580OyVJSUr2-A93afC3oPvnwY1qwCOKqEfXKHT667AKMc8biX9Zq6LkINBI')"></div>
+<div class="absolute -top-2 -left-1 bg-white/80 text-black text-[8px] font-black w-4 h-4 flex items-center justify-center rounded-full border border-gray-300">V</div>
+</div>
+<div class="bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 text-center w-full border border-white/10">
+<p class="text-white text-[10px] font-bold leading-none truncate">Jesus</p>
+<p class="text-[#bab59c] text-[9px] leading-tight">£8.0</p>
+</div>
+</div>
+<!-- FWD 2 -->
+<div class="flex flex-col items-center gap-1 w-16 group cursor-pointer active:scale-95 transition-transform">
+<div class="relative">
+<div class="w-12 h-12 rounded-full border-2 border-white/30 bg-gray-800 bg-cover bg-center shadow-lg" data-alt="Forward 2 portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBNXtbXueCzVkWEfj2A3ePjjUiuJHoI_UG_-a_NneePpzca-XcAAnhFHQV-5SXCwdOBVk1pMnd0pXUE-LndIAYhjJwUMCvFfY7t6MWLSqaASP80J8vPOU5zxKamuNNKoqHglKPm3p-_7c1Pl4GIZrRZd3XQFjhcSuesqEji1Am5fxoYemWdyYmomr70HIWFxvzQqed3ABtZDwL_6aigxtojQaGG1Y4O9Ax0ECZCXtVHnz6DxQOXgTKFule6OaKo4xAQTQ_IlC0TIoU')"></div>
+</div>
+<div class="bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 text-center w-full border border-white/10">
+<p class="text-white text-[10px] font-bold leading-none truncate">Havertz</p>
+<p class="text-[#bab59c] text-[9px] leading-tight">£7.5</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Sheet (Substitutes) -->
+<!-- Placed to peek up from bottom, partly obscuring the field bottom but clearly distinct -->
+<div class="z-20 w-full bg-surface-dark border-t border-[#333] rounded-t-xl shadow-[0_-5px_20px_rgba(0,0,0,0.5)] flex flex-col">
+<!-- Handle -->
+<div class="w-full flex justify-center pt-2 pb-1 cursor-grab">
+<div class="w-10 h-1 bg-[#54503b] rounded-full"></div>
+</div>
+<div class="px-4 pb-2 flex items-center justify-between">
+<h3 class="text-white text-sm font-bold">Substitutes</h3>
+<span class="text-[#bab59c] text-xs">Drag to swap</span>
+</div>
+<!-- Scrollable Subs List -->
+<div class="flex gap-3 px-4 pb-4 overflow-x-auto no-scrollbar">
+<!-- Sub 1 (GK) -->
+<div class="flex-shrink-0 flex flex-col items-center gap-1 w-14">
+<div class="w-10 h-10 rounded-full border border-white/20 bg-gray-800 bg-cover bg-center grayscale opacity-70" data-alt="Substitute goalkeeper" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBLQihQVqqaY4PjmVuTZIdwTw5iO-Lo8oPJbvClNKA_6RsmwSOTSyr-30Lsn2gdO3lBff_eY_rAWLFA3_pKJWaazl7hULAKnseaI-Xec3iXzDNRmBQTezbyv9t19AdrrqoIZITK6GMt8zGzkT0Qd_-p9iWG4pOsLq7dGOOTPCCpAUbvzV-qc3_0yMOHX8t95fbmiP__UNEjJfcewETAnvLTohSVcqAm4kHd3yilhsT4rTRJf3KE5v9AM6OvGmu2zPPnA3ENxNgp0TI')"></div>
+<div class="bg-[#333] rounded px-1 w-full text-center">
+<p class="text-white/70 text-[9px] font-medium truncate">Turner</p>
+<p class="text-[#bab59c] text-[8px]">GK</p>
+</div>
+</div>
+<!-- Sub 2 (DEF) -->
+<div class="flex-shrink-0 flex flex-col items-center gap-1 w-14">
+<div class="w-10 h-10 rounded-full border border-white/20 bg-gray-800 bg-cover bg-center" data-alt="Substitute defender" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDu4mFtcK2BeogzBs3dbxEs_NerE0T5UosBBqRjezlKr0wABBt3BifaNXX3YKQA895KFUQBoJ2BoM2qz6Ns773ykRpjSnBLwvJL3kppc1Ua-3BRbEJXDCp2bZ3DtrlcTMtUC1nvjhiwcqZAlQ0Ev6eMybMvxDZkOhWRCbf7F6nBjA_8pKfhQGQ3ICxqkplY1lr4KxricsNqebXcCXueGOdEb3FBNZXb-buF1I-rVGxWJGheLXv-PMMEwDyK8QHTY4z8b1_iqvLTebM')"></div>
+<div class="bg-[#333] rounded px-1 w-full text-center">
+<p class="text-white text-[9px] font-medium truncate">Tomiyasu</p>
+<p class="text-[#bab59c] text-[8px]">DEF</p>
+</div>
+</div>
+<!-- Sub 3 (MID) -->
+<div class="flex-shrink-0 flex flex-col items-center gap-1 w-14">
+<div class="w-10 h-10 rounded-full border border-white/20 bg-gray-800 bg-cover bg-center" data-alt="Substitute midfielder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD8Vizs3KecZdyd-LcO9kVEFgGxi29oGsTDUTw8UVPHgb_36_WlMKJIXi85Pe-f7OQflS9CavU2AXvKzAHFFHJOrUETUMcwkb8kRUZDy2guuY3Yv0kP-h2cieQcmHeQICyxr0Arl1xbXAVvcwz7NwJ1aV0tIC74MAuUSE3iYBtc8zZscdGaYS0gR3BKAHAn9uR9l81VxJmw2GB7AarVogFWfQVpEBJsZKAa02WKTpgcBTU6N0LnZ9qNrUz564am5XudyM8HX2bZgkU')"></div>
+<div class="bg-[#333] rounded px-1 w-full text-center">
+<p class="text-white text-[9px] font-medium truncate">Jorginho</p>
+<p class="text-[#bab59c] text-[8px]">MID</p>
+</div>
+</div>
+<!-- Sub 4 (FWD) -->
+<div class="flex-shrink-0 flex flex-col items-center gap-1 w-14">
+<div class="w-10 h-10 rounded-full border border-white/20 bg-gray-800 bg-cover bg-center" data-alt="Substitute forward" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDN4WXktAaZhQrz22DD6mnbUOZnC2x02wsnPPG1lolotUveD3wNuW4ZMaXKmSu5QoDmLVtCqi6G9lj5e9SxyPrkrb_ioQhXhKHPGThLRJQueWaY2LWbWVECh5LZdxIdfN09jM99PDuMon4E0qQS95twgmF1Zv-O4x576woOuTlOaO5eFx3qWpP6qL-QwWO9kTrSPGXKfcsFzVkKOok8C3YNrZG-SbR96Py8ecaL92uikUFU2wPGppRhYlW9uqEtGoHiTM4Dsh3EQwc')"></div>
+<div class="bg-[#333] rounded px-1 w-full text-center">
+<p class="text-white text-[9px] font-medium truncate">Nketiah</p>
+<p class="text-[#bab59c] text-[8px]">FWD</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<nav class="z-30 bg-[#141414] border-t border-[#333] px-2 pb-5 pt-2 flex justify-between items-end text-[#bab59c]">
+<a class="flex flex-col items-center gap-1 p-2 w-16 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 w-16 text-primary" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">sports_soccer</span>
+<span class="text-[10px] font-bold">Squad</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 w-16 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">bar_chart</span>
+<span class="text-[10px] font-medium">Stats</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 w-16 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">emoji_events</span>
+<span class="text-[10px] font-medium">Leagues</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 w-16 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</nav>
+</div>
+</body></html>

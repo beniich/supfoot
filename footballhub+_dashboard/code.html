@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FootballHub+ Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2cc0d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221f10", // Deep charcoal/brown as requested
+                        "surface-dark": "#2c291b", // Slightly lighter for cards
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased min-h-screen pb-24">
+<!-- Top AppBar -->
+<header class="sticky top-0 z-40 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-black/5 dark:border-white/5 px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<!-- Logo Icon placeholder -->
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-background-dark font-bold">
+<span class="material-symbols-outlined text-[20px]">sports_soccer</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">FootballHub<span class="text-primary">+</span></h1>
+</div>
+<button class="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+<span class="absolute top-2 right-2 w-2.5 h-2.5 bg-primary rounded-full border-2 border-background-light dark:border-background-dark"></span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex flex-col w-full">
+<!-- Live Matches Section -->
+<section class="mt-4">
+<div class="px-4 mb-3 flex items-center justify-between">
+<h2 class="text-lg font-bold">Live Matches</h2>
+<button class="text-sm text-primary font-medium hover:opacity-80">See All</button>
+</div>
+<div class="flex overflow-x-auto no-scrollbar gap-4 px-4 pb-4 snap-x">
+<!-- Match Card 1 -->
+<div class="min-w-[280px] snap-center bg-surface-dark border border-white/5 rounded-2xl p-4 shadow-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-3">
+<div class="flex items-center gap-1.5 bg-red-500/10 border border-red-500/20 rounded-full px-2 py-0.5">
+<span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+<span class="text-[10px] font-bold text-red-500 uppercase tracking-wider">Live</span>
+</div>
+</div>
+<div class="text-xs text-white/40 font-medium mb-4 uppercase tracking-wide">Botola Pro • 78'</div>
+<div class="flex items-center justify-between mb-2">
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5" title="Raja CA">
+<img class="w-full h-full object-contain opacity-80" data-alt="Raja CA team logo badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsCcxwHbA-W9401vq2sLt_-Mvut42eu_OHgxoHK_LkWYjgzWAB7PO15DZBpD3qSfmNIJrfHTmCC9E1nx2jGuBd1xCq8c82o1wreHscpuYaZE7V51CdgYVAG096WV1w0Z99g8WqI6xUmBJlL2kymB_4ZOpa82k17Q6weop4ynx81M6NpOA8T3Ag0d286VWEebUic6Nut9t-VluWhwS6oJ3GwZfhpPS73rB3a82InNQcCX7WnteyP_sHd22ZLOkK4ND2RDrFcDBXbWM"/>
+</div>
+<span class="text-sm font-semibold text-center">Raja CA</span>
+</div>
+<div class="flex flex-col items-center px-4">
+<div class="text-3xl font-bold text-primary tabular-nums tracking-tighter">2 - 1</div>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5" title="Wydad AC">
+<img class="w-full h-full object-contain opacity-80" data-alt="Wydad AC team logo badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD51OqMXHufEUdKwXCEFId94m_UCWrTgsvXjt-ytN9-7irMMRln233qKwqwLh2rvS52_CJD1yDZOf-1gdwWS-mgddrOuAcyKHeR_NZNFVAJjXla1RaaEZewfZA9kBGFYQGw9Pm9dy1UmSL8yvHEWpNGDQ4wMqybOcuB12FBqa79-L8x0Etsb_VPAviIi5hPstWb3Aeg72p1J6BhZzLcPpryUr-9YN9M9zNiqU3Sb5LOi2AlYZzoPJB9hWC22tW5qvWqLgpqGofcTMk"/>
+</div>
+<span class="text-sm font-semibold text-center">Wydad AC</span>
+</div>
+</div>
+</div>
+<!-- Match Card 2 -->
+<div class="min-w-[280px] snap-center bg-surface-dark border border-white/5 rounded-2xl p-4 shadow-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-3">
+<div class="flex items-center gap-1.5 bg-red-500/10 border border-red-500/20 rounded-full px-2 py-0.5">
+<span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+<span class="text-[10px] font-bold text-red-500 uppercase tracking-wider">Live</span>
+</div>
+</div>
+<div class="text-xs text-white/40 font-medium mb-4 uppercase tracking-wide">Premier League • 12'</div>
+<div class="flex items-center justify-between mb-2">
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5" title="Man City">
+<img class="w-full h-full object-contain opacity-80" data-alt="Manchester City team logo badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFQla9FAUHcpxYdq0vrAVNSCubh6CyJTMXPtuLFf4xih_sOjvO8IZIWqVUsYkwaPSDg4EaRW9z38AITUzzGF60cKbmPMcX57Bok3aL49jjvUOyVBvdbDI_PsRVPuNLRvFPsEph4AIXl8AV49HRYhrT-Obj0H5EbLD8BCr69ceBNJIqnxo2kMjSYMgC8gVgzhnMz7_RbiGPMsLsZ1TFCfkh9_eFe25r04_z97dWjEEU-CTexsR0tlwsIR8t0DsQL5XwmmnVinqujj0"/>
+</div>
+<span class="text-sm font-semibold text-center">Man City</span>
+</div>
+<div class="flex flex-col items-center px-4">
+<div class="text-3xl font-bold text-white tabular-nums tracking-tighter">0 - 0</div>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5" title="Liverpool">
+<img class="w-full h-full object-contain opacity-80" data-alt="Liverpool FC team logo badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUW7PO_s-OaMo2JC6roYAbAtgHQ7T_eay60Iej5C21LbecMp8SwoWuy0rT-DFdWUnbPIem2ugNjYy884nZA-HlMgCqcf1cy0msG5djf9qkDp-L0mD07cmqQ8qDeB8rZN5wBYiWNoGKUQ8sL4_wwFJwejNM13LDyuGdClIkvuyl9qhZH6bf3nrh3kyxvzDoSniPBnyJUQIcXEesZK50fuxyl7krgDbsbNV1AFwmfEFDW2IFnPcAZPLD-l1kt7J9LWNYnT2mplgB5jE"/>
+</div>
+<span class="text-sm font-semibold text-center">Liverpool</span>
+</div>
+</div>
+</div>
+<!-- Match Card 3 (Upcoming) -->
+<div class="min-w-[280px] snap-center bg-surface-dark border border-white/5 rounded-2xl p-4 shadow-lg relative overflow-hidden group opacity-80">
+<div class="absolute top-0 right-0 p-3">
+<div class="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-2 py-0.5">
+<span class="text-[10px] font-bold text-white/60 uppercase tracking-wider">20:45</span>
+</div>
+</div>
+<div class="text-xs text-white/40 font-medium mb-4 uppercase tracking-wide">Serie A</div>
+<div class="flex items-center justify-between mb-2">
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5">
+<div class="w-8 h-8 rounded-full bg-blue-900/50"></div>
+</div>
+<span class="text-sm font-semibold text-center">Inter</span>
+</div>
+<div class="flex flex-col items-center px-4">
+<div class="text-xl font-medium text-white/30 tracking-tight">VS</div>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5">
+<div class="w-8 h-8 rounded-full bg-red-900/50"></div>
+</div>
+<span class="text-sm font-semibold text-center">Milan</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Actions Grid -->
+<section class="mt-2">
+<h3 class="text-lg font-bold px-4 mb-3">Quick Actions</h3>
+<div class="grid grid-cols-2 gap-3 px-4">
+<button class="relative flex flex-col justify-between p-4 h-32 rounded-2xl bg-surface-dark border border-white/5 hover:border-primary/50 active:scale-95 transition-all group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined">confirmation_number</span>
+</div>
+<div class="text-left z-10">
+<span class="block text-base font-bold leading-tight">Buy Tickets</span>
+</div>
+</button>
+<button class="relative flex flex-col justify-between p-4 h-32 rounded-2xl bg-surface-dark border border-white/5 hover:border-primary/50 active:scale-95 transition-all group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<div class="text-left z-10">
+<span class="block text-base font-bold leading-tight">Shop Store</span>
+</div>
+</button>
+<button class="relative flex flex-col justify-between p-4 h-32 rounded-2xl bg-surface-dark border border-white/5 hover:border-primary/50 active:scale-95 transition-all group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined">emoji_events</span>
+</div>
+<div class="text-left z-10">
+<span class="block text-base font-bold leading-tight">Fantasy</span>
+</div>
+</button>
+<button class="relative flex flex-col justify-between p-4 h-32 rounded-2xl bg-surface-dark border border-white/5 hover:border-primary/50 active:scale-95 transition-all group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<div class="text-left z-10">
+<span class="block text-base font-bold leading-tight">AI Tips</span>
+<span class="text-[10px] text-primary/70 font-medium">Coming Soon</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Featured News -->
+<section class="mt-6 mb-4">
+<h3 class="text-lg font-bold px-4 mb-3">Trending News</h3>
+<div class="flex flex-col gap-4 px-4">
+<!-- News Item 1 -->
+<article class="relative h-56 w-full rounded-2xl overflow-hidden group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Action shot of a football player celebrating a goal on the field" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDtkCxfhAnjRnWdFToMUXGnkMePw56xZxHgsZxadhNauHs3QfgMCwrjSamBpkEDdVTdhKYdy_QAcmwtDMViSmC1Z_dl9HMamQol8xsjveBkZ9ohesngAiEc-DXY9U9fbZLhgPkFGk1MtbZ0zbH6RU0ZCayAySltt8AV8DQNNGfcED6DRas__az9XpZ-GEbKlxyIMpauqOtrcHTbwBtkm3ymvY4NVD_VsXsrEb7PwY_4aa_lHIOMR4yVmGOIudII5jQ0SAyaDeF-EL4');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary text-background-dark text-[10px] font-bold px-2 py-0.5 rounded uppercase">Breaking</span>
+<span class="text-xs text-gray-300">2h ago</span>
+</div>
+<h4 class="text-xl font-bold leading-tight text-white mb-1">Mbappé's Hat-trick Secures Historic Victory in Paris</h4>
+<p class="text-sm text-gray-300 line-clamp-1">The French superstar continues his incredible form this season.</p>
+</div>
+</article>
+<!-- News Item 2 -->
+<article class="relative h-56 w-full rounded-2xl overflow-hidden group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Close up of a golden trophy cup being held by players" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRLpS2Ew-GRoN4aZZLPfkiR-JZzW1uMmGxmls6rVA6JgHmnAehEZ6wnqU-ulPSe7KEs8SZD53QHwOSOWJWZMgjNm8Y2qVnU0Xd7UhH3Ip39ZU3axagwAXO5uP2hu3xI9k4r_tRv2A6kostVKDqQTMioaOmFYdLCSxGhySR_Gv-TPwVGid7UNbgeaYsm9s8kfiAgFzhfmu10HcB3T8N45Akj69pYDal8MF-XfYe4BxIX_AtggtZSnXSGzadffNN6AHEJ2Jegi4qvAA');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-white/10 text-white border border-white/20 text-[10px] font-bold px-2 py-0.5 rounded uppercase backdrop-blur-sm">Transfer Market</span>
+<span class="text-xs text-gray-300">4h ago</span>
+</div>
+<h4 class="text-xl font-bold leading-tight text-white mb-1">Summer Transfer Window: Top 10 Moves to Watch</h4>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-lg border-t border-black/5 dark:border-white/5 pb-safe z-50">
+<div class="flex justify-around items-center h-16 px-2">
+<button class="flex flex-col items-center justify-center w-full h-full gap-1 text-primary">
+<span class="material-symbols-outlined filled font-variation-settings-'FILL'-1">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full gap-1 text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">sports_soccer</span>
+<span class="text-[10px] font-medium">Matches</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full gap-1 text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="text-[10px] font-medium">Shop</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full gap-1 text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="text-[10px] font-medium">Tickets</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full gap-1 text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</nav>
+<script>
+        // Set Material Symbols to filled for selected state if needed
+        const icons = document.querySelectorAll('.material-symbols-outlined');
+        icons.forEach(icon => {
+            if(icon.classList.contains('filled')) {
+                icon.style.fontVariationSettings = "'FILL' 1";
+            }
+        });
+    </script>
+</body></html>

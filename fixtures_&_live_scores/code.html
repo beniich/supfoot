@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fixtures &amp; Live Scores - FootballHub+</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2cc0d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221f10",
+                        "surface-dark": "#2A271B", 
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen flex flex-col relative overflow-x-hidden selection:bg-primary selection:text-black">
+<!-- Header Section -->
+<header class="sticky top-0 z-30 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-neutral-200 dark:border-white/5 shadow-lg shadow-black/5">
+<!-- Top Bar -->
+<div class="flex items-center justify-between px-4 pt-4 pb-2">
+<h1 class="text-2xl font-bold tracking-tight">Fixtures</h1>
+<div class="flex items-center gap-3">
+<span class="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">Favorites Only</span>
+<label class="relative flex h-[24px] w-[44px] cursor-pointer items-center rounded-full border-none bg-neutral-300 dark:bg-neutral-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary transition-colors duration-300">
+<div class="h-[20px] w-[20px] rounded-full bg-white shadow-sm"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+<!-- Date Strip -->
+<div class="flex gap-3 overflow-x-auto px-4 py-3 no-scrollbar border-t border-transparent dark:border-white/5 mt-1">
+<!-- Yesterday -->
+<button class="group flex flex-col items-center justify-center min-w-[64px] h-[76px] rounded-xl bg-white dark:bg-surface-dark border border-neutral-200 dark:border-white/5 active:scale-95 transition-all">
+<span class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider group-hover:text-primary transition-colors">Yest</span>
+<span class="text-xl font-bold text-neutral-600 dark:text-neutral-300">11</span>
+</button>
+<!-- Today (Active) -->
+<button class="group flex flex-col items-center justify-center min-w-[64px] h-[76px] rounded-xl bg-primary text-background-dark shadow-[0_0_15px_-3px_rgba(242,204,13,0.4)] border border-primary active:scale-95 transition-all">
+<span class="text-[11px] font-bold uppercase tracking-wider">Today</span>
+<span class="text-xl font-bold">12</span>
+</button>
+<!-- Tomorrow -->
+<button class="group flex flex-col items-center justify-center min-w-[64px] h-[76px] rounded-xl bg-white dark:bg-surface-dark border border-neutral-200 dark:border-white/5 active:scale-95 transition-all">
+<span class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider group-hover:text-primary transition-colors">Tom</span>
+<span class="text-xl font-bold text-neutral-600 dark:text-neutral-300">13</span>
+</button>
+<!-- Future Dates -->
+<button class="group flex flex-col items-center justify-center min-w-[64px] h-[76px] rounded-xl bg-white dark:bg-surface-dark border border-neutral-200 dark:border-white/5 active:scale-95 transition-all">
+<span class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider group-hover:text-primary transition-colors">Mon</span>
+<span class="text-xl font-bold text-neutral-600 dark:text-neutral-300">14</span>
+</button>
+<button class="group flex flex-col items-center justify-center min-w-[64px] h-[76px] rounded-xl bg-white dark:bg-surface-dark border border-neutral-200 dark:border-white/5 active:scale-95 transition-all">
+<span class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider group-hover:text-primary transition-colors">Tue</span>
+<span class="text-xl font-bold text-neutral-600 dark:text-neutral-300">15</span>
+</button>
+</div>
+</header>
+<!-- Main Content List -->
+<main class="flex-1 pb-28 space-y-2 pt-2">
+<!-- League Group: Premier League -->
+<section>
+<!-- League Header -->
+<div class="flex items-center gap-3 px-4 py-3 sticky top-[152px] z-20 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur border-y border-transparent dark:border-white/5">
+<div class="w-8 h-8 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-sm p-1">
+<img class="w-full h-full object-contain" data-alt="Premier League Lion Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9s0kXrqbAl7klrWmL3pT2qbhx6cz55mYGcrlag0NsBi9IJWQ_JHOIPnEzn4thMAYaWp2JB1Ryv35OaKGPVr78glEpb76rzNh6Hshcs-Z4D0Za6wpvNCSsokHpI8J4Bi_uDGJXhf1JqjM2MgcWoANyB5YiC1i1UWliRJIZkoWBV7wMtH3ZjJX2K9Emh0rO0Nt_M7BlHY3WY_LKOrn_R4i0_xWXKY6wMoSWAFr6Qoq1kPMxeWDZvPYWTUeD4GkvJ8txwVfwtlbkXio"/>
+</div>
+<h3 class="text-lg font-bold flex-1 text-slate-800 dark:text-white">Premier League</h3>
+<span class="material-symbols-outlined text-neutral-400">expand_less</span>
+</div>
+<div class="px-4 space-y-3 pt-1">
+<!-- Match Card: Live -->
+<div class="relative flex items-center justify-between bg-white dark:bg-surface-dark p-4 rounded-xl border border-neutral-200 dark:border-white/5 shadow-sm overflow-hidden group">
+<!-- Live Highlight Glow -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none"></div>
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<!-- Home Team -->
+<div class="w-[32%] flex flex-col items-center gap-2 text-center z-10">
+<div class="w-12 h-12 flex items-center justify-center">
+<img class="w-full h-full object-contain drop-shadow-md" data-alt="Man City Team Crest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEdDf4dqIF5A_1Aih1dQ1p8qIhbifCWpDQ9apXpbvbZUN-EktgYTknQ68UB5gbFez-kniney-RbCaaSyPQQO_AEnaf-j3oTVHN5Mn99U17fPmfm6hlczHvl4Rf-I1ItFKtQDE2CzWG9MNavJ_2OQPZPY6m8KgVUENrwwOFdQEIV6TK25HhUhq0GiF4KqwAHTt6GLm9uHhO_3r8LR11Kti7rIDFBF79UOBVZGAdxZtb6dleXxPgdMdmS-OMqjb1vBnpDwKQ-ghpDd4"/>
+</div>
+<span class="text-sm font-bold leading-tight line-clamp-1">Man City</span>
+</div>
+<!-- Score / Status -->
+<div class="flex-1 flex flex-col items-center justify-center z-10">
+<span class="text-3xl font-bold text-primary tracking-tighter drop-shadow-sm">2 - 1</span>
+<div class="flex items-center gap-1.5 mt-1 bg-primary/10 px-2 py-0.5 rounded-full border border-primary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] font-bold text-primary uppercase tracking-wider">88' Live</span>
+</div>
+</div>
+<!-- Away Team -->
+<div class="w-[32%] flex flex-col items-center gap-2 text-center z-10">
+<div class="w-12 h-12 flex items-center justify-center">
+<img class="w-full h-full object-contain drop-shadow-md" data-alt="Liverpool Team Crest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLH3YHRL60xzqkD0cx9YeIxweSmFYd1QKGQSBdiN1pWu4KnmtX9DC9uz1jxYmnedWsONkc0n9MkZLrY8JRPE3BJekJkiwDrdyI3__cer04PrCR62IwW7-VZC7FC-AeA11i_S5AtsRsEYHf4w_VrEZt3GS-c3Ux9NOIvqT4EID0RO3wz7lRMecOybFhDJbdk_SgNSsM-t9NmZjOvrbJeKhDjv8ej73-gNdcVEFmUezQz_ejTPGAl7BfP9jXgvgWqBAzYh2GVfIQpkw"/>
+</div>
+<span class="text-sm font-bold leading-tight line-clamp-1">Liverpool</span>
+</div>
+<!-- Favorite Action -->
+<button class="absolute top-2 right-2 text-primary z-20">
+<span class="material-symbols-outlined text-[20px] fill-current">star</span>
+</button>
+</div>
+<!-- Match Card: Upcoming -->
+<div class="relative flex items-center justify-between bg-white dark:bg-surface-dark p-4 rounded-xl border border-neutral-200 dark:border-white/5 shadow-sm">
+<div class="w-[32%] flex flex-col items-center gap-2 text-center">
+<div class="w-12 h-12 flex items-center justify-center opacity-90">
+<img class="w-full h-full object-contain" data-alt="Arsenal Team Crest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdpzTZThh5g8QRyLudW1NYcpxRJDUzQArH9POLAT_Vd61LEG9__k8nsMO_pqPjzIcRpmqoxVQEPj5hZLVb3bs4rmlE9DQnhmqHi7LpQhcAar4OWhxPabBG7yG5OeKSKOhJg67l2LFf5OdKCOzGybnoPQLEeQgwGiXzY2P4os0FUteg3JfG9xZecDgQ0_3wJS_Spe1KDD72GwIPjd9ySNqE9M6Xn6AKzywT9NSmAYs2CE0hwUhXWmbAubx_Ulq-3SVmzZxz-FpxphE"/>
+</div>
+<span class="text-sm font-medium leading-tight line-clamp-1 text-neutral-600 dark:text-neutral-300">Arsenal</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold text-neutral-800 dark:text-white tracking-tight">15:00</span>
+<span class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mt-1">Upcoming</span>
+</div>
+<div class="w-[32%] flex flex-col items-center gap-2 text-center">
+<div class="w-12 h-12 flex items-center justify-center opacity-90">
+<img class="w-full h-full object-contain" data-alt="Chelsea Team Crest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAafztEzlq6rCD6IfxVyaiHXtTjAF2U_sapRTx39A6wtqjsyArbiaBoWr7A3v-QmKqpTW_9jEe0L_y_bhkgscm3PaNN2cxiQWOC93v-S6S3pu_viezSm5yXh5lFZL3NyCJhAMDxKQu_j-L67FEYea2CwwCP4onLu79fsWIqGN8g93ViFjapqg0ozXyUity_-cMQQ1pqnkpseKwAp8vPchPdR6VjP54-15DV6CxUidsFz5U8Ui9xY3-N8cd6_FXAKuMlw-f59Y4xY70"/>
+</div>
+<span class="text-sm font-medium leading-tight line-clamp-1 text-neutral-600 dark:text-neutral-300">Chelsea</span>
+</div>
+<button class="absolute top-2 right-2 text-neutral-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">star</span>
+</button>
+</div>
+</div>
+</section>
+<!-- League Group: La Liga -->
+<section class="mt-2">
+<div class="flex items-center gap-3 px-4 py-3 sticky top-[152px] z-20 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur border-y border-transparent dark:border-white/5">
+<div class="w-8 h-8 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-sm p-1">
+<img class="w-full h-full object-contain" data-alt="La Liga Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcvogjoQ3_7lZ3LNQDofp1md1XSyQEsXgEOY_eXhwhsecLAHf4Lx_oSrxxtDfnxegfPkvQBCSBTUy3C5X_BjQSciZ58VnUXJOOcX7mCiIVZGXwob1K5IiiqBPnrFe-merxdUYzVGHaqAszjMcEIAxl4DDMfx_fP3E5Nf7OIbhv_1U_OpEZ8MdpjyznBfc78HD3zCLNUHeElqtiY2fsYkz67pw_MxQkTV5zxl0RnaOlh5PQvOZkL0WRbVlG7rfom4xvmKF9futYxFA"/>
+</div>
+<h3 class="text-lg font-bold flex-1 text-slate-800 dark:text-white">La Liga</h3>
+<span class="material-symbols-outlined text-neutral-400">expand_less</span>
+</div>
+<div class="px-4 space-y-3 pt-1">
+<!-- Match Card: Finished -->
+<div class="relative flex items-center justify-between bg-white dark:bg-surface-dark p-4 rounded-xl border border-neutral-200 dark:border-white/5 shadow-sm">
+<div class="w-[32%] flex flex-col items-center gap-2 text-center">
+<div class="w-12 h-12 flex items-center justify-center">
+<img class="w-full h-full object-contain" data-alt="Real Madrid Team Crest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGO4aKV7s7UAnQ9qLqVRh9RD5XSLihkmcDaUV_W--NaGoo7iJihUukLDthKhgDExCdJVDw7t8CGLDSSnWjDFjP7sSVWJSEBSHFLEtrW9A4IahcOKIVecnwI3E3L87JgctiwLmQzIN_btbp5AQPT04ZzlRDjyr1dL16boQtBDEjCKnZyk6x2BxN6OP8iczCoS01qi8qd7KN6MmpKf5O1qM_61ua_vhFa5lJvOamjimHhwgDyC8hUa_23JlDodoBOpy-JEEiENvxpPw"/>
+</div>
+<span class="text-sm font-bold leading-tight line-clamp-1">R. Madrid</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold text-neutral-400 dark:text-neutral-300 tracking-tight">3 - 0</span>
+<span class="text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mt-1">Full Time</span>
+</div>
+<div class="w-[32%] flex flex-col items-center gap-2 text-center">
+<div class="w-12 h-12 flex items-center justify-center grayscale opacity-60">
+<img class="w-full h-full object-contain" data-alt="Getafe Team Crest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF69IzMWVD4MAEkRcv1mK8UvY70kVO_NyXbiNoHoVNUXI3WM3g_XYkb5griZCAULNb87115pRDvxQHLDOkoI57Db-t-Dzsh6iSYv5ycBkh--2N9mPvU8iyxlweovRxdbAZvhAJZi19AXK-1Hi9HKiaUuQFSyaRoosVeH_KNO7rk_LYvMsbAUQjAhpIMKKXUBlIJc-SZM_NGg_CJaO2SdkTthVJRks0q9H-xkkfsoWi_ZgFLyT0fOX5eRsdXsjAPYAB7yiwom99a3A"/>
+</div>
+<span class="text-sm font-medium leading-tight line-clamp-1 text-neutral-500 dark:text-neutral-400">Getafe</span>
+</div>
+<button class="absolute top-2 right-2 text-neutral-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">star</span>
+</button>
+</div>
+</div>
+</section>
+<!-- League Group: Champions League -->
+<section class="mt-2">
+<div class="flex items-center gap-3 px-4 py-3 sticky top-[152px] z-20 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur border-y border-transparent dark:border-white/5">
+<div class="w-8 h-8 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-sm p-1">
+<img class="w-full h-full object-contain" data-alt="Champions League Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl-Rme5RF2b_USBZY0mikUoExVT_qCh10AeUPNJGGETg78AinVCy4mRQJsWmxxLdEX79LPzsWtzg9_eJzIbjCk0V5jj8OQch996g9u2GpoSKwZ0hbiWLjauPdWvcSYZvOlRZaX97QMUSZuRpRt6yUZ1CVc98rkBRl5dhYtG7Mr2B5YTlJlpwqVZx0zcXh6Qh-MbimoN-erG2eZLLTQyTyj4ZbKzI29JwBFQdRgRSg8xfgfMjQkk0QX0BCmZzQBPUBM8D1AGPCFf58"/>
+</div>
+<h3 class="text-lg font-bold flex-1 text-slate-800 dark:text-white">Champions League</h3>
+<span class="material-symbols-outlined text-neutral-400">expand_less</span>
+</div>
+<div class="px-4 space-y-3 pt-1">
+<!-- Match Card: Upcoming Late -->
+<div class="relative flex items-center justify-between bg-white dark:bg-surface-dark p-4 rounded-xl border border-neutral-200 dark:border-white/5 shadow-sm">
+<div class="w-[32%] flex flex-col items-center gap-2 text-center">
+<div class="w-12 h-12 flex items-center justify-center">
+<img class="w-full h-full object-contain" data-alt="Bayern Munich Team Crest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNaYmK6pq7CKv8Q7HAxJ3_R4PonH38FUvgkjcxawk80FcbjU7BJ0COLnruXJXAJFba3FzQUZV4RwHRUJzXM776G88bB2ybNPXWMrGLd12IvjZy_m7n3dp1KCKozlnY02WFPRDSPaBf6j8Rt0ijfPRsFbsuwxFjA9Yqje1L_-vy5vF4gGfqWFsLNsCkzBpL_L9oQPg_JSnnUXdTUQFfipPOxpiNb43uhvgpvs2PGktYEeRo_jZIfznv3iAC-iA9SVib75zTmqHDbHI"/>
+</div>
+<span class="text-sm font-bold leading-tight line-clamp-1">Bayern</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold text-neutral-800 dark:text-white tracking-tight">20:45</span>
+<span class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mt-1">Tonight</span>
+</div>
+<div class="w-[32%] flex flex-col items-center gap-2 text-center">
+<div class="w-12 h-12 flex items-center justify-center">
+<img class="w-full h-full object-contain" data-alt="PSG Team Crest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtK0Ef_SqA6C8TDNvUrW1p2M5EY5oqn-y6Ulv_kyP3wJDExazi2RbUZw_6YyaCHwryS2BPd5KbyfUe-DqzhQB47OeL-R9hb1K-f79Bc0bLwPjxFWOrSjCtaMEHcS-6f9l3zC4unhDkoH4y1z5FQ5BsEgMBcoR60n3fWxS8jSJcbTlrZ_qzD3yeyeeKcyWrsaWJrNh8tJyBLgINhj1kC39sGTp80DFnwVxj6eh7aU8BqG0q_iYNb7AgYOwCNv0YI2hIgBBiTEhUkjU"/>
+</div>
+<span class="text-sm font-bold leading-tight line-clamp-1">PSG</span>
+</div>
+<button class="absolute top-2 right-2 text-neutral-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">star</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 z-40 bg-white/80 dark:bg-[#181711]/90 backdrop-blur-xl border-t border-neutral-200 dark:border-white/5">
+<div class="flex items-center justify-around h-[80px] pb-4">
+<a class="flex flex-col items-center gap-1.5 w-full text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors group" href="#">
+<div class="p-1 rounded-full group-hover:bg-neutral-100 dark:group-hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-2xl">home</span>
+</div>
+<span class="text-[10px] font-medium tracking-wide">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1.5 w-full text-primary group" href="#">
+<div class="p-1 rounded-full bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-2xl fill-current">calendar_month</span>
+</div>
+<span class="text-[10px] font-bold tracking-wide">Fixtures</span>
+</a>
+<a class="flex flex-col items-center gap-1.5 w-full text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors group" href="#">
+<div class="p-1 rounded-full group-hover:bg-neutral-100 dark:group-hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-2xl">shopping_bag</span>
+</div>
+<span class="text-[10px] font-medium tracking-wide">Shop</span>
+</a>
+<a class="flex flex-col items-center gap-1.5 w-full text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors group" href="#">
+<div class="p-1 rounded-full group-hover:bg-neutral-100 dark:group-hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-2xl">confirmation_number</span>
+</div>
+<span class="text-[10px] font-medium tracking-wide">Tickets</span>
+</a>
+</div>
+</nav>
+</body></html>

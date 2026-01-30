@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FootballHub+ Widgets</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2d00d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221f10",
+                        "charcoal-glass": "rgba(30, 30, 30, 0.65)",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.375rem", // Approx 22px for iOS feel
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white antialiased overflow-x-hidden selection:bg-primary selection:text-black">
+<!-- Background Simulation: Blurred Stadium to showcase widget transparency -->
+<div class="fixed inset-0 z-0 pointer-events-none">
+<div class="absolute inset-0 bg-cover bg-center opacity-30 blur-2xl transform scale-110" data-alt="Blurred dark football stadium crowd background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJ7tf1gAtH7XhzN_QlrQdSZktklRwJQgOlrqfKblfFm-6fp2qTC9N_p4h9Q_S5QyTTMMKolllrWKAaWr5R-o2YxMF1GlLyCT64O3leNWZDdd6XMBmmG4UBDKu1eRZ0vvVu1IPXKxcbah8Jo0Yf3WiDOrICTv-SJDfsOjQiHJXgDzt6-kt0Ok5ZJePdHFOHgQ2qDtkGwjJ_0RkU13KSqMIwhnZxneRNVka3Ta-efRXxxDAqYAAan29ZgFvC0zeGEsNmPXr2xhX4QUw');"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-background-dark/90 via-background-dark/95 to-background-dark"></div>
+</div>
+<div class="relative z-10 flex flex-col min-h-screen">
+<!-- Top App Bar -->
+<header class="flex items-center justify-between p-4 bg-transparent">
+<!-- Empty left div for balance if needed, or back button -->
+<div class="w-12"></div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] text-center">Widgets</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="text-primary hover:text-white transition-colors text-base font-bold leading-normal tracking-[0.015em]">Done</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-6 pb-12 flex flex-col gap-10">
+<!-- Headline -->
+<div class="text-center pt-4">
+<h1 class="text-3xl font-bold tracking-tight mb-3 text-white">Customize Your<br/>Home Screen</h1>
+<p class="text-gray-400 text-sm leading-relaxed max-w-xs mx-auto">Stay updated with real-time scores and stats without opening the app.</p>
+</div>
+<!-- Widget Showcase -->
+<div class="space-y-12">
+<!-- Small Widget -->
+<section class="flex flex-col items-center">
+<h3 class="text-xs font-semibold text-primary/80 mb-4 uppercase tracking-widest">Small Widget (Next Match)</h3>
+<!-- Widget Preview Wrapper to simulate phone screen width constraints if needed -->
+<div class="bg-charcoal-glass backdrop-blur-xl border border-white/10 w-[160px] h-[160px] rounded-3xl p-4 flex flex-col justify-between shadow-2xl shadow-black/50 ring-1 ring-white/5 relative overflow-hidden group">
+<!-- Widget Content -->
+<div class="absolute top-0 right-0 p-3 opacity-50">
+<span class="material-symbols-outlined text-[18px]">sports_soccer</span>
+</div>
+<div class="flex flex-col gap-1 mt-1">
+<p class="text-xs text-gray-400 font-medium uppercase">Next Match</p>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-white/10 bg-center bg-cover" data-alt="Arsenal team logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCn8uF1uy3clmLq2FHz42Zob0kT2rszB7xt3hWgB4du0mxJhE_9ol3ppquo3CNiihdEMe3wkzB1oE-VMHwm_JWxvXP7XP8NeFB9e557sGHx82QV0UmbDnpFkAew6QYIA1BW17edSFQzSlbFIVT16gv9H_4Z9ePh2Yw8KodqODE0RXzTu_gtC1Zniq-I6FZfB8BN-oxjMzbl57XklhplS5R9uNTWTb2yIyPjwqaW7UZMgf65tHukCslmqmUaiGEdtX0kjdr860zqs4k')"></div>
+<span class="text-sm font-bold">ARS</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-white/10 bg-center bg-cover" data-alt="Liverpool team logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB2qCLc36BPNGkC7RyPHmcnbEMuvN8f56wOBQSwdN9wSSgvy-tB-WOLO2-d3D0zl5kS_FVrtix1O7Rm6HtRJjif_Zm-Aw6HfiQ289M-6bU2tncJmQjSffzwB8uJzyesbXKdayOQ0mZJOCTJhxHdrk2lWs5r6zbOu7vMshUQIWk-2r_FzFpRR-IMLGnIqGp81CuYgzecCRyGWjAtbeoW7lfI1ElXuM7RctWw9UzYEjyU4CmTEiYHf1igeCN5bsKAKAyBs3EQAGi_5rY')"></div>
+<span class="text-sm font-bold">LIV</span>
+</div>
+</div>
+<div>
+<p class="text-xs text-gray-400 mb-0.5">Kickoff in</p>
+<p class="text-primary text-xl font-bold tracking-tight">02:15:30</p>
+</div>
+</div>
+</section>
+<!-- Medium Widget -->
+<section class="flex flex-col items-center w-full">
+<h3 class="text-xs font-semibold text-primary/80 mb-4 uppercase tracking-widest">Medium Widget (Live Score)</h3>
+<div class="bg-charcoal-glass backdrop-blur-xl border border-white/10 w-full max-w-[340px] h-[160px] rounded-3xl p-5 flex flex-col justify-center shadow-2xl shadow-black/50 ring-1 ring-white/5 relative overflow-hidden">
+<!-- Header Line -->
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-1.5">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span>
+</span>
+<span class="text-[10px] font-bold uppercase tracking-wide text-white/90">Live • 64'</span>
+</div>
+<span class="text-[10px] text-gray-400">La Liga</span>
+</div>
+<!-- Match Content -->
+<div class="flex items-center justify-between px-2">
+<!-- Team 1 -->
+<div class="flex flex-col items-center gap-2 w-1/3">
+<div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 bg-center bg-cover shadow-lg" data-alt="Real Madrid Logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHrI6GHzMYHP9X6PpzPv9P3BVAz0thY9C-fZeIjf6Vqse_dtLOAabJ2KqeQ0dJBQBKAhX0ZxiONJLA_JFmPa_oz4OsJOqjZifFfM42GMK6CY6pHYEGI2G0Xa_9LcJT8rYpqQT2uGmtanl9gw_ryyaTSevB5E9_e3wPKTjnCULqwinf-uatX5FhhQryV4j1MJoWe2NFChDT3Yxw3Ttjbg81Ssq178atqUpDc7_N3ljtZpe_YfyklhUH4WT2nF9_gDUdhUJ1qDGFMrQ')"></div>
+<span class="text-sm font-bold">RMA</span>
+</div>
+<!-- Score -->
+<div class="flex flex-col items-center justify-center w-1/3">
+<span class="text-4xl font-bold text-primary tracking-tighter">2 - 0</span>
+</div>
+<!-- Team 2 -->
+<div class="flex flex-col items-center gap-2 w-1/3">
+<div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 bg-center bg-cover shadow-lg" data-alt="Barcelona Logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBOThLdt1GYnNQ5vv6seUYgEfOc_mZty1PU5pBF55fKsxncGHN7dBc0KDXu36a0N2O3TDpdf1cD7X9AhB7UeHNwipLjund4XjTW2q8niZmDihx-0zQdi-Cz_BjZH7tMi1VklZl0KVluW9DFTbFY0Nvv_nzYdm5crrEYwgVH_rDHNMd1RpNKp9Od1RO-nJakOPdFK_Wuw6oXGfah_cHf4NbWStVZ3CYqMc8YP485N5RnILbZz0RHqgsF9Kcaml0lqFQj4_RGdkD1o2E')"></div>
+<span class="text-sm font-bold">BAR</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Large Widget -->
+<section class="flex flex-col items-center w-full">
+<h3 class="text-xs font-semibold text-primary/80 mb-4 uppercase tracking-widest">Large Widget (Match Center)</h3>
+<div class="bg-charcoal-glass backdrop-blur-xl border border-white/10 w-[340px] h-[340px] rounded-3xl p-6 flex flex-col shadow-2xl shadow-black/50 ring-1 ring-white/5 relative overflow-hidden">
+<!-- Header -->
+<div class="flex justify-between items-start mb-6">
+<div>
+<h4 class="text-sm font-bold text-white">Premier League</h4>
+<p class="text-xs text-gray-400">Matchday 12</p>
+</div>
+<div class="bg-white/10 px-2 py-1 rounded text-[10px] font-bold uppercase text-primary">
+                                Full Time
+                            </div>
+</div>
+<!-- Score Section -->
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-white/10 bg-center bg-cover" data-alt="Man City Logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDMKwfwmC0Kzj7irCv0EhAaQMWMiGXAnbi8NzcyTIpVzDKY_IDEhAvEuJhyml5SiqqwvAkENgd9tDIyfnA8bEpbW4PLD80bQpNrkL2moekdTOBB6fosczCaz3ZKa8yWp3xfFb7cxDBLo1fTv3kjNIS0RU_YM7MJW6IkiGJ7IfuFtsuygX6fa91DheKSOZXSh730x1lHah7SE37UUSoEsVRpvQPqwrwpp_S3ruddySr9R7Nf6n99VYn1qRiq7DpnAi-OlQvXiuPkFt0')"></div>
+<span class="text-2xl font-bold text-white">3</span>
+</div>
+<span class="text-gray-600 font-light mx-2">FT</span>
+<div class="flex items-center gap-3 flex-row-reverse">
+<div class="w-10 h-10 rounded-full bg-white/10 bg-center bg-cover" data-alt="Tottenham Logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBq50wJVc_l6npdVr_ErtckPAe8-6ri62PbY3g5HnnWJW655HdaDz_wrZrFbd6XQxI8Pe-0pT6XFkF-jnJpjZ4E1sq9zIk0x4dYtEf_3fe8KXNiWmo1WCifSMhXE8rauCQoRjqfIbnSy91usQT8n4DFXW0NdKlakh037NnFk3ev3x-JaqlLFweFbB0-RGusvjWi2VDNjq2PV9mqZdVT8fUFS-A-viuyij5JJzu-x6Mxxcej1JoWt2xjcz67LW5COQVAc4OgPn52COY')"></div>
+<span class="text-2xl font-bold text-gray-400">1</span>
+</div>
+</div>
+<!-- Stats Section -->
+<div class="flex-1 flex flex-col justify-end gap-5">
+<!-- Possession -->
+<div>
+<div class="flex justify-between text-xs mb-2">
+<span class="font-bold text-primary">65%</span>
+<span class="text-gray-400 font-medium">Possession</span>
+<span class="font-bold text-gray-300">35%</span>
+</div>
+<div class="h-2 w-full bg-white/10 rounded-full overflow-hidden flex">
+<div class="h-full bg-primary w-[65%]"></div>
+<div class="h-full bg-gray-600 w-[35%]"></div>
+</div>
+</div>
+<!-- Last Event -->
+<div class="bg-white/5 rounded-xl p-3 flex items-center gap-3 border border-white/5">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm">sports_soccer</span>
+</div>
+<div>
+<p class="text-xs text-gray-400">Latest Goal</p>
+<p class="text-sm font-bold text-white">Haaland <span class="text-primary font-normal">78'</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- CTA Section -->
+<div class="pt-4 pb-8">
+<button class="w-full bg-primary hover:bg-yellow-400 transition-colors text-background-dark text-lg font-bold py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group">
+<span>How to Add Widgets</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</main>
+</div>
+</body></html>

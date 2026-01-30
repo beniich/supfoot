@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FootballHub+ Help Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2d00d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221f10",
+                        "surface-dark": "#2d2a1b",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white overflow-x-hidden antialiased">
+<div class="relative flex min-h-screen w-full flex-col pb-32">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-20 flex items-center justify-between bg-background-light/95 dark:bg-background-dark/95 px-4 py-3 backdrop-blur-md border-b border-black/5 dark:border-white/5">
+<button class="flex size-10 items-center justify-center rounded-full text-slate-900 dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="flex-1 text-center text-lg font-bold leading-tight tracking-tight">Help Center</h1>
+<button class="flex size-10 items-center justify-center rounded-full text-slate-900 dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Search Bar -->
+<section class="px-4 py-6">
+<div class="relative w-full">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+<span class="material-symbols-outlined text-gray-400">search</span>
+</div>
+<input class="block w-full rounded-xl border-none bg-white dark:bg-surface-dark py-4 pl-12 pr-4 text-base text-slate-900 dark:text-white placeholder-gray-400 shadow-sm focus:ring-2 focus:ring-primary focus:ring-opacity-50" placeholder="How can we help you?" type="text"/>
+</div>
+</section>
+<!-- Quick Help Grid -->
+<section class="px-4 pb-2">
+<h2 class="mb-4 text-lg font-bold leading-tight tracking-tight text-slate-900 dark:text-white">Quick Help</h2>
+<div class="grid grid-cols-2 gap-3">
+<!-- Card 1 -->
+<button class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-black/5 dark:border-white/5 bg-white dark:bg-surface-dark p-6 shadow-sm transition-all hover:border-primary/50 hover:shadow-md active:scale-95">
+<div class="flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-black transition-colors">
+<span class="material-symbols-outlined" style="font-size: 28px;">package_2</span>
+</div>
+<span class="font-semibold text-sm">My Orders</span>
+</button>
+<!-- Card 2 -->
+<button class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-black/5 dark:border-white/5 bg-white dark:bg-surface-dark p-6 shadow-sm transition-all hover:border-primary/50 hover:shadow-md active:scale-95">
+<div class="flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-black transition-colors">
+<span class="material-symbols-outlined" style="font-size: 28px;">qr_code_scanner</span>
+</div>
+<span class="font-semibold text-sm">Tickets &amp; QR</span>
+</button>
+<!-- Card 3 -->
+<button class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-black/5 dark:border-white/5 bg-white dark:bg-surface-dark p-6 shadow-sm transition-all hover:border-primary/50 hover:shadow-md active:scale-95">
+<div class="flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-black transition-colors">
+<span class="material-symbols-outlined" style="font-size: 28px;">verified</span>
+</div>
+<span class="font-semibold text-sm">Membership</span>
+</button>
+<!-- Card 4 -->
+<button class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-black/5 dark:border-white/5 bg-white dark:bg-surface-dark p-6 shadow-sm transition-all hover:border-primary/50 hover:shadow-md active:scale-95">
+<div class="flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-black transition-colors">
+<span class="material-symbols-outlined" style="font-size: 28px;">lock_person</span>
+</div>
+<span class="font-semibold text-sm">Account Access</span>
+</button>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="mt-6 px-4">
+<h2 class="mb-4 text-lg font-bold leading-tight tracking-tight text-slate-900 dark:text-white">Frequently Asked Questions</h2>
+<div class="flex flex-col space-y-3">
+<!-- FAQ Item 1 (Collapsed) -->
+<div class="overflow-hidden rounded-xl border border-black/5 dark:border-white/5 bg-white dark:bg-surface-dark shadow-sm">
+<button class="flex w-full items-center justify-between px-5 py-4 text-left">
+<span class="font-medium text-slate-900 dark:text-white">How do I transfer a ticket?</span>
+<span class="material-symbols-outlined text-gray-400">expand_more</span>
+</button>
+</div>
+<!-- FAQ Item 2 (Expanded) -->
+<div class="overflow-hidden rounded-xl border border-primary/30 bg-white dark:bg-surface-dark shadow-sm">
+<button class="flex w-full items-center justify-between px-5 py-4 text-left">
+<span class="font-medium text-primary">Why is my payment pending?</span>
+<span class="material-symbols-outlined text-primary">expand_less</span>
+</button>
+<div class="px-5 pb-5 pt-0">
+<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                            Payments may be pending due to bank verification processes. Usually, this clears within 2-4 hours. If it persists, please contact your bank or reach out to our support team.
+                        </p>
+</div>
+</div>
+<!-- FAQ Item 3 (Collapsed) -->
+<div class="overflow-hidden rounded-xl border border-black/5 dark:border-white/5 bg-white dark:bg-surface-dark shadow-sm">
+<button class="flex w-full items-center justify-between px-5 py-4 text-left">
+<span class="font-medium text-slate-900 dark:text-white">How do I upgrade to VIP?</span>
+<span class="material-symbols-outlined text-gray-400">expand_more</span>
+</button>
+</div>
+<!-- FAQ Item 4 (Collapsed) -->
+<div class="overflow-hidden rounded-xl border border-black/5 dark:border-white/5 bg-white dark:bg-surface-dark shadow-sm">
+<button class="flex w-full items-center justify-between px-5 py-4 text-left">
+<span class="font-medium text-slate-900 dark:text-white">Can I get a refund for a match pass?</span>
+<span class="material-symbols-outlined text-gray-400">expand_more</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Sticky Chat Button -->
+<div class="fixed bottom-24 left-0 right-0 z-10 px-4">
+<button class="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-4 font-bold text-black shadow-lg shadow-black/20 transition-transform active:scale-95">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span>Chat with Support</span>
+</button>
+</div>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 z-20 w-full border-t border-black/5 dark:border-white/5 bg-background-light/95 dark:bg-[#1a180d]/95 backdrop-blur-lg pb-safe">
+<div class="flex h-20 items-center justify-around px-2 pb-2">
+<a class="flex flex-1 flex-col items-center gap-1 p-2 text-gray-500 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 p-2 text-gray-500 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white" href="#">
+<span class="material-symbols-outlined">sports_soccer</span>
+<span class="text-[10px] font-medium">Matches</span>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 p-2 text-gray-500 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="text-[10px] font-medium">Shop</span>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 p-2 text-primary" href="#">
+<span class="material-symbols-outlined fill-current">support_agent</span>
+<span class="text-[10px] font-bold">Support</span>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 p-2 text-gray-500 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Safe area spacer for bottom nav -->
+<div class="h-6 w-full"></div>
+</div>
+</body></html>

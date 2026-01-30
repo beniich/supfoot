@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notification Preferences</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2d00d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221f10", // Deep charcoal/brown base
+                        "surface-dark": "#2e2b1f",   // Slightly lighter for cards
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Toggle Switch Styles for smoother transitions */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #f2d00d;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #f2d00d;
+        }
+        
+        /* Hide scrollbar for clean look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden pb-20">
+<!-- Header -->
+<header class="sticky top-0 z-10 flex items-center justify-between bg-background-light/95 dark:bg-background-dark/95 p-4 backdrop-blur-md border-b border-black/5 dark:border-white/5">
+<button class="flex size-10 items-center justify-center rounded-full text-slate-500 hover:bg-black/5 dark:text-slate-400 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h1 class="text-lg font-bold leading-tight tracking-tight">Notification Preferences</h1>
+<button class="flex size-10 items-center justify-center rounded-full text-primary font-medium text-sm">
+                Save
+            </button>
+</header>
+<!-- Scrollable Content -->
+<main class="flex-1 overflow-y-auto no-scrollbar px-4 pt-6">
+<!-- Section: Match Alerts -->
+<div class="mb-6">
+<h3 class="mb-2 px-1 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#bab59c]">Match Alerts</h3>
+<div class="overflow-hidden rounded-2xl bg-surface-light dark:bg-surface-dark shadow-sm">
+<!-- Item: Goals -->
+<div class="flex items-center justify-between gap-4 p-4 border-b border-slate-100 dark:border-white/5 last:border-0">
+<div class="flex items-center gap-3">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/20">
+<span class="material-symbols-outlined text-[20px]">sports_soccer</span>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-medium leading-none mb-1">Goals</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Instant push when a goal is scored</span>
+</div>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="peer h-7 w-12 rounded-full bg-slate-200 dark:bg-black/40 after:absolute after:start-[2px] after:top-[2px] after:h-6 after:w-6 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none"></div>
+</label>
+</div>
+<!-- Item: Lineups -->
+<div class="flex items-center justify-between gap-4 p-4 border-b border-slate-100 dark:border-white/5 last:border-0">
+<div class="flex items-center gap-3">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/20">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-medium leading-none mb-1">Lineups</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Starting XI announcements</span>
+</div>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="peer h-7 w-12 rounded-full bg-slate-200 dark:bg-black/40 after:absolute after:start-[2px] after:top-[2px] after:h-6 after:w-6 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none"></div>
+</label>
+</div>
+<!-- Item: Half/Full Time -->
+<div class="flex items-center justify-between gap-4 p-4 border-b border-slate-100 dark:border-white/5 last:border-0">
+<div class="flex items-center gap-3">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/20">
+<span class="material-symbols-outlined text-[20px]">timer</span>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-medium leading-none mb-1">Match Status</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Half-time and Full-time scores</span>
+</div>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input class="peer sr-only" type="checkbox"/>
+<div class="peer h-7 w-12 rounded-full bg-slate-200 dark:bg-black/40 after:absolute after:start-[2px] after:top-[2px] after:h-6 after:w-6 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none"></div>
+</label>
+</div>
+<!-- Item: Red Cards -->
+<div class="flex items-center justify-between gap-4 p-4">
+<div class="flex items-center gap-3">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/20">
+<span class="material-symbols-outlined text-[20px]">style</span>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-medium leading-none mb-1">Cards</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Red card alerts</span>
+</div>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input class="peer sr-only" type="checkbox"/>
+<div class="peer h-7 w-12 rounded-full bg-slate-200 dark:bg-black/40 after:absolute after:start-[2px] after:top-[2px] after:h-6 after:w-6 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Section: AI Insights -->
+<div class="mb-6">
+<h3 class="mb-2 px-1 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#bab59c]">AI Insights</h3>
+<div class="overflow-hidden rounded-2xl bg-surface-light dark:bg-surface-dark shadow-sm">
+<!-- Item: Predictive Analysis -->
+<div class="flex items-center justify-between gap-4 p-4 border-b border-slate-100 dark:border-white/5 last:border-0">
+<div class="flex items-center gap-3">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-indigo-500/10 text-indigo-500 dark:text-indigo-400 dark:bg-indigo-500/20">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-medium leading-none mb-1">Win Probability</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Live predictive updates</span>
+</div>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="peer h-7 w-12 rounded-full bg-slate-200 dark:bg-black/40 after:absolute after:start-[2px] after:top-[2px] after:h-6 after:w-6 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none"></div>
+</label>
+</div>
+<!-- Item: Player Performance -->
+<div class="flex items-center justify-between gap-4 p-4">
+<div class="flex items-center gap-3">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-indigo-500/10 text-indigo-500 dark:text-indigo-400 dark:bg-indigo-500/20">
+<span class="material-symbols-outlined text-[20px]">trending_up</span>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-medium leading-none mb-1">Player Stats</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Key performance milestones</span>
+</div>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input class="peer sr-only" type="checkbox"/>
+<div class="peer h-7 w-12 rounded-full bg-slate-200 dark:bg-black/40 after:absolute after:start-[2px] after:top-[2px] after:h-6 after:w-6 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Section: Store & Community -->
+<div class="mb-6 grid gap-6">
+<!-- Community -->
+<div>
+<h3 class="mb-2 px-1 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#bab59c]">Community</h3>
+<div class="overflow-hidden rounded-2xl bg-surface-light dark:bg-surface-dark shadow-sm">
+<div class="flex items-center justify-between gap-4 p-4">
+<div class="flex items-center gap-3">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-pink-500/10 text-pink-500 dark:text-pink-400 dark:bg-pink-500/20">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-medium leading-none mb-1">Replies &amp; Mentions</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">When someone talks to you</span>
+</div>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="peer h-7 w-12 rounded-full bg-slate-200 dark:bg-black/40 after:absolute after:start-[2px] after:top-[2px] after:h-6 after:w-6 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Store -->
+<div>
+<h3 class="mb-2 px-1 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#bab59c]">Store Alerts</h3>
+<div class="overflow-hidden rounded-2xl bg-surface-light dark:bg-surface-dark shadow-sm">
+<div class="flex items-center justify-between gap-4 p-4">
+<div class="flex items-center gap-3">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 dark:bg-emerald-500/20">
+<span class="material-symbols-outlined text-[20px]">sell</span>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-medium leading-none mb-1">Price Drops</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Discounts on wishlist items</span>
+</div>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input class="peer sr-only" type="checkbox"/>
+<div class="peer h-7 w-12 rounded-full bg-slate-200 dark:bg-black/40 after:absolute after:start-[2px] after:top-[2px] after:h-6 after:w-6 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Do Not Disturb -->
+<div class="mb-8">
+<h3 class="mb-2 px-1 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#bab59c]">Do Not Disturb</h3>
+<div class="overflow-hidden rounded-2xl bg-surface-light dark:bg-surface-dark shadow-sm">
+<div class="p-4 border-b border-slate-100 dark:border-white/5">
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-slate-500/10 text-slate-600 dark:text-slate-300 dark:bg-slate-500/20">
+<span class="material-symbols-outlined text-[20px]">do_not_disturb_on</span>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-medium leading-none mb-1">Scheduled Quiet Hours</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Mute all notifications during sleep</span>
+</div>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="peer h-7 w-12 rounded-full bg-slate-200 dark:bg-black/40 after:absolute after:start-[2px] after:top-[2px] after:h-6 after:w-6 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none"></div>
+</label>
+</div>
+</div>
+<!-- Time Selector -->
+<div class="flex items-center justify-between px-6 py-4 bg-slate-50/50 dark:bg-black/20">
+<div class="flex flex-col items-center gap-1">
+<span class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">From</span>
+<div class="flex items-center rounded-lg bg-white dark:bg-white/10 px-3 py-1.5 shadow-sm border border-slate-200 dark:border-white/5">
+<span class="text-sm font-bold">22:00</span>
+</div>
+</div>
+<div class="h-[1px] w-8 bg-slate-300 dark:bg-slate-600"></div>
+<div class="flex flex-col items-center gap-1">
+<span class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">To</span>
+<div class="flex items-center rounded-lg bg-white dark:bg-white/10 px-3 py-1.5 shadow-sm border border-slate-200 dark:border-white/5">
+<span class="text-sm font-bold">07:00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer for bottom nav -->
+<div class="h-8"></div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 z-20 w-full border-t border-black/5 dark:border-white/5 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-lg pb-safe">
+<div class="flex h-16 items-center justify-around px-2">
+<a class="flex flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300" href="#">
+<span class="material-symbols-outlined text-2xl">sports_soccer</span>
+<span class="text-[10px] font-medium">Matches</span>
+</a>
+<div class="relative flex flex-col items-center justify-center gap-1 text-primary">
+<span class="material-symbols-outlined text-2xl fill-current">notifications</span>
+<span class="text-[10px] font-medium">Alerts</span>
+<span class="absolute right-3 top-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-background-light dark:ring-background-dark"></span>
+</div>
+<a class="flex flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300" href="#">
+<img alt="Profile" class="h-6 w-6 rounded-full object-cover opacity-80" data-alt="User profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaV6GiqQZN_NuzEmjVitK21Bzi6oQdx08rkbmwj4OQsrwITurFP7_rlCzQ_K6b3f6zjJIp1yWr9Mm0InI4Zw5eQ0IS02oR-41AUa06wAy69xv7UoMN_pKbl_B3bp5qsnK5E-uHmkfPFjnmajv2_PAoUMlJntOTkv6mjMGIym_5fAnAVSRLzkdbjFfLW9sXp2CQ3_waw3eKw3WUpd97k2aH6VHAoaEWQJLCMlLkfSEPkbDedIAgAQvfjQs5Maa_ubBhTQ1HfTu-2Mc"/>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</div>
+<!-- iPhone Home Indicator safe area simulation -->
+<div class="h-[14px] w-full flex justify-center items-start">
+<div class="h-1 w-32 bg-black/20 dark:bg-white/20 rounded-full"></div>
+</div>
+</nav>
+</div>
+</body></html>

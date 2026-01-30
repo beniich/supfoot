@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Advanced Player Analytics - FootballHub+</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Noto+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f20d0d",
+                        "accent-gold": "#D4AF37",
+                        "accent-neon": "#39FF14",
+                        "background-light": "#f8f5f5",
+                        "background-dark": "#0a0505",
+                        "card-dark": "#1a0d0d",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Lexend', sans-serif; }
+        .radar-grid { stroke: #332222; stroke-width: 1; fill: none; }
+        .radar-player { fill: rgba(242, 13, 13, 0.3); stroke: #f20d0d; stroke-width: 2; }
+        .radar-avg { fill: rgba(186, 156, 156, 0.1); stroke: #ba9c9c; stroke-width: 1; stroke-dasharray: 4; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
+<div class="flex items-center p-4 justify-between max-w-md mx-auto">
+<div class="text-primary cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight">Player Analytics</h1>
+<div class="flex gap-3">
+<button class="text-accent-gold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">stars</span>
+</button>
+<button class="text-white">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-md mx-auto">
+<!-- Profile Header -->
+<section class="p-4">
+<div class="flex items-center gap-5">
+<div class="relative">
+<div class="size-24 rounded-full border-2 border-primary p-1">
+<div class="w-full h-full rounded-full bg-center bg-cover" data-alt="Professional headshot of Erling Haaland in team jersey" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuChVnS_K17Q9XWdh7N8CMAe_1m3gX4gNh6uMaxVW1bOEiS7n-VXJ0nPZsBi5gjRXdMnsOLp-fU72Bv9LhDala5HwQ2n5_be7TZ04UHXyhTN7vfuztBh7TUW-IGJZKqRYIU9mJ9YVSeFUbtTHny1KFU36mVTOam1FX1z_YJEbkO4U7I0Yj6ygm4DO27riC9gwVahnBG98mW9Af18c757kZtcsNIUKQDCbxYKYMcieBZVth86RbH-_J_7OlLV7QjkRePrE3Mh2qlUoGU");'>
+</div>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-accent-gold text-black text-[10px] font-black px-2 py-0.5 rounded-full border-2 border-background-dark">
+                        PRO+
+                    </div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h2 class="text-2xl font-bold leading-tight">Erling Haaland</h2>
+<img alt="Norway Flag" class="h-3 rounded-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXAswu8r000224UJNw8HZlecVk74tcoO0Q_2wFFbik7mEMyLd6DvaBaHqTHrFj3D-d2e83aUZb4U8nf4WyWsTkV56FXM61HzNa0UkrtSbDnJ16XgbnqzlbXCNqBuKownqU3ahrfV9TOAVq43R5REna6-NibZtEjbMvZpxQFMwqpGsF7Zg4Dl8pAi5NrZyx3FhwcW2z49onkSY17q9viZaN5S3mY4b-LHUMfOq6CstTdFIcWAmPsm3TepJlqQSFnHjHToRAkI2Ha8Q"/>
+</div>
+<p class="text-primary font-medium">Manchester City | Forward (ST)</p>
+<div class="flex gap-3 mt-1">
+<span class="text-slate-500 dark:text-[#ba9c9c] text-sm">Age: 23</span>
+<span class="text-slate-500 dark:text-[#ba9c9c] text-sm">•</span>
+<span class="text-slate-500 dark:text-[#ba9c9c] text-sm">Value: €180.5M</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Radar Chart -->
+<section class="px-4 py-2">
+<div class="bg-card-dark rounded-xl border border-primary/20 p-5">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-lg font-bold">Technical Radar</h3>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary"></span>
+<span class="text-[10px] text-white/70 uppercase">Player</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-[#ba9c9c]"></span>
+<span class="text-[10px] text-white/70 uppercase">League Avg</span>
+</div>
+</div>
+</div>
+<div class="relative w-full aspect-square flex items-center justify-center">
+<!-- Simple SVG Radar Mockup -->
+<svg class="w-full h-full max-w-[260px]" viewbox="0 0 200 200">
+<!-- Grids -->
+<circle class="radar-grid" cx="100" cy="100" r="80"></circle>
+<circle class="radar-grid" cx="100" cy="100" r="60"></circle>
+<circle class="radar-grid" cx="100" cy="100" r="40"></circle>
+<!-- League Avg -->
+<polygon class="radar-avg" points="100,60 130,80 120,130 80,130 70,80"></polygon>
+<!-- Player Stats -->
+<polygon class="radar-player" points="100,25 170,75 140,165 60,165 30,75"></polygon>
+<!-- Labels -->
+<text fill="#ba9c9c" font-size="8" font-weight="bold" text-anchor="middle" x="100" y="20">PACE</text>
+<text fill="#ba9c9c" font-size="8" font-weight="bold" text-anchor="middle" x="185" y="85">SHOT</text>
+<text fill="#ba9c9c" font-size="8" font-weight="bold" text-anchor="middle" x="150" y="180">PASS</text>
+<text fill="#ba9c9c" font-size="8" font-weight="bold" text-anchor="middle" x="50" y="180">DRIB</text>
+<text fill="#ba9c9c" font-size="8" font-weight="bold" text-anchor="middle" x="15" y="85">PHYS</text>
+</svg>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+<p class="text-accent-gold text-2xl font-black">94</p>
+<p class="text-[8px] text-white/50 tracking-widest uppercase">Overall</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Market Value Trend -->
+<section class="px-4 py-4">
+<div class="bg-card-dark rounded-xl border border-primary/10 p-5">
+<div class="flex justify-between items-center mb-4">
+<div>
+<p class="text-white/60 text-xs uppercase tracking-wider">Market Value Trend</p>
+<h3 class="text-xl font-bold">€180.5M <span class="text-accent-neon text-sm ml-1">+14.2%</span></h3>
+</div>
+<span class="material-symbols-outlined text-white/30">trending_up</span>
+</div>
+<div class="h-24 w-full relative">
+<!-- Area Chart Mockup -->
+<svg class="w-full h-full overflow-visible" viewbox="0 0 400 100">
+<defs>
+<lineargradient id="valueGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#f20d0d" stop-opacity="0.4"></stop>
+<stop offset="100%" stop-color="#f20d0d" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,80 Q50,75 100,60 T200,55 T300,30 T400,10 L400,100 L0,100 Z" fill="url(#valueGrad)"></path>
+<path d="M0,80 Q50,75 100,60 T200,55 T300,30 T400,10" fill="none" stroke="#f20d0d" stroke-width="3"></path>
+<!-- Pulse Point -->
+<circle cx="400" cy="10" fill="#f20d0d" r="4">
+<animate attributename="r" dur="2s" repeatcount="indefinite" values="4;6;4"></animate>
+</circle>
+</svg>
+<div class="flex justify-between mt-2 text-[10px] text-white/40 font-medium">
+<span>JAN 23</span>
+<span>MAY 23</span>
+<span>SEP 23</span>
+<span>JAN 24</span>
+</div>
+</div>
+</div>
+</section>
+<!-- In-Depth Stats -->
+<section class="px-4 pb-6">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold tracking-tight">In-Depth Stats</h2>
+<button class="text-primary text-xs font-bold flex items-center gap-1 uppercase">
+                    Full Report <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<!-- Attacking Category -->
+<div class="space-y-3 mb-6">
+<div class="flex items-center gap-2 mb-2 text-accent-gold">
+<span class="material-symbols-outlined text-lg">bolt</span>
+<h4 class="text-sm font-bold uppercase tracking-widest">Attacking</h4>
+</div>
+<!-- Stat Row 1 -->
+<div class="bg-card-dark p-4 rounded-xl border-l-4 border-accent-gold">
+<div class="flex justify-between items-end mb-1">
+<div>
+<p class="text-white/60 text-xs">Expected Goals (xG)</p>
+<p class="text-lg font-bold">0.98 <span class="text-[10px] text-white/40">/90min</span></p>
+</div>
+<div class="text-right">
+<span class="text-accent-neon text-xs font-bold">+0.12</span>
+<p class="text-[10px] text-white/40 uppercase">vs Avg</p>
+</div>
+</div>
+<div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+<div class="bg-accent-neon h-full w-[92%] rounded-full"></div>
+</div>
+</div>
+<!-- Stat Row 2 -->
+<div class="bg-card-dark p-4 rounded-xl border-l-4 border-white/10">
+<div class="flex justify-between items-end mb-1">
+<div>
+<p class="text-white/60 text-xs">Shot Accuracy</p>
+<p class="text-lg font-bold">64.2%</p>
+</div>
+<div class="text-right">
+<span class="text-accent-gold text-xs font-bold">Top 1%</span>
+<p class="text-[10px] text-white/40 uppercase">Percentile</p>
+</div>
+</div>
+<div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+<div class="bg-accent-gold h-full w-[99%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Distribution Category -->
+<div class="space-y-3 mb-6">
+<div class="flex items-center gap-2 mb-2 text-primary">
+<span class="material-symbols-outlined text-lg">share</span>
+<h4 class="text-sm font-bold uppercase tracking-widest">Distribution</h4>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-card-dark p-3 rounded-xl border border-white/5">
+<p class="text-white/40 text-[10px] uppercase">Key Passes</p>
+<div class="flex items-center justify-between">
+<span class="text-xl font-bold">1.4</span>
+<span class="material-symbols-outlined text-accent-neon text-sm">trending_up</span>
+</div>
+</div>
+<div class="bg-card-dark p-3 rounded-xl border border-white/5">
+<p class="text-white/40 text-[10px] uppercase">Pass Comp.</p>
+<div class="flex items-center justify-between">
+<span class="text-xl font-bold">81%</span>
+<span class="material-symbols-outlined text-slate-500 text-sm">remove</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Discipline Category -->
+<div class="space-y-3">
+<div class="flex items-center gap-2 mb-2 text-slate-400">
+<span class="material-symbols-outlined text-lg">gavel</span>
+<h4 class="text-sm font-bold uppercase tracking-widest text-white/60">Discipline</h4>
+</div>
+<div class="bg-card-dark p-4 rounded-xl flex items-center justify-between">
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-4 h-6 bg-yellow-400 rounded-sm mb-1 shadow-lg shadow-yellow-400/20"></div>
+<span class="text-xs font-bold">2</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-4 h-6 bg-primary rounded-sm mb-1 shadow-lg shadow-primary/20"></div>
+<span class="text-xs font-bold">0</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-white/40 text-[10px] uppercase">Fouls Committed</p>
+<p class="text-lg font-bold text-accent-neon">0.4 <span class="text-white/40 font-normal text-xs">/avg</span></p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (iOS Style) -->
+<nav class="fixed bottom-0 left-0 right-0 bg-background-light/90 dark:bg-background-dark/95 backdrop-blur-xl border-t border-white/10 pb-6 pt-2 z-50">
+<div class="max-w-md mx-auto flex justify-around items-center">
+<a class="flex flex-col items-center gap-1 text-white/40" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">analytics</span>
+<span class="text-[10px] font-medium">Scouting</span>
+</a>
+<div class="relative -top-4">
+<div class="bg-primary size-12 rounded-full flex items-center justify-center shadow-lg shadow-primary/30 border-4 border-background-dark">
+<span class="material-symbols-outlined text-white">search</span>
+</div>
+</div>
+<a class="flex flex-col items-center gap-1 text-white/40" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-[10px] font-medium">Squad</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-white/40" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</div>
+</nav>
+</body></html>
