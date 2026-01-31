@@ -33,9 +33,9 @@ export default function OrderConfirmationPage() {
                     </div>
                 </div>
 
-                {/* What's Next Section */}
+                {/* What&apos;s Next? Section */}
                 <div className="px-6 w-full max-w-md mx-auto">
-                    <h3 className="text-slate-900 dark:text-white text-[20px] font-bold leading-tight tracking-tight mb-4">What's Next?</h3>
+                    <h3 className="text-slate-900 dark:text-white text-[20px] font-bold leading-tight tracking-tight mb-4">What&apos;s Next??</h3>
                     <div className="grid grid-cols-2 gap-4">
                         {/* Card 1: Track Order */}
                         <button className="group flex flex-col items-center justify-center p-6 bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-white/5 hover:border-primary/50 transition-all active:scale-95 shadow-lg shadow-black/5">

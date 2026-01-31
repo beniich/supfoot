@@ -37,7 +37,7 @@ export default function DashboardPage() {
                                     <span className="text-[10px] font-bold text-red-500 uppercase tracking-wider">Live</span>
                                 </div>
                             </div>
-                            <div className="text-xs text-white/40 font-medium mb-4 uppercase tracking-wide">Botola Pro • 78'</div>
+                            <div className="text-xs text-white/40 font-medium mb-4 uppercase tracking-wide">Botola Pro • 78&apos;</div>
                             <div className="flex items-center justify-between mb-2">
                                 <div className="flex flex-col items-center gap-2 flex-1">
                                     <div className="w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5" title="Raja CA">
@@ -65,7 +65,7 @@ export default function DashboardPage() {
                                     <span className="text-[10px] font-bold text-red-500 uppercase tracking-wider">Live</span>
                                 </div>
                             </div>
-                            <div className="text-xs text-white/40 font-medium mb-4 uppercase tracking-wide">Premier League • 12'</div>
+                            <div className="text-xs text-white/40 font-medium mb-4 uppercase tracking-wide">Premier League • 12&apos;</div>
                             <div className="flex items-center justify-between mb-2">
                                 <div className="flex flex-col items-center gap-2 flex-1">
                                     <div className="w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5" title="Man City">
@@ -180,7 +180,7 @@ export default function DashboardPage() {
                                     <span className="bg-primary text-background-dark text-[10px] font-bold px-2 py-0.5 rounded uppercase">Breaking</span>
                                     <span className="text-xs text-gray-300">2h ago</span>
                                 </div>
-                                <h4 className="text-xl font-bold leading-tight text-white mb-1">Mbappé's Hat-trick Secures Historic Victory in Paris</h4>
+                                <h4 className="text-xl font-bold leading-tight text-white mb-1">Mbappé&apos;s Hat-trick Secures Historic Victory in Paris</h4>
                                 <p className="text-sm text-gray-300 line-clamp-1">The French superstar continues his incredible form this season.</p>
                             </div>
                         </article>

@@ -111,7 +111,7 @@ function IconVariant({ size, label, pt }: { size: number, label: string, pt: str
     );
 }
 
-function ColorCard({ color, name, desc }: { color: string, name: string, desc: string }) {
+function ColorCard({ color, name, desc: _desc }: { color: string, name: string, desc: string }) {
     return (
         <div className="flex items-center gap-4 p-4 rounded-3xl bg-surface-dark border border-white/5 active:scale-95 transition-all cursor-pointer group hover:border-primary/20">
             <div className="w-14 h-14 rounded-2xl shadow-glow-sm group-hover:scale-110 transition-transform" style={{ backgroundColor: color }}></div>

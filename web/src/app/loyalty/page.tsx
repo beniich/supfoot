@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import BottomNav from '@/components/BottomNav';
 
 export default function LoyaltyPage() {

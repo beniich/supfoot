@@ -131,7 +131,14 @@ export default function RefereeHubPage() {
     );
 }
 
-function MetricCard({ icon, iconColor, value, label }: any) {
+interface MetricCardProps {
+    icon: string;
+    iconColor: string;
+    value: string;
+    label: string;
+}
+
+function MetricCard({ icon, iconColor, value, label }: MetricCardProps) {
     return (
         <div className="flex h-12 shrink-0 items-center justify-center gap-x-2 rounded-2xl bg-white dark:bg-surface-dark px-4 border border-black/5 dark:border-white/5 shadow-sm">
             <span className={`material-symbols-outlined ${iconColor} text-lg`}>{icon}</span>
@@ -142,7 +149,17 @@ function MetricCard({ icon, iconColor, value, label }: any) {
     );
 }
 
-function RefereeCard({ name, badge, score, image, games, cards, trend }: any) {
+interface RefereeCardProps {
+    name: string;
+    badge: string;
+    score: string;
+    image: string;
+    games: string;
+    cards: string;
+    trend: number[];
+}
+
+function RefereeCard({ name, badge, score, image, games, cards, trend }: RefereeCardProps) {
     return (
         <Link href="/referees/1" className="bg-white dark:bg-surface-dark rounded-2xl p-4 border border-black/5 dark:border-white/5 flex flex-col gap-3 shadow-sm hover:border-primary/30 transition-all">
             <div className="flex items-center justify-between">
@@ -183,7 +200,14 @@ function StatBox({ label, value }: { label: string, value: string }) {
     );
 }
 
-function NavButton({ icon, label, href, active }: any) {
+interface NavButtonProps {
+    icon: string;
+    label: string;
+    href: string;
+    active?: boolean;
+}
+
+function NavButton({ icon, label, href, active }: NavButtonProps) {
     return (
         <Link href={href} className="flex flex-col items-center gap-1">
             <span className={`material-symbols-outlined ${active ? 'text-primary filled' : 'text-gray-400'}`}>{icon}</span>

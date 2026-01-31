@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import React from 'react';
 import BottomNav from '@/components/BottomNav';
 
 export default function TransferMarketPage() {
@@ -119,7 +119,7 @@ function RumorCard({ name, from, to, probability, source, quote }: { name: strin
                     <div className="h-full bg-primary rounded-full" style={{ width: `${probability}%` }}></div>
                 </div>
             </div>
-            {quote && <p className="mt-3 text-[11px] leading-relaxed text-white/60 italic">"{quote}"</p>}
+            {quote && <p className="mt-3 text-[11px] leading-relaxed text-white/60 italic">&quot;{quote}&quot;</p>}
         </div>
     )
 }

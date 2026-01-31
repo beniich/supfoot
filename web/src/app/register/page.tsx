@@ -34,8 +34,9 @@ export default function RegisterPage() {
             localStorage.setItem('user', JSON.stringify(user));
 
             router.push('/onboarding');
-        } catch (err: any) {
-            setError(err.response?.data?.message || 'Registration failed. Please try again.');
+        } catch (err) {
+            const error = err as { response?: { data?: { message?: string } } };
+            setError(error.response?.data?.message || 'Registration failed. Please try again.');
         } finally {
             setLoading(false);
         }
@@ -125,7 +126,7 @@ export default function RegisterPage() {
     );
 }
 
-function SocialButton({ provider, icon, isSVG = false }: { provider: string, icon: React.ReactNode, isSVG?: boolean }) {
+function SocialButton({ provider: _provider, icon, isSVG = false }: { provider: string, icon: React.ReactNode, isSVG?: boolean }) {
     return (
         <button type="button" className="flex items-center justify-center rounded-2xl h-16 bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/10 text-slate-900 dark:text-white transition-all active:scale-95 shadow-xl group">
             <div className="size-6 flex items-center justify-center">

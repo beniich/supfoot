@@ -25,8 +25,9 @@ export default function LoginPage() {
             localStorage.setItem('user', JSON.stringify(user));
 
             router.push('/');
-        } catch (err: any) {
-            setError(err.response?.data?.message || 'Login failed. Please try again.');
+        } catch (err) {
+            const error = err as { response?: { data?: { message?: string } } };
+            setError(error.response?.data?.message || 'Login failed. Please try again.');
         } finally {
             setLoading(false);
         }

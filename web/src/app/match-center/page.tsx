@@ -44,7 +44,7 @@ export default function MatchCenterPage() {
                                 <span className="font-bold text-xl">2</span>
                             </div>
                             <div className="flex flex-col items-center">
-                                <span className="text-xs font-medium text-primary uppercase tracking-wider bg-primary/20 px-2 py-0.5 rounded">Live • 64'</span>
+                                <span className="text-xs font-medium text-primary uppercase tracking-wider bg-primary/20 px-2 py-0.5 rounded">Live • 64&apos;</span>
                             </div>
                             <div className="flex items-center gap-3">
                                 <span className="font-bold text-xl">1</span>

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
 
 export default function RefereeProfilePage() {
     return (
@@ -196,7 +195,20 @@ function SnapshotCard({ label, value }: { label: string, value: string }) {
     );
 }
 
-function MatchCard({ league, date, rating, team1, team1Color, score, team2, team2Color, stats, fairness }: any) {
+interface MatchCardProps {
+    league: string;
+    date: string;
+    rating: string;
+    team1: string;
+    team1Color: string;
+    score: string;
+    team2: string;
+    team2Color: string;
+    stats?: { color: string; text: string }[];
+    fairness: string;
+}
+
+function MatchCard({ league, date, rating, team1, team1Color, score, team2, team2Color, stats, fairness }: MatchCardProps) {
     return (
         <div className="bg-white dark:bg-surface-dark rounded-2xl p-4 border border-black/5 dark:border-white/5 shadow-sm hover:border-primary/20 transition-colors">
             <div className="flex justify-between items-center mb-3">
@@ -226,7 +238,7 @@ function MatchCard({ league, date, rating, team1, team1Color, score, team2, team
             </div>
             <div className="mt-4 pt-3 border-t border-black/5 dark:border-white/5 flex justify-between items-center">
                 <div className="flex gap-3">
-                    {stats && stats.map((stat: any, i: number) => (
+                    {stats && stats.map((stat, i) => (
                         <div key={i} className="flex items-center gap-1">
                             <div className={`size-1.5 ${stat.color} rounded-full`}></div>
                             <span className="text-[9px] text-gray-500 font-bold uppercase tracking-wide">{stat.text}</span>
@@ -240,7 +252,7 @@ function MatchCard({ league, date, rating, team1, team1Color, score, team2, team
     );
 }
 
-function NavButton({ icon, label, href }: any) {
+function NavButton({ icon, label, href }: { icon: string; label: string; href: string }) {
     return (
         <Link href={href} className="flex flex-col items-center gap-1 group">
             <span className="material-symbols-outlined text-gray-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">{icon}</span>

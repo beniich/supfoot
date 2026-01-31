@@ -27,7 +27,7 @@ export default function RajaProfilePage() {
                         </div>
                         <h1 className="text-4xl font-black tracking-tighter text-white italic">RAJA CA</h1>
                         <div className="flex items-center gap-2 mt-1">
-                            <span className="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full border border-primary/30 tracking-widest uppercase">The People's Club</span>
+                            <span className="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full border border-primary/30 tracking-widest uppercase">The People&apos;s Club</span>
                         </div>
                     </div>
                 </div>

@@ -136,7 +136,19 @@ export default function LiveMatchPage() {
     );
 }
 
-function EventItem({ time, icon, color, bgColor, borderColor, title, desc, pulse, opacity = '' }: any) {
+interface EventItemProps {
+    time: string;
+    icon: string;
+    color: string;
+    bgColor: string;
+    borderColor: string;
+    title: string;
+    desc: string;
+    pulse?: boolean;
+    opacity?: string;
+}
+
+function EventItem({ time, icon, color, bgColor, borderColor, title, desc, pulse, opacity = '' }: EventItemProps) {
     return (
         <div className={`flex items-center gap-3 bg-surface-dark border border-white/5 p-3 rounded-2xl ${pulse ? 'animate-pulse border-primary/20' : ''} ${opacity}`}>
             <div className="flex-shrink-0 w-10 text-right font-mono text-gray-400 font-bold text-sm block">{time}</div>
