@@ -61,12 +61,18 @@ export default function ShopPage() {
                         <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>arrow_back</span>
                     </Link>
                     <h2 className="text-white text-lg font-bold leading-tight tracking-tight">FootballHub+ Store</h2>
-                    <div className="flex w-10 items-center justify-end relative">
-                        <button className="text-white flex size-10 shrink-0 items-center justify-center hover:bg-white/10 rounded-full transition-colors">
-                            <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>shopping_bag</span>
-                        </button>
-                        <div className="absolute top-2 right-1 w-2.5 h-2.5 bg-primary rounded-full border border-background-dark"></div>
+                    <div className="flex items-center gap-1">
+                        <Link href="/shop/results" className="text-white flex size-10 shrink-0 items-center justify-center hover:bg-white/10 rounded-full transition-colors">
+                            <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>search</span>
+                        </Link>
+                        <div className="relative">
+                            <button className="text-white flex size-10 shrink-0 items-center justify-center hover:bg-white/10 rounded-full transition-colors">
+                                <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>shopping_bag</span>
+                            </button>
+                            <div className="absolute top-2 right-1 w-2.5 h-2.5 bg-primary rounded-full border border-background-dark"></div>
+                        </div>
                     </div>
+
                 </div>
             </header>
 
@@ -90,19 +96,20 @@ export default function ShopPage() {
                 <div className="space-y-3">
                     <div className="flex items-center justify-between">
                         <h3 className="text-lg font-bold">Categories</h3>
-                        <button className="text-xs text-primary font-medium">See All</button>
+                        <Link href="/shop/results" className="text-xs text-primary font-medium">See All</Link>
                     </div>
                     <div className="flex overflow-x-auto gap-4 pb-2 no-scrollbar -mx-4 px-4">
                         {categories.map((cat) => (
-                            <button key={cat.id} className="flex flex-col items-center gap-2 min-w-[72px] group">
+                            <Link href="/shop/results" key={cat.id} className="flex flex-col items-center gap-2 min-w-[72px] group">
                                 <div className="w-16 h-16 rounded-2xl bg-surface-dark border border-white/10 flex items-center justify-center group-hover:border-primary transition-colors shadow-lg">
                                     <span className={`material-symbols-outlined text-3xl ${cat.id === 'jerseys' ? 'text-primary' : 'text-gray-300'}`}>{cat.icon}</span>
                                 </div>
                                 <span className="text-xs text-gray-400 group-hover:text-white transition-colors">{cat.label}</span>
-                            </button>
+                            </Link>
                         ))}
                     </div>
                 </div>
+
 
                 {/* Featured Products */}
                 <div className="space-y-3">

@@ -14,9 +14,10 @@ export default function BottomNav({ activeTab }: BottomNavProps) {
         { id: 'home', label: 'Home', icon: 'home', href: '/' },
         { id: 'matches', label: 'Matches', icon: 'sports_soccer', href: '/matches' },
         { id: 'news', label: 'Media', icon: 'play_circle', href: '/news' },
-        { id: 'fantasy', label: 'Fantasy', icon: 'emoji_events', href: '/fantasy' },
+        { id: 'shop', label: 'Shop', icon: 'local_mall', href: '/shop' },
         { id: 'profile', label: 'Profile', icon: 'person', href: '/profile' },
     ];
+
 
     const isActive = (href: string) => {
         if (activeTab) {

@@ -56,6 +56,28 @@ export default function MembershipPage() {
                         </button>
                     </div>
 
+                    {/* Quick Access Grid: Comparison & Perks */}
+                    <div className="grid grid-cols-2 gap-4 px-4 pb-8">
+                        <Link href="/membership/comparison" className="group">
+                            <div className="flex flex-col items-center justify-center p-6 bg-surface-dark rounded-2xl border border-white/5 hover:border-primary/50 transition-all active:scale-95 shadow-lg">
+                                <div className="size-12 rounded-full bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20">
+                                    <span className="material-symbols-outlined text-primary">compare_arrows</span>
+                                </div>
+                                <span className="text-white font-bold text-sm uppercase italic">Compare</span>
+                                <span className="text-gray-500 text-[9px] font-black uppercase tracking-widest mt-1">Check Tiers</span>
+                            </div>
+                        </Link>
+                        <Link href="/profile/membership/perks" className="group">
+                            <div className="flex flex-col items-center justify-center p-6 bg-surface-dark rounded-2xl border border-white/5 hover:border-primary/50 transition-all active:scale-95 shadow-lg">
+                                <div className="size-12 rounded-full bg-yellow-500/10 flex items-center justify-center mb-3 group-hover:bg-yellow-500/20">
+                                    <span className="material-symbols-outlined text-yellow-500">redeem</span>
+                                </div>
+                                <span className="text-white font-bold text-sm uppercase italic">Perks</span>
+                                <span className="text-gray-500 text-[9px] font-black uppercase tracking-widest mt-1">Brand Deals</span>
+                            </div>
+                        </Link>
+                    </div>
+
                     {/* Plan Overview Header */}
                     <div className="px-6 pb-2">
                         <h3 className="text-slate-900 dark:text-white text-xl font-black leading-tight uppercase italic tracking-tighter">Plan Overview</h3>
@@ -74,7 +96,7 @@ export default function MembershipPage() {
                     </div>
 
                     {/* Payment Method Section */}
-                    <div className="px-6 pb-2 pt-2">
+                    <div className="px-6 pb-2 pt-2 border-t border-black/5 dark:border-white/5 mt-4 pt-6">
                         <h3 className="text-slate-900 dark:text-white text-xl font-black leading-tight uppercase italic tracking-tighter">Payment Method</h3>
                     </div>
                     <div className="px-4 pb-4">
@@ -98,11 +120,12 @@ export default function MembershipPage() {
                     <div className="px-4 pb-8">
                         <Link href="/profile/billing">
                             <button className="flex w-full items-center justify-between rounded-[1.5rem] bg-transparent px-4 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition-colors group">
-                                <span className="text-gray-500 dark:text-gray-400 font-bold uppercase tracking-tight group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Billing History</span>
+                                <span className="text-gray-500 dark:text-gray-400 font-bold uppercase tracking-tight group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Billing History & Invoices</span>
                                 <span className="material-symbols-outlined text-gray-500 group-hover:text-slate-900 dark:group-hover:text-white">chevron_right</span>
                             </button>
                         </Link>
                     </div>
+
                 </div>
 
                 <BottomNav activeTab="profile" />
