@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ProductDetailPage() {
     const [selectedSize, setSelectedSize] = useState('MD');
@@ -36,10 +37,12 @@ export default function ProductDetailPage() {
                 {/* Product Image Section */}
                 <div className="relative mb-6">
                     <div className="aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-surface-dark border border-white/5 shadow-2xl group">
-                        <img
+                        <Image
                             src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000&auto=format&fit=crop"
                             alt="National Team Jersey"
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            priority
                         />
                         <button
                             onClick={() => setIsFavorite(!isFavorite)}
@@ -91,8 +94,8 @@ export default function ProductDetailPage() {
                                 key={size}
                                 onClick={() => setSelectedSize(size)}
                                 className={`min-w-[56px] h-12 rounded-xl flex items-center justify-center font-bold transition-all border ${selectedSize === size
-                                        ? 'bg-primary text-black border-primary shadow-glow'
-                                        : 'bg-surface-dark border-white/5 text-gray-400 hover:border-primary/50'
+                                    ? 'bg-primary text-black border-primary shadow-glow'
+                                    : 'bg-surface-dark border-white/5 text-gray-400 hover:border-primary/50'
                                     }`}
                             >
                                 {size}

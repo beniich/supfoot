@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import BottomNav from '@/components/BottomNav';
 
 export default function ProfilePage() {
@@ -26,10 +27,14 @@ export default function ProfilePage() {
                         <div className="relative group">
                             <div className="absolute -inset-1 bg-gradient-to-br from-primary to-orange-500 rounded-full opacity-75 blur-sm group-hover:opacity-100 transition duration-500"></div>
                             <div className="relative w-32 h-32 rounded-full p-[3px] bg-background-dark">
-                                <div
-                                    className="w-full h-full rounded-full bg-cover bg-center border-2 border-background-dark"
-                                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop')" }}
-                                ></div>
+                                <div className="relative w-full h-full rounded-full border-2 border-background-dark overflow-hidden">
+                                    <Image
+                                        src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop"
+                                        alt="Alex Morgan"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
                             </div>
                             <button className="absolute bottom-1 right-1 bg-surface-dark border border-white/10 p-2 rounded-full text-white shadow-lg hover:bg-primary hover:text-black transition-colors">
                                 <span className="material-symbols-outlined block text-[18px]">edit</span>

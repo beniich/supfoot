@@ -2,7 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import BottomNav from '@/components/BottomNav';
+import { CommentItemProps } from '@/types/components';
+import { formatDate, formatNumber } from '@/utils/formatters';
 
 export default function CommunityThreadPage() {
     return (
@@ -27,14 +30,21 @@ export default function CommunityThreadPage() {
                         <div className="mb-6 flex items-center justify-between">
                             <div className="flex items-center gap-4">
                                 <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border-2 border-primary/20 p-0.5 shadow-lg">
-                                    <div className="w-full h-full rounded-[14px] bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100')" }}></div>
+                                    <Image
+                                        src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100"
+                                        alt="AtlasFan_99"
+                                        fill
+                                        className="object-cover rounded-[14px]"
+                                    />
                                 </div>
                                 <div className="flex flex-col">
                                     <div className="flex items-center gap-2">
                                         <span className="font-black text-lg leading-none uppercase tracking-tight">AtlasFan_99</span>
                                         <span className="rounded-lg bg-primary/10 px-2 py-0.5 text-[8px] font-black uppercase tracking-[0.2em] text-primary border border-primary/20 shadow-glow-sm">Premium</span>
                                     </div>
-                                    <span className="text-[10px] text-black/50 dark:text-[#bab59c] font-black uppercase tracking-widest mt-1">2h ago • Lion&apos;s Den</span>
+                                    <span className="text-[10px] text-black/50 dark:text-[#bab59c] font-black uppercase tracking-widest mt-1">
+                                        {formatDate.relative('2026-01-31T15:00:00')} • Lion&apos;s Den
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +65,9 @@ export default function CommunityThreadPage() {
                                 <button className="flex items-center justify-center p-2 text-primary hover:bg-black/5 dark:hover:bg-white/10 rounded-xl transition-all active:scale-125">
                                     <span className="material-symbols-outlined text-[20px] font-bold filled">arrow_upward</span>
                                 </button>
-                                <span className="min-w-[24px] text-center text-sm font-black text-black/70 dark:text-white/90">128</span>
+                                <span className="min-w-[24px] text-center text-sm font-black text-black/70 dark:text-white/90">
+                                    {formatNumber.compact(128)}
+                                </span>
                                 <button className="flex items-center justify-center p-2 text-black/40 dark:text-white/40 hover:text-red-500 hover:bg-black/5 dark:hover:bg-white/10 rounded-xl transition-all active:scale-125">
                                     <span className="material-symbols-outlined text-[20px]">arrow_downward</span>
                                 </button>
@@ -127,14 +139,17 @@ export default function CommunityThreadPage() {
     );
 }
 
-function CommentItem({ user, time, content, votes, isStaff = false, isReply = false }: {
-    user: string, time: string, content: string, votes: number, isStaff?: boolean, isReply?: boolean
-}) {
+function CommentItem({ user, time, content, votes, isStaff = false, isReply = false }: CommentItemProps) {
     return (
         <div className={`border-b border-black/5 dark:border-white/5 p-5 transition-all hover:bg-black/5 dark:hover:bg-white/5 ${isReply ? '' : 'bg-background-light dark:bg-background-dark'}`}>
             <div className="flex gap-4">
-                <div className={`shrink-0 overflow-hidden rounded-xl border border-white/10 shadow-md ${isReply ? 'h-10 w-10' : 'h-12 w-12'}`}>
-                    <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&author=${user}')` }}></div>
+                <div className={`relative shrink-0 overflow-hidden rounded-xl border border-white/10 shadow-md ${isReply ? 'h-10 w-10' : 'h-12 w-12'}`}>
+                    <Image
+                        src={`https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&author=${user}`}
+                        alt={user}
+                        fill
+                        className="object-cover"
+                    />
                 </div>
                 <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">

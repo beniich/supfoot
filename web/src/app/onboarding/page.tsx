@@ -2,19 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-
-interface League {
-    id: string;
-    name: string;
-    country: string;
-    logo: string;
-}
-
-interface Team {
-    id: string;
-    name: string;
-    logo: string;
-}
+import Image from 'next/image';
+import { League, Team } from '@/types/components';
 
 export default function OnboardingPage() {
     const [selectedLeagues, setSelectedLeagues] = useState<string[]>(['pl']);
@@ -95,12 +84,17 @@ export default function OnboardingPage() {
                                 key={league.id}
                                 onClick={() => toggleLeague(league.id)}
                                 className={`relative flex items-center gap-3 p-4 rounded-2xl transition-all transform active:scale-[0.98] border-2 shadow-xl ${selectedLeagues.includes(league.id)
-                                        ? 'bg-primary/5 border-primary shadow-glow-sm'
-                                        : 'bg-white dark:bg-surface-dark border-transparent hover:border-white/10'
+                                    ? 'bg-primary/5 border-primary shadow-glow-sm'
+                                    : 'bg-white dark:bg-surface-dark border-transparent hover:border-white/10'
                                     }`}
                             >
-                                <div className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 flex items-center justify-center overflow-hidden shrink-0 border border-white/5">
-                                    <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${league.logo})` }}></div>
+                                <div className="relative w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 flex items-center justify-center overflow-hidden shrink-0 border border-white/5">
+                                    <Image
+                                        src={league.logo}
+                                        alt={league.name}
+                                        fill
+                                        className="object-cover"
+                                    />
                                 </div>
                                 <div className="text-left flex-1 min-w-0">
                                     <p className={`font-black text-xs truncate uppercase tracking-tight ${selectedLeagues.includes(league.id) ? 'text-primary' : 'text-gray-900 dark:text-white'}`}>{league.name}</p>
@@ -128,14 +122,21 @@ export default function OnboardingPage() {
                                 key={team.id}
                                 onClick={() => toggleTeam(team.id)}
                                 className={`group flex flex-col items-center gap-3 p-4 rounded-2xl transition-all transform active:scale-[0.95] border-2 shadow-xl ${selectedTeams.includes(team.id)
-                                        ? 'bg-primary/5 border-primary shadow-glow-sm'
-                                        : 'bg-white dark:bg-surface-dark border-transparent hover:border-white/10'
+                                    ? 'bg-primary/5 border-primary shadow-glow-sm'
+                                    : 'bg-white dark:bg-surface-dark border-transparent hover:border-white/10'
                                     }`}
                             >
                                 <div className="relative w-16 h-16 rounded-full p-1 bg-white/5 border border-white/10 shadow-lg flex items-center justify-center overflow-hidden">
-                                    <div className="w-full h-full rounded-full bg-cover bg-center" style={{ backgroundImage: `url(${team.logo})` }}></div>
+                                    <div className="absolute inset-1 rounded-full overflow-hidden">
+                                        <Image
+                                            src={team.logo}
+                                            alt={team.name}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    </div>
                                     {selectedTeams.includes(team.id) && (
-                                        <div className="absolute inset-0 bg-primary/20 backdrop-blur-[2px] flex items-center justify-center">
+                                        <div className="absolute inset-0 bg-primary/20 backdrop-blur-[2px] flex items-center justify-center z-10">
                                             <span className="material-symbols-outlined text-white text-2xl filled drop-shadow-lg">check_circle</span>
                                         </div>
                                     )}

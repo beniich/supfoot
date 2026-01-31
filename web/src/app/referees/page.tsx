@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { MetricCardProps, RefereeCardProps, NavButtonProps } from '@/types/components';
 
 export default function RefereeHubPage() {
     return (
@@ -40,12 +41,12 @@ export default function RefereeHubPage() {
 
                 {/* Featured Referee: Referee of the Month */}
                 <div className="p-4">
-                    <Link href="/referees/1" className="block relative overflow-hidden flex flex-col items-stretch justify-start rounded-[1.5rem] shadow-xl bg-surface-dark border border-primary/20 group">
+                    <Link href="/referees/1" className="relative overflow-hidden flex flex-col items-stretch justify-start rounded-[1.5rem] shadow-xl bg-surface-dark border border-primary/20 group">
                         <div className="absolute top-3 right-3 z-10 bg-primary px-3 py-1 rounded-full flex items-center gap-1 shadow-lg">
                             <span className="material-symbols-outlined text-[16px] text-black">workspace_premium</span>
                             <span className="text-black text-[10px] font-black uppercase tracking-wider">Gold Badge</span>
                         </div>
-                        <div className="w-full bg-center bg-top bg-no-repeat aspect-[16/9] bg-cover transform group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAeSNPJPJA3Ub_XCadDUKUQiWJ-cU2vmem2SkY-mCURODaWvBPCZYzXZvOaBqW1iTEjLJ_WZnBmUybz8zGf2c0AIM7zW8cWnrxZF4kcfdFPduzOkY3ISg4G232I3CyLfRJE32epsld4wzTnfGW03pcMef6Pt8RbSkhMOHCWY8LlWGVP77fZBsNWl9Ougxp2AYEijD-ppeUVX5HtPwYH73XXIUWgMLnGF0p47a-gcoe_bktgHPjfgdOaCJgWwjpD0FBhV8DnLwmr1Ik")' }}>
+                        <div className="w-full bg-top bg-no-repeat aspect-[16/9] bg-cover transform group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAeSNPJPJA3Ub_XCadDUKUQiWJ-cU2vmem2SkY-mCURODaWvBPCZYzXZvOaBqW1iTEjLJ_WZnBmUybz8zGf2c0AIM7zW8cWnrxZF4kcfdFPduzOkY3ISg4G232I3CyLfRJE32epsld4wzTnfGW03pcMef6Pt8RbSkhMOHCWY8LlWGVP77fZBsNWl9Ougxp2AYEijD-ppeUVX5HtPwYH73XXIUWgMLnGF0p47a-gcoe_bktgHPjfgdOaCJgWwjpD0FBhV8DnLwmr1Ik")' }}>
                             <div className="w-full h-full bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
                         </div>
                         <div className="flex w-full grow flex-col items-stretch justify-center gap-1 py-4 px-5 -mt-12 relative z-10">
@@ -131,13 +132,6 @@ export default function RefereeHubPage() {
     );
 }
 
-interface MetricCardProps {
-    icon: string;
-    iconColor: string;
-    value: string;
-    label: string;
-}
-
 function MetricCard({ icon, iconColor, value, label }: MetricCardProps) {
     return (
         <div className="flex h-12 shrink-0 items-center justify-center gap-x-2 rounded-2xl bg-white dark:bg-surface-dark px-4 border border-black/5 dark:border-white/5 shadow-sm">
@@ -147,16 +141,6 @@ function MetricCard({ icon, iconColor, value, label }: MetricCardProps) {
             </p>
         </div>
     );
-}
-
-interface RefereeCardProps {
-    name: string;
-    badge: string;
-    score: string;
-    image: string;
-    games: string;
-    cards: string;
-    trend: number[];
 }
 
 function RefereeCard({ name, badge, score, image, games, cards, trend }: RefereeCardProps) {
@@ -198,13 +182,6 @@ function StatBox({ label, value }: { label: string, value: string }) {
             <p className="text-gray-900 dark:text-white font-black text-sm">{value}</p>
         </div>
     );
-}
-
-interface NavButtonProps {
-    icon: string;
-    label: string;
-    href: string;
-    active?: boolean;
 }
 
 function NavButton({ icon, label, href, active }: NavButtonProps) {

@@ -1,5 +1,15 @@
 # 📱 FootballHub+ - Architecture & Structure
 
+> **📋 Note Importante**: Une analyse complète de la structure a été effectuée le 31 janvier 2026.  
+> Consultez les documents suivants pour les recommandations d'harmonisation:
+> - **`EXECUTIVE_SUMMARY.md`** - Résumé exécutif (lecture rapide)
+> - **`STRUCTURE_ANALYSIS.md`** - Analyse détaillée + plan en 3 phases
+> - **`STRUCTURE_COMPARISON.md`** - Comparaison visuelle avant/après
+> - **`CONTRIBUTING.md`** - Guide de contribution
+> - **`scripts/harmonize-structure.ps1`** - Script d'automatisation
+
+---
+
 ## 🏗️ **Architecture Globale**
 
 ```

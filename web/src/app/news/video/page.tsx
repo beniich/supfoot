@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { ActionButtonProps, RelatedVideoItemProps } from '@/types/components';
 
 export default function VideoPlayerPage() {
     return (
@@ -11,10 +13,16 @@ export default function VideoPlayerPage() {
                 <div className="w-full bg-black sticky top-0 z-20 shadow-2xl">
                     <div className="relative aspect-video w-full bg-slate-900 group">
                         {/* Video Image */}
-                        <div
-                            className="absolute inset-0 w-full h-full bg-cover bg-center opacity-80"
-                            style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000&auto=format&fit=crop")' }}
-                        ></div>
+                        {/* Video Image */}
+                        <div className="absolute inset-0 w-full h-full opacity-80 overflow-hidden">
+                            <Image
+                                src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000&auto=format&fit=crop"
+                                alt="Video Thumbnail"
+                                fill
+                                className="object-cover"
+                                priority
+                            />
+                        </div>
                         {/* Overlay Gradient */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40"></div>
 
@@ -149,7 +157,7 @@ export default function VideoPlayerPage() {
     );
 }
 
-function ActionButton({ icon, label }: { icon: string, label: string }) {
+function ActionButton({ icon, label }: ActionButtonProps) {
     return (
         <button className="flex flex-col items-center gap-2 group">
             <div className="p-3 rounded-2xl bg-slate-50 dark:bg-surface-dark border border-black/5 dark:border-white/5 active:bg-primary/20 group-hover:border-primary/50 transition-all shadow-sm">
@@ -160,14 +168,16 @@ function ActionButton({ icon, label }: { icon: string, label: string }) {
     );
 }
 
-function RelatedVideoItem({ title, author, time, duration, image }: { title: string, author: string, time: string, duration: string, image: string }) {
+function RelatedVideoItem({ title, author, time, duration, image }: RelatedVideoItemProps) {
     return (
         <div className="group flex gap-4 p-4 px-5 hover:bg-slate-50 dark:hover:bg-white/5 cursor-pointer transition-all active:scale-[0.98]">
             <div className="relative w-36 aspect-video shrink-0 rounded-xl overflow-hidden bg-slate-800 border border-white/5 shadow-md">
-                <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                    style={{ backgroundImage: `url(${image})` }}
-                ></div>
+                <Image
+                    src={image}
+                    alt={title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
                 <div className="absolute bottom-1.5 right-1.5 px-2 py-0.5 bg-black/80 backdrop-blur-sm rounded-lg text-[9px] font-black text-white border border-white/10 tracking-widest">
                     {duration}
                 </div>

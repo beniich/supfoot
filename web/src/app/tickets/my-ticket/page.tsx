@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { NavButtonProps } from '@/types/components';
 
 export default function DigitalTicketPage() {
     return (
@@ -110,7 +111,7 @@ function TicketInfoBox({ label, value, bordered, isPrimary }: { label: string, v
     );
 }
 
-function NavButton({ icon, label, href, active }: { icon: string; label: string; href: string; active?: boolean }) {
+function NavButton({ icon, label, href, active }: NavButtonProps) {
     return (
         <Link href={href} className="flex flex-col items-center gap-1 group w-full">
             <span className={`material-symbols-outlined text-2xl ${active ? 'text-primary filled' : 'text-gray-400 group-hover:text-primary transition-colors'}`}>{icon}</span>

@@ -3,15 +3,39 @@
 // ============================================================================
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { Camera, X, Flashlight, FlashlightOff, History, Keyboard } from 'lucide-react';
 import { hapticFeedback } from '../../utils/haptics';
 import { isNative } from '../../utils/platform';
 import { getApiUrl } from '../../config/api';
 
+interface ScanData {
+    ticketNumber?: string;
+    member?: {
+        firstName?: string;
+        lastName?: string;
+        avatar?: string;
+    };
+    seating?: {
+        section?: string;
+        row?: string;
+        seat?: string;
+    };
+}
+
 interface ScanResult {
     success: boolean;
-    data?: any;
+    data?: ScanData;
+    message?: string;
+}
+
+interface HistoryEntry {
+    id: number;
+    timestamp: string;
+    success: boolean;
+    ticketNumber?: string;
+    memberName?: string;
     message?: string;
 }
 
@@ -30,7 +54,7 @@ export const MobileQRScanner: React.FC<MobileQRScannerProps> = ({
     const [validationResult, setValidationResult] = useState<ScanResult | null>(null);
     const [showManualEntry, setShowManualEntry] = useState(false);
     const [manualCode, setManualCode] = useState('');
-    const [scanHistory, setScanHistory] = useState<any[]>([]);
+    const [scanHistory, setScanHistory] = useState<HistoryEntry[]>([]);
 
     useEffect(() => {
         checkPermission();
@@ -185,7 +209,7 @@ export const MobileQRScanner: React.FC<MobileQRScannerProps> = ({
     };
 
     const addToHistory = (result: ScanResult) => {
-        const newEntry = {
+        const newEntry: HistoryEntry = {
             id: Date.now(),
             timestamp: new Date().toISOString(),
             success: result.success,
@@ -232,8 +256,8 @@ export const MobileQRScanner: React.FC<MobileQRScannerProps> = ({
                 {/* Result Icon */}
                 <div
                     className={`w-24 h-24 rounded-full flex items-center justify-center mb-6 border-4 ${validationResult.success
-                            ? 'bg-green-500/20 border-green-500 shadow-[0_0_30px_rgba(34,197,94,0.3)]'
-                            : 'bg-red-500/20 border-red-500 shadow-[0_0_30px_rgba(239,68,68,0.3)]'
+                        ? 'bg-green-500/20 border-green-500 shadow-[0_0_30px_rgba(34,197,94,0.3)]'
+                        : 'bg-red-500/20 border-red-500 shadow-[0_0_30px_rgba(239,68,68,0.3)]'
                         }`}
                 >
                     {validationResult.success ? (
@@ -263,9 +287,14 @@ export const MobileQRScanner: React.FC<MobileQRScannerProps> = ({
                 {validationResult.success && validationResult.data && (
                     <div className="w-full max-w-md bg-[#24221A] rounded-2xl p-6 mb-8 border border-white/10">
                         <div className="flex items-center gap-4 mb-4 pb-4 border-b border-white/10">
-                            <div className="w-14 h-14 rounded-full bg-gray-700 flex items-center justify-center overflow-hidden">
+                            <div className="relative w-14 h-14 rounded-full bg-gray-700 flex items-center justify-center overflow-hidden">
                                 {validationResult.data.member?.avatar ? (
-                                    <img src={validationResult.data.member.avatar} alt="" className="w-full h-full object-cover" />
+                                    <Image
+                                        src={validationResult.data.member.avatar}
+                                        alt=""
+                                        fill
+                                        className="object-cover"
+                                    />
                                 ) : (
                                     <span className="text-2xl">👤</span>
                                 )}
@@ -403,8 +432,8 @@ export const MobileQRScanner: React.FC<MobileQRScannerProps> = ({
                         <button
                             onClick={toggleTorch}
                             className={`p-3 rounded-full backdrop-blur-md border transition-colors ${torchOn
-                                    ? 'bg-[#F2CC0D]/20 border-[#F2CC0D] text-[#F2CC0D]'
-                                    : 'bg-black/50 border-white/20 text-white hover:bg-black/70'
+                                ? 'bg-[#F2CC0D]/20 border-[#F2CC0D] text-[#F2CC0D]'
+                                : 'bg-black/50 border-white/20 text-white hover:bg-black/70'
                                 }`}
                         >
                             {torchOn ? <Flashlight size={24} /> : <FlashlightOff size={24} />}

@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 6,
   },
-  
+
   firstName: {
     type: String,
     required: true,
@@ -26,16 +26,16 @@ const userSchema = new mongoose.Schema({
   },
   avatar: String,
   phone: String,
-  
+
   country: String,
   city: String,
-  
+
   role: {
     type: String,
     enum: ['user', 'admin', 'staff'],
     default: 'user',
   },
-  
+
   // Push Notifications
   pushToken: String,
   notificationSettings: {
@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({
     matchResult: { type: Boolean, default: true },
     news: { type: Boolean, default: false },
   },
-  
+
   // Favorites
   favoriteLeagues: [{
     type: mongoose.Schema.Types.ObjectId,
@@ -58,13 +58,13 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Player',
   }],
-  
+
   // Fantasy
   fantasyTeams: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'FantasyTeam',
   }],
-  
+
   // Social
   following: [{
     type: mongoose.Schema.Types.ObjectId,
@@ -74,7 +74,7 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   }],
-  
+
   isActive: {
     type: Boolean,
     default: true,
@@ -83,27 +83,28 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  
+
   lastLogin: Date,
-  
+  passwordChangedAt: Date,
+
 }, {
   timestamps: true,
 });
 
 // Hash password before save
-userSchema.pre('save', async function(next) {
+userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
   this.password = await bcrypt.hash(this.password, 10);
   next();
 });
 
 // Compare password method
-userSchema.methods.comparePassword = async function(candidatePassword) {
+userSchema.methods.comparePassword = async function (candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
 };
 
 // Virtual for full name
-userSchema.virtual('fullName').get(function() {
+userSchema.virtual('fullName').get(function () {
   return `${this.firstName} ${this.lastName}`;
 });
 

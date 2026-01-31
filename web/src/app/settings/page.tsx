@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function SettingsPage() {
     const [toggles, setToggles] = useState({
@@ -31,7 +32,14 @@ export default function SettingsPage() {
                 <div className="px-6 py-8">
                     <div className="bg-surface-dark rounded-3xl p-6 shadow-2xl border border-white/5 flex items-center gap-5 group hover:border-primary/20 transition-all">
                         <div className="relative shrink-0">
-                            <div className="w-20 h-20 rounded-2xl bg-cover bg-center border-2 border-primary shadow-glow transition-transform group-hover:scale-105" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100')" }}></div>
+                            <div className="relative w-20 h-20 rounded-2xl border-2 border-primary shadow-glow transition-transform group-hover:scale-105 overflow-hidden">
+                                <Image
+                                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100"
+                                    alt="Alex Morgan"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
                             <div className="absolute -bottom-2 -right-2 bg-primary text-black text-[9px] font-black px-2 py-1 rounded-lg border-2 border-surface-dark shadow-glow-sm">PRO</div>
                         </div>
                         <div className="flex flex-col justify-center flex-1 min-w-0">

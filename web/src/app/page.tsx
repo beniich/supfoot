@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import BottomNav from '@/components/BottomNav';
 
 export default function DashboardPage() {
@@ -40,8 +41,13 @@ export default function DashboardPage() {
                             <div className="text-xs text-white/40 font-medium mb-4 uppercase tracking-wide">Botola Pro • 78&apos;</div>
                             <div className="flex items-center justify-between mb-2">
                                 <div className="flex flex-col items-center gap-2 flex-1">
-                                    <div className="w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5" title="Raja CA">
-                                        <img className="w-full h-full object-contain opacity-80" alt="Raja CA team logo badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsCcxwHbA-W9401vq2sLt_-Mvut42eu_OHgxoHK_LkWYjgzWAB7PO15DZBpD3qSfmNIJrfHTmCC9E1nx2jGuBd1xCq8c82o1wreHscpuYaZE7V51CdgYVAG096WV1w0Z99g8WqI6xUmBJlL2kymB_4ZOpa82k17Q6weop4ynx81M6NpOA8T3Ag0d286VWEebUic6Nut9t-VluWhwS6oJ3GwZfhpPS73rB3a82InNQcCX7WnteyP_sHd22ZLOkK4ND2RDrFcDBXbWM" />
+                                    <div className="relative w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5" title="Raja CA">
+                                        <Image
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsCcxwHbA-W9401vq2sLt_-Mvut42eu_OHgxoHK_LkWYjgzWAB7PO15DZBpD3qSfmNIJrfHTmCC9E1nx2jGuBd1xCq8c82o1wreHscpuYaZE7V51CdgYVAG096WV1w0Z99g8WqI6xUmBJlL2kymB_4ZOpa82k17Q6weop4ynx81M6NpOA8T3Ag0d286VWEebUic6Nut9t-VluWhwS6oJ3GwZfhpPS73rB3a82InNQcCX7WnteyP_sHd22ZLOkK4ND2RDrFcDBXbWM"
+                                            alt="Raja CA team logo badge"
+                                            fill
+                                            className="object-contain p-2 opacity-80"
+                                        />
                                     </div>
                                     <span className="text-sm font-semibold text-center">Raja CA</span>
                                 </div>
@@ -49,8 +55,13 @@ export default function DashboardPage() {
                                     <div className="text-3xl font-bold text-primary tabular-nums tracking-tighter">2 - 1</div>
                                 </div>
                                 <div className="flex flex-col items-center gap-2 flex-1">
-                                    <div className="w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5" title="Wydad AC">
-                                        <img className="w-full h-full object-contain opacity-80" alt="Wydad AC team logo badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD51OqMXHufEUdKwXCEFId94m_UCWrTgsvXjt-ytN9-7irMMRln233qKwqwLh2rvS52_CJD1yDZOf-1gdwWS-mgddrOuAcyKHeR_NZNFVAJjXla1RaaEZewfZA9kBGFYQGw9Pm9dy1UmSL8yvHEWpNGDQ4wMqybOcuB12FBqa79-L8x0Etsb_VPAviIi5hPstWb3Aeg72p1J6BhZzLcPpryUr-9YN9M9zNiqU3Sb5LOi2AlYZzoPJB9hWC22tW5qvWqLgpqGofcTMk" />
+                                    <div className="relative w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5" title="Wydad AC">
+                                        <Image
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD51OqMXHufEUdKwXCEFId94m_UCWrTgsvXjt-ytN9-7irMMRln233qKwqwLh2rvS52_CJD1yDZOf-1gdwWS-mgddrOuAcyKHeR_NZNFVAJjXla1RaaEZewfZA9kBGFYQGw9Pm9dy1UmSL8yvHEWpNGDQ4wMqybOcuB12FBqa79-L8x0Etsb_VPAviIi5hPstWb3Aeg72p1J6BhZzLcPpryUr-9YN9M9zNiqU3Sb5LOi2AlYZzoPJB9hWC22tW5qvWqLgpqGofcTMk"
+                                            alt="Wydad AC team logo badge"
+                                            fill
+                                            className="object-contain p-2 opacity-80"
+                                        />
                                     </div>
                                     <span className="text-sm font-semibold text-center">Wydad AC</span>
                                 </div>
@@ -68,8 +79,13 @@ export default function DashboardPage() {
                             <div className="text-xs text-white/40 font-medium mb-4 uppercase tracking-wide">Premier League • 12&apos;</div>
                             <div className="flex items-center justify-between mb-2">
                                 <div className="flex flex-col items-center gap-2 flex-1">
-                                    <div className="w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5" title="Man City">
-                                        <img className="w-full h-full object-contain opacity-80" alt="Manchester City team logo badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFQla9FAUHcpxYdq0vrAVNSCubh6CyJTMXPtuLFf4xih_sOjvO8IZIWqVUsYkwaPSDg4EaRW9z38AITUzzGF60cKbmPMcX57Bok3aL49jjvUOyVBvdbDI_PsRVPuNLRvFPsEph4AIXl8AV49HRYhrT-Obj0H5EbLD8BCr69ceBNJIqnxo2kMjSYMgC8gVgzhnMz7_RbiGPMsLsZ1TFCfkh9_eFe25r04_z97dWjEEU-CTexsR0tlwsIR8t0DsQL5XwmmnVinqujj0" />
+                                    <div className="relative w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5" title="Man City">
+                                        <Image
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFQla9FAUHcpxYdq0vrAVNSCubh6CyJTMXPtuLFf4xih_sOjvO8IZIWqVUsYkwaPSDg4EaRW9z38AITUzzGF60cKbmPMcX57Bok3aL49jjvUOyVBvdbDI_PsRVPuNLRvFPsEph4AIXl8AV49HRYhrT-Obj0H5EbLD8BCr69ceBNJIqnxo2kMjSYMgC8gVgzhnMz7_RbiGPMsLsZ1TFCfkh9_eFe25r04_z97dWjEEU-CTexsR0tlwsIR8t0DsQL5XwmmnVinqujj0"
+                                            alt="Manchester City team logo badge"
+                                            fill
+                                            className="object-contain p-2 opacity-80"
+                                        />
                                     </div>
                                     <span className="text-sm font-semibold text-center">Man City</span>
                                 </div>
@@ -77,8 +93,13 @@ export default function DashboardPage() {
                                     <div className="text-3xl font-bold text-white tabular-nums tracking-tighter">0 - 0</div>
                                 </div>
                                 <div className="flex flex-col items-center gap-2 flex-1">
-                                    <div className="w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5" title="Liverpool">
-                                        <img className="w-full h-full object-contain opacity-80" alt="Liverpool FC team logo badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUW7PO_s-OaMo2JC6roYAbAtgHQ7T_eay60Iej5C21LbecMp8SwoWuy0rT-DFdWUnbPIem2ugNjYy884nZA-HlMgCqcf1cy0msG5djf9qkDp-L0mD07cmqQ8qDeB8rZN5wBYiWNoGKUQ8sL4_wwFJwejNM13LDyuGdClIkvuyl9qhZH6bf3nrh3kyxvzDoSniPBnyJUQIcXEesZK50fuxyl7krgDbsbNV1AFwmfEFDW2IFnPcAZPLD-l1kt7J9LWNYnT2mplgB5jE" />
+                                    <div className="relative w-12 h-12 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/5" title="Liverpool">
+                                        <Image
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUW7PO_s-OaMo2JC6roYAbAtgHQ7T_eay60Iej5C21LbecMp8SwoWuy0rT-DFdWUnbPIem2ugNjYy884nZA-HlMgCqcf1cy0msG5djf9qkDp-L0mD07cmqQ8qDeB8rZN5wBYiWNoGKUQ8sL4_wwFJwejNM13LDyuGdClIkvuyl9qhZH6bf3nrh3kyxvzDoSniPBnyJUQIcXEesZK50fuxyl7krgDbsbNV1AFwmfEFDW2IFnPcAZPLD-l1kt7J9LWNYnT2mplgB5jE"
+                                            alt="Liverpool FC team logo badge"
+                                            fill
+                                            className="object-contain p-2 opacity-80"
+                                        />
                                     </div>
                                     <span className="text-sm font-semibold text-center">Liverpool</span>
                                 </div>
@@ -172,7 +193,13 @@ export default function DashboardPage() {
                     <div className="flex flex-col gap-4 px-4">
                         {/* News Item 1 */}
                         <article className="relative h-56 w-full rounded-2xl overflow-hidden group cursor-pointer">
-                            <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDtkCxfhAnjRnWdFToMUXGnkMePw56xZxHgsZxadhNauHs3QfgMCwrjSamBpkEDdVTdhKYdy_QAcmwtDMViSmC1Z_dl9HMamQol8xsjveBkZ9ohesngAiEc-DXY9U9fbZLhgPkFGk1MtbZ0zbH6RU0ZCayAySltt8AV8DQNNGfcED6DRas__az9XpZ-GEbKlxyIMpauqOtrcHTbwBtkm3ymvY4NVD_VsXsrEb7PwY_4aa_lHIOMR4yVmGOIudII5jQ0SAyaDeF-EL4')" }}>
+                            <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
+                                <Image
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtkCxfhAnjRnWdFToMUXGnkMePw56xZxHgsZxadhNauHs3QfgMCwrjSamBpkEDdVTdhKYdy_QAcmwtDMViSmC1Z_dl9HMamQol8xsjveBkZ9ohesngAiEc-DXY9U9fbZLhgPkFGk1MtbZ0zbH6RU0ZCayAySltt8AV8DQNNGfcED6DRas__az9XpZ-GEbKlxyIMpauqOtrcHTbwBtkm3ymvY4NVD_VsXsrEb7PwY_4aa_lHIOMR4yVmGOIudII5jQ0SAyaDeF-EL4"
+                                    alt="Mbappé Hat-trick"
+                                    fill
+                                    className="object-cover"
+                                />
                             </div>
                             <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent"></div>
                             <div className="absolute bottom-0 left-0 p-4 w-full">
@@ -186,7 +213,13 @@ export default function DashboardPage() {
                         </article>
                         {/* News Item 2 */}
                         <article className="relative h-56 w-full rounded-2xl overflow-hidden group cursor-pointer">
-                            <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRLpS2Ew-GRoN4aZZLPfkiR-JZzW1uMmGxmls6rVA6JgHmnAehEZ6wnqU-ulPSe7KEs8SZD53QHwOSOWJWZMgjNm8Y2qVnU0Xd7UhH3Ip39ZU3axagwAXO5uP2hu3xI9k4r_tRv2A6kostVKDqQTMioaOmFYdLCSxGhySR_Gv-TPwVGid7UNbgeaYsm9s8kfiAgFzhfmu10HcB3T8N45Akj69pYDal8MF-XfYe4BxIX_AtggtZSnXSGzadffNN6AHEJ2Jegi4qvAA')" }}>
+                            <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
+                                <Image
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRLpS2Ew-GRoN4aZZLPfkiR-JZzW1uMmGxmls6rVA6JgHmnAehEZ6wnqU-ulPSe7KEs8SZD53QHwOSOWJWZMgjNm8Y2qVnU0Xd7UhH3Ip39ZU3axagwAXO5uP2hu3xI9k4r_tRv2A6kostVKDqQTMioaOmFYdLCSxGhySR_Gv-TPwVGid7UNbgeaYsm9s8kfiAgFzhfmu10HcB3T8N45Akj69pYDal8MF-XfYe4BxIX_AtggtZSnXSGzadffNN6AHEJ2Jegi4qvAA"
+                                    alt="Transfer Market News"
+                                    fill
+                                    className="object-cover"
+                                />
                             </div>
                             <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent"></div>
                             <div className="absolute bottom-0 left-0 p-4 w-full">
