@@ -1,8 +1,12 @@
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
 import BottomNav from '@/components/BottomNav';
 
 export default function AIHubPage() {
     return (
-        <div className="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white pb-20 min-h-screen">
+        <div className="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white pb-32 min-h-screen">
             {/* Top App Bar */}
             <div className="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-primary/10 px-4 py-3 flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -10,124 +14,68 @@ export default function AIHubPage() {
                         <span className="material-symbols-outlined">menu</span>
                     </button>
                     <div className="flex flex-col">
-                        <h1 className="text-lg font-bold tracking-tight leading-none uppercase">
-                            FootballHub<span className="text-primary">+</span>
-                        </h1>
-                        <span className="text-[10px] font-bold text-primary tracking-widest uppercase">Premium</span>
+                        <h1 className="text-lg font-bold tracking-tight leading-none uppercase">FootballHub<span className="text-primary">+</span></h1>
+                        <span className="text-[10px] font-bold text-primary tracking-widest uppercase">AI Predictions</span>
                     </div>
                 </div>
-                <div className="flex items-center gap-2">
-                    <button className="flex items-center justify-center size-10 rounded-full bg-surface-dark/50 text-white">
+                <div className="flex items-center gap-3">
+                    <button className="flex items-center justify-center size-10 rounded-full bg-surface-dark/50 text-white hover:bg-surface-dark transition-colors">
                         <span className="material-symbols-outlined text-primary">notifications</span>
                     </button>
-                    <div className="size-8 rounded-full bg-gradient-to-tr from-primary to-orange-400 overflow-hidden border-2 border-primary/20">
-                        <div className="w-full h-full bg-gray-700"></div>
-                    </div>
+                    <Link href="/profile" className="size-9 rounded-full bg-gradient-to-tr from-primary to-orange-400 overflow-hidden border-2 border-primary/20">
+                        <img
+                            alt="User Profile"
+                            className="w-full h-full object-cover"
+                            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100"
+                        />
+                    </Link>
                 </div>
             </div>
 
             {/* Main Content */}
-            <main className="flex flex-col gap-6 p-4">
+            <main className="flex flex-col gap-8 p-4 max-w-md mx-auto">
                 {/* Hero: Featured Match Analysis */}
                 <section className="flex flex-col gap-4">
                     <div className="flex items-center justify-between">
-                        <h2 className="text-xl font-bold tracking-wide uppercase">Featured Match Analysis</h2>
-                        <span className="text-xs font-medium text-white/50 bg-white/5 px-2 py-1 rounded">LIVE ODDS</span>
+                        <h2 className="text-xl font-bold tracking-wide uppercase">Featured Analysis</h2>
+                        <span className="text-[10px] font-bold text-white/50 bg-white/5 px-2 py-1 rounded-full border border-white/5 uppercase tracking-widest">Live Odds</span>
                     </div>
 
-                    {/* Match Card & Chart */}
-                    <div className="relative overflow-hidden rounded-xl bg-surface-dark border border-white/5 p-6 shadow-xl">
-                        {/* Background decorative element */}
+                    <div className="relative overflow-hidden rounded-2xl bg-surface-dark border border-white/5 p-6 shadow-2xl">
                         <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
 
-                        {/* Match Header */}
-                        <div className="flex justify-between items-center mb-6">
-                            <div className="text-center w-1/3">
-                                <div className="w-12 h-12 mx-auto bg-blue-100 rounded-full flex items-center justify-center text-blue-900 font-bold text-lg mb-2 shadow-lg shadow-blue-500/20">
-                                    MC
-                                </div>
-                                <p className="text-sm font-bold uppercase">Man City</p>
+                        <div className="flex justify-between items-center mb-8">
+                            <TeamBadge shortName="MC" name="Man City" color="bg-blue-500" />
+                            <div className="text-center flex flex-col items-center">
+                                <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest mb-2">19:45 GMT</span>
+                                <div className="text-xl font-bold font-mono bg-black/40 px-4 py-1.5 rounded-lg text-primary border border-primary/20 shadow-glow-sm">VS</div>
                             </div>
-                            <div className="text-center w-1/3 flex flex-col items-center">
-                                <span className="text-xs text-white/40 font-mono mb-1">19:45 GMT</span>
-                                <div className="text-2xl font-bold font-mono bg-black/20 px-3 py-1 rounded text-primary border border-primary/20">
-                                    VS
-                                </div>
-                            </div>
-                            <div className="text-center w-1/3">
-                                <div className="w-12 h-12 mx-auto bg-red-100 rounded-full flex items-center justify-center text-red-900 font-bold text-lg mb-2 shadow-lg shadow-red-500/20">
-                                    ARS
-                                </div>
-                                <p className="text-sm font-bold uppercase">Arsenal</p>
-                            </div>
+                            <TeamBadge shortName="ARS" name="Arsenal" color="bg-red-500" />
                         </div>
 
                         {/* Win Probability Gauge */}
-                        <div className="flex flex-col items-center justify-center relative py-2">
-                            <div className="relative size-48">
+                        <div className="flex flex-col items-center justify-center relative py-4">
+                            <div className="relative size-52">
                                 <svg className="size-full -rotate-90" viewBox="0 0 100 100">
-                                    {/* Background Circle */}
-                                    <circle className="text-white/5 stroke-current" cx="50" cy="50" fill="none" r="40" strokeWidth="12"></circle>
-                                    {/* Man City (45%) */}
-                                    <circle
-                                        className="text-primary stroke-current drop-shadow-[0_0_8px_rgba(242,204,13,0.4)]"
-                                        cx="50"
-                                        cy="50"
-                                        fill="none"
-                                        r="40"
-                                        strokeDasharray="113 251"
-                                        strokeDashoffset="0"
-                                        strokeLinecap="butt"
-                                        strokeWidth="12"
-                                    ></circle>
-                                    {/* Draw (20%) */}
-                                    <circle
-                                        className="text-white/20 stroke-current"
-                                        cx="50"
-                                        cy="50"
-                                        fill="none"
-                                        r="40"
-                                        strokeDasharray="50 251"
-                                        strokeDashoffset="-115"
-                                        strokeLinecap="butt"
-                                        strokeWidth="12"
-                                    ></circle>
-                                    {/* Arsenal (35%) */}
-                                    <circle
-                                        className="text-white/50 stroke-current"
-                                        cx="50"
-                                        cy="50"
-                                        fill="none"
-                                        r="40"
-                                        strokeDasharray="88 251"
-                                        strokeDashoffset="-167"
-                                        strokeLinecap="butt"
-                                        strokeWidth="12"
-                                    ></circle>
+                                    <circle className="text-white/5 stroke-current" cx="50" cy="50" fill="none" r="42" strokeWidth="10"></circle>
+                                    <circle className="text-primary stroke-current drop-shadow-[0_0_12px_rgba(242,204,13,0.5)]" cx="50" cy="50" fill="none" r="42" strokeDasharray="118 264" strokeDashoffset="0" strokeLinecap="round" strokeWidth="10"></circle>
+                                    <circle className="text-white/20 stroke-current" cx="50" cy="50" fill="none" r="42" strokeDasharray="52 264" strokeDashoffset="-123" strokeLinecap="round" strokeWidth="10"></circle>
+                                    <circle className="text-white/50 stroke-current" cx="50" cy="50" fill="none" r="42" strokeDasharray="92 264" strokeDashoffset="-180" strokeLinecap="round" strokeWidth="10"></circle>
                                 </svg>
-                                {/* Center Text */}
                                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                    <span className="text-xs text-white/50 uppercase tracking-widest">Home Win</span>
-                                    <span className="text-4xl font-bold text-primary neon-text">45%</span>
-                                    <span className="text-[10px] text-primary/80 bg-primary/10 px-2 py-0.5 rounded-full mt-1">
-                                        AI CONFIDENCE
-                                    </span>
+                                    <span className="text-[10px] text-white/50 uppercase tracking-[0.2em] mb-1">Win chance</span>
+                                    <span className="text-5xl font-bold text-primary neon-text tracking-tighter">45%</span>
+                                    <div className="flex items-center gap-1 mt-2 px-2 py-0.5 bg-primary/10 rounded-full border border-primary/20">
+                                        <span className="material-symbols-outlined text-[12px] text-primary filled">verified</span>
+                                        <span className="text-[9px] font-bold text-primary uppercase tracking-widest">Elite AI</span>
+                                    </div>
                                 </div>
                             </div>
-                            {/* Legend */}
-                            <div className="flex justify-center gap-6 mt-4 w-full">
-                                <div className="flex items-center gap-2">
-                                    <div className="size-3 rounded-full bg-primary shadow-[0_0_8px_rgba(242,204,13,0.4)]"></div>
-                                    <span className="text-xs font-medium">City</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <div className="size-3 rounded-full bg-white/20"></div>
-                                    <span className="text-xs font-medium text-white/60">Draw</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <div className="size-3 rounded-full bg-white/50"></div>
-                                    <span className="text-xs font-medium text-white/80">Arsenal</span>
-                                </div>
+
+                            <div className="flex justify-center gap-6 mt-8 w-full">
+                                <LegendItem label="City" color="bg-primary" />
+                                <LegendItem label="Draw" color="bg-white/20" />
+                                <LegendItem label="Arsenal" color="bg-white/50" />
                             </div>
                         </div>
                     </div>
@@ -136,73 +84,74 @@ export default function AIHubPage() {
                 {/* Smart Insights */}
                 <section className="flex flex-col gap-4">
                     <h2 className="text-xl font-bold tracking-wide uppercase flex items-center gap-2">
-                        <span className="material-symbols-outlined text-primary">auto_awesome</span>
+                        <span className="material-symbols-outlined text-primary neon-text">auto_awesome</span>
                         Smart Insights
                     </h2>
-                    <div className="bg-gradient-to-br from-surface-dark to-background-dark border border-primary/30 rounded-xl p-5 relative overflow-hidden group">
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
-                        <div className="flex flex-col gap-4">
-                            <div className="flex items-start gap-3">
-                                <div className="mt-1 bg-yellow-500/20 text-yellow-500 p-1.5 rounded-md">
-                                    <span className="material-symbols-outlined text-[20px]">warning</span>
-                                </div>
-                                <div>
-                                    <p className="text-white font-medium text-sm leading-relaxed">
-                                        Haaland is doubtful (Ankle) for the upcoming fixture. City's xG drops by 0.8 without him.
-                                    </p>
-                                </div>
-                            </div>
+                    <div className="bg-gradient-to-br from-surface-dark to-background-dark border border-primary/20 rounded-2xl p-6 relative overflow-hidden group shadow-xl">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+                        <div className="flex flex-col gap-6">
+                            <InsightItem
+                                icon="warning"
+                                color="text-yellow-500"
+                                bg="bg-yellow-500/10"
+                                text="Haaland is doubtful (Ankle) for the upcoming fixture. City's xG drops by 0.8 without him."
+                            />
                             <div className="w-full h-px bg-white/5"></div>
-                            <div className="flex items-start gap-3">
-                                <div className="mt-1 bg-green-500/20 text-green-500 p-1.5 rounded-md">
-                                    <span className="material-symbols-outlined text-[20px]">trending_up</span>
-                                </div>
-                                <div>
-                                    <p className="text-white font-medium text-sm leading-relaxed">
-                                        Arsenal is unbeaten in their last 5 away games, averaging 2.1 goals per match.
-                                    </p>
-                                </div>
-                            </div>
+                            <InsightItem
+                                icon="trending_up"
+                                color="text-green-500"
+                                bg="bg-green-500/10"
+                                text="Arsenal is unbeaten in their last 5 away games, averaging 2.1 goals per match."
+                            />
                         </div>
-                        <div className="mt-4 pt-3 flex justify-end">
-                            <button className="text-xs font-bold text-primary uppercase tracking-wider flex items-center gap-1 hover:text-white transition-colors">
-                                View Full Report <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        <div className="mt-6 pt-4 flex justify-end">
+                            <button className="text-xs font-bold text-primary uppercase tracking-widest flex items-center gap-2 hover:translate-x-1 transition-all">
+                                FULL REPORT <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                             </button>
                         </div>
                     </div>
                 </section>
 
-                {/* Upcoming Predictions */}
+                {/* Upcoming Recommendations */}
                 <section className="flex flex-col gap-4">
                     <div className="flex items-center justify-between">
-                        <h2 className="text-xl font-bold tracking-wide uppercase">Upcoming Predictions</h2>
-                        <button className="text-primary text-sm font-bold">See All</button>
+                        <h2 className="text-xl font-bold tracking-wide uppercase">Top Recommendations</h2>
+                        <button className="text-primary text-xs font-bold uppercase tracking-widest">See All</button>
                     </div>
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-4">
                         <PredictionCard
-                            time="Tomorrow, 20:00"
-                            league="PL"
-                            homeTeam="Liverpool"
-                            awayTeam="Chelsea"
-                            homeAbbr="LIV"
-                            awayAbbr="CHE"
-                            prediction="3 - 1"
-                            probability={85}
+                            home="Liverpool"
+                            away="Chelsea"
+                            homeColor="bg-red-800"
+                            awayColor="bg-blue-700"
+                            score="3 - 1"
+                            prob={85}
                             confidence="High"
                         />
                         <PredictionCard
-                            time="Sun, 19:00"
-                            league="LL"
-                            homeTeam="Real Madrid"
-                            awayTeam="Barcelona"
-                            homeAbbr="RMA"
-                            awayAbbr="FCB"
-                            prediction="2 - 2"
-                            probability={60}
-                            confidence="Med"
+                            home="Real Madrid"
+                            away="Barcelona"
+                            homeColor="bg-slate-200"
+                            awayColor="bg-red-600"
+                            score="2 - 2"
+                            prob={60}
+                            confidence="Medium"
                         />
                     </div>
                 </section>
+
+                {/* Pro CTA */}
+                <div className="mt-4 p-6 rounded-2xl relative overflow-hidden bg-cover bg-center shadow-2xl"
+                    style={{ backgroundImage: "linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000&auto=format&fit=crop')" }}>
+                    <div className="relative z-10 flex flex-col gap-3 items-start">
+                        <span className="bg-primary text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Pro Feature</span>
+                        <h3 className="text-xl font-bold text-white tracking-tight">Unlock Deep Player Stats</h3>
+                        <p className="text-sm text-white/70 max-w-[85%] leading-relaxed">Get advanced xG models, movement heatmaps, and AI-predicted player ratings.</p>
+                        <button className="mt-4 bg-primary text-black px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest hover:scale-105 transition-all shadow-glow">
+                            Upgrade to Pro
+                        </button>
+                    </div>
+                </div>
             </main>
 
             <BottomNav activeTab="ai-hub" />
@@ -210,78 +159,86 @@ export default function AIHubPage() {
     );
 }
 
-function PredictionCard({
-    time,
-    league,
-    homeTeam,
-    awayTeam,
-    homeAbbr,
-    awayAbbr,
-    prediction,
-    probability,
-    confidence,
-}: {
-    time: string;
-    league: string;
-    homeTeam: string;
-    awayTeam: string;
-    homeAbbr: string;
-    awayAbbr: string;
-    prediction: string;
-    probability: number;
-    confidence: string;
-}) {
-    const isHighConfidence = confidence === 'High';
+function TeamBadge({ shortName, name, color }: { shortName: string, name: string, color: string }) {
     return (
-        <div className="bg-surface-dark rounded-lg p-4 border border-white/5 hover:border-primary/20 transition-all cursor-pointer">
-            <div className="flex justify-between items-center mb-3">
+        <div className="text-center w-1/3">
+            <div className={`w-14 h-14 mx-auto ${color} rounded-2xl flex items-center justify-center text-white font-bold text-xl mb-3 shadow-xl transform group-hover:scale-110 transition-all`}>
+                {shortName}
+            </div>
+            <p className="text-xs font-bold uppercase tracking-widest text-white/80">{name}</p>
+        </div>
+    );
+}
+
+function LegendItem({ label, color }: { label: string, color: string }) {
+    return (
+        <div className="flex items-center gap-2">
+            <div className={`size-2.5 rounded-full ${color} ${color.includes('primary') ? 'shadow-glow-sm' : ''}`}></div>
+            <span className="text-[11px] font-bold uppercase tracking-widest text-white/60">{label}</span>
+        </div>
+    );
+}
+
+function InsightItem({ icon, color, bg, text }: { icon: string, color: string, bg: string, text: string }) {
+    return (
+        <div className="flex items-start gap-4">
+            <div className={`mt-1 ${bg} ${color} p-2 rounded-xl border border-white/5`}>
+                <span className="material-symbols-outlined text-[20px]">{icon}</span>
+            </div>
+            <p className="text-white/90 font-medium text-sm leading-relaxed">{text}</p>
+        </div>
+    );
+}
+
+function PredictionCard({ home, away, homeColor, awayColor, score, prob, confidence }: {
+    home: string, away: string, homeColor: string, awayColor: string, score: string, prob: number, confidence: string
+}) {
+    return (
+        <div className="bg-surface-dark rounded-2xl p-5 border border-white/5 hover:border-primary/30 transition-all shadow-lg group cursor-pointer">
+            <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center gap-3">
-                    <span className="text-xs text-white/40 font-mono">{time}</span>
-                    <span className="text-[10px] bg-white/10 px-1.5 py-0.5 rounded text-white/70">{league}</span>
+                    <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Tomorrow, 20:00</span>
+                    <span className="text-[9px] bg-white/5 px-2 py-0.5 rounded-full border border-white/10 text-white/50 font-bold uppercase tracking-widest">PL</span>
                 </div>
-                <div className="flex items-center gap-1">
-                    <span className={`text-[10px] font-bold uppercase ${isHighConfidence ? 'text-primary' : 'text-yellow-600'}`}>
+                <div className="flex items-center gap-1.5 px-2 py-0.5 bg-primary/5 rounded-full border border-primary/10">
+                    <span className={`text-[9px] font-bold uppercase tracking-widest ${confidence === 'High' ? 'text-primary' : 'text-yellow-600'}`}>
                         {confidence} Confidence
                     </span>
-                    {isHighConfidence && <span className="material-symbols-outlined text-primary text-[14px]">verified</span>}
+                    <span className={`material-symbols-outlined text-[14px] ${confidence === 'High' ? 'text-primary filled' : 'text-yellow-600'}`}>
+                        {confidence === 'High' ? 'verified' : 'info'}
+                    </span>
                 </div>
             </div>
             <div className="flex items-center justify-between">
-                <div className="flex flex-col gap-2 flex-1">
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                            <div className="size-6 rounded-full bg-red-800 flex items-center justify-center text-[10px] font-bold">
-                                {homeAbbr}
-                            </div>
-                            <span className="font-bold">{homeTeam}</span>
-                        </div>
-                    </div>
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                            <div className="size-6 rounded-full bg-blue-700 flex items-center justify-center text-[10px] font-bold">
-                                {awayAbbr}
-                            </div>
-                            <span className="font-bold">{awayTeam}</span>
-                        </div>
-                    </div>
+                <div className="flex flex-col gap-3 flex-1 min-w-0">
+                    <TeamRow name={home} color={homeColor} />
+                    <TeamRow name={away} color={awayColor} />
                 </div>
-                {/* Prediction Score */}
-                <div className="flex flex-col items-end pl-6 border-l border-white/10 ml-4">
-                    <span className="text-[10px] uppercase text-white/40 mb-1">Projected</span>
-                    <div className={`text-2xl font-bold font-mono tracking-tighter ${isHighConfidence ? 'text-primary neon-text' : 'text-white'}`}>
-                        {prediction}
-                    </div>
-                    <div className="w-full bg-white/10 h-1 rounded-full mt-2 overflow-hidden">
+                <div className="flex flex-col items-end pl-6 border-l border-white/5 ml-4">
+                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/30 mb-2">Projected</span>
+                    <div className="text-3xl font-bold font-mono text-primary neon-text tracking-tighter">{score}</div>
+                    <div className="w-20 bg-white/5 h-1.5 rounded-full mt-3 overflow-hidden border border-white/5">
                         <div
-                            className={`h-full ${isHighConfidence ? 'bg-primary shadow-[0_0_5px_rgba(242,204,13,0.5)]' : 'bg-yellow-600'}`}
-                            style={{ width: `${probability}%` }}
+                            className={`h-full ${prob > 70 ? 'bg-primary shadow-glow-sm' : 'bg-yellow-600'}`}
+                            style={{ width: `${prob}%` }}
                         ></div>
                     </div>
-                    <span className={`text-[10px] mt-1 ${isHighConfidence ? 'text-primary' : 'text-yellow-600'}`}>
-                        {probability}% Prob
+                    <span className={`text-[10px] font-bold mt-2 uppercase tracking-widest ${prob > 70 ? 'text-primary' : 'text-yellow-600'}`}>
+                        {prob}% Prob
                     </span>
                 </div>
             </div>
+        </div>
+    );
+}
+
+function TeamRow({ name, color }: { name: string, color: string }) {
+    return (
+        <div className="flex items-center gap-3 group-hover:translate-x-1 transition-all">
+            <div className={`size-7 rounded-lg ${color} flex items-center justify-center text-[10px] font-black border border-white/10 shadow-lg`}>
+                {name.substring(0, 3).toUpperCase()}
+            </div>
+            <span className="font-bold text-sm truncate uppercase tracking-tight">{name}</span>
         </div>
     );
 }

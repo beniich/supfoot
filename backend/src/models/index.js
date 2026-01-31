@@ -1,0 +1,21 @@
+// src/models/index.js
+module.exports = {
+  User: require('./User'),
+  Member: require('./Member'),
+  Event: require('./Event'),
+  Ticket: require('./Ticket'),
+  Product: require('./Product'),
+  Order: require('./Order'),
+  League: require('./League'),
+  Team: require('./Team'),
+  Match: require('./Match'),
+  Player: require('./Player'),
+  MatchLineup: require('./MatchLineup'),
+  NewsArticle: require('./NewsArticle'),
+  Standing: require('./Standing'),
+  Prediction: require('./Prediction'),
+  Comment: require('./Comment'),
+  Video: require('./Video'),
+  FantasyTeam: require('./FantasyTeam'),
+  Odds: require('./Odds'),
+};

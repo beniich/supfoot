@@ -13,8 +13,8 @@ export default function BottomNav({ activeTab }: BottomNavProps) {
     const navItems = [
         { id: 'home', label: 'Home', icon: 'home', href: '/' },
         { id: 'matches', label: 'Matches', icon: 'sports_soccer', href: '/matches' },
-        { id: 'shop', label: 'Shop', icon: 'shopping_bag', href: '/shop' },
-        { id: 'tickets', label: 'Tickets', icon: 'confirmation_number', href: '/tickets' },
+        { id: 'news', label: 'Media', icon: 'play_circle', href: '/news' },
+        { id: 'fantasy', label: 'Fantasy', icon: 'emoji_events', href: '/fantasy' },
         { id: 'profile', label: 'Profile', icon: 'person', href: '/profile' },
     ];
 
@@ -34,8 +34,8 @@ export default function BottomNav({ activeTab }: BottomNavProps) {
                         <Link key={item.id} href={item.href} className="w-full">
                             <button
                                 className={`flex flex-col items-center justify-center w-full h-full gap-1 transition-colors ${active
-                                        ? 'text-primary'
-                                        : 'text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary'
+                                    ? 'text-primary'
+                                    : 'text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary'
                                     }`}
                             >
                                 <span

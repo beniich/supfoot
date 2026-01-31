@@ -80,9 +80,52 @@ export default function CommunityPage() {
                     </div>
                 </div>
                 <div className="flex flex-col gap-6 px-3 pb-6">
-                    {/* Posts would go here */}
-                    <div className="bg-surface-dark rounded-xl p-4 border border-white/5 text-center text-white/40">
-                        <p>Posts loading...</p>
+                    {/* Post 1: Poll */}
+                    <div className="bg-surface-dark rounded-xl p-4 border border-white/5">
+                        <div className="flex justify-between items-start mb-3">
+                            <div className="flex gap-3 items-center">
+                                <div className="w-10 h-10 rounded-full bg-gray-700 border border-white/10"></div>
+                                <div>
+                                    <div className="flex items-center gap-2">
+                                        <p className="text-sm font-bold text-white">Ahmed_99</p>
+                                        <span className="bg-primary/20 text-primary text-[10px] font-bold px-1.5 py-0.5 rounded">PRO</span>
+                                    </div>
+                                    <p className="text-xs text-white/40">2h ago</p>
+                                </div>
+                            </div>
+                            <span className="material-symbols-outlined text-white/40">more_horiz</span>
+                        </div>
+                        <p className="text-sm text-white/80 mb-4 leading-relaxed">Who is the MOTM tonight? The midfield battle was intense but I think Ziyech edged it.</p>
+                        {/* Poll */}
+                        <div className="space-y-2 mb-4">
+                            <div className="relative bg-white/5 rounded-lg h-10 overflow-hidden cursor-pointer group">
+                                <div className="absolute left-0 top-0 h-full bg-primary/20 w-[75%] transition-all"></div>
+                                <div className="absolute inset-0 flex items-center justify-between px-4 z-10">
+                                    <span className="text-sm font-medium text-white group-hover:text-primary">H. Ziyech</span>
+                                    <span className="text-sm font-bold text-primary">75%</span>
+                                </div>
+                            </div>
+                            <div className="relative bg-white/5 rounded-lg h-10 overflow-hidden cursor-pointer group">
+                                <div className="absolute left-0 top-0 h-full bg-white/5 w-[25%] transition-all"></div>
+                                <div className="absolute inset-0 flex items-center justify-between px-4 z-10">
+                                    <span className="text-sm font-medium text-white group-hover:text-primary">A. Hakimi</span>
+                                    <span className="text-sm font-bold text-white/40">25%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex items-center justify-between border-t border-white/5 pt-3">
+                            <div className="flex gap-6">
+                                <button className="flex items-center gap-1.5 text-white/40 hover:text-primary transition-colors">
+                                    <span className="material-symbols-outlined text-[20px]">favorite</span>
+                                    <span className="text-xs font-medium">205</span>
+                                </button>
+                                <button className="flex items-center gap-1.5 text-white/40 hover:text-white transition-colors">
+                                    <span className="material-symbols-outlined text-[20px]">chat_bubble</span>
+                                    <span className="text-xs font-medium">42</span>
+                                </button>
+                            </div>
+                            <span className="material-symbols-outlined text-white/40">share</span>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -151,8 +194,8 @@ function FanGroupItem({
             </div>
             <button
                 className={`shrink-0 text-xs font-bold px-4 py-2 rounded-lg transition-colors ${buttonVariant === 'primary'
-                        ? 'bg-primary hover:bg-primary/90 text-black'
-                        : 'bg-surface-highlight hover:bg-white/10 text-white border border-white/10'
+                    ? 'bg-primary hover:bg-primary/90 text-black'
+                    : 'bg-surface-highlight hover:bg-white/10 text-white border border-white/10'
                     }`}
             >
                 {buttonText}

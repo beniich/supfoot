@@ -14,10 +14,14 @@ module.exports = {
                 'background-dark': '#221f10',
                 'surface-dark': '#2d2a1d',
                 'surface-highlight': '#2a2718',
+                'field-green': '#1a4731',
             },
             fontFamily: {
                 display: ['Space Grotesk', 'sans-serif'],
-                body: ['Lexend', 'sans-serif'],
+                body: ['Noto Sans', 'sans-serif'],
+            },
+            boxShadow: {
+                'glow': '0 0 15px rgba(242, 204, 13, 0.3)',
             },
             borderRadius: {
                 DEFAULT: '0.375rem',
