@@ -1,0 +1,10 @@
+{
+    "buildCommand": "cd web && npm install && npm run build",
+    "outputDirectory": "web/.next",
+    "framework": "nextjs",
+    "installCommand": "cd web && npm install",
+    "devCommand": "cd web && npm run dev",
+    "env": {
+        "NEXT_PUBLIC_API_URL": "https://your-backend-url.vercel.app/api"
+    }
+}
