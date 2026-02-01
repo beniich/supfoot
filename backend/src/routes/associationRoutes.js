@@ -3,14 +3,14 @@ const express = require('express');
 const router = express.Router();
 const Association = require('../models/Association');
 const User = require('../models/User');
-const { protect } = require('../middleware/auth');
+const { authenticateToken } = require('../middleware/auth');
 const badgeService = require('../services/badgeService');
 const Member = require('../models/Member');
 
 // @desc    Register a new association
 // @route   POST /api/associations
 // @access  Private (Registered User)
-router.post('/', protect, async (req, res, next) => {
+router.post('/', authenticateToken, async (req, res, next) => {
     try {
         const { name, description, email, phone, address } = req.body;
 
@@ -49,7 +49,7 @@ router.post('/', protect, async (req, res, next) => {
 // @desc    Get association details
 // @route   GET /api/associations/me
 // @access  Private (Admin)
-router.get('/me', protect, async (req, res, next) => {
+router.get('/me', authenticateToken, async (req, res, next) => {
     try {
         const association = await Association.findById(req.user.associationId);
 
@@ -72,7 +72,7 @@ router.get('/me', protect, async (req, res, next) => {
 // @desc    Generate badge for a member
 // @route   GET /api/associations/members/:memberId/badge
 // @access  Private (Admin)
-router.get('/members/:memberId/badge', protect, async (req, res, next) => {
+router.get('/members/:memberId/badge', authenticateToken, async (req, res, next) => {
     try {
         const member = await Member.findOne({
             _id: req.params.memberId,

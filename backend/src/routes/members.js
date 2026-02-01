@@ -1,7 +1,10 @@
-const { protect } = require('../middleware/auth');
+const express = require('express');
+const router = express.Router();
+const Member = require('../models/Member');
+const { authenticateToken } = require('../middleware/auth');
 
 // GET /api/members
-router.get('/', protect, async (req, res) => {
+router.get('/', authenticateToken, async (req, res) => {
   try {
     const { status, role, search, page = 1, limit = 20 } = req.query;
 
