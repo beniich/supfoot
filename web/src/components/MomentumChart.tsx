@@ -26,6 +26,14 @@ const mockData: MomentumPoint[] = [
 ];
 
 export const MomentumChart = () => {
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) return <div className="w-full h-[120px] bg-surface-dark/50 rounded-2xl animate-pulse" />;
+
     return (
         <div className="w-full bg-surface-dark/50 rounded-2xl p-4 border border-white/5 shadow-inner">
             <div className="flex justify-between items-center mb-4">

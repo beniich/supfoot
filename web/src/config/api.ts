@@ -1,9 +1,9 @@
 import { Capacitor } from '@capacitor/core';
 
 export const API_CONFIG = {
-    baseURL: Capacitor.isNativePlatform()
+    baseURL: process.env.NEXT_PUBLIC_API_URL || (Capacitor.isNativePlatform()
         ? 'https://api.footballhub.com/api' // Production API - TODO: Change this to real endpoint
-        : 'http://localhost:5000/api',      // Development API
+        : 'http://localhost:5000/api'),      // Development API
 
     timeout: 10000,
 
