@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import api from '@/services/api';
+import Image from 'next/image';
 
 export default function LoginPage() {
     const router = useRouter();
@@ -43,8 +44,8 @@ export default function LoginPage() {
 
                 {/* Header Section */}
                 <div className="flex flex-col items-center justify-center mb-10">
-                    <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 border border-primary/20 backdrop-blur-xl shadow-glow transition-transform hover:scale-110 duration-500">
-                        <span className="material-symbols-outlined text-5xl text-primary neon-text filled">sports_soccer</span>
+                    <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 border border-primary/20 backdrop-blur-xl shadow-glow transition-transform hover:scale-110 duration-500 relative">
+                        <Image src="/logo.svg" alt="FootballHub Logo" fill className="object-contain p-4" />
                     </div>
                     <h1 className="text-white tracking-tighter text-[42px] font-black leading-none text-center uppercase italic">
                         Welcome <br /><span className="text-primary neon-text">Back Pro</span>

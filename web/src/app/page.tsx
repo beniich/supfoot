@@ -10,8 +10,8 @@ export default function DashboardPage() {
             {/* Top AppBar */}
             <header className="sticky top-0 z-40 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-black/5 dark:border-white/5 px-4 py-3 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-background-dark font-bold">
-                        <span className="material-symbols-outlined text-[20px]">sports_soccer</span>
+                    <div className="relative w-10 h-10 flex items-center justify-center">
+                        <Image src="/logo.svg" alt="FootballHub Logo" fill className="object-contain" />
                     </div>
                     <h1 className="text-xl font-bold tracking-tight">FootballHub<span className="text-primary">+</span></h1>
                 </div>

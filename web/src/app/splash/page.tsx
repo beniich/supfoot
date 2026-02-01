@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 export default function SplashScreen() {
     return (
@@ -14,14 +15,9 @@ export default function SplashScreen() {
                     {/* FH+ Emblem */}
                     <div className="relative flex h-32 w-32 items-center justify-center rounded-3xl border border-primary/20 bg-[#181711] shadow-glow animate-pulse-gold">
                         <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary/5 to-transparent"></div>
-
-                        <svg fill="none" height="80" viewBox="0 0 100 100" width="80" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 20 H50 V30 H32 V44 H48 V54 H32 V80 H20 V20 Z" fill="#f2d00d"></path>
-                            <path d="M56 20 H68 V44 H82 V20 H94 V80 H82 V54 H68 V80 H56 V20 Z" fill="#f2d00d"></path>
-                            <path d="M88 15 L98 15 L98 35 L88 35 Z" fill="#f2d00d" transform="rotate(45 93 25)"></path>
-                        </svg>
-
-                        <div className="absolute -right-4 -top-4 text-primary text-5xl font-black drop-shadow-glow-sm">+</div>
+                        <div className="relative w-24 h-24">
+                            <Image src="/logo.svg" alt="FootballHub Logo" fill className="object-contain" />
+                        </div>
                     </div>
 
                     {/* App Name */}

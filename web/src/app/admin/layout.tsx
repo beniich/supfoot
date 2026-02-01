@@ -4,6 +4,7 @@ import React from 'react';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 export default function AdminLayout({
     children,
@@ -26,10 +27,10 @@ export default function AdminLayout({
         <ProtectedRoute requireAdmin={true}>
             <div className="flex min-h-screen bg-[#0a0a0b] text-white">
                 {/* Sidebar */}
-                <aside className="w-64 bg-[#121214] border-r border-white/5 flex flex-col hidden md:flex">
+                <aside className="w-64 bg-[#121214] border-r border-white/5 flex-col hidden md:flex">
                     <div className="p-6 flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-xl bg-primary flex items-center justify-center shadow-glow">
-                            <span className="material-symbols-outlined text-background-dark filled">shield_person</span>
+                        <div className="relative h-10 w-10 flex items-center justify-center shadow-glow">
+                            <Image src="/logo.svg" alt="Admin Logo" fill className="object-contain" />
                         </div>
                         <span className="text-xl font-bold tracking-tighter uppercase italic">
                             Admin <span className="text-primary">Hub</span>
@@ -73,8 +74,8 @@ export default function AdminLayout({
                     {/* Header Mobile */}
                     <header className="md:hidden flex items-center justify-between p-4 bg-[#121214] border-b border-white/5 sticky top-0 z-50">
                         <div className="flex items-center gap-2">
-                            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                                <span className="material-symbols-outlined text-background-dark text-sm filled">shield_person</span>
+                            <div className="relative h-8 w-8 flex items-center justify-center">
+                                <Image src="/logo.svg" alt="Admin Logo" fill className="object-contain" />
                             </div>
                             <span className="text-sm font-bold tracking-tighter uppercase italic">Admin</span>
                         </div>
