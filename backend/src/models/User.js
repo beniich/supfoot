@@ -87,6 +87,11 @@ const userSchema = new mongoose.Schema({
   lastLogin: Date,
   passwordChangedAt: Date,
 
+  associationId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Association',
+  },
+
 }, {
   timestamps: true,
 });

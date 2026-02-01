@@ -15,6 +15,8 @@ export default function AdminLayout({
     const navItems = [
         { name: 'Dashboard', href: '/admin', icon: 'dashboard' },
         { name: 'Utilisateurs', href: '/admin/users', icon: 'group' },
+        { name: 'Analytics', href: '/admin/analytics', icon: 'analytics' },
+        { name: 'Logs', href: '/admin/logs', icon: 'terminal' },
         { name: 'Matchs', href: '/admin/matches', icon: 'sports_soccer' },
         { name: 'Billets', href: '/admin/tickets', icon: 'confirmation_number' },
         { name: 'Paramètres', href: '/admin/settings', icon: 'settings' },
@@ -42,8 +44,8 @@ export default function AdminLayout({
                                     key={item.name}
                                     href={item.href}
                                     className={`flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300 group ${isActive
-                                            ? 'bg-primary text-background-dark font-bold'
-                                            : 'hover:bg-white/5 text-[#bab59c]'
+                                        ? 'bg-primary text-background-dark font-bold'
+                                        : 'hover:bg-white/5 text-[#bab59c]'
                                         }`}
                                 >
                                     <span className={`material-symbols-outlined ${isActive ? 'filled' : 'opacity-60 group-hover:opacity-100'}`}>

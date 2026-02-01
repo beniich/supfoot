@@ -215,6 +215,8 @@ app.use('/api/news', require('./routes/news'));
 app.use('/api/standings', require('./routes/standings'));
 app.use('/api/favorites', require('./routes/favorites'));
 app.use('/api/admin', require('./routes/admin'));
+app.use('/api/payments', require('./routes/payments'));
+app.use('/api/associations', require('./routes/associationRoutes'));
 
 // ============================================================================
 // 11. HEALTH CHECK

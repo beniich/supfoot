@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import BottomNav from '@/components/BottomNav';
 import MatchCard from '@/components/MatchCard';
 
@@ -8,12 +9,10 @@ export default function MatchesPage() {
                 {/* Top Bar */}
                 <div className="flex items-center justify-between px-4 pt-4 pb-2">
                     <h1 className="text-2xl font-bold tracking-tight">Fixtures</h1>
-                    <div className="flex items-center gap-3">
-                        <span className="text-xs font-medium text-white/40 uppercase tracking-wide">Favorites Only</span>
-                        <div className="relative inline-flex h-6 w-11 items-center rounded-full bg-white/10">
-                            <span className="inline-block h-4 w-4 translate-x-1 rounded-full bg-white transition" />
-                        </div>
-                    </div>
+                    <Link href="/elite-rankings" className="bg-primary/10 border border-primary/30 px-3 py-1.5 rounded-full flex items-center gap-2 hover:bg-primary transition-all group">
+                        <span className="material-symbols-outlined text-primary group-hover:text-black text-sm">leaderboard</span>
+                        <span className="text-[10px] font-black text-primary group-hover:text-black uppercase tracking-widest">Elite Rankings</span>
+                    </Link>
                 </div>
                 {/* Date Strip */}
                 <div className="flex gap-3 overflow-x-auto px-4 py-3 no-scrollbar mt-1">

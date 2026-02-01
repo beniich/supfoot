@@ -102,9 +102,15 @@ export default function NewsHubPage() {
 
                 {/* Video Categories */}
                 <section className="flex flex-col gap-4">
-                    <h3 className="text-xl font-black text-white tracking-tight px-4 uppercase">Media Library</h3>
+                    <div className="flex items-center justify-between px-4">
+                        <h3 className="text-xl font-black text-white tracking-tight uppercase">Media Library</h3>
+                        <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">My Teams</span>
+                            <div className="size-4 rounded-full bg-primary shadow-glow-sm"></div>
+                        </div>
+                    </div>
                     <div className="flex overflow-x-auto no-scrollbar px-4 gap-3">
-                        {['Highlights', 'Interviews', 'Tactics', 'Press', 'Shorts'].map((cat, i) => (
+                        {['All', 'Real Madrid', 'FC Barcelona', 'Raja CA', 'Wydad AC'].map((cat, i) => (
                             <button key={cat} className={`whitespace-nowrap rounded-xl px-6 py-2.5 text-xs font-bold uppercase tracking-widest transition-all ${i === 0 ? 'bg-primary text-background-dark shadow-glow-sm' : 'bg-surface-dark text-gray-400 border border-white/5 hover:bg-white/5'}`}>
                                 {cat}
                             </button>
@@ -130,6 +136,25 @@ export default function NewsHubPage() {
                         duration="12:05"
                         image="https://images.unsplash.com/photo-1624891151630-1439b177976c?auto=format&fit=crop&q=80&w=800"
                     />
+                </section>
+
+                {/* Media Subscription Banner */}
+                <section className="px-4 pb-12">
+                    <Link href="/membership/media" className="block relative h-24 rounded-2xl overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-700 shadow-glow-sm group">
+                        <div className="absolute inset-0 opacity-10 pitch-pattern"></div>
+                        <div className="absolute top-0 right-0 p-4 opacity-20 pointer-events-none group-hover:scale-110 transition-transform">
+                             <span className="material-symbols-outlined text-6xl">photo_camera</span>
+                        </div>
+                        <div className="relative h-full flex flex-col justify-center px-6">
+                            <h4 className="text-white font-black uppercase italic tracking-tighter text-lg leading-none mb-1">Press & Media Access</h4>
+                            <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest">Photographer & News Insider Plans Available</p>
+                        </div>
+                        <div className="absolute right-6 top-1/2 -translate-y-1/2">
+                            <div className="size-8 rounded-full bg-white/20 flex items-center justify-center text-white">
+                                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                            </div>
+                        </div>
+                    </Link>
                 </section>
             </main>
 

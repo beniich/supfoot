@@ -1,14 +1,17 @@
-// src/routes/members.js
-const express = require('express');
-const router = express.Router();
-const Member = require('../models/Member');
+const { protect } = require('../middleware/auth');
 
 // GET /api/members
-router.get('/', async (req, res) => {
+router.get('/', protect, async (req, res) => {
   try {
     const { status, role, search, page = 1, limit = 20 } = req.query;
 
     const query = {};
+
+    // Multi-tenancy: Only show members of the user's association if they are an admin
+    if (req.user.associationId) {
+      query.associationId = req.user.associationId;
+    }
+
     if (status) query.status = status;
     if (role) query.role = role;
     if (search) {
@@ -28,13 +31,14 @@ router.get('/', async (req, res) => {
     const count = await Member.countDocuments(query);
 
     res.json({
-      members,
+      success: true,
+      data: members,
       totalPages: Math.ceil(count / limit),
       currentPage: page,
       total: count,
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
