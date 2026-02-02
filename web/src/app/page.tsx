@@ -187,7 +187,37 @@ export default function DashboardPage() {
                     </div>
                 </section>
 
-                {/* Featured News */}
+                {/* Featured Gear Section */}
+                <section className="mt-6">
+                    <div className="px-4 mb-3 flex items-center justify-between">
+                        <h3 className="text-lg font-bold">Featured Gear</h3>
+                        <Link href="/shop" className="text-sm text-primary font-medium hover:opacity-80">Visit Store</Link>
+                    </div>
+                    <div className="flex overflow-x-auto no-scrollbar gap-4 px-4 pb-4 snap-x">
+                        {/* Mock Featured Products - In real app, fetch from API where isFeatured=true */}
+                        {[
+                            { id: '1', name: 'Raja Home Kit 24/25', category: 'Jersey', price: 799, image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBH9-exm_S8PEJDBO-h6Ujn3vPKkzG0r52aGTDzqowHlUmAyNXmPUshTBZTz7QdJgm9223w_PmZKgwWFUxVnssg6FFwqpOJ9ED3CjoG1AAeak1kCdaFgqMTdlIgZROins3AbmB_Fuxn6GiHgqryJtcNHnXlZ7oDpWfonMyN0yHltiChXw9DmrTDzc8nMbYwszcjuonyVrQlGaVVUvoXRCM4gMUg7H6bJRS6ZXB8zslMvoi7I_vECNGarLtMKn9k0zlg7jz3ZjWeYvA' },
+                            { id: '3', name: 'Elite Match Ball', category: 'Equipment', price: 1200, image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBPRhDGBF89Br4tPuAZqd-L805aknU75XS_YDMPxbR1Vt3V6sCgIqH1jKog_Nj9NqgjwNkMNs6yd58tOtBFD9dBu3Vk83HA0AZJpBIDvJJDDiblDQ9TwIPQeqPRg6kn1TEW_Ae-vcrZp9vGLlUkHA8c0rg8uWa8lt_mvuk_ID6ubNx7_-epbIj5sE_kp9g4qBBFft1eV6a2nxpCmUbeCF-VhROn5d-ouztbM7RVHscgHh9u5-sX9R3Rrj3aPBlUaLlyGZpAUiTBSno' },
+                        ].map((product) => (
+                            <Link href="/shop/product" key={product.id} className="min-w-[160px] snap-center bg-surface-dark border border-white/5 rounded-2xl p-3 shadow-lg group hover:border-primary/30 transition-all flex flex-col">
+                                <div className="aspect-square bg-white/5 rounded-xl mb-3 relative overflow-hidden">
+                                    <Image src={product.image} alt={product.name} fill className="object-cover group-hover:scale-110 transition-transform" />
+                                    <div className="absolute top-2 right-2 bg-primary text-black text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">NEW</div>
+                                </div>
+                                <div className="mt-auto">
+                                    <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">{product.category}</div>
+                                    <h4 className="text-sm font-bold text-white leading-tight line-clamp-2 mb-2">{product.name}</h4>
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-primary font-black">{product.price} <span className="text-[10px] font-normal text-gray-400">MAD</span></span>
+                                        <div className="w-6 h-6 rounded-full bg-white text-black flex items-center justify-center">
+                                            <span className="material-symbols-outlined text-[14px]">add</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </section>
                 <section className="mt-6 mb-4">
                     <h3 className="text-lg font-bold px-4 mb-3">Trending News</h3>
                     <div className="flex flex-col gap-4 px-4">

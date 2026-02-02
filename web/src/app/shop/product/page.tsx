@@ -139,10 +139,10 @@ export default function ProductDetailPage() {
                         <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Total Price</span>
                         <span className="text-xl font-bold">799 MAD</span>
                     </div>
-                    <button className="bg-primary text-black font-bold h-14 px-8 rounded-2xl flex items-center gap-3 hover:scale-105 active:scale-95 transition-all shadow-glow">
+                    <Link href="/shop/cart" className="bg-primary text-black font-bold h-14 px-8 rounded-2xl flex items-center gap-3 hover:scale-105 active:scale-95 transition-all shadow-glow">
                         <span className="material-symbols-outlined">shopping_cart</span>
                         Add to Cart
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

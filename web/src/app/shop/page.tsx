@@ -66,9 +66,9 @@ export default function ShopPage() {
                             <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>search</span>
                         </Link>
                         <div className="relative">
-                            <button className="text-white flex size-10 shrink-0 items-center justify-center hover:bg-white/10 rounded-full transition-colors">
+                            <Link href="/shop/cart" className="text-white flex size-10 shrink-0 items-center justify-center hover:bg-white/10 rounded-full transition-colors">
                                 <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>shopping_bag</span>
-                            </button>
+                            </Link>
                             <div className="absolute top-2 right-1 w-2.5 h-2.5 bg-primary rounded-full border border-background-dark"></div>
                         </div>
                     </div>

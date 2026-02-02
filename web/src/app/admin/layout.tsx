@@ -20,6 +20,7 @@ export default function AdminLayout({
         { name: 'Logs', href: '/admin/logs', icon: 'terminal' },
         { name: 'Matchs', href: '/admin/matches', icon: 'sports_soccer' },
         { name: 'Billets', href: '/admin/tickets', icon: 'confirmation_number' },
+        { name: 'Boutique', href: '/admin/products', icon: 'shopping_bag' },
         { name: 'Paramètres', href: '/admin/settings', icon: 'settings' },
     ];
 
