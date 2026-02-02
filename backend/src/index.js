@@ -194,11 +194,96 @@ mongoose
   .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/footballhub', mongoOptions)
   .then(() => {
     logger.info('✅ MongoDB connected successfully');
+
+    // Initialize CRON jobs after successful DB connection
+    initializeCronJobs();
   })
   .catch((err) => {
     logger.error('❌ MongoDB connection error:', err);
     // process.exit(1); // Don't crash in dev if mongo is missing
   });
+
+// ============================================================================
+// 9.5. CRON JOBS - Automatic Data Synchronization
+// ============================================================================
+const cron = require('node-cron');
+const footballApi = require('./services/footballApi');
+const uefaScraper = require('./services/uefaScraper');
+
+function initializeCronJobs() {
+  logger.info('⏰ Initializing CRON jobs...');
+
+  // Sync leagues every day at 3 AM
+  cron.schedule('0 3 * * *', async () => {
+    logger.info('🔄 CRON: Starting daily leagues sync...');
+    try {
+      await footballApi.syncLeagues();
+      logger.info('✅ CRON: Leagues sync completed');
+    } catch (error) {
+      logger.error('❌ CRON: Leagues sync failed:', error);
+    }
+  });
+
+  // Sync live matches every 2 minutes
+  cron.schedule('*/2 * * * *', async () => {
+    logger.info('🔄 CRON: Fetching live matches...');
+    try {
+      const liveMatches = await footballApi.getLiveMatches();
+      logger.info(`✅ CRON: Found ${liveMatches.length} live matches`);
+    } catch (error) {
+      logger.error('❌ CRON: Live matches fetch failed:', error);
+    }
+  });
+
+  // Sync fixtures for major leagues every 6 hours
+  cron.schedule('0 */6 * * *', async () => {
+    logger.info('🔄 CRON: Starting fixtures sync...');
+    try {
+      const currentYear = new Date().getFullYear();
+      const leagues = [39, 140, 78, 135, 61, 2, 200]; // Premier, La Liga, Bundesliga, Serie A, Ligue 1, UCL, Botola
+
+      for (const leagueId of leagues) {
+        await footballApi.syncFixturesByLeague(leagueId, currentYear);
+        await new Promise(resolve => setTimeout(resolve, 7000)); // Rate limiting
+      }
+
+      logger.info('✅ CRON: Fixtures sync completed');
+    } catch (error) {
+      logger.error('❌ CRON: Fixtures sync failed:', error);
+    }
+  });
+
+  // Sync standings every 12 hours
+  cron.schedule('0 */12 * * *', async () => {
+    logger.info('🔄 CRON: Starting standings sync...');
+    try {
+      const currentYear = new Date().getFullYear();
+      const leagues = [39, 140, 78, 135, 61, 200];
+
+      for (const leagueId of leagues) {
+        await footballApi.syncStandingsByLeague(leagueId, currentYear);
+        await new Promise(resolve => setTimeout(resolve, 7000));
+      }
+
+      logger.info('✅ CRON: Standings sync completed');
+    } catch (error) {
+      logger.error('❌ CRON: Standings sync failed:', error);
+    }
+  });
+
+  // Sync Champions League from UEFA every 4 hours
+  cron.schedule('0 */4 * * *', async () => {
+    logger.info('🔄 CRON: Starting UEFA Champions League sync...');
+    try {
+      await uefaScraper.scrapeChampionsLeague();
+      logger.info('✅ CRON: UEFA sync completed');
+    } catch (error) {
+      logger.error('❌ CRON: UEFA sync failed:', error);
+    }
+  });
+
+  logger.info('✅ CRON jobs initialized successfully');
+}
 
 // ============================================================================
 // 10. ROUTES
