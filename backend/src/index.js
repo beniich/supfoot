@@ -306,14 +306,34 @@ app.use('/api/associations', require('./routes/associationRoutes'));
 // ============================================================================
 // 11. HEALTH CHECK
 // ============================================================================
-app.get('/api/health', (req, res) => {
-  res.status(200).json({
-    status: 'OK',
-    uptime: process.uptime(),
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV,
-    database: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected',
-  });
+const League = require('./models/League');
+const Team = require('./models/Team');
+const Match = require('./models/Match');
+const Product = require('./models/Product');
+
+app.get('/api/health', async (req, res) => {
+  try {
+    const counts = {
+      leagues: await League.countDocuments(),
+      teams: await Team.countDocuments(),
+      matches: await Match.countDocuments(),
+      products: await Product.countDocuments(),
+    };
+
+    res.status(200).json({
+      status: 'OK',
+      uptime: process.uptime(),
+      timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV,
+      database: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected',
+      data: counts
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'Error',
+      message: error.message
+    });
+  }
 });
 
 // ============================================================================
