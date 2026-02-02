@@ -22,38 +22,56 @@ export default function AdminProductsPage() {
     const [currentProduct, setCurrentProduct] = useState<Partial<Product>>({});
 
     // Fetch Products
+    const fetchProducts = async () => {
+        try {
+            setLoading(true);
+            const res = await api.get('/products');
+            // Check if response is array or paginated object
+            const data = Array.isArray(res.data) ? res.data : (res.data.products || []);
+            setProducts(data);
+        } catch (error) {
+            console.error("Error fetching products", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                // Mock API call - replace with actual endpoint
-                // const res = await api.get('/products');
-                // setProducts(res.data);
-                // Mock Data for UI Dev
-                setProducts([
-                    { _id: '1', name: 'Raja Home Kit', category: 'Jersey', price: 799, stock: 50, image: '', isActive: true, isFeatured: true },
-                    { _id: '2', name: 'Training Bib', category: 'Training', price: 150, stock: 200, image: '', isActive: true, isFeatured: false },
-                ])
-            } catch (error) {
-                console.error("Error fetching products", error);
-            } finally {
-                setLoading(false);
-            }
-        };
         fetchProducts();
     }, []);
 
     const handleSave = async () => {
-        // Logic to save/create product API call
-        console.log("Saving product:", currentProduct);
-        setIsEditing(false);
-        setCurrentProduct({});
+        try {
+            if (currentProduct._id) {
+                // Update
+                await api.patch(`/products/${currentProduct._id}`, currentProduct);
+            } else {
+                // Create
+                // Ensure required fields
+                if (!currentProduct.name || !currentProduct.price) {
+                    alert('Name and Price are required');
+                    return;
+                }
+                await api.post('/products', { ...currentProduct, isActive: true });
+            }
+            setIsEditing(false);
+            setCurrentProduct({});
+            fetchProducts(); // Refresh list
+        } catch (error) {
+            console.error("Error saving product", error);
+            alert('Failed to save product');
+        }
     };
 
     const handleDelete = async (id: string) => {
-        if (confirm('Are you sure?')) {
-            console.log("Deleting product:", id);
-            // await api.delete(`/products/${id}`);
-            setProducts(products.filter(p => p._id !== id));
+        if (confirm('Are you sure you want to delete this product?')) {
+            try {
+                await api.delete(`/products/${id}`);
+                setProducts(products.filter(p => p._id !== id));
+            } catch (error) {
+                console.error("Error deleting product", error);
+                alert('Failed to delete product');
+            }
         }
     };
 

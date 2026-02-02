@@ -3,32 +3,16 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useCartStore } from '@/store/cartStore';
 
 export default function CartPage() {
-    const [cartItems, setCartItems] = useState([
-        {
-            id: '1',
-            name: 'National Team Home Jersey 2024',
-            price: 799,
-            size: 'MD',
-            quantity: 1,
-            image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000'
-        },
-        {
-            id: '2',
-            name: 'Pro Official Match Ball',
-            price: 450,
-            quantity: 1,
-            image: 'https://images.unsplash.com/photo-1614632546411-305616e92d33?q=80&w=2000'
-        }
-    ]);
-
-    const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    const shipping = 50;
-    const total = subtotal + shipping;
-
+    const { items: cartItems, updateQuantity, removeItem, getTotalPrice } = useCartStore();
     const [isCheckout, setIsCheckout] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState('card');
+
+    const subtotal = getTotalPrice();
+    const shipping = cartItems.length > 0 ? 50 : 0;
+    const total = subtotal + shipping;
 
 
     if (cartItems.length === 0) {
@@ -71,14 +55,14 @@ export default function CartPage() {
                     // CART VIEW
                     <div className="space-y-4">
                         {cartItems.map((item) => (
-                            <div key={item.id} className="bg-[#121214] border border-white/5 rounded-2xl p-3 flex gap-4 items-center">
+                            <div key={item._id} className="bg-[#121214] border border-white/5 rounded-2xl p-3 flex gap-4 items-center">
                                 <div className="relative w-24 h-24 bg-white/5 rounded-xl overflow-hidden shrink-0">
                                     <Image src={item.image} alt={item.name} fill className="object-cover" />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <div className="flex justify-between items-start mb-1">
                                         <h3 className="font-bold text-sm leading-tight truncate pr-4">{item.name}</h3>
-                                        <button className="text-gray-500 hover:text-red-500">
+                                        <button onClick={() => removeItem(item._id)} className="text-gray-500 hover:text-red-500 transition-colors">
                                             <span className="material-symbols-outlined text-[18px]">close</span>
                                         </button>
                                     </div>
@@ -86,9 +70,9 @@ export default function CartPage() {
                                     <div className="flex justify-between items-end mt-3">
                                         <span className="font-bold text-primary">{item.price} MAD</span>
                                         <div className="flex items-center gap-3 bg-black rounded-lg px-2 py-1">
-                                            <button className="text-gray-400 hover:text-white">-</button>
+                                            <button onClick={() => updateQuantity(item._id, item.quantity - 1)} className="text-gray-400 hover:text-white transition-colors">-</button>
                                             <span className="text-sm font-bold min-w-[1ch] text-center">{item.quantity}</span>
-                                            <button className="text-gray-400 hover:text-white">+</button>
+                                            <button onClick={() => updateQuantity(item._id, item.quantity + 1)} className="text-gray-400 hover:text-white transition-colors">+</button>
                                         </div>
                                     </div>
                                 </div>

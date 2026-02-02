@@ -8,6 +8,48 @@ export default function ProductDetailPage() {
     const [selectedSize, setSelectedSize] = useState('MD');
     const [selectedColor, setSelectedColor] = useState('red');
     const [isFavorite, setIsFavorite] = useState(false);
+    const [isShareOpen, setIsShareOpen] = useState(false);
+
+    const [productUrl, setProductUrl] = useState("https://footballhub.ma/shop/product");
+
+    React.useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setProductUrl(window.location.href);
+        }
+    }, []);
+
+    const productTitle = "National Team Home Jersey 2024";
+    const shareMessage = `Check out this ${productTitle} on FootballHub+! ${productUrl}`;
+
+    const handleShare = (platform: string) => {
+        const encodedMessage = encodeURIComponent(shareMessage);
+        const encodedSubject = encodeURIComponent(`Check out ${productTitle}`);
+
+        switch (platform) {
+            case 'whatsapp':
+                window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
+                break;
+            case 'sms':
+                window.location.href = `sms:?body=${encodedMessage}`;
+                break;
+            case 'email':
+                window.location.href = `mailto:?subject=${encodedSubject}&body=${encodedMessage}`;
+                break;
+            case 'more':
+                if (navigator.share) {
+                    navigator.share({
+                        title: productTitle,
+                        text: shareMessage,
+                        url: productUrl,
+                    }).catch(console.error);
+                } else {
+                    alert('Link copied to clipboard!');
+                    navigator.clipboard.writeText(shareMessage);
+                }
+                break;
+        }
+        setIsShareOpen(false);
+    };
 
     const sizes = ['SM', 'MD', 'LG', 'XL', '2XL'];
     const colors = [
@@ -25,9 +67,14 @@ export default function ProductDetailPage() {
                         <span className="material-symbols-outlined">arrow_back</span>
                     </Link>
                     <h1 className="text-lg font-bold">Shop</h1>
-                    <div className="relative size-10 flex items-center justify-center">
-                        <span className="material-symbols-outlined">shopping_bag</span>
-                        <span className="absolute top-1 right-1 w-4 h-4 bg-primary text-black text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-background-dark">1</span>
+                    <div className="flex items-center gap-3">
+                        <button onClick={() => setIsShareOpen(true)} className="text-white flex size-10 items-center justify-center hover:bg-white/10 rounded-full transition-colors">
+                            <span className="material-symbols-outlined">ios_share</span>
+                        </button>
+                        <div className="relative size-10 flex items-center justify-center">
+                            <span className="material-symbols-outlined">shopping_bag</span>
+                            <span className="absolute top-1 right-1 w-4 h-4 bg-primary text-black text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-background-dark">1</span>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -145,6 +192,53 @@ export default function ProductDetailPage() {
                     </Link>
                 </div>
             </div>
+            {/* Share Sheet Modal */}
+            {isShareOpen && (
+                <div className="fixed inset-0 z-[60] flex items-end justify-center">
+                    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsShareOpen(false)}></div>
+                    <div className="relative w-full max-w-md bg-[#121214] border-t border-white/10 rounded-t-3xl p-6 animate-in slide-in-from-bottom duration-300">
+                        <div className="w-12 h-1.5 bg-white/20 rounded-full mx-auto mb-6"></div>
+                        <h3 className="text-lg font-bold text-white mb-6 text-center">Share this Product</h3>
+
+                        <div className="grid grid-cols-4 gap-4 mb-6">
+                            <button onClick={() => handleShare('whatsapp')} className="flex flex-col items-center gap-2 group">
+                                <div className="w-14 h-14 rounded-2xl bg-[#25D366]/20 flex items-center justify-center border border-[#25D366]/30 group-hover:scale-110 transition-transform">
+                                    <span className="material-symbols-outlined text-[#25D366] text-2xl">chat</span>
+                                </div>
+                                <span className="text-xs text-gray-400 font-medium">WhatsApp</span>
+                            </button>
+
+                            <button onClick={() => handleShare('sms')} className="flex flex-col items-center gap-2 group">
+                                <div className="w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center border border-blue-500/30 group-hover:scale-110 transition-transform">
+                                    <span className="material-symbols-outlined text-blue-500 text-2xl">sms</span>
+                                </div>
+                                <span className="text-xs text-gray-400 font-medium">Message</span>
+                            </button>
+
+                            <button onClick={() => handleShare('email')} className="flex flex-col items-center gap-2 group">
+                                <div className="w-14 h-14 rounded-2xl bg-gray-500/20 flex items-center justify-center border border-gray-500/30 group-hover:scale-110 transition-transform">
+                                    <span className="material-symbols-outlined text-gray-400 text-2xl">mail</span>
+                                </div>
+                                <span className="text-xs text-gray-400 font-medium">Email</span>
+                            </button>
+
+                            <button onClick={() => handleShare('more')} className="flex flex-col items-center gap-2 group">
+                                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform">
+                                    <span className="material-symbols-outlined text-white text-2xl">ios_share</span>
+                                </div>
+                                <span className="text-xs text-gray-400 font-medium">More</span>
+                            </button>
+                        </div>
+
+                        <button
+                            onClick={() => setIsShareOpen(false)}
+                            className="w-full bg-white/5 hover:bg-white/10 text-white font-bold py-4 rounded-xl transition-colors"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

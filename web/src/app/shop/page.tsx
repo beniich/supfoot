@@ -1,10 +1,16 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import api from '@/services/api';
 import Link from 'next/link';
 import BottomNav from '@/components/BottomNav';
+import { useCartStore } from '@/store/cartStore';
+import { useRouter } from 'next/navigation';
 
 export default function ShopPage() {
+    const { addItem, getTotalItems } = useCartStore();
+    const router = useRouter();
+
     const categories = [
         { id: 'jerseys', label: 'Jerseys', icon: 'checkroom' },
         { id: 'training', label: 'Training', icon: 'fitness_center' },
@@ -13,44 +19,25 @@ export default function ShopPage() {
         { id: 'tickets', label: 'Tickets', icon: 'confirmation_number' },
     ];
 
-    const products = [
-        {
-            id: 'national-jersey-home',
-            name: 'National Team Home Jersey 2024',
-            price: '799 MAD',
-            rating: '4.9',
-            reviews: '128',
-            image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBH9-exm_S8PEJDBO-h6Ujn3vPKkzG0r52aGTDzqowHlUmAyNXmPUshTBZTz7QdJgm9223w_PmZKgwWFUxVnssg6FFwqpOJ9ED3CjoG1AAeak1kCdaFgqMTdlIgZROins3AbmB_Fuxn6GiHgqryJtcNHnXlZ7oDpWfonMyN0yHltiChXw9DmrTDzc8nMbYwszcjuonyVrQlGaVVUvoXRCM4gMUg7H6bJRS6ZXB8zslMvoi7I_vECNGarLtMKn9k0zlg7jz3ZjWeYvA',
-            isFavorite: true
-        },
-        {
-            id: 'pro-ball',
-            name: 'Pro Match Official Ball',
-            price: '1,200 MAD',
-            rating: '5.0',
-            reviews: '84',
-            image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBPRhDGBF89Br4tPuAZqd-L805aknU75XS_YDMPxbR1Vt3V6sCgIqH1jKog_Nj9NqgjwNkMNs6yd58tOtBFD9dBu3Vk83HA0AZJpBIDvJJDDiblDQ9TwIPQeqPRg6kn1TEW_Ae-vcrZp9vGLlUkHA8c0rg8uWa8lt_mvuk_ID6ubNx7_-epbIj5sE_kp9g4qBBFft1eV6a2nxpCmUbeCF-VhROn5d-ouztbM7RVHscgHh9u5-sX9R3Rrj3aPBlUaLlyGZpAUiTBSno',
-            isBestSeller: true
-        },
-        {
-            id: 'training-top',
-            name: 'Elite Training Drill Top',
-            price: '450 MAD',
-            rating: '4.7',
-            reviews: '45',
-            image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA67FQfvOwSI6jnPF4TEW79kZgXzfxO2R7f88LXLwOBJNQsncB0Fc44XbqOAwnWauGcOSdd7Vx0LG_PUG-Jqk1GlYjbvg1lGEjc3CNSg3BX8sqF0wQR9Pw5RwergDDG8N0ojEM211KjzuXP2MFdVdE3gmQPENkwFiltFyohxUehmgiPbFDcHSsr3Pvtv8U-SQ0QCtMiMj96xF8IVY1h1JWGzkUKadkYDmqdQAN0q-SaBYoOlcPQi8MjWiUo3aCJjLOocsnFOuR0hqA'
-        },
-        {
-            id: 'national-jersey-away',
-            name: 'National Team Away Jersey',
-            price: '799 MAD',
-            oldPrice: '900 MAD',
-            rating: '4.8',
-            reviews: '210',
-            image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDGapCnIUGF7PWdBNcYpLtg6VrZHBY_ADYCYVTkF9_20CKZjA1n2v-KIjxpyhb8JgX014Q94X99raYt1tkWCT07r6CvkD4PSWg24MTjpfOtZx1Jn--_SGXAqn_CN5akzYfOmAgEJTRg6TASz5-qBj_H4h9J9kW76Yj72P3_iE2d3kt3ceehab3130FL7PArm5YUjE9wszlMSQxhzz84ALszYQ9xbjLzimjoluQvcvAhaoh_r_TI_1seLjktrxE4Dyf3flTj0W3MxD0',
-            isOnSale: true
-        }
-    ];
+    const [products, setProducts] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchShopProducts = async () => {
+            try {
+                const res = await api.get('/products'); // Fetch all products
+                const data = Array.isArray(res.data) ? res.data : (res.data.products || []);
+                setProducts(data);
+            } catch (err) {
+                console.error("Failed to fetch shop products", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchShopProducts();
+    }, []);
+
+    const cartCount = getTotalItems();
 
     return (
         <div className="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display text-white overflow-x-hidden selection:bg-primary selection:text-black">
@@ -69,7 +56,9 @@ export default function ShopPage() {
                             <Link href="/shop/cart" className="text-white flex size-10 shrink-0 items-center justify-center hover:bg-white/10 rounded-full transition-colors">
                                 <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>shopping_bag</span>
                             </Link>
-                            <div className="absolute top-2 right-1 w-2.5 h-2.5 bg-primary rounded-full border border-background-dark"></div>
+                            {cartCount > 0 && (
+                                <div className="absolute top-2 right-1 w-2.5 h-2.5 bg-primary rounded-full border border-background-dark"></div>
+                            )}
                         </div>
                     </div>
 
@@ -115,43 +104,40 @@ export default function ShopPage() {
                 <div className="space-y-3">
                     <h3 className="text-lg font-bold">Featured Products</h3>
                     <div className="grid grid-cols-2 gap-4">
-                        {products.map((product) => (
-                            <div key={product.id} className="bg-surface-dark rounded-xl p-3 border border-white/5 hover:border-primary/30 transition-all group">
+                        {loading ? <div className="col-span-2 text-center py-10 text-gray-500">Loading store...</div> : products.map((product) => (
+                            <div key={product._id || product.id} className="bg-surface-dark rounded-xl p-3 border border-white/5 hover:border-primary/30 transition-all group">
                                 <Link href="/shop/product">
                                     <div className="relative aspect-[4/5] bg-background-dark rounded-lg overflow-hidden mb-3">
-                                        <img alt={product.name} className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-500`} src={product.image} />
-                                        {product.isFavorite && (
-                                            <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm p-1.5 rounded-full">
-                                                <span className="material-symbols-outlined text-white text-[16px] filled">favorite</span>
-                                            </div>
-                                        )}
-                                        {product.isBestSeller && (
-                                            <div className="absolute top-2 left-2 bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded">
-                                                Best Seller
-                                            </div>
-                                        )}
-                                        {product.isOnSale && (
-                                            <div className="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded">
-                                                Sale
-                                            </div>
+                                        <img alt={product.name} className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-500`} src={product.image || 'https://via.placeholder.com/300'} />
+                                        {/* Optional badges based on data */}
+                                        {product.isFeatured && (
+                                            <div className="absolute top-2 right-2 bg-primary text-black text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">Hot</div>
                                         )}
                                     </div>
                                 </Link>
                                 <div className="space-y-1">
                                     <div className="flex items-center gap-1 text-primary text-[10px]">
                                         <span className="material-symbols-outlined text-[12px] filled">star</span>
-                                        <span className="font-bold">{product.rating}</span>
-                                        <span className="text-gray-500">({product.reviews})</span>
+                                        <span className="font-bold">4.8</span>
+                                        <span className="text-gray-500">(12)</span>
                                     </div>
                                     <h4 className="text-sm font-bold text-white leading-tight min-h-[2.5rem] line-clamp-2">{product.name}</h4>
                                     <div className="flex items-center justify-between pt-2">
                                         <div className="flex flex-col leading-none">
-                                            {product.oldPrice && (
-                                                <span className="text-gray-500 text-[10px] line-through decoration-red-500 decoration-1 mb-0.5">{product.oldPrice}</span>
-                                            )}
-                                            <span className="text-primary font-bold text-lg">{product.price}</span>
+                                            <span className="text-primary font-bold text-lg">{product.price} <span className="text-[10px] font-normal text-gray-400">MAD</span></span>
                                         </div>
-                                        <button className="size-8 rounded-full bg-white text-black flex items-center justify-center hover:bg-primary transition-colors shadow-lg active:scale-95">
+                                        <button
+                                            onClick={() => {
+                                                addItem({
+                                                    _id: product._id,
+                                                    name: product.name,
+                                                    price: product.price,
+                                                    image: product.image || 'https://via.placeholder.com/300'
+                                                });
+                                                router.push('/shop/cart');
+                                            }}
+                                            className="size-8 rounded-full bg-white text-black flex items-center justify-center hover:bg-primary transition-colors shadow-lg active:scale-95"
+                                        >
                                             <span className="material-symbols-outlined text-lg">add</span>
                                         </button>
                                     </div>

@@ -3,8 +3,29 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import BottomNav from '@/components/BottomNav';
+import React, { useState, useEffect } from 'react';
+import api from '@/services/api';
+import { useCartStore } from '@/store/cartStore';
+import { useRouter } from 'next/navigation';
 
 export default function DashboardPage() {
+    const [featuredProducts, setFeaturedProducts] = useState<any[]>([]);
+    const { addItem, getTotalItems } = useCartStore();
+    const router = useRouter();
+
+    useEffect(() => {
+        const fetchFeatured = async () => {
+            try {
+                const res = await api.get('/products', { params: { featured: true } });
+                const data = Array.isArray(res.data) ? res.data : (res.data.products || []);
+                setFeaturedProducts(data);
+            } catch (err) {
+                console.error("Failed to fetch featured products", err);
+            }
+        };
+        fetchFeatured();
+    }, []);
+
     return (
         <div className="min-h-screen pb-24 bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased">
             {/* Top AppBar */}
@@ -194,28 +215,43 @@ export default function DashboardPage() {
                         <Link href="/shop" className="text-sm text-primary font-medium hover:opacity-80">Visit Store</Link>
                     </div>
                     <div className="flex overflow-x-auto no-scrollbar gap-4 px-4 pb-4 snap-x">
-                        {/* Mock Featured Products - In real app, fetch from API where isFeatured=true */}
-                        {[
-                            { id: '1', name: 'Raja Home Kit 24/25', category: 'Jersey', price: 799, image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBH9-exm_S8PEJDBO-h6Ujn3vPKkzG0r52aGTDzqowHlUmAyNXmPUshTBZTz7QdJgm9223w_PmZKgwWFUxVnssg6FFwqpOJ9ED3CjoG1AAeak1kCdaFgqMTdlIgZROins3AbmB_Fuxn6GiHgqryJtcNHnXlZ7oDpWfonMyN0yHltiChXw9DmrTDzc8nMbYwszcjuonyVrQlGaVVUvoXRCM4gMUg7H6bJRS6ZXB8zslMvoi7I_vECNGarLtMKn9k0zlg7jz3ZjWeYvA' },
-                            { id: '3', name: 'Elite Match Ball', category: 'Equipment', price: 1200, image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBPRhDGBF89Br4tPuAZqd-L805aknU75XS_YDMPxbR1Vt3V6sCgIqH1jKog_Nj9NqgjwNkMNs6yd58tOtBFD9dBu3Vk83HA0AZJpBIDvJJDDiblDQ9TwIPQeqPRg6kn1TEW_Ae-vcrZp9vGLlUkHA8c0rg8uWa8lt_mvuk_ID6ubNx7_-epbIj5sE_kp9g4qBBFft1eV6a2nxpCmUbeCF-VhROn5d-ouztbM7RVHscgHh9u5-sX9R3Rrj3aPBlUaLlyGZpAUiTBSno' },
-                        ].map((product) => (
-                            <Link href="/shop/product" key={product.id} className="min-w-[160px] snap-center bg-surface-dark border border-white/5 rounded-2xl p-3 shadow-lg group hover:border-primary/30 transition-all flex flex-col">
+                        {featuredProducts.length > 0 ? featuredProducts.map((product) => (
+                            <Link href="/shop/product" key={product._id || product.id} className="min-w-[160px] snap-center bg-surface-dark border border-white/5 rounded-2xl p-3 shadow-lg group hover:border-primary/30 transition-all flex flex-col">
                                 <div className="aspect-square bg-white/5 rounded-xl mb-3 relative overflow-hidden">
-                                    <Image src={product.image} alt={product.name} fill className="object-cover group-hover:scale-110 transition-transform" />
-                                    <div className="absolute top-2 right-2 bg-primary text-black text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">NEW</div>
+                                    <Image
+                                        src={product.image || 'https://via.placeholder.com/150'}
+                                        alt={product.name}
+                                        fill
+                                        className="object-cover group-hover:scale-110 transition-transform"
+                                    />
+                                    {/* <div className="absolute top-2 right-2 bg-primary text-black text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">NEW</div> */}
                                 </div>
                                 <div className="mt-auto">
                                     <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">{product.category}</div>
                                     <h4 className="text-sm font-bold text-white leading-tight line-clamp-2 mb-2">{product.name}</h4>
                                     <div className="flex items-center justify-between">
                                         <span className="text-primary font-black">{product.price} <span className="text-[10px] font-normal text-gray-400">MAD</span></span>
-                                        <div className="w-6 h-6 rounded-full bg-white text-black flex items-center justify-center">
+                                        <button
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                addItem({
+                                                    _id: product._id,
+                                                    name: product.name,
+                                                    price: product.price,
+                                                    image: product.image || 'https://via.placeholder.com/150'
+                                                });
+                                                router.push('/shop/cart');
+                                            }}
+                                            className="w-6 h-6 rounded-full bg-white text-black flex items-center justify-center hover:bg-primary transition-all active:scale-90"
+                                        >
                                             <span className="material-symbols-outlined text-[14px]">add</span>
-                                        </div>
+                                        </button>
                                     </div>
                                 </div>
                             </Link>
-                        ))}
+                        )) : (
+                            <div className="text-gray-500 text-sm px-2 italic">Loading gear...</div>
+                        )}
                     </div>
                 </section>
                 <section className="mt-6 mb-4">
