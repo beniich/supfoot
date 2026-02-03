@@ -209,9 +209,13 @@ mongoose
 const cron = require('node-cron');
 const footballApi = require('./services/footballApi');
 const uefaScraper = require('./services/uefaScraper');
+const newsSyncJob = require('./jobs/newsSyncJob');
 
 function initializeCronJobs() {
   logger.info('⏰ Initializing CRON jobs...');
+
+  // Start news sync
+  newsSyncJob.start();
 
   // Sync leagues every day at 3 AM
   cron.schedule('0 3 * * *', async () => {
@@ -300,6 +304,10 @@ app.use('/api/news', require('./routes/news'));
 app.use('/api/standings', require('./routes/standings'));
 app.use('/api/favorites', require('./routes/favorites'));
 app.use('/api/admin', require('./routes/admin'));
+app.use('/api/admin/news', require('./routes/admin/news'));
+app.use('/api/upload', require('./routes/upload'));
+app.use('/api/notifications', require('./routes/notifications'));
+app.use('/api/payments', require('./routes/stripe-webhooks')); // Advanced Webhooks (precedence over payments.js webhook)
 app.use('/api/payments', require('./routes/payments'));
 app.use('/api/associations', require('./routes/associationRoutes'));
 
@@ -374,12 +382,21 @@ app.use((err, req, res, next) => {
 // 13. START SERVER
 // ============================================================================
 const PORT = process.env.PORT || 5000;
+const WebSocketService = require('./services/websocketService');
 
 if (require.main === module) {
-  app.listen(PORT, () => {
+  const server = app.listen(PORT, () => {
     logger.info(`🚀 Server running on port ${PORT} (SECURED)`);
     logger.info(`📡 API available at http://localhost:${PORT}/api`);
   });
+
+  // Initialize WebSockets
+  try {
+    const wsService = new WebSocketService(server);
+    logger.info('🔌 WebSocket Server initialized');
+  } catch (error) {
+    logger.error('Failed to init WebSocket:', error);
+  }
 }
 
 module.exports = app;

@@ -1,160 +1,173 @@
-// src/services/websocketService.js
+// server/src/services/websocketService.js
 const WebSocket = require('ws');
-const Match = require('../models/Match');
+const redis = require('../config/redis');
+const { createAdapter } = require('@socket.io/redis-adapter');
+const footballApi = require('./footballApiPro');
 
 class WebSocketService {
-  constructor() {
-    this.wss = null;
-    this.clients = new Map();
-  }
-
-  initialize(server) {
+  constructor(server) {
+    // Create WebSocket server with Redis adapter for multi-server support
     this.wss = new WebSocket.Server({
       server,
       path: '/ws',
     });
 
+    this.clients = new Map();
+    this.rooms = new Map();
+
+    this.initializeServer();
+    this.startLiveBroadcast();
+  }
+
+  initializeServer() {
     this.wss.on('connection', (ws, req) => {
       const clientId = this.generateClientId();
 
-      console.log(`✅ WebSocket client connected: ${clientId}`);
+      console.log(`✅ Client connected: ${clientId}`);
 
-      this.clients.set(clientId, {
-        ws,
-        subscriptions: new Set(),
-      });
+      ws.clientId = clientId;
+      this.clients.set(clientId, ws);
 
+      // Handle messages
       ws.on('message', async (message) => {
         try {
           const data = JSON.parse(message);
-          await this.handleMessage(clientId, data);
+          await this.handleMessage(ws, data);
         } catch (error) {
           console.error('WebSocket message error:', error);
         }
       });
 
+      // Handle disconnect
       ws.on('close', () => {
-        console.log(`❌ WebSocket client disconnected: ${clientId}`);
+        console.log(`❌ Client disconnected: ${clientId}`);
         this.clients.delete(clientId);
+
+        // Remove from all rooms
+        this.rooms.forEach((clients, room) => {
+          clients.delete(clientId);
+        });
       });
 
-      // Send welcome
-      this.sendToClient(clientId, {
+      // Send welcome message
+      this.send(ws, {
         type: 'connected',
         clientId,
         timestamp: new Date().toISOString(),
       });
     });
-
-    // Start live broadcast
-    this.startLiveBroadcast();
-
-    console.log('✅ WebSocket server initialized');
   }
 
-  async handleMessage(clientId, data) {
-    const { type, payload } = data;
-
-    switch (type) {
+  async handleMessage(ws, data) {
+    switch (data.type) {
       case 'subscribe':
-        this.handleSubscribe(clientId, payload);
+        this.subscribeToRoom(ws, data.room);
         break;
+
       case 'unsubscribe':
-        this.handleUnsubscribe(clientId, payload);
+        this.unsubscribeFromRoom(ws, data.room);
         break;
+
       case 'ping':
-        this.sendToClient(clientId, { type: 'pong' });
+        this.send(ws, { type: 'pong' });
         break;
+
+      default:
+        console.warn('Unknown message type:', data.type);
     }
   }
 
-  handleSubscribe(clientId, payload) {
-    const client = this.clients.get(clientId);
-    if (!client) return;
+  subscribeToRoom(ws, room) {
+    if (!this.rooms.has(room)) {
+      this.rooms.set(room, new Set());
+    }
 
-    client.subscriptions.add(payload.channel);
-    this.sendToClient(clientId, {
+    this.rooms.get(room).add(ws.clientId);
+
+    this.send(ws, {
       type: 'subscribed',
-      channel: payload.channel,
+      room,
     });
+
+    console.log(`📢 Client ${ws.clientId} subscribed to ${room}`);
   }
 
-  handleUnsubscribe(clientId, payload) {
-    const client = this.clients.get(clientId);
-    if (!client) return;
-
-    client.subscriptions.delete(payload.channel);
-    this.sendToClient(clientId, {
-      type: 'unsubscribed',
-      channel: payload.channel,
-    });
-  }
-
-  sendToClient(clientId, data) {
-    const client = this.clients.get(clientId);
-    if (!client || client.ws.readyState !== WebSocket.OPEN) return;
-
-    try {
-      client.ws.send(JSON.stringify(data));
-    } catch (error) {
-      console.error('Error sending to client:', error);
+  unsubscribeFromRoom(ws, room) {
+    if (this.rooms.has(room)) {
+      this.rooms.get(room).delete(ws.clientId);
     }
+
+    this.send(ws, {
+      type: 'unsubscribed',
+      room,
+    });
   }
 
-  broadcast(channel, data) {
-    let count = 0;
+  broadcast(room, message) {
+    if (!this.rooms.has(room)) return;
 
-    this.clients.forEach((client, clientId) => {
-      if (client.subscriptions.has(channel) || channel === 'all') {
-        this.sendToClient(clientId, {
-          type: 'broadcast',
-          channel,
-          data,
-          timestamp: new Date().toISOString(),
-        });
-        count++;
+    const roomClients = this.rooms.get(room);
+
+    roomClients.forEach((clientId) => {
+      const client = this.clients.get(clientId);
+      if (client && client.readyState === WebSocket.OPEN) {
+        this.send(client, message);
       }
     });
+  }
 
-    return count;
+  send(ws, message) {
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify(message));
+    }
   }
 
   async startLiveBroadcast() {
+    // Broadcast live scores every 10 seconds
     setInterval(async () => {
       try {
-        const liveMatches = await Match.find({ status: 'LIVE' })
-          .populate('league', 'name logo')
-          .select('homeTeam awayTeam score elapsed status league');
+        const liveMatches = await footballApi.getLiveMatches();
 
-        if (liveMatches.length > 0) {
-          this.broadcast('live-scores', liveMatches);
-        }
+        // Broadcast to subscribers
+        this.broadcast('live-matches', {
+          type: 'live-matches',
+          data: liveMatches,
+          timestamp: new Date().toISOString(),
+        });
+
+        // Also publish to Redis for other servers
+        await redis.publish('live-matches', JSON.stringify({
+          type: 'live-matches',
+          data: liveMatches,
+        }));
       } catch (error) {
         console.error('Live broadcast error:', error);
       }
-    }, 10000); // Every 10 seconds
+    }, 10000);
 
-    console.log('🔴 Live broadcast started');
+    // Subscribe to Redis for updates from other servers
+    const subscriber = redis.duplicate();
+    subscriber.subscribe('live-matches', 'match-events');
+
+    subscriber.on('message', (channel, message) => {
+      const data = JSON.parse(message);
+      this.broadcast(channel, data);
+    });
   }
 
   generateClientId() {
-    return `client_${Date.now()}_${Math.random().toString(36).substring(7)}`;
+    return `client_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   }
 
   getStats() {
-    const subscriptions = {};
-
-    this.clients.forEach((client) => {
-      client.subscriptions.forEach((channel) => {
-        subscriptions[channel] = (subscriptions[channel] || 0) + 1;
-      });
-    });
-
     return {
       totalClients: this.clients.size,
-      subscriptions,
+      rooms: Array.from(this.rooms.entries()).map(([room, clients]) => ({
+        room,
+        clients: clients.size,
+      })),
     };
   }
 }
 
-module.exports = new WebSocketService();
+module.exports = WebSocketService;
