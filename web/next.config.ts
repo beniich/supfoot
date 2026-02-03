@@ -1,5 +1,5 @@
 const nextConfig = {
-    output: 'export', // Mode Statique (0 RAM sur le serveur)
+    // output: 'export', // Désactivé pour permettre le SSR (Supabase Auth) sur Vercel
     eslint: {
         ignoreDuringBuilds: true,
     },
