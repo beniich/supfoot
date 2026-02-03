@@ -13,15 +13,14 @@ export async function GET() {
 
         // On transforme le format RSS en format compatible avec notre composant NewsCard
         const articles = feed.items.map(item => {
-            // Google News RSS ne donne pas d'image directement de manière simple
-            // On va essayer d'en mettre une par défaut ou laisser le composant gérer
+            // Google News RSS titles often end with " - Source Name"
+            // We can cleaner this up if we want, or keep it.
             return {
                 title: item.title,
-                link: item.link,
-                pubDate: item.pubDate,
-                source: { name: item.creator || feed.title },
+                url: item.link, // Changé de 'link' à 'url' pour matcher NewsSection
+                publishedAt: item.isoDate || item.pubDate, // Matcher le nom de champ attendu
+                source: { name: item.creator || "Google News" },
                 description: item.contentSnippet,
-                // Pour l'image, on utilise une image de foot aléatoire de qualité
                 urlToImage: `https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=800`
             };
         });

@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 
 export default function DashboardPage() {
     const [featuredProducts, setFeaturedProducts] = useState<any[]>([]);
+    const [productsLoading, setProductsLoading] = useState(true);
     const { addItem, getTotalItems } = useCartStore();
     const router = useRouter();
 
@@ -22,10 +23,13 @@ export default function DashboardPage() {
                 setFeaturedProducts(data);
             } catch (err) {
                 console.error("Failed to fetch featured products", err);
+            } finally {
+                setProductsLoading(false);
             }
         };
         fetchFeatured();
     }, []);
+
 
     return (
         <div className="min-h-screen pb-24 bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased">
@@ -220,12 +224,11 @@ export default function DashboardPage() {
                             <Link href="/shop/product" key={product._id || product.id} className="min-w-[160px] snap-center bg-surface-dark border border-white/5 rounded-2xl p-3 shadow-lg group hover:border-primary/30 transition-all flex flex-col">
                                 <div className="aspect-square bg-white/5 rounded-xl mb-3 relative overflow-hidden">
                                     <Image
-                                        src={product.image || 'https://via.placeholder.com/150'}
+                                        src={product.image || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400'}
                                         alt={product.name}
                                         fill
                                         className="object-cover group-hover:scale-110 transition-transform"
                                     />
-                                    {/* <div className="absolute top-2 right-2 bg-primary text-black text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">NEW</div> */}
                                 </div>
                                 <div className="mt-auto">
                                     <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">{product.category}</div>
@@ -239,7 +242,7 @@ export default function DashboardPage() {
                                                     _id: product._id,
                                                     name: product.name,
                                                     price: product.price,
-                                                    image: product.image || 'https://via.placeholder.com/150'
+                                                    image: product.image || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400'
                                                 });
                                                 router.push('/shop/cart');
                                             }}
@@ -251,7 +254,9 @@ export default function DashboardPage() {
                                 </div>
                             </Link>
                         )) : (
-                            <div className="text-gray-500 text-sm px-2 italic">Loading gear...</div>
+                            <div className="text-gray-500 text-sm px-2 italic">
+                                {productsLoading ? "Chargement du catalogue..." : "Aucun produit en vedette pour le moment."}
+                            </div>
                         )}
                     </div>
                 </section>
