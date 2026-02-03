@@ -1,0 +1,131 @@
+# ========================================
+# Configuration Apache pour FootballHub+
+# ========================================
+# Placez ce fichier dans public_html ou le dossier de votre domaine
+
+# Activer le module de réécriture
+RewriteEngine On
+
+# ========================================
+# Redirection HTTPS (Forcer SSL)
+# ========================================
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ========================================
+# Reverse Proxy vers Next.js (Frontend)
+# ========================================
+# Rediriger toutes les requêtes vers l'application Next.js sur le port 3000
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/api/
+RewriteRule ^(.*)$ http://localhost:3000/$1 [P,L]
+
+# ========================================
+# Reverse Proxy vers API Backend
+# ========================================
+# Rediriger les requêtes /api vers le backend sur le port 5000
+RewriteCond %{REQUEST_URI} ^/api/
+RewriteRule ^api/(.*)$ http://localhost:5000/api/$1 [P,L]
+
+# ========================================
+# Support WebSocket
+# ========================================
+# Activer le proxy pour les WebSockets
+RewriteCond %{HTTP:Upgrade} websocket [NC]
+RewriteCond %{HTTP:Connection} upgrade [NC]
+RewriteRule ^(.*)$ ws://localhost:5000/$1 [P,L]
+
+# ========================================
+# Headers de sécurité
+# ========================================
+<IfModule mod_headers.c>
+    # Protection XSS
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Empêcher le MIME sniffing
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Protection contre le clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # Content Security Policy (ajustez selon vos besoins)
+    Header set Content-Security-Policy "default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https: wss:;"
+    
+    # Referrer Policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Permissions Policy
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ========================================
+# Compression GZIP
+# ========================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# ========================================
+# Cache des fichiers statiques
+# ========================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    
+    # CSS et JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    
+    # Fonts
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    
+    # HTML
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# ========================================
+# Protection des fichiers sensibles
+# ========================================
+# Bloquer l'accès aux fichiers .env
+<FilesMatch "^\.env">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Bloquer l'accès aux fichiers de configuration
+<FilesMatch "\.(json|yml|yaml|config|log)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# ========================================
+# Gestion des erreurs personnalisées
+# ========================================
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
+ErrorDocument 503 /503.html
+
+# ========================================
+# Désactiver l'affichage des répertoires
+# ========================================
+Options -Indexes
+
+# ========================================
+# Protection contre les injections
+# ========================================
+<IfModule mod_rewrite.c>
+    # Bloquer les requêtes suspectes
+    RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} GLOBALS(=|[|%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} _REQUEST(=|[|%[0-9A-Z]{0,2})
+    RewriteRule ^(.*)$ - [F,L]
+</IfModule>

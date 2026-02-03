@@ -1,0 +1,20 @@
+---
+# Configuration de déploiement cPanel Git Version Control
+# Ce fichier permet de déployer automatiquement depuis GitHub vers cPanel
+
+deployment:
+  tasks:
+    # Déploiement du Backend
+    - export DEPLOYPATH=/home/USERNAME/repositories/supfootball/backend
+    - /bin/cp -R backend/* $DEPLOYPATH
+    - cd $DEPLOYPATH
+    - npm install --production
+    - pm2 restart footballhub-backend || pm2 start src/index.js --name footballhub-backend
+
+    # Déploiement du Frontend
+    - export DEPLOYPATH=/home/USERNAME/repositories/supfootball/web
+    - /bin/cp -R web/* $DEPLOYPATH
+    - cd $DEPLOYPATH
+    - npm install --legacy-peer-deps
+    - npm run build
+    - pm2 restart footballhub-frontend || pm2 start npm --name footballhub-frontend -- start
