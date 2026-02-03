@@ -1,37 +1,34 @@
 
 import { NextResponse } from 'next/server';
+import Parser from 'rss-parser';
+
+const parser = new Parser();
 
 export async function GET() {
-    const API_KEY = process.env.NEWS_API_KEY;
-
-    if (!API_KEY) {
-        // Données de démonstration si pas de clé
-        return NextResponse.json({
-            articles: [
-                {
-                    source: { name: "Démo: L'Équipe" },
-                    title: "Exemple : Ajoutez votre clé API pour voir les news",
-                    description: "Ceci est un exemple car la clé NEWS_API_KEY est manquante dans .env.local",
-                    url: "#",
-                    urlToImage: "https://images.unsplash.com/photo-1579952363873-27f3bade8f55?w=800",
-                    publishedAt: new Date().toISOString()
-                }
-            ]
-        });
-    }
-
     try {
-        const res = await fetch(`https://newsapi.org/v2/everything?q=football&language=fr&sortBy=publishedAt&pageSize=6&apiKey=${API_KEY}`, {
-            next: { revalidate: 3600 }
+        // Flux Google News pour le football français
+        const GOOGLE_NEWS_RSS = 'https://news.google.com/rss/search?q=football&hl=fr&gl=FR&ceid=FR:fr';
+
+        const feed = await parser.parseURL(GOOGLE_NEWS_RSS);
+
+        // On transforme le format RSS en format compatible avec notre composant NewsCard
+        const articles = feed.items.map(item => {
+            // Google News RSS ne donne pas d'image directement de manière simple
+            // On va essayer d'en mettre une par défaut ou laisser le composant gérer
+            return {
+                title: item.title,
+                link: item.link,
+                pubDate: item.pubDate,
+                source: { name: item.creator || feed.title },
+                description: item.contentSnippet,
+                // Pour l'image, on utilise une image de foot aléatoire de qualité
+                urlToImage: `https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=800`
+            };
         });
 
-        if (!res.ok) {
-            return NextResponse.json({ error: 'Failed to fetch news' }, { status: res.status });
-        }
-
-        const data = await res.json();
-        return NextResponse.json(data);
+        return NextResponse.json({ articles: articles.slice(0, 10) });
     } catch (error) {
-        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+        console.error("Erreur RSS Google News:", error);
+        return NextResponse.json({ articles: [], error: 'Failed to fetch RSS news' });
     }
 }
