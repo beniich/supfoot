@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import BottomNav from '@/components/BottomNav';
+import NewsSection from '@/components/NewsSection';
 import React, { useState, useEffect } from 'react';
 import api from '@/services/api';
 import { useCartStore } from '@/store/cartStore';
@@ -254,50 +255,8 @@ export default function DashboardPage() {
                         )}
                     </div>
                 </section>
-                <section className="mt-6 mb-4">
-                    <h3 className="text-lg font-bold px-4 mb-3">Trending News</h3>
-                    <div className="flex flex-col gap-4 px-4">
-                        {/* News Item 1 */}
-                        <article className="relative h-56 w-full rounded-2xl overflow-hidden group cursor-pointer">
-                            <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
-                                <Image
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtkCxfhAnjRnWdFToMUXGnkMePw56xZxHgsZxadhNauHs3QfgMCwrjSamBpkEDdVTdhKYdy_QAcmwtDMViSmC1Z_dl9HMamQol8xsjveBkZ9ohesngAiEc-DXY9U9fbZLhgPkFGk1MtbZ0zbH6RU0ZCayAySltt8AV8DQNNGfcED6DRas__az9XpZ-GEbKlxyIMpauqOtrcHTbwBtkm3ymvY4NVD_VsXsrEb7PwY_4aa_lHIOMR4yVmGOIudII5jQ0SAyaDeF-EL4"
-                                    alt="Mbappé Hat-trick"
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                            <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent"></div>
-                            <div className="absolute bottom-0 left-0 p-4 w-full">
-                                <div className="flex items-center gap-2 mb-2">
-                                    <span className="bg-primary text-background-dark text-[10px] font-bold px-2 py-0.5 rounded uppercase">Breaking</span>
-                                    <span className="text-xs text-gray-300">2h ago</span>
-                                </div>
-                                <h4 className="text-xl font-bold leading-tight text-white mb-1">Mbappé&apos;s Hat-trick Secures Historic Victory in Paris</h4>
-                                <p className="text-sm text-gray-300 line-clamp-1">The French superstar continues his incredible form this season.</p>
-                            </div>
-                        </article>
-                        {/* News Item 2 */}
-                        <article className="relative h-56 w-full rounded-2xl overflow-hidden group cursor-pointer">
-                            <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
-                                <Image
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRLpS2Ew-GRoN4aZZLPfkiR-JZzW1uMmGxmls6rVA6JgHmnAehEZ6wnqU-ulPSe7KEs8SZD53QHwOSOWJWZMgjNm8Y2qVnU0Xd7UhH3Ip39ZU3axagwAXO5uP2hu3xI9k4r_tRv2A6kostVKDqQTMioaOmFYdLCSxGhySR_Gv-TPwVGid7UNbgeaYsm9s8kfiAgFzhfmu10HcB3T8N45Akj69pYDal8MF-XfYe4BxIX_AtggtZSnXSGzadffNN6AHEJ2Jegi4qvAA"
-                                    alt="Transfer Market News"
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                            <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent"></div>
-                            <div className="absolute bottom-0 left-0 p-4 w-full">
-                                <div className="flex items-center gap-2 mb-2">
-                                    <span className="bg-white/10 text-white border border-white/20 text-[10px] font-bold px-2 py-0.5 rounded uppercase backdrop-blur-sm">Transfer Market</span>
-                                    <span className="text-xs text-gray-300">4h ago</span>
-                                </div>
-                                <h4 className="text-xl font-bold leading-tight text-white mb-1">Summer Transfer Window: Top 10 Moves to Watch</h4>
-                            </div>
-                        </article>
-                    </div>
-                </section>
+                {/* News Section */}
+                <NewsSection />
             </main>
 
             <BottomNav />
