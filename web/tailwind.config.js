@@ -9,11 +9,21 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                primary: '#f2cc0d',
-                'background-light': '#f8f8f5',
-                'background-dark': '#221f10',
-                'surface-dark': '#2d2a1d',
-                'surface-highlight': '#2a2718',
+                primary: '#003399', // Updated to UEFA Blue
+                secondary: '#000B49', // Midnight Blue
+                accent: '#00D1FF', // Electric Cyan
+
+                'background-light': '#f8fafc',
+                'background-dark': '#010a1a',
+
+                // Theme specific
+                'ucl-midnight': '#010a1a',
+                'ucl-blue': '#003399',
+                'ucl-accent': '#00f5ff',
+
+                // Legacy mappings
+                'surface-dark': '#1e293b',
+                'surface-highlight': '#334155',
                 'field-green': '#1a4731',
             },
             fontFamily: {
