@@ -1,6 +1,5 @@
 const nextConfig = {
-    // Note: Remove 'output: export' for Vercel deployment
-    // Use 'output: export' only when building for Capacitor mobile
+    output: 'export', // Mode Statique (0 RAM sur le serveur)
     eslint: {
         ignoreDuringBuilds: true,
     },
@@ -8,7 +7,7 @@ const nextConfig = {
         ignoreBuildErrors: true,
     },
     images: {
-        // Enable optimization for Vercel
+        unoptimized: true, // Obligatoire pour l'export statique
         remotePatterns: [
             {
                 protocol: 'https',
