@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # Redis pour BullMQ (gestion des jobs)
+  redis:
+    image: redis:7-alpine
+    container_name: ucl-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  # Qdrant pour la recherche vectorielle (embeddings)
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: ucl-qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant-data:/qdrant/storage
+    environment:
+      - QDRANT__SERVICE__GRPC_PORT=6334
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  # MongoDB (optionnel si vous n'utilisez pas Atlas)
+  mongodb:
+    image: mongo:7
+    container_name: ucl-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=ucl-ai
+    restart: unless-stopped
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  redis-data:
+    driver: local
+  qdrant-data:
+    driver: local
+  mongodb-data:
+    driver: local
+
+networks:
+  default:
+    name: ucl-network

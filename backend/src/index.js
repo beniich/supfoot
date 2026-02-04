@@ -310,6 +310,7 @@ app.use('/api/notifications', require('./routes/notifications'));
 app.use('/api/payments', require('./routes/stripe-webhooks')); // Advanced Webhooks (precedence over payments.js webhook)
 app.use('/api/payments', require('./routes/payments'));
 app.use('/api/associations', require('./routes/associationRoutes'));
+app.use('/api/ai', require('./routes/ai')); // AI Agent routes
 
 // ============================================================================
 // 11. HEALTH CHECK
