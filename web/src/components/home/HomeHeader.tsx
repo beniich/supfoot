@@ -1,6 +1,5 @@
 // src/components/home/HomeHeader.tsx
-import React from 'react';
-import { Search, User, Star, ChevronDown, Trophy, Tv, Grid, Gamepad2 } from 'lucide-react';
+import { Search, User, Star, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 
 export default function HomeHeader() {

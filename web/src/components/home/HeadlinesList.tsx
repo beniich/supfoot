@@ -1,5 +1,4 @@
 // src/components/home/HeadlinesList.tsx
-import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Clock, ChevronRight } from 'lucide-react';

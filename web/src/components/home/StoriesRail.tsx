@@ -1,5 +1,4 @@
 // src/components/home/StoriesRail.tsx
-import React from 'react';
 import Image from 'next/image';
 
 const stories = [

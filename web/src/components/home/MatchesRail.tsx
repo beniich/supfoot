@@ -1,5 +1,4 @@
 // src/components/home/MatchesRail.tsx
-import React from 'react';
 import Image from 'next/image';
 import { PlayCircle } from 'lucide-react';
 

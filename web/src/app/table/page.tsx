@@ -1,38 +1,16 @@
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
+import Header from '@/components/shared/Header';
+import SubNav from '@/components/shared/SubNav';
 import BottomNav from '@/components/BottomNav';
-import { Search, User, Star, ChevronDown, UnfoldMore, ChevronsUpDown } from 'lucide-react';
+import { ChevronsUpDown } from 'lucide-react';
 
 export default function StandingsPage() {
     return (
         <div className="min-h-screen bg-ucl-midnight text-white font-display pb-24">
-            <div className="h-12 w-full bg-ucl-midnight hidden md:block"></div>
-
-            {/* Header */}
-            <header className="sticky top-0 z-50 bg-ucl-midnight text-white px-4 py-3 flex items-center justify-between border-b border-white/10">
-                <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-ucl-blue rounded-full flex items-center justify-center border border-ucl-accent">
-                        <Star className="text-ucl-accent fill-ucl-accent" size={16} />
-                    </div>
-                    <h1 className="font-extrabold tracking-tight text-lg italic">FootballHub+</h1>
-                </div>
-                <div className="flex items-center gap-4">
-                    <Search size={24} />
-                    <User size={24} />
-                </div>
-            </header>
-
-            {/* Sub-Navigation */}
-            <nav className="bg-ucl-midnight text-white/80 text-[13px] font-semibold py-2 px-4 flex gap-6 overflow-x-auto no-scrollbar border-b border-white/10">
-                <a href="/matches" className="whitespace-nowrap hover:text-white transition-colors">Matches</a>
-                <a href="/table" className="text-white border-b-2 border-ucl-accent pb-1 whitespace-nowrap">Table</a>
-                <a href="#" className="whitespace-nowrap hover:text-white transition-colors">UEFA.tv</a>
-                <a href="#" className="whitespace-nowrap hover:text-white transition-colors">Draws</a>
-                <div className="flex items-center gap-1 whitespace-nowrap">Gaming <ChevronDown size={12} /></div>
-                <div className="flex items-center gap-1 whitespace-nowrap">Stats <ChevronDown size={12} /></div>
-            </nav>
+            <Header />
+            <SubNav />
 
             <main>
                 <section className="px-4 py-6">
