@@ -17,6 +17,19 @@ export default function Header() {
                         FootballHub<span className="text-ucl-accent">+</span>
                     </h1>
                 </Link>
+
+                <nav className="hidden md:flex items-center gap-6">
+                    <Link href="/news" className="text-gray-300 hover:text-ucl-accent transition-colors font-medium">
+                        Actualités
+                    </Link>
+                    <Link href="/matches" className="text-gray-300 hover:text-ucl-accent transition-colors font-medium">
+                        Matchs
+                    </Link>
+                    <Link href="/leagues" className="text-gray-300 hover:text-ucl-accent transition-colors font-medium">
+                        Compétitions
+                    </Link>
+                </nav>
+
                 <div className="flex items-center gap-4">
                     <button className="p-1 hover:bg-white/10 rounded-full transition-colors">
                         <Search size={24} className="text-white/90" />
