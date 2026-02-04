@@ -1,4 +1,3 @@
-// server/src/config/sportmonks.js
 const axios = require('axios');
 const redis = require('./redis');
 const logger = require('../utils/logger');

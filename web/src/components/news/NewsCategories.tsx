@@ -1,7 +1,6 @@
-// src/components/news/NewsCategories.tsx
 import React from 'react';
 import {
-    TrendingUp, Heart, AlertCircle, Trophy,
+    TrendingUp, AlertCircle, Trophy,
     MessageSquare, Zap, Users
 } from 'lucide-react';
 

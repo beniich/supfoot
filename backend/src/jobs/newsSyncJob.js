@@ -1,4 +1,3 @@
-// server/src/jobs/newsSyncJob.js
 const cron = require('node-cron');
 const newsService = require('../services/newsService');
 const sportmonks = require('../config/sportmonks');

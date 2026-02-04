@@ -1,8 +1,8 @@
-// src/components/news/NewsCard.tsx
 import React from 'react';
 import { Clock, Eye, ChevronRight, Tag } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
+import Link from 'next/link';
 
 interface NewsCardProps {
     article: {
@@ -23,7 +23,7 @@ interface NewsCardProps {
 
 export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
     const getCategoryColor = (category: string) => {
-        const colors = {
+        const colors: { [key: string]: string } = {
             Transfers: 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300',
             Injuries: 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300',
             Matches: 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300',
@@ -31,7 +31,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
             Rumors: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300',
             General: 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
         };
-        return colors[category as keyof typeof colors] || colors.General;
+        return colors[category] || colors.General;
     };
 
     const timeAgo = formatDistanceToNow(new Date(article.publishedAt), {
@@ -60,11 +60,13 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
                 {/* League Badge */}
                 {article.league && (
                     <div className="absolute bottom-3 right-3 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm px-3 py-1.5 rounded-lg flex items-center gap-2">
-                        <img
-                            src={article.league.logo}
-                            alt={article.league.name}
-                            className="w-5 h-5 object-contain"
-                        />
+                        {article.league.logo && (
+                            <img
+                                src={article.league.logo}
+                                alt={article.league.name}
+                                className="w-5 h-5 object-contain"
+                            />
+                        )}
                         <span className="text-xs font-medium text-gray-900 dark:text-white">
                             {article.league.name}
                         </span>
@@ -105,13 +107,13 @@ export const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
                         Par {article.author}
                     </span>
 
-                    <a
+                    <Link
                         href={`/news/${article._id}`}
                         className="flex items-center gap-1 text-primary hover:gap-2 transition-all text-sm font-medium"
                     >
                         Lire plus
                         <ChevronRight size={16} />
-                    </a>
+                    </Link>
                 </div>
             </div>
         </article>

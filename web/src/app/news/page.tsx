@@ -1,220 +1,183 @@
 'use client';
 
-import React from 'react';
-import Link from 'next/link';
-import BottomNav from '@/components/BottomNav';
+import React, { useState, useEffect } from 'react';
+import {
+    TrendingUp, Search
+} from 'lucide-react';
+import { apiClient } from '@/services/api';
+import { NewsCard } from '@/components/news/NewsCard';
+import { NewsFeatured } from '@/components/news/NewsFeatured';
+import { NewsCategories } from '@/components/news/NewsCategories';
 
-export default function NewsHubPage() {
+interface NewsArticle {
+    _id: string;
+    title: string;
+    excerpt: string;
+    image: string;
+    author: string;
+    publishedAt: string;
+    category: string;
+    views: number;
+    league?: {
+        name: string;
+        logo: string;
+    };
+    teams?: Array<{
+        name: string;
+        logo: string;
+    }>;
+}
+
+export default function NewsPage() {
+    const [news, setNews] = useState<NewsArticle[]>([]);
+    const [featuredNews, setFeaturedNews] = useState<NewsArticle[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [category, setCategory] = useState('all');
+    const [searchTerm, setSearchTerm] = useState('');
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+
+    useEffect(() => {
+        fetchFeaturedNews();
+    }, []);
+
+    useEffect(() => {
+        fetchNews();
+    }, [category, searchTerm, page]);
+
+    const fetchFeaturedNews = async () => {
+        try {
+            const response = await apiClient.get('/news/featured');
+            setFeaturedNews(response.data.news);
+        } catch (error) {
+            console.error('Failed to fetch featured news:', error);
+        }
+    };
+
+    const fetchNews = async () => {
+        try {
+            setLoading(true);
+            const response = await apiClient.get('/news', {
+                params: {
+                    page,
+                    limit: 12,
+                    category: category !== 'all' ? category : undefined,
+                    search: searchTerm || undefined,
+                },
+            });
+
+            setNews(response.data.news);
+            setTotalPages(response.data.pagination.pages);
+        } catch (error) {
+            console.error('Failed to fetch news:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
-        <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased pb-24 min-h-screen selection:bg-primary selection:text-black">
-            {/* Top App Bar */}
-            <div className="sticky top-0 z-40 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm px-4 py-3 flex items-center justify-between border-b border-black/5 dark:border-white/5">
-                <div className="flex items-center gap-3">
-                    <div className="size-8 rounded-full bg-primary flex items-center justify-center text-background-dark font-bold text-lg shadow-glow-sm">
-                        <span className="material-symbols-outlined text-[20px]">sports_soccer</span>
-                    </div>
-                    <h1 className="text-xl font-black tracking-tight uppercase">FootballHub<span className="text-primary">+</span></h1>
-                </div>
-                <div className="flex items-center gap-2">
-                    <button className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
-                        <span className="material-symbols-outlined">search</span>
-                    </button>
-                    <button className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors relative">
-                        <span className="material-symbols-outlined">notifications</span>
-                        <span className="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-background-dark"></span>
-                    </button>
+        <div className="min-h-screen bg-gray-50 dark:bg-ucl-midnight">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-ucl-blue via-ucl-midnight to-ucl-blue py-12 px-6 border-b border-ucl-accent/20">
+                <div className="max-w-7xl mx-auto">
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+                        ⚽ Football News
+                    </h1>
+                    <p className="text-white/80 text-lg">
+                        Les dernières actualités du monde du football
+                    </p>
                 </div>
             </div>
 
-            {/* Main Content Area */}
-            <main className="flex flex-col gap-8">
-                {/* Hero Section: Immersive Video Card */}
-                <div className="relative w-full aspect-[4/5] md:aspect-video px-4 pt-4">
-                    <Link href="/news/video" className="block h-full">
-                        <div className="relative h-full w-full rounded-2xl overflow-hidden shadow-2xl group cursor-pointer border border-white/5">
-                            {/* Background Image */}
-                            <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000&auto=format&fit=crop')" }}>
-                            </div>
-                            {/* Gradient Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90"></div>
-
-                            {/* Video Controls / Badge */}
-                            <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-2 border border-white/10">
-                                <span className="material-symbols-outlined text-white text-[16px]">volume_off</span>
-                                <span className="text-[10px] font-bold text-white/90 uppercase tracking-widest">Preview</span>
-                            </div>
-                            <div className="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded shadow-lg">
-                                Live Highlights
-                            </div>
-
-                            {/* Content Overlay */}
-                            <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col items-start gap-4">
-                                <div className="space-y-1">
-                                    <h2 className="text-3xl font-black leading-tight text-white tracking-tight uppercase">
-                                        Derby Day:<br /><span className="text-primary neon-text">City vs. United</span>
-                                    </h2>
-                                    <p className="text-gray-300 text-sm font-medium line-clamp-2 max-w-[90%]">
-                                        Catch the intense highlights of the season&apos;s most anticipated rivalry. Every goal, every tackle, every moment.
-                                    </p>
-                                </div>
-                                <div className="flex items-center gap-3 w-full">
-                                    <button className="flex-1 bg-primary hover:scale-[1.02] active:scale-[0.98] text-background-dark h-12 px-6 rounded-xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all shadow-glow">
-                                        <span className="material-symbols-outlined filled">play_arrow</span>
-                                        Watch Now
-                                    </button>
-                                    <button className="size-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors">
-                                        <span className="material-symbols-outlined">add</span>
-                                    </button>
-                                </div>
-                            </div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                {/* Featured News */}
+                {featuredNews.length > 0 && (
+                    <div className="mb-12">
+                        <div className="flex items-center justify-between mb-6">
+                            <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                                <TrendingUp className="text-ucl-accent" size={28} />
+                                À la Une
+                            </h2>
                         </div>
-                    </Link>
+                        <NewsFeatured news={featuredNews} />
+                    </div>
+                )}
+
+                {/* Search & Filters */}
+                <div className="mb-8 space-y-4">
+                    {/* Search Bar */}
+                    <div className="relative">
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                        <input
+                            type="text"
+                            placeholder="Rechercher une actualité..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full pl-12 pr-4 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-ucl-accent text-gray-900 dark:text-white"
+                        />
+                    </div>
+
+                    {/* Categories */}
+                    <NewsCategories
+                        activeCategory={category}
+                        onCategoryChange={setCategory}
+                    />
                 </div>
 
-                {/* Top Stories Horizontal Scroll */}
-                <section className="flex flex-col gap-4">
-                    <div className="px-4 flex items-center justify-between">
-                        <h3 className="text-xl font-black text-white tracking-tight uppercase">Top Stories</h3>
-                        <Link href="/news/articles" className="text-primary text-xs font-bold uppercase tracking-widest hover:underline">View All</Link>
-                    </div>
-                    <div className="flex overflow-x-auto no-scrollbar pb-4 px-4 gap-5 snap-x snap-mandatory">
-                        <StoryCard
-                            title="Golden Boot Race Heats Up"
-                            category="Exclusive"
-                            time="3h ago"
-                            image="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=600"
-                        />
-                        <StoryCard
-                            title="Tactical Breakdown: The High Press"
-                            category="Analysis"
-                            time="5h ago"
-                            image="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&q=80&w=600"
-                        />
-                        <StoryCard
-                            title="Transfer Rumors: Summer Window"
-                            category="Rumors"
-                            time="8h ago"
-                            image="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&q=80&w=600"
-                        />
-                    </div>
-                </section>
-
-                {/* Video Categories */}
-                <section className="flex flex-col gap-4">
-                    <div className="flex items-center justify-between px-4">
-                        <h3 className="text-xl font-black text-white tracking-tight uppercase">Media Library</h3>
-                        <div className="flex items-center gap-2">
-                            <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">My Teams</span>
-                            <div className="size-4 rounded-full bg-primary shadow-glow-sm"></div>
-                        </div>
-                    </div>
-                    <div className="flex overflow-x-auto no-scrollbar px-4 gap-3">
-                        {['All', 'Real Madrid', 'FC Barcelona', 'Raja CA', 'Wydad AC'].map((cat, i) => (
-                            <button key={cat} className={`whitespace-nowrap rounded-xl px-6 py-2.5 text-xs font-bold uppercase tracking-widest transition-all ${i === 0 ? 'bg-primary text-background-dark shadow-glow-sm' : 'bg-surface-dark text-gray-400 border border-white/5 hover:bg-white/5'}`}>
-                                {cat}
-                            </button>
+                {/* News Grid */}
+                {loading ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {[...Array(6)].map((_, i) => (
+                            <div key={i} className="animate-pulse">
+                                <div className="bg-gray-200 dark:bg-gray-800 h-48 rounded-t-xl" />
+                                <div className="bg-white dark:bg-gray-800 p-4 rounded-b-xl">
+                                    <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-2" />
+                                    <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4" />
+                                </div>
+                            </div>
                         ))}
                     </div>
-                </section>
-
-                {/* Vertical Content List */}
-                <section className="flex flex-col px-4 gap-5 pb-8">
-                    <VideoListItem
-                        title="Goal of the Month Contenders: October"
-                        league="Premier League"
-                        views="12k"
-                        time="2h ago"
-                        duration="04:22"
-                        image="https://images.unsplash.com/photo-1431324155629-1a6eda1fed2d?auto=format&fit=crop&q=80&w=800"
-                    />
-                    <VideoListItem
-                        title="Pre-Match Conference: Manager Thoughts"
-                        league="Champions League"
-                        views="8.5k"
-                        time="4h ago"
-                        duration="12:05"
-                        image="https://images.unsplash.com/photo-1624891151630-1439b177976c?auto=format&fit=crop&q=80&w=800"
-                    />
-                </section>
-
-                {/* Media Subscription Banner */}
-                <section className="px-4 pb-12">
-                    <Link href="/membership/media" className="block relative h-24 rounded-2xl overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-700 shadow-glow-sm group">
-                        <div className="absolute inset-0 opacity-10 pitch-pattern"></div>
-                        <div className="absolute top-0 right-0 p-4 opacity-20 pointer-events-none group-hover:scale-110 transition-transform">
-                             <span className="material-symbols-outlined text-6xl">photo_camera</span>
+                ) : news.length > 0 ? (
+                    <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {news.map((article) => (
+                                <NewsCard key={article._id} article={article} />
+                            ))}
                         </div>
-                        <div className="relative h-full flex flex-col justify-center px-6">
-                            <h4 className="text-white font-black uppercase italic tracking-tighter text-lg leading-none mb-1">Press & Media Access</h4>
-                            <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest">Photographer & News Insider Plans Available</p>
-                        </div>
-                        <div className="absolute right-6 top-1/2 -translate-y-1/2">
-                            <div className="size-8 rounded-full bg-white/20 flex items-center justify-center text-white">
-                                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+
+                        {/* Pagination */}
+                        {totalPages > 1 && (
+                            <div className="mt-12 flex items-center justify-center gap-2">
+                                <button
+                                    onClick={() => setPage(p => Math.max(1, p - 1))}
+                                    disabled={page === 1}
+                                    className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-white"
+                                >
+                                    Précédent
+                                </button>
+
+                                <span className="px-4 py-2 text-gray-700 dark:text-gray-300">
+                                    Page {page} sur {totalPages}
+                                </span>
+
+                                <button
+                                    onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                                    disabled={page === totalPages}
+                                    className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-white"
+                                >
+                                    Suivant
+                                </button>
                             </div>
-                        </div>
-                    </Link>
-                </section>
-            </main>
-
-            <BottomNav activeTab="news" />
+                        )}
+                    </>
+                ) : (
+                    <div className="text-center py-12">
+                        <p className="text-gray-500 dark:text-gray-400 text-lg">
+                            Aucune actualité trouvée
+                        </p>
+                    </div>
+                )}
+            </div>
         </div>
-    );
-}
-
-function StoryCard({ title, category, time, image }: { title: string, category: string, time: string, image: string }) {
-    return (
-        <Link href="/news/article" className="snap-center shrink-0 w-[290px] flex flex-col gap-4 group">
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-card-dark border border-white/5 shadow-lg">
-                <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                    style={{ backgroundImage: `url(${image})` }}>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                <div className="absolute bottom-3 left-3">
-                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white/80 bg-white/10 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10">
-                        {category}
-                    </span>
-                </div>
-            </div>
-            <div className="flex flex-col gap-2 px-1">
-                <h4 className="text-primary font-black text-lg leading-tight group-hover:text-white transition-colors uppercase tracking-tight line-clamp-2">{title}</h4>
-                <div className="flex items-center gap-2 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
-                    <span>News</span>
-                    <span className="size-1 rounded-full bg-gray-500/30"></span>
-                    <span>{time}</span>
-                </div>
-            </div>
-        </Link>
-    );
-}
-
-function VideoListItem({ title, league, views, time, duration, image }: { title: string, league: string, views: string, time: string, duration: string, image: string }) {
-    return (
-        <Link href="/news/video" className="flex flex-col bg-surface-dark rounded-2xl overflow-hidden shadow-xl border border-white/5 group transition-all hover:border-primary/20">
-            <div className="relative w-full aspect-[21/9]">
-                <div className="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-700"
-                    style={{ backgroundImage: `url(${image})` }}>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
-                    <div className="size-12 rounded-full bg-primary/90 text-background-dark flex items-center justify-center shadow-glow transform scale-100 group-hover:scale-110 transition-all">
-                        <span className="material-symbols-outlined text-[28px] filled">play_arrow</span>
-                    </div>
-                </div>
-                <span className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-white text-[10px] font-black px-2 py-1 rounded-lg border border-white/10 tracking-widest">
-                    {duration}
-                </span>
-            </div>
-            <div className="p-5 flex flex-col gap-3">
-                <h4 className="text-white text-base font-black leading-snug uppercase tracking-tight group-hover:text-primary transition-colors">{title}</h4>
-                <div className="flex items-center justify-between text-[10px] font-bold text-gray-400 uppercase tracking-widest">
-                    <span className="text-primary/70">{league}</span>
-                    <div className="flex items-center gap-4">
-                        <span className="flex items-center gap-1.5"><span className="material-symbols-outlined text-[16px]">visibility</span> {views}</span>
-                        <span>{time}</span>
-                    </div>
-                </div>
-            </div>
-        </Link>
     );
 }

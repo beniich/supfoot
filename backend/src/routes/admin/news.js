@@ -1,4 +1,3 @@
-// server/src/routes/admin/news.js
 const express = require('express');
 const router = express.Router();
 const { authenticate, requireAdmin } = require('../../middleware/auth');
@@ -8,7 +7,7 @@ const News = require('../../models/News');
 
 // All routes require admin
 router.use(authenticate);
-// router.use(requireAdmin); // Uncomment when admin middleware is fully verified
+router.use(requireAdmin);
 
 // Get sync status
 router.get('/sync/status', (req, res) => {

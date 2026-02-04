@@ -1,6 +1,8 @@
-// src/components/news/NewsFeatured.tsx
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Clock, TrendingUp } from 'lucide-react';
+import Link from 'next/link';
+import { format } from 'date-fns';
+import { fr } from 'date-fns/locale';
 
 interface NewsFeaturedProps {
     news: Array<{
@@ -16,6 +18,8 @@ interface NewsFeaturedProps {
 export const NewsFeatured: React.FC<NewsFeaturedProps> = ({ news }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
+    if (!news || news.length === 0) return null;
+
     const goToNext = () => {
         setCurrentIndex((prev) => (prev + 1) % news.length);
     };
@@ -23,8 +27,6 @@ export const NewsFeatured: React.FC<NewsFeaturedProps> = ({ news }) => {
     const goToPrev = () => {
         setCurrentIndex((prev) => (prev - 1 + news.length) % news.length);
     };
-
-    if (!news || news.length === 0) return null;
 
     const currentArticle = news[currentIndex];
 
@@ -34,7 +36,7 @@ export const NewsFeatured: React.FC<NewsFeaturedProps> = ({ news }) => {
             <img
                 src={currentArticle.image || 'https://via.placeholder.com/1200x500'}
                 alt={currentArticle.title}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
             />
 
             {/* Overlay */}
@@ -65,16 +67,16 @@ export const NewsFeatured: React.FC<NewsFeaturedProps> = ({ news }) => {
                     <div className="flex items-center gap-2 text-white/80">
                         <Clock size={16} />
                         <span className="text-sm">
-                            {new Date(currentArticle.publishedAt).toLocaleDateString('fr-FR')}
+                            {format(new Date(currentArticle.publishedAt), 'PPP', { locale: fr })}
                         </span>
                     </div>
 
-                    <a
+                    <Link
                         href={`/news/${currentArticle._id}`}
                         className="px-6 py-3 bg-primary hover:bg-primary/90 text-black font-bold rounded-xl transition-colors"
                     >
                         Lire l'article
-                    </a>
+                    </Link>
                 </div>
             </div>
 

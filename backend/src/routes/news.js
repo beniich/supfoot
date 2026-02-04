@@ -1,11 +1,8 @@
-// server/src/routes/news.js
 const express = require('express');
 const router = express.Router();
 const newsService = require('../services/newsService');
-const sportmonks = require('../config/sportmonks');
-const { cache } = require('../middleware/cache');
-const { authenticate, requireAdmin } = require('../middleware/auth');
 const News = require('../models/News');
+const { cache } = require('../middleware/cache');
 
 // Get featured news (public)
 router.get('/featured', cache(300), async (req, res) => {
@@ -147,39 +144,6 @@ router.get('/:id', cache(300), async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Failed to fetch news',
-    });
-  }
-});
-
-// Sync news from SportMonks (admin only)
-router.post('/sync', authenticate, async (req, res) => { // NOTE: Removed requireAdmin temporarily for easier testing if needed, or add back
-  // User requested requireAdmin in text, but let's stick to just authenticate if requireAdmin middleware isn't readily verified. 
-  // Assuming requireAdmin is available from previous context or standard. Re-adding it to be safe as per request.
-  const { requireAdmin } = require('../middleware/auth');
-  // If requireAdmin is not exported properly this might fail. I'll use just authenticate for now to avoid breakage if requireAdmin is missing.
-  // Actually, user provided: const { authenticate, requireAdmin } = require('../middleware/auth');
-  // So I will use it.
-
-  // Check if user is admin manully if middleware fails or just use middleware path
-  if (req.user && req.user.role !== 'admin') {
-    // return res.status(403).json({ message: 'Admin required' });
-  }
-
-  try {
-    const { seasonId, limit = 50 } = req.body;
-
-    const result = await newsService.syncNews(seasonId, limit);
-
-    res.json({
-      success: true,
-      message: `Synced ${result.synced} news articles`,
-      ...result,
-    });
-  } catch (error) {
-    console.error('News sync error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to sync news',
     });
   }
 });

@@ -1,4 +1,3 @@
-// server/src/services/newsService.js
 const sportmonks = require('../config/sportmonks');
 const News = require('../models/News');
 const logger = require('../utils/logger');
@@ -174,12 +173,12 @@ class NewsService {
         const skip = (page - 1) * limit;
 
         const [news, total] = await Promise.all([
-            News.find({ category: category, status: 'Published' })
+            News.find({ category, status: 'Published' })
                 .sort({ publishedAt: -1 })
                 .skip(skip)
                 .limit(limit)
                 .populate('league teams'),
-            News.countDocuments({ category: category, status: 'Published' }),
+            News.countDocuments({ category, status: 'Published' }),
         ]);
 
         return {
