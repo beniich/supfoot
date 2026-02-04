@@ -42,7 +42,12 @@ const userSchema = new mongoose.Schema({
     matchStart: { type: Boolean, default: true },
     goals: { type: Boolean, default: true },
     matchResult: { type: Boolean, default: true },
-    news: { type: Boolean, default: false },
+    // News specific
+    breakingNews: { type: Boolean, default: true },
+    transfers: { type: Boolean, default: true },
+    injuries: { type: Boolean, default: true },
+    dailyDigest: { type: Boolean, default: false },
+    weeklyDigest: { type: Boolean, default: true },
   },
 
   // Favorites

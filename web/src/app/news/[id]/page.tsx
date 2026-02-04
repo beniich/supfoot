@@ -10,6 +10,9 @@ import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import Link from 'next/link';
 import { NewsCard } from '@/components/news/NewsCard';
+import { BookmarkButton } from '@/components/news/BookmarkButton';
+import { CommentsSection } from '@/components/news/CommentsSection';
+import { RelatedVideos } from '@/components/news/RelatedVideos';
 
 export default function NewsDetailPage() {
     const { id } = useParams();
@@ -93,11 +96,12 @@ export default function NewsDetailPage() {
                         <span>Retour aux actualités</span>
                     </Link>
 
-                    {/* Category */}
-                    <div className="mb-4">
+                    {/* Category & Bookmark */}
+                    <div className="flex items-center justify-between mb-4">
                         <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-bold">
                             {article.category}
                         </span>
+                        <BookmarkButton newsId={article._id} />
                     </div>
 
                     {/* Title */}
@@ -143,7 +147,7 @@ export default function NewsDetailPage() {
                 </div>
 
                 {/* Share Buttons */}
-                <div className="flex items-center gap-4 py-6 border-y border-gray-200 dark:border-gray-700">
+                <div className="flex items-center gap-4 py-6 border-y border-gray-200 dark:border-gray-700 mb-8">
                     <span className="font-medium text-gray-900 dark:text-white">
                         Partager :
                     </span>
@@ -167,6 +171,9 @@ export default function NewsDetailPage() {
                     </button>
                 </div>
 
+                {/* Related Videos */}
+                <RelatedVideos newsId={article._id} />
+
                 {/* Related News */}
                 {relatedNews.length > 0 && (
                     <div className="mt-12">
@@ -180,6 +187,10 @@ export default function NewsDetailPage() {
                         </div>
                     </div>
                 )}
+
+                {/* Comments Section */}
+                <CommentsSection newsId={article._id} />
+
             </article>
         </div>
     );

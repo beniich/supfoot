@@ -210,12 +210,14 @@ const cron = require('node-cron');
 const footballApi = require('./services/footballApi');
 const uefaScraper = require('./services/uefaScraper');
 const newsSyncJob = require('./jobs/newsSyncJob');
+const newsletterJob = require('./jobs/newsletterJob');
 
 function initializeCronJobs() {
   logger.info('⏰ Initializing CRON jobs...');
 
   // Start news sync
   newsSyncJob.start();
+  newsletterJob.start();
 
   // Sync leagues every day at 3 AM
   cron.schedule('0 3 * * *', async () => {
@@ -311,6 +313,9 @@ app.use('/api/payments', require('./routes/stripe-webhooks')); // Advanced Webho
 app.use('/api/payments', require('./routes/payments'));
 app.use('/api/associations', require('./routes/associationRoutes'));
 app.use('/api/ai', require('./routes/ai')); // AI Agent routes
+app.use('/api/bookmarks', require('./routes/bookmarks'));
+app.use('/api/comments', require('./routes/comments'));
+app.use('/api/youtube', require('./routes/youtube'));
 
 // ============================================================================
 // 11. HEALTH CHECK
