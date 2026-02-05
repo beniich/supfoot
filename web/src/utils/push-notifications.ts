@@ -1,8 +1,8 @@
-import { 
+import {
   PushNotifications,
   Token,
   PushNotificationSchema,
-  ActionPerformed 
+  ActionPerformed
 } from '@capacitor/push-notifications';
 import { Capacitor } from '@capacitor/core';
 import { isNative } from './platform';
@@ -37,7 +37,7 @@ export async function initPushNotifications() {
     });
 
     // Some issue with push notification setup
-    PushNotifications.addListener('registrationError', (error: any) => {
+    PushNotifications.addListener('registrationError', (error: unknown) => {
       console.error('Error on registration:', error);
     });
 
@@ -73,9 +73,9 @@ async function sendTokenToBackend(token: string) {
         'Content-Type': 'application/json',
         // Add auth token if needed
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         token,
-        platform: Capacitor.getPlatform() 
+        platform: Capacitor.getPlatform()
       }),
     });
 
@@ -89,7 +89,7 @@ async function sendTokenToBackend(token: string) {
 
 function handleNotificationClick(notification: ActionPerformed) {
   const data = notification.notification.data;
-  
+
   // Navigate based on notification type
   if (data.type === 'ticket') {
     window.location.href = `/tickets/${data.ticketId}`;

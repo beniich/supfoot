@@ -6,7 +6,7 @@ export const ScoreWidget = () => {
     return (
         <div className="bg-surface-dark border border-white/10 rounded-3xl p-4 shadow-glow-sm w-full max-w-[200px] aspect-square flex flex-col justify-between">
             <div className="flex justify-between items-center">
-                <span className="text-[10px] font-black uppercase text-primary italic">Live 82'</span>
+                <span className="text-[10px] font-black uppercase text-primary italic">Live 82&apos;</span>
                 <div className="size-2 rounded-full bg-red-500 animate-pulse"></div>
             </div>
 

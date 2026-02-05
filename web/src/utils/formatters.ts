@@ -313,7 +313,7 @@ export const urlUtils = {
 // Export all utilities
 // ============================================
 
-export default {
+const formatters = {
     formatDate,
     formatNumber,
     formatString,
@@ -323,3 +323,5 @@ export default {
     arrayUtils,
     urlUtils,
 };
+
+export default formatters;

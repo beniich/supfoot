@@ -37,11 +37,11 @@ api.interceptors.request.use(
 // Response interceptor for error handling
 api.interceptors.response.use(
     (response) => response,
-    async (error: any) => {
-        const originalRequest = error.config;
+    async (error: unknown) => {
+        const originalRequest = (error as { config?: { _retry?: boolean } }).config;
 
         // Handle 401 Unauthorized
-        if (error.response?.status === 401 && !originalRequest._retry) {
+        if ((error as { response?: { status?: number } })?.response?.status === 401 && originalRequest && !originalRequest._retry) {
             originalRequest._retry = true;
 
             if (typeof window !== 'undefined') {
@@ -57,7 +57,7 @@ api.interceptors.response.use(
         }
 
         // Handle 429 Too Many Requests
-        if (error.response?.status === 429) {
+        if ((error as { response?: { status?: number } })?.response?.status === 429) {
             console.error('Too many requests. Please try again later.');
         }
 

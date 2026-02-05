@@ -6,7 +6,7 @@ export const hapticFeedback = {
         if (isNative()) {
             try {
                 await Haptics.impact({ style: ImpactStyle.Light });
-            } catch (error) {
+            } catch (_error) {
                 console.warn('Haptics not supported');
             }
         }
@@ -16,7 +16,7 @@ export const hapticFeedback = {
         if (isNative()) {
             try {
                 await Haptics.impact({ style: ImpactStyle.Medium });
-            } catch (error) {
+            } catch (_error) {
                 console.warn('Haptics not supported');
             }
         }
@@ -26,7 +26,7 @@ export const hapticFeedback = {
         if (isNative()) {
             try {
                 await Haptics.impact({ style: ImpactStyle.Heavy });
-            } catch (error) {
+            } catch (_error) {
                 console.warn('Haptics not supported');
             }
         }
@@ -36,7 +36,7 @@ export const hapticFeedback = {
         if (isNative()) {
             try {
                 await Haptics.notification({ type: NotificationType.Success });
-            } catch (error) {
+            } catch (_error) {
                 console.warn('Haptics not supported');
             }
         }
@@ -46,7 +46,7 @@ export const hapticFeedback = {
         if (isNative()) {
             try {
                 await Haptics.notification({ type: NotificationType.Warning });
-            } catch (error) {
+            } catch (_error) {
                 console.warn('Haptics not supported');
             }
         }
@@ -56,7 +56,7 @@ export const hapticFeedback = {
         if (isNative()) {
             try {
                 await Haptics.notification({ type: NotificationType.Error });
-            } catch (error) {
+            } catch (_error) {
                 console.warn('Haptics not supported');
             }
         }
@@ -69,7 +69,7 @@ export const hapticFeedback = {
                 setTimeout(async () => {
                     await Haptics.selectionEnd();
                 }, 100);
-            } catch (error) {
+            } catch (_error) {
                 console.warn('Haptics not supported');
             }
         }

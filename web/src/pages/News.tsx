@@ -1,13 +1,9 @@
 // src/pages/NewsPage.tsx
 import React, { useState, useEffect } from 'react';
-import {
-    TrendingUp, Clock, Eye, Search, Filter,
-    ChevronRight, Calendar, Tag, Share2
-} from 'lucide-react';
+import { TrendingUp, Search } from 'lucide-react';
 import { apiClient } from '@/services/api';
 import { NewsCard } from '@/components/news/NewsCard';
 import { NewsFeatured } from '@/components/news/NewsFeatured';
-import { NewsFilter } from '@/components/news/NewsFilter';
 import { NewsCategories } from '@/components/news/NewsCategories';
 
 interface NewsArticle {

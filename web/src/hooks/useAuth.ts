@@ -2,12 +2,6 @@ import { useState, useEffect, useCallback } from 'react';
 import { apiClient } from '@/services/api';
 import { User } from '@/types/components';
 
-interface AuthState {
-    user: User | null;
-    loading: boolean;
-    isAuthenticated: boolean;
-}
-
 export const useAuth = () => {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
@@ -52,7 +46,7 @@ export const useAuth = () => {
                 console.error('Auth verification failed', err);
             }
 
-        } catch (error) {
+        } catch (_error) {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
             setIsAuthenticated(false);
@@ -85,10 +79,13 @@ export const useAuth = () => {
                 return { success: true };
             }
             return { success: false, message: 'Invalid response' };
-        } catch (error: any) {
+        } catch (error: unknown) {
+            const errorMessage = error instanceof Error
+                ? error.message
+                : (error as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Login failed';
             return {
                 success: false,
-                message: error.response?.data?.message || 'Login failed',
+                message: errorMessage,
             };
         }
     }, []);
@@ -114,11 +111,15 @@ export const useAuth = () => {
                 return { success: true };
             }
             return { success: false, message: 'Invalid response' };
-        } catch (error: any) {
+        } catch (error: unknown) {
+            const errorMessage = error instanceof Error
+                ? error.message
+                : (error as { response?: { data?: { message?: string; errors?: unknown } } })?.response?.data?.message || 'Registration failed';
+            const errors = (error as { response?: { data?: { errors?: unknown } } })?.response?.data?.errors;
             return {
                 success: false,
-                message: error.response?.data?.message || 'Registration failed',
-                errors: error.response?.data?.errors,
+                message: errorMessage,
+                errors,
             };
         }
     }, []);
@@ -148,10 +149,13 @@ export const useAuth = () => {
                 success: response.data.success,
                 message: response.data.message,
             };
-        } catch (error: any) {
+        } catch (error: unknown) {
+            const errorMessage = error instanceof Error
+                ? error.message
+                : (error as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Failed to change password';
             return {
                 success: false,
-                message: error.response?.data?.message || 'Failed to change password',
+                message: errorMessage,
             };
         }
     }, []);

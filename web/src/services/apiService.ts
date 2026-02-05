@@ -280,7 +280,7 @@ export const adminApi = {
 };
 
 // Export all APIs
-export default {
+const apiService = {
     auth: authApi,
     matches: matchesApi,
     leagues: leaguesApi,
@@ -292,3 +292,5 @@ export default {
     tickets: ticketsApi,
     admin: adminApi,
 };
+
+export default apiService;

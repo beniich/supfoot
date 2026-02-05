@@ -1,0 +1,11 @@
+name = "footballhub-web"
+compatibility_date = "2024-01-29"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
+
+[site]
+bucket = ".vercel/output/static"
+
+# Variables d'environnement pour Supabase (A CONFIRMER DANS LE TABLEAU DE BORD CLOUDFLARE AUSSI)
+NEXT_PUBLIC_SUPABASE_URL = "https://qyefmrgzbtcxpzflwxvy.supabase.co"
+NEXT_PUBLIC_SUPABASE_ANON_KEY = "sb_publishable_Ok4OTQrB1SiF_j2ujFtuGg_poKjCH_6"

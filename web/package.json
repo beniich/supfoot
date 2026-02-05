@@ -6,9 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pages:build": "set \"PATH=%PATH%;C:\\Program Files\\Git\\bin;C:\\Program Files\\nodejs\" && npx @cloudflare/next-on-pages",
+    "pages:deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.73.0",
     "@capacitor-community/barcode-scanner": "^4.0.1",
     "@capacitor/android": "^8.0.2",
     "@capacitor/core": "^8.0.2",
@@ -17,8 +20,9 @@
     "@capacitor/push-notifications": "^8.0.0",
     "@capacitor/splash-screen": "^8.0.0",
     "@capacitor/status-bar": "^8.0.0",
+    "@google/generative-ai": "^0.24.1",
     "@supabase/ssr": "^0.8.0",
-    "@supabase/supabase-js": "^2.94.0",
+    "@supabase/supabase-js": "^2.95.1",
     "axios": "^1.13.4",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
@@ -26,6 +30,7 @@
     "framer-motion": "^12.0.6",
     "lucide-react": "^0.474.0",
     "next": "^15.1.6",
+    "openai": "^6.18.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.13.0",
@@ -36,6 +41,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "^8.0.2",
+    "@cloudflare/next-on-pages": "^1.13.16",
     "@types/node": "^22.10.5",
     "@types/react": "^19.0.6",
     "@types/react-dom": "^19.0.2",
@@ -44,6 +50,7 @@
     "eslint-config-next": "^15.1.6",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "wrangler": "^4.63.0"
   }
 }

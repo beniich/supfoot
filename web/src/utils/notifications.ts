@@ -1,5 +1,5 @@
 import { messaging } from '@/config/firebase';
-import { getToken, onMessage } from 'firebase/messaging';
+import { getToken, onMessage, MessagePayload } from 'firebase/messaging';
 
 /**
  * Demande la permission pour les notifications push
@@ -39,7 +39,7 @@ export async function requestNotificationPermission(): Promise<string | null> {
 /**
  * Écoute les messages en temps réel (quand l'app est ouverte)
  */
-export function onMessageListener(callback: (payload: any) => void) {
+export function onMessageListener(callback: (payload: MessagePayload) => void) {
     if (!messaging) {
         console.warn('Firebase Messaging non supporté');
         return;

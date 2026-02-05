@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
-    Clock, Eye, Share2, Calendar, User,
+    Clock, Eye, User,
     ArrowLeft, Facebook, Twitter, Linkedin
 } from 'lucide-react';
 import { apiClient } from '@/services/api';
@@ -10,11 +10,28 @@ import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import { NewsCard } from '@/components/news/NewsCard';
 
+interface NewsArticle {
+    _id: string;
+    title: string;
+    excerpt: string;
+    content: string;
+    image: string;
+    author: string;
+    publishedAt: string;
+    category: string;
+    views: number;
+    league?: {
+        _id: string;
+        name: string;
+        logo: string;
+    };
+}
+
 export default function NewsDetail() {
     const { id } = useParams();
-    const [article, setArticle] = useState<any>(null);
+    const [article, setArticle] = useState<NewsArticle | null>(null);
     const [loading, setLoading] = useState(true);
-    const [relatedNews, setRelatedNews] = useState([]);
+    const [relatedNews, setRelatedNews] = useState<NewsArticle[]>([]);
 
     useEffect(() => {
         if (id) {
@@ -34,7 +51,7 @@ export default function NewsDetail() {
                     const relatedResponse = await apiClient.get('/api/news/league/' + response.data.news.league._id, {
                         params: { limit: 3 },
                     });
-                    setRelatedNews(relatedResponse.data.news.filter((n: any) => n._id !== id));
+                    setRelatedNews(relatedResponse.data.news.filter((n: NewsArticle) => n._id !== id));
                 } catch (e) {
                     console.warn("Could not fetch related news", e);
                 }
@@ -47,6 +64,8 @@ export default function NewsDetail() {
     };
 
     const handleShare = (platform: string) => {
+        if (!article) return;
+
         const url = window.location.href;
         const text = article.title;
 
@@ -174,7 +193,7 @@ export default function NewsDetail() {
                             Articles similaires
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {relatedNews.map((news: any) => (
+                            {relatedNews.map((news: NewsArticle) => (
                                 <NewsCard key={news._id} article={news} />
                             ))}
                         </div>

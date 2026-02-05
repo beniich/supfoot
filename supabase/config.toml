@@ -1,0 +1,51 @@
+# Supabase Configuration
+project_id = "your-project-id"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[studio]
+enabled = true
+port = 54323
+api_url = "http://localhost"
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["https://yourdomain.com"]
+jwt_expiry = 3600
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = false
+
+# Edge Functions
+[functions.chat-openai]
+verify_jwt = true
+
+[functions.chat-claude]
+verify_jwt = true
+
+[functions.chat-gemini]
+verify_jwt = true
+
+# Environment variables pour les Edge Functions
+[functions.chat-openai.env]
+OPENAI_API_KEY = "env(OPENAI_API_KEY)"
+
+[functions.chat-claude.env]
+ANTHROPIC_API_KEY = "env(ANTHROPIC_API_KEY)"
+
+[functions.chat-gemini.env]
+GOOGLE_API_KEY = "env(GOOGLE_API_KEY)"
