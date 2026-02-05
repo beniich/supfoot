@@ -1,249 +1,107 @@
-# 📱 FootballHub+ - Architecture & Structure
+# 🏗️ Architecture Technique - FootballHub+
 
-> **📋 Note Importante**: Une analyse complète de la structure a été effectuée le 31 janvier 2026.  
-> Consultez les documents suivants pour les recommandations d'harmonisation:
-> - **`EXECUTIVE_SUMMARY.md`** - Résumé exécutif (lecture rapide)
-> - **`STRUCTURE_ANALYSIS.md`** - Analyse détaillée + plan en 3 phases
-> - **`STRUCTURE_COMPARISON.md`** - Comparaison visuelle avant/après
-> - **`CONTRIBUTING.md`** - Guide de contribution
-> - **`scripts/harmonize-structure.ps1`** - Script d'automatisation
+Ce document décrit l'architecture technique de la plateforme FootballHub+, mise à jour en Février 2026.
+
+## 🌟 Vue d'ensemble
+
+FootballHub+ est une plateforme SaaS complète pour le football, combinant des fonctionnalités temps réel, e-commerce, billetterie et gestion de contenu.
+
+### Stack Technologique (MERN Modernisé)
+
+| Couche | Technologie | Rôle |
+|--------|-------------|------|
+| **Frontend** | **Next.js 15 (React)** | Interface utilisateur, SEO, Server Components |
+| **Mobile** | **Capacitor** | Applications natives Android & iOS |
+| **Backend** | **Node.js / Express** | API REST, Logique métier |
+| **Temps Réel**| **Socket.io + Redis** | Scores en direct, Chat, Notifications instantanées |
+| **Database** | **MongoDB** | Stockage principal (Users, News, Matches, Orders) |
+| **Cache** | **Redis** | Mise en cache API, Sessions, Pub/Sub |
+| **Async Jobs**| **BullMQ** | Gestion des files d'attente (Sync news, Emails) |
+| **Monitoring**| **Prometheus + Sentry**| Métriques de performance et tracking d'erreurs |
 
 ---
 
-## 🏗️ **Architecture Globale**
+## 📐 Diagramme d'Architecture
 
-```
-supfootball/
-├── 📁 backend/              # API NestJS + Node.js
-├── 📁 web/                  # Frontend Next.js 15
-├── 📁 community_hub/        # HTML/CSS statique (prototype)
-└── 📁 .agent/              # Configuration workspace
-```
-
----
-
-## 🎯 **Frontend Structure (Next.js 15 - App Router)**
-
-### **Pages & Routes**
-
-```
-web/src/app/
-├── 🏠 page.tsx                    # Dashboard principal (live matches, quick actions)
-├── 🎨 globals.css                 # Styles globaux (Tailwind + customs)
-├── ⚙️ layout.tsx                  # Root layout (fonts, metadata)
-│
-├── 📂 onboarding/
-│   ├── success/                   # ✅ Écran de succès post-inscription
-│   └── [autres étapes]/
-│
-├── 📂 membership/
-│   ├── activation/                # 🎟️ Activation carte de membre
-│   └── comparison/                # 📊 Comparaison des plans (Standard/Pro/Elite)
-│
-├── 📂 profile/
-│   ├── page.tsx                   # Profil utilisateur
-│   ├── membership/
-│   │   ├── page.tsx              # Gestion abonnement
-│   │   └── perks/                # 🎁 Avantages partenaires (Adidas, Uber, etc.)
-│   ├── billing/
-│   ├── orders/
-│   └── payments/
-│
-├── 📂 shop/                       # 🛒 E-commerce
-│   ├── page.tsx                   # Vue principale boutique
-│   ├── product/                   # Détail produit
-│   ├── results/                   # 🔍 Recherche & filtres
-│   └── confirmation/              # Confirmation commande
-│
-├── 📂 tickets/
-│   ├── my-ticket/                 # 🎫 Billet digital avec QR code
-│   └── scan/                      # Scanner de billets
-│
-├── 📂 scanner/                    # 📷 Interface staff pour validation
-│
-├── 📂 matches/                    # ⚽ Calendrier des matchs
-├── 📂 live/                       # 📺 Match Center en direct
-├── 📂 match-center/               # Détails match avancés
-│
-├── 📂 news/                       # 📰 Articles & vidéos
-│   ├── video/
-│   └── article/
-│
-├── 📂 fantasy/                    # 🏆 Fantasy League
-│   └── manage/                    # Gestion équipe
-│
-├── 📂 ai-hub/                     # 🤖 Prédictions IA
-│
-├── 📂 referees/                   # 👨‍⚖️ Analytics arbitres
-│   └── [id]/                      # Profil arbitre détaillé
-│
-├── 📂 community/                  # 💬 Forum & threads
-│   └── thread/
-│
-├── 📂 clubs/                      # 🛡️ Profils clubs
-│   ├── raja/
-│   └── wydad/
-│
-├── 📂 loyalty/                    # 🎖️ Programme de fidélité
-├── 📂 referral/                   # 👥 Parrainage
-├── 📂 help/                       # ❓ Centre d'aide
-├── 📂 support/                    # 🆘 Support client
-├── 📂 notifications/              # 🔔 Centre de notifications
-├── 📂 settings/                   # ⚙️ Paramètres
-├── 📂 search/                     # 🔎 Recherche globale
-├── 📂 analytics/                  # 📈 Statistiques utilisateur
-├── 📂 widgets/                    # 🧩 Widget dashboard
-├── 📂 brand/                      # 🏷️ Branding
-├── 📂 about/                      # ℹ️ À propos
-├── 📂 partners/                   # 🤝 Partenaires
-│
-├── 📂 splash/                     # 🌟 Écran de démarrage
-├── 📂 login/                      # 🔐 Connexion
-├── 📂 register/                   # ✍️ Inscription
-└── 📂 checkout/                   # 💳 Paiement
-
+```mermaid
+graph TD
+    Client[📱 Mobile / 💻 Web] -->|HTTP/HTTPS| LB[⚖️ Load Balancer]
+    Client -->|WebSocket| LB
+    
+    LB --> API[🚀 API Server Node.js]
+    
+    subgraph Data Layer
+        API -->|Read/Write| Mongo[(🍃 MongoDB)]
+        API -->|Cache/PubSub| Redis[(🔴 Redis)]
+    end
+    
+    subgraph Services Externes
+        API -->|Sync| SportMonks[⚽ SportMonks API]
+        API -->|Payment| Stripe[💳 Stripe]
+        API -->|Push| Firebase[🔥 Firebase FCM]
+        API -->|Email| Resend[✉️ Resend]
+        API -->|Search| YouTube[🎥 YouTube API]
+    end
+    
+    subgraph Async Processing
+        API -->|Add Job| Queue[📥 BullMQ Queue]
+        Worker[👷 Job Worker] -->|Process| Queue
+        Worker -->|Update| Mongo
+    end
 ```
 
 ---
 
-## 🧩 **Composants Réutilisables**
+## 🛠️ Modules Principaux
 
-```
-web/src/components/
-└── BottomNav.tsx                  # Navigation inférieure (Home, Matches, Media, Shop, Profile)
-```
+### 1. API Backend (`/backend`)
+L'API est structurée en couches pour une meilleure maintenabilité :
+- **Routes** : Points d'entrée HTTP sécurisés.
+- **Controllers/Services** : Logique métier (ex: `newsService.js`, `websocketService.js`).
+- **Models** : Schémas de données Mongoose.
+- **Queues** : Traitement asynchrone (ex: synchronisation des news).
 
----
+**Nouveautés (Février 2026) :**
+- **Socket.io avec Redis Adapter** : Permet de scaler horizontalement (plusieurs serveurs API peuvent communiquer entre eux).
+- **BullMQ** : Remplace les simples CRON jobs par des files d'attente robustes avec retries automatiques.
+- **Monitoring** : Endpoint `/metrics` pour Prometheus et intégration Sentry.
 
-## 🎨 **Design System**
+### 2. Frontend Web (`/web`)
+Application Next.js 15 utilisant l'App Router.
+- **Server Components** pour le SEO et la performance initiale.
+- **Client Components** (`'use client'`) pour l'interactivité (ex: `CommentsSection`, `LiveScore`).
+- **Tailwind CSS** pour le styling "Premium" (Dark Mode natif).
+- **Zustand** pour la gestion d'état global (Auth, Panier).
 
-### **Couleurs Principales**
-```css
---primary: #f2b90d (Gold)          # Couleur signature
---background-dark: #181611          # Fond sombre principal
---surface-dark: #242320             # Surface cartes
---text-primary: #ffffff             # Texte blanc
---text-secondary: #bab29c           # Texte gris/beige
-```
-
-### **Typographie**
-- **Google Fonts**: `Work Sans` (sans-serif premium)
-- **Icons**: Material Symbols Outlined
-
-### **Animations**
-- Glassmorphism (backdrop-blur)
-- Glow effects (`shadow-glow`)
-- Hover transitions
-- Confetti overlays
+### 3. Mobile (Capacitor)
+Le dossier `/web` est transpilé en applications natives.
+- Utilise les plugins Capacitor pour l'accès matériel (Caméra pour QR Scan, Push Notifications, Haptics).
 
 ---
 
-## 🔧 **Backend Structure (NestJS)**
+## 🔄 Flux de Données Clés
 
-```
-backend/src/
-├── index.js                       # Entry point
-├── 📂 models/                     # Mongoose schemas
-│   ├── User.js
-│   ├── Match.js
-│   ├── Team.js
-│   ├── Ticket.js
-│   ├── Product.js
-│   └── Order.js
-│
-├── 📂 routes/                     # API endpoints
-│   ├── auth.js                    # Login/Register
-│   ├── matches.js                 # Matchs
-│   ├── leagues.js                 # Ligues
-│   ├── products.js                # E-commerce
-│   └── orders.js                  # Commandes
-│
-├── 📂 services/                   # Business logic
-│   ├── footballApi.js             # API-Football integration
-│   ├── predictionService.js       # IA predictions
-│   ├── notificationService.js     # Push notifications
-│   ├── syncService.js             # Data sync
-│   ├── uefaScraper.js             # UEFA scraping
-│   └── websocketService.js        # Real-time updates
-│
-└── 📂 middleware/                 # Auth, validation, etc.
-```
+### A. Synchronisation des News
+1. Le **CRON** (toutes les 30 min) ajoute un job dans la file **BullMQ** `news-sync`.
+2. Le **Worker** prend le job, appelle l'API **SportMonks**.
+3. Les nouvelles sont filtrées et sauvegardées dans **MongoDB**.
+4. Si "Breaking News", une notification **Firebase** est envoyée aux mobiles.
+
+### B. Live Scores
+1. Le serveur récupère les scores toutes les 10s (ou via webhook).
+2. Les données sont publiées dans le canal **Redis** `live-matches`.
+3. **Socket.io** diffuse l'événement aux clients connectés au namespace `/livescores`.
 
 ---
 
-## 📊 **Fonctionnalités Principales**
+## 🚀 Déploiement & Skalabilité
 
-### ✅ **Implémentées**
-1. **Onboarding** - Success screen avec confetti
-2. **Membership** - Carte digitale, activation, comparaison plans, perks partenaires
-3. **Digital Tickets** - Billet QR code, wallet Apple, plan stade
-4. **Scanner** - Interface staff pour validation entrée
-5. **Shop** - Catalogue, détail produit, recherche/filtres, confirmation
-6. **Matches** - Calendrier, live center, détails avancés
-7. **Fantasy League** - Gestion équipe, prédictions IA
-8. **Referees Hub** - Analytics arbitres, profils détaillés
-9. **Community** - Forum, threads
-10. **News** - Articles, vidéos highlights
-11. **Loyalty** - Points, récompenses, gamification
-12. **Referral** - Programme parrainage
+L'application est "Cloud Native" ready.
+- **Docker** : Chaque service peut être conteneurisé.
+- **Stateless** : L'API ne garde pas d'état local (tout est dans Redis/Mongo), ce qui permet de lancer 10 instances de l'API en parallèle sans problème.
 
-### 🚧 **Backend Intégration**
-- API Football (live data)
-- MongoDB (base de données)
-- WebSockets (real-time)
-- Notifications push
-
----
-
-## ⚠️ **Erreurs ESLint Identifiées**
-
-### **Critiques (à corriger)**
-1. **Apostrophes non échappées** (`'` → `&apos;` ou `&#39;`)
-   - `/clubs/raja/page.tsx`
-   - `/market/page.tsx`
-   - `/match-center/page.tsx`
-   - `/page.tsx` (dashboard)
-   - `/shop/confirmation/page.tsx`
-
-2. **Types `any` explicites** (TypeScript strict)
-   - `/live/page.tsx`
-   - `/login/page.tsx`
-   - `/referees/[id]/page.tsx`
-   - `/referees/page.tsx`
-   - `/register/page.tsx`
-   - `/tickets/my-ticket/page.tsx`
-
-### **Warnings (non-bloquantes)**
-1. **Images non optimisées** (`<img>` → `<Image>` Next.js)
-   - Dashboard, shop, checkout, AI Hub, news
-2. **Variables non utilisées** (`Link`, `useParams`)
-   - loyalty, market, notifications, referees
-3. **Custom fonts** (avertissement Next.js)
-   - `/layout.tsx` (fonts Google)
-
----
-
-## 🚀 **Prochaines Étapes Recommandées**
-
-1. **Corriger ESLint errors** (apostrophes + types any)
-2. **Optimiser images** (migration vers `next/image`)
-3. **Mobile setup** (Capacitor pour iOS/Android)
-4. **Backend sync** (connexion API-Football réelle)
-5. **Tests E2E** (Playwright/Cypress)
-6. **Déploiement** (Vercel + MongoDB Atlas)
-
----
-
-## 📦 **Configuration Actuelle**
-
-- **Next.js**: 15.5.11
-- **React**: 19
-- **Tailwind CSS**: 3.x
-- **TypeScript**: 5.x
-- **ESLint**: Strict mode
-- **Node.js**: v20+ (backend)
-- **MongoDB**: Mongoose ODM
-
----
-
-**Status**: ✅ MVP Fonctionnel | 🚧 Optimisations en cours
+## 🛡️ Sécurité
+- **Helmet** : Protection headers HTTP.
+- **Rate Limiting** : Protection contre DDoS et Brute Force.
+- **JWT** : Authentification sécurisée stateless.
+- **CORS** : Strict whitelist des origines autorisées.
