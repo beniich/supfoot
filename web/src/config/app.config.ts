@@ -60,6 +60,13 @@ export const APP_CONFIG = {
         enableLoyaltyProgram: true,
     },
 
+    // Development & Mock Data
+    dev: {
+        useMockData: process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'true',
+        showDebugInfo: process.env.NODE_ENV === 'development',
+        logApiCalls: process.env.NEXT_PUBLIC_LOG_API_CALLS === 'true',
+    },
+
     // UI Configuration
     ui: {
         itemsPerPage: 20,
@@ -142,12 +149,17 @@ export const isFeatureEnabled = (feature: keyof typeof APP_CONFIG.features): boo
     return APP_CONFIG.features[feature];
 };
 
+// Helper function to check if we're using mock data
+export const useMockData = (): boolean => {
+    return APP_CONFIG.dev.useMockData;
+};
+
 // Helper function to get membership tier info
 export const getMembershipTier = (tier: 'standard' | 'pro' | 'elite') => {
     return APP_CONFIG.membership.tiers[tier];
 };
 
 // Export individual configs for convenience
-export const { api, websocket, footballApi, payment, features, ui, cache } = APP_CONFIG;
+export const { api, websocket, footballApi, payment, features, ui, cache, dev } = APP_CONFIG;
 
 export default APP_CONFIG;
