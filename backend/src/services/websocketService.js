@@ -1,172 +1,120 @@
-// server/src/services/websocketService.js
-const WebSocket = require('ws');
-const redis = require('../config/redis');
+const { Server } = require('socket.io');
 const { createAdapter } = require('@socket.io/redis-adapter');
+const redis = require('../config/redis');
 const footballApi = require('./footballApiPro');
+const logger = require('../utils/logger');
 
 class WebSocketService {
   constructor(server) {
-    // Create WebSocket server with Redis adapter for multi-server support
-    this.wss = new WebSocket.Server({
-      server,
-      path: '/ws',
+    if (!server) {
+      throw new Error('WebSocketService requires an HTTP server instance');
+    }
+
+    // Configurer Socket.io avec CORS
+    this.io = new Server(server, {
+      path: '/ws', // Compatibilité avec configuration précédente
+      cors: {
+        origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : '*',
+        methods: ['GET', 'POST'],
+        credentials: true
+      },
+      pingTimeout: 60000,
     });
 
-    this.clients = new Map();
-    this.rooms = new Map();
+    // Configurer Redis Adapter pour le scaling horizontal
+    const pubClient = redis.duplicate();
+    const subClient = redis.duplicate();
 
-    this.initializeServer();
+    Promise.all([pubClient.connect(), subClient.connect()]).then(() => {
+      this.io.adapter(createAdapter(pubClient, subClient));
+      logger.info('✅ Socket.io Redis Adapter connected');
+    }).catch(err => {
+      // En cas d'erreur de connexion Redis (si ioredis gère la co auto, .connect() peut être inutile selon version)
+      // Mais avec ioredis v5, duplicate() ne connecte pas automatiquement si lazyConnect est true
+      // On log juste l'erreur, ça ne doit pas crasher l'app si redis est down temporairement
+      logger.error('❌ Socket.io Redis Adapter error:', err);
+    });
+
+    this.initializeNamespaces();
     this.startLiveBroadcast();
+
+    logger.info('🔌 Socket.io Server initialized');
   }
 
-  initializeServer() {
-    this.wss.on('connection', (ws, req) => {
-      const clientId = this.generateClientId();
+  initializeNamespaces() {
+    // Namespace général / par défaut
+    this.io.on('connection', (socket) => {
+      this.handleConnection(socket, 'General');
+    });
 
-      console.log(`✅ Client connected: ${clientId}`);
+    // Namespace Live Scores
+    this.livescores = this.io.of('/livescores');
+    this.livescores.on('connection', (socket) => {
+      this.handleConnection(socket, 'LiveScores');
 
-      ws.clientId = clientId;
-      this.clients.set(clientId, ws);
-
-      // Handle messages
-      ws.on('message', async (message) => {
-        try {
-          const data = JSON.parse(message);
-          await this.handleMessage(ws, data);
-        } catch (error) {
-          console.error('WebSocket message error:', error);
-        }
+      socket.on('subscribe', (matchId) => {
+        socket.join(`match:${matchId}`);
+        logger.info(`Client ${socket.id} subscribed to match:${matchId}`);
       });
 
-      // Handle disconnect
-      ws.on('close', () => {
-        console.log(`❌ Client disconnected: ${clientId}`);
-        this.clients.delete(clientId);
-
-        // Remove from all rooms
-        this.rooms.forEach((clients, room) => {
-          clients.delete(clientId);
-        });
-      });
-
-      // Send welcome message
-      this.send(ws, {
-        type: 'connected',
-        clientId,
-        timestamp: new Date().toISOString(),
+      socket.on('unsubscribe', (matchId) => {
+        socket.leave(`match:${matchId}`);
       });
     });
-  }
 
-  async handleMessage(ws, data) {
-    switch (data.type) {
-      case 'subscribe':
-        this.subscribeToRoom(ws, data.room);
-        break;
-
-      case 'unsubscribe':
-        this.unsubscribeFromRoom(ws, data.room);
-        break;
-
-      case 'ping':
-        this.send(ws, { type: 'pong' });
-        break;
-
-      default:
-        console.warn('Unknown message type:', data.type);
-    }
-  }
-
-  subscribeToRoom(ws, room) {
-    if (!this.rooms.has(room)) {
-      this.rooms.set(room, new Set());
-    }
-
-    this.rooms.get(room).add(ws.clientId);
-
-    this.send(ws, {
-      type: 'subscribed',
-      room,
-    });
-
-    console.log(`📢 Client ${ws.clientId} subscribed to ${room}`);
-  }
-
-  unsubscribeFromRoom(ws, room) {
-    if (this.rooms.has(room)) {
-      this.rooms.get(room).delete(ws.clientId);
-    }
-
-    this.send(ws, {
-      type: 'unsubscribed',
-      room,
+    // Namespace Chat (pour plus tard)
+    this.chat = this.io.of('/chat');
+    this.chat.on('connection', (socket) => {
+      this.handleConnection(socket, 'Chat');
+      // Logique chat à implémenter
     });
   }
 
-  broadcast(room, message) {
-    if (!this.rooms.has(room)) return;
+  handleConnection(socket, namespaceName) {
+    logger.info(`✅ [${namespaceName}] Client connected: ${socket.id}`);
 
-    const roomClients = this.rooms.get(room);
+    socket.on('disconnect', () => {
+      logger.info(`❌ [${namespaceName}] Client disconnected: ${socket.id}`);
+    });
 
-    roomClients.forEach((clientId) => {
-      const client = this.clients.get(clientId);
-      if (client && client.readyState === WebSocket.OPEN) {
-        this.send(client, message);
-      }
+    socket.on('error', (err) => {
+      logger.error(`WebSocket Error [${namespaceName}]:`, err);
     });
   }
 
-  send(ws, message) {
-    if (ws.readyState === WebSocket.OPEN) {
-      ws.send(JSON.stringify(message));
-    }
-  }
-
+  /**
+   * Diffuse les scores en direct
+   */
   async startLiveBroadcast() {
-    // Broadcast live scores every 10 seconds
+    // Diffuse toutes les 10 secondes (ou plus fréquent si match en cours)
     setInterval(async () => {
       try {
         const liveMatches = await footballApi.getLiveMatches();
 
-        // Broadcast to subscribers
-        this.broadcast('live-matches', {
-          type: 'live-matches',
-          data: liveMatches,
-          timestamp: new Date().toISOString(),
-        });
+        if (liveMatches && liveMatches.length > 0) {
+          // Envoyer à tous les clients connectés au namespace livescores
+          this.livescores.emit('live-matches', {
+            matches: liveMatches,
+            timestamp: new Date().toISOString()
+          });
 
-        // Also publish to Redis for other servers
-        await redis.publish('live-matches', JSON.stringify({
-          type: 'live-matches',
-          data: liveMatches,
-        }));
+          // Envoyer des mises à jour spécifiques par match (pour ceux qui sont dans la room match:ID)
+          liveMatches.forEach(match => {
+            this.livescores.to(`match:${match.fixture.id}`).emit('match-update', match);
+          });
+        }
       } catch (error) {
-        console.error('Live broadcast error:', error);
+        logger.error('Live broadcast error:', error);
       }
     }, 10000);
-
-    // Subscribe to Redis for updates from other servers
-    const subscriber = redis.duplicate();
-    subscriber.subscribe('live-matches', 'match-events');
-
-    subscriber.on('message', (channel, message) => {
-      const data = JSON.parse(message);
-      this.broadcast(channel, data);
-    });
   }
 
-  generateClientId() {
-    return `client_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-  }
-
-  getStats() {
-    return {
-      totalClients: this.clients.size,
-      rooms: Array.from(this.rooms.entries()).map(([room, clients]) => ({
-        room,
-        clients: clients.size,
-      })),
-    };
+  /**
+   * Helper pour envoyer une notification à un utilisateur spécifique
+   */
+  sendToUser(userId, event, data) {
+    // Nécessite que le socket soit joint à une room "user:ID" lors de l'auth
+    this.io.to(`user:${userId}`).emit(event, data);
   }
 }
 

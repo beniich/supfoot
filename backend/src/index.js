@@ -11,12 +11,31 @@ const hpp = require('hpp');
 const compression = require('compression');
 const morgan = require('morgan');
 const logger = require('./utils/logger'); // Winston logger
-const { initSentry, setupSentryErrorHandling } = require('./config/sentry');
+const logger = require('./utils/logger'); // Winston logger
+const { initSentry, setupSentryErrorHandling, client, httpRequestDurationMicroseconds } = require('./config/monitoring');
 
 const app = express();
 
 // Initialize Sentry (FIRST!)
 initSentry(app);
+
+// Prometheus middleware to collect request duration
+app.use((req, res, next) => {
+  const start = Date.now();
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    httpRequestDurationMicroseconds
+      .labels(req.method, req.route ? req.route.path : req.path, res.statusCode)
+      .observe(duration);
+  });
+  next();
+});
+
+// Prometheus Metrics Route
+app.get('/metrics', async (req, res) => {
+  res.set('Content-Type', client.register.contentType);
+  res.end(await client.register.metrics());
+});
 
 // ============================================================================
 // 1. TRUST PROXY (pour rate limiting derrière reverse proxy)

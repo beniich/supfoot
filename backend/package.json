@@ -20,8 +20,10 @@
     "dependencies": {
         "@sentry/node": "^10.38.0",
         "@socket.io/redis-adapter": "^8.3.0",
+        "socket.io": "^4.7.4",
         "aws-sdk": "^2.1693.0",
         "axios": "^1.13.4",
+        "prom-client": "^15.1.0",
         "bcryptjs": "^2.4.3",
         "cheerio": "^1.0.0-rc.12",
         "cloudinary": "^1.41.3",
