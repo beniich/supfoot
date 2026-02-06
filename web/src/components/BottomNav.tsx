@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Home, Calendar, Play, Trophy, MoreHorizontal, X, User, Settings, ShoppingBag, Ticket, Heart, LogOut } from 'lucide-react';
+import { Home, Calendar, Play, Trophy, MoreHorizontal, X, User, Settings, ShoppingBag, Ticket, Heart, LogOut, Activity } from 'lucide-react';
 import { useState } from 'react';
 
 export default function BottomNav() {
@@ -16,6 +16,7 @@ export default function BottomNav() {
         { icon: User, label: 'Profile', href: '/profile' },
         { icon: ShoppingBag, label: 'Shop', href: '/shop' },
         { icon: Ticket, label: 'Tickets', href: '/tickets' },
+        { icon: Activity, label: 'Admin', href: '/admin' },
         { icon: Heart, label: 'Favorites', href: '/profile/favorites' },
         { icon: Settings, label: 'Settings', href: '/settings' },
     ];
